@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'   => 'pgsql:host=localhost;port=5432;dbname=Reactiva',
+	'dsn'   => '',
 	'hostname' => 'localhost',
-	'username' => 'Reactiva',
-	'password' => 'Irisluciana',
-	'database' => 'Reactiva',
-	'dbdriver' => 'pdo',
+	'username' => 'root',
+	'password' => 'rubik',
+	'database' => 'reactiva',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
