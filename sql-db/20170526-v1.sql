@@ -48,6 +48,16 @@ CREATE TABLE IF NOT EXISTS `acc_med` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 COMMENT='Login session for doctos and nurses/assistants';
 
 -- Data exporting was unselected.
+-- Dumping structure for table reactiva.ci_sessions
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+	`id` VARCHAR(128) NOT NULL,
+	`ip_address` VARCHAR(45) NOT NULL,
+	`timestamp` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`data` BLOB NOT NULL,
+	INDEX `ci_sessions_timestamp` (`timestamp`)
+) ENGINE=InnoDB;
+
+-- Data exporting was unselected.
 -- Dumping structure for table reactiva.game_exercise
 CREATE TABLE IF NOT EXISTS `game_exercise` (
   `id_exercise` int(11) NOT NULL AUTO_INCREMENT,
