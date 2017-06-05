@@ -25,7 +25,7 @@ class Admin extends CI_Controller{
             $data['menu'] = $this->load->view('admin/menu', array());
 
             $data['contenido'] = $this->load->view('admin/index', array());
-            $data['footer'] = $this->load->view('admin/footer', array());
+            $data['footer'] = $this->load->view('admin/footer-gc', array());
 		}else{
 			redirect("admin/login");
 		}

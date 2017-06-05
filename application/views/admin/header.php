@@ -8,11 +8,15 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<script type="text/javascript" src="<?php echo base_url('vendor/components/jquery/jquery.min.js'); ?>"></script>
-	<script type="text/javascript" src="<?php echo base_url('vendor/twbs/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+	
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/metisMenu.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
+
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('vendor/twbs/bootstrap/dist/css/bootstrap.min.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common/custom-bootstrap-margin-padding.css'); ?>">
 
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<?php if (isset($css_files)): ?>
 		<!-- grocerycrud -->
 		<?php foreach($css_files as $file): ?>

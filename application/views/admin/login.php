@@ -16,6 +16,7 @@
 				<?php echo form_input(array(
 					'name' => 'ra_username',
 					'value' => '',
+					'required' => 'required',
 					'placeholder' => 'Usuario',
 					'class' => 'form-control input-sgl',
 					));?>
@@ -26,6 +27,7 @@
 					<?php echo form_password(array(
 						'name' => 'ra_password',
 						'value' => '',
+						'required' => 'required',
 						'placeholder' => 'contraseña',
 						'class' => 'form-control input-sgl',
 						));?>
