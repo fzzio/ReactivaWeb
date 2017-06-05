@@ -11,7 +11,7 @@
                 <div class="box-inner">
                     <div class="box-header well" data-original-title="">
                         <h2>
-                            <i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;<?php echo $titlePage; ?>
+                            <i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;<?php echo $PageTitle; ?>
                         </h2>
                     </div>
                     <div class="box-content">

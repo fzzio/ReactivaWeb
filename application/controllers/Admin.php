@@ -19,7 +19,7 @@ class Admin extends CI_Controller{
 
 	public function index(){
 		if ($this->AdminSecurityCheck()){
-            $dataHeader['titlePage'] = "Reactiva";
+            $dataHeader['PageTitle'] = "Reactiva";
 
             $data['header'] = $this->load->view('admin/header', $dataHeader);
             $data['menu'] = $this->load->view('admin/menu', array());
@@ -115,7 +115,65 @@ class Admin extends CI_Controller{
 		}
 	}
 
-	
+	public function users(){
+		$debug = false;
+
+		if ($this->AdminSecurityCheck()){
+            $titulo = "Staff médico";
+
+            $crud = new grocery_CRUD();
+			$crud->set_table("acc_med");
+			$crud->set_subject( $titulo );
+
+			$crud->display_as( 'name' , 'Nombres' );
+			$crud->display_as( 'lastname' , 'Apellidos' );
+			$crud->display_as( 'username' , 'Usuario' );
+			$crud->display_as( 'email' , 'Correo' );
+			$crud->display_as( 'password' , 'Contraseña' );
+			$crud->display_as( 'last_ip' , 'Última IP' );
+			$crud->display_as( 'last_login' , 'Última Conexión' );
+			$crud->display_as( 'status' , 'Estado' );
+
+			$crud->field_type('status', 'dropdown', array(
+                '0' => 'Inactivo',
+                '1' => 'Activo'
+            ));
+
+			$crud->field_type('last_login', 'readonly');
+			$crud->field_type('last_ip', 'readonly');
+
+			$crud->callback_edit_field('password',array($this,'set_password_input_to_empty'));
+            $crud->callback_add_field('password',array($this,'set_password_input_to_empty'));
+
+            $crud->field_type('password','password');
+
+            $crud->callback_before_update(array($this,'encrypt_pw'));
+            $crud->callback_before_insert(array($this,'encrypt_pw'));
+
+			$crud->columns( 'name', 'lastname', 'username', 'email', 'last_ip', 'last_login', 'status' );
+			$crud->fields( 'name', 'lastname', 'username', 'email', 'password', 'status');
+			$crud->required_fields( 'name', 'lastname', 'username', 'email', 'status'  );
+
+            $crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
 
 	/* CRUD ends*/
 	/* Helpers starts*/
