@@ -175,6 +175,49 @@ class Admin extends CI_Controller{
 		}
 	}
 
+	public function contactos(){
+		$debug = false;
+		if ($this->AdminSecurityCheck()) {
+			$titulo = 'Contactos';
+			$crud = new grocery_CRUD();
+			$crud ->set_table('web_contact');
+			$crud -> set_subject($titulo);
+
+			$crud -> field_type('date','date');
+			$crud -> field_type('name','string');
+			$crud -> field_type('email','string');
+			$crud -> field_type('message','text');
+
+			$crud -> display_as('date', 'Fecha');
+			//tocara hacer la expresion regular para que acepte alpha y espacio
+			//$crud -> set_rules('name', 'Nombre de Contacto','alpha');
+						
+			$crud -> set_rules('email','Correo','valid_email');
+			
+			$crud -> columns('date','name','email','message');
+			$crud -> fields('date','name','email','message');
+			$crud -> required_fields('date','name','email','message');
+			$crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
+
 	/* CRUD ends*/
 	/* Helpers starts*/
 	function AdminSecurityCheck(){
