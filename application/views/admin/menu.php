@@ -49,6 +49,12 @@
 								<li>
 									<a href="<?php echo site_url('admin/users'); ?>">Usuarios</a>
 								</li>
+								<li>
+									<a href="<?php echo site_url('therapyCtr/therapys'); ?>">Terapias</a>
+								</li>
+								<li>
+									<a href="<?php echo site_url('admin/users'); ?>">Ejercicios</a>
+								</li>
 							</ul>
 						</li>
 					</ul>
