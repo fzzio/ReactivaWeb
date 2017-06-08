@@ -74,7 +74,7 @@
 							</ul>
 						</li>
 						<li>
-                            <a href="#"><i class="fa fa-globe"></i>Geografía<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-globe"></i> Geografía<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
                                     <a href="<?php echo site_url('admin/provincias'); ?>">Provincias</a>
