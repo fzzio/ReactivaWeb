@@ -50,10 +50,10 @@
 									<a href="<?php echo site_url('admin/users'); ?>">Usuarios</a>
 								</li>
 								<li>
-									<a href="<?php echo site_url('therapyCtr/therapys'); ?>">Terapias</a>
+									<a href="<?php echo site_url('admin/therapys'); ?>">Terapias</a>
 								</li>
 								<li>
-									<a href="<?php echo site_url('admin/users'); ?>">Ejercicios</a>
+									<a href="<?php echo site_url('admin/exercises'); ?>">Ejercicios</a>
 								</li>
 							</ul>
 						</li>

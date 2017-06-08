@@ -218,6 +218,120 @@ class Admin extends CI_Controller{
 		}
 	}
 
+
+
+	/**
+	 * CRUD de terapias
+	 * @return [type] [description]
+	 */
+	function therapys() {
+			$debug = false;
+
+			if ($this->AdminSecurityCheck()) {
+				$titulo = "Therapias";
+
+	            $crud = new grocery_CRUD();
+				$crud->set_table("patient_therapy");
+				$crud->set_subject( $titulo );
+
+				$crud->display_as( 'date_create' , 'Nombres' );
+				$crud->display_as( 'eta' , 'Inicio Estimado' );
+				$crud->display_as( 'etf' , 'Fin Estimado' );
+				$crud->display_as( 'starttime' , 'Hora Inicio' );
+				$crud->display_as( 'finishtime' , 'Hora Fin' );
+				$crud->display_as( 'comment' , 'Comentarios' );
+				$crud->display_as( 'sendmail' , 'Envío de Correo' );
+				$crud->display_as( 'status' , 'Estado' );
+
+				$crud->field_type('status', 'dropdown', array(
+	                '0' => 'Inactivo',
+	                '1' => 'Activo'
+	            ));
+
+	            $crud->field_type('sendmail', 'dropdown', array(
+	                '0' => 'No',
+	                '1' => 'Si'
+	            ));
+
+	            $crud->columns( 'date_create', 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
+				$crud->fields('date_create', 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status');
+				$crud->required_fields( 'date_create', 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
+
+
+				$crud->unset_export();
+				$crud->unset_print();
+				$crud->unset_read();
+
+				$output = $crud->render();
+				$dataHeader['PageTitle'] = $titulo;
+				$dataHeader['css_files'] = $output->css_files;
+				$dataFooter['js_files'] = $output->js_files;
+				$dataContent['debug'] = $debug;
+
+				$data['header'] = $this->load->view('admin/header', $dataHeader);
+				$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+				$data['content'] = $this->load->view('admin/blank', $output);
+				$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+
+
+			}else{
+				redirect("admin/login");
+			}
+		 	
+	}
+
+	/**
+	 * CRUD de la tabla game_exercise
+	 * @return lista con todos los ejercicios
+	 * DATOS USADOS
+	 * 
+	 * INSERT INTO `game_limb` (`id_limb`, `name`) VALUES (1, 'Juego De la Tortuga');
+       INSERT INTO `game_exercise` (`id_exercise`, `name`, `detail`, `id_limb`) VALUES (1, 'Movimientos de Pierna','Mover las piernas en distintos angulos', '1');
+	 */
+	function exercises() {
+			$debug = false;
+
+			if ($this->AdminSecurityCheck()) {
+				$titulo = "Ejercicios";
+
+	            $crud = new grocery_CRUD();
+				$crud->set_table("game_exercise");
+				$crud->set_subject( $titulo );
+
+				$crud->display_as( 'name' , 'Nombre' );
+				$crud->display_as( 'detail' , 'Detalles' );
+
+	            $crud->columns( 'name', 'detail' );
+				$crud->fields('name', 'detail');
+				$crud->required_fields( 'name', 'detail' );
+
+
+				$crud->unset_export();
+				$crud->unset_print();
+				$crud->unset_read();
+
+				$output = $crud->render();
+				$dataHeader['PageTitle'] = $titulo;
+				$dataHeader['css_files'] = $output->css_files;
+				$dataFooter['js_files'] = $output->js_files;
+				$dataContent['debug'] = $debug;
+
+				$data['header'] = $this->load->view('admin/header', $dataHeader);
+				$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+				$data['content'] = $this->load->view('admin/blank', $output);
+				$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+
+
+			}else{
+				redirect("admin/login");
+			}
+		 	
+	}
+
+
+
 	/* CRUD ends*/
 	/* Helpers starts*/
 	function AdminSecurityCheck(){
