@@ -222,6 +222,19 @@ class Admin extends CI_Controller{
 	/**
 	 * CRUD de terapias
 	 * @return lista todas las terapias
+	 * DATOS USADOS
+	 * 
+	 * INSERT INTO `acc_med` (`username`, `email`, `password`, `name`, `lastname`, `last_ip`, `last_login`, `status`) VALUES
+	('izurita', 'izurita@espol.edu.ec', '21232f297a57a5a743894a0e4a801fc3', 'Israel', 'Zurita', '8.8.8.8', '0000-00-00 00:00:00', 1);
+
+	INSERT INTO `patient` ( `id_patient`,`ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`,`adress`,`email`) VALUES
+	(1, '0924262397', 'Israel', 'Zurita', '2016-09-23','1','072421191','0988829914','La Troncal', 'izurita@espol.edu.ec');
+
+
+	INSERT INTO `patient_therapy` (`id_therapy`, `id_patient`, `date_created`, `id_doctor_created`, `id_med_attended`, `eta`, `etf`, `starttime`, `finishtime`,`comment`,`sendmail`,`status` ) VALUES
+	(1, 1, '20170607', 3, 4, '2017-06-12 19:30:00', '2017-06-12 20:30:00', '19:00:00', '20:00:00','Calentar las extremidades', 1,1);
+
+
 	 */
 	function therapys() {
 			$debug = false;
@@ -233,7 +246,7 @@ class Admin extends CI_Controller{
 				$crud->set_table("patient_therapy");
 				$crud->set_subject( $titulo );
 
-				$crud->display_as( 'date_create' , 'Nombres' );
+				///$crud->display_as( 'date_create' , 'Fecha de Creación' );
 				$crud->display_as( 'eta' , 'Inicio Estimado' );
 				$crud->display_as( 'etf' , 'Fin Estimado' );
 				$crud->display_as( 'starttime' , 'Hora Inicio' );
@@ -252,9 +265,9 @@ class Admin extends CI_Controller{
 	                '1' => 'Si'
 	            ));
 
-	            $crud->columns( 'date_create', 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
-				$crud->fields('date_create', 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status');
-				$crud->required_fields( 'date_create', 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
+	            $crud->columns( 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
+				$crud->fields( 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status');
+				$crud->required_fields( 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
 
 
 				$crud->unset_export();
