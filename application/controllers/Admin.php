@@ -219,78 +219,60 @@ class Admin extends CI_Controller{
 		}
 	}
 
+	public function terapias() {
+		$debug = false;
 
-	/**
-	 * CRUD de terapias
-	 * @return lista todas las terapias
-	 * DATOS USADOS
-	 * 
-	 * INSERT INTO `acc_med` (`username`, `email`, `password`, `name`, `lastname`, `last_ip`, `last_login`, `status`) VALUES
-	('izurita', 'izurita@espol.edu.ec', '21232f297a57a5a743894a0e4a801fc3', 'Israel', 'Zurita', '8.8.8.8', '0000-00-00 00:00:00', 1);
+		if ($this->AdminSecurityCheck()) {
+			$titulo = "Terapias";
 
-	INSERT INTO `patient` ( `id_patient`,`ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`,`adress`,`email`) VALUES
-	(1, '0924262397', 'Israel', 'Zurita', '2016-09-23','1','072421191','0988829914','La Troncal', 'izurita@espol.edu.ec');
+            $crud = new grocery_CRUD();
+			$crud->set_table("patient_therapy");
+			$crud->set_subject( $titulo );
 
+			///$crud->display_as( 'date_create' , 'Fecha de Creación' );
+			$crud->display_as( 'eta' , 'Inicio Estimado' );
+			$crud->display_as( 'etf' , 'Fin Estimado' );
+			$crud->display_as( 'starttime' , 'Hora Inicio' );
+			$crud->display_as( 'finishtime' , 'Hora Fin' );
+			$crud->display_as( 'comment' , 'Comentarios' );
+			$crud->display_as( 'sendmail' , 'Envío de Correo' );
+			$crud->display_as( 'status' , 'Estado' );
 
-	INSERT INTO `patient_therapy` (`id_therapy`, `id_patient`, `date_created`, `id_doctor_created`, `id_med_attended`, `eta`, `etf`, `starttime`, `finishtime`,`comment`,`sendmail`,`status` ) VALUES
-	(1, 1, '20170607', 3, 4, '2017-06-12 19:30:00', '2017-06-12 20:30:00', '19:00:00', '20:00:00','Calentar las extremidades', 1,1);
+			$crud->field_type('status', 'dropdown', array(
+                '0' => 'Inactivo',
+                '1' => 'Activo'
+            ));
 
+            $crud->field_type('sendmail', 'dropdown', array(
+                '0' => 'No',
+                '1' => 'Si'
+            ));
 
-	 */
-	function therapys() {
-			$debug = false;
-
-			if ($this->AdminSecurityCheck()) {
-				$titulo = "Therapias";
-
-	            $crud = new grocery_CRUD();
-				$crud->set_table("patient_therapy");
-				$crud->set_subject( $titulo );
-
-				///$crud->display_as( 'date_create' , 'Fecha de Creación' );
-				$crud->display_as( 'eta' , 'Inicio Estimado' );
-				$crud->display_as( 'etf' , 'Fin Estimado' );
-				$crud->display_as( 'starttime' , 'Hora Inicio' );
-				$crud->display_as( 'finishtime' , 'Hora Fin' );
-				$crud->display_as( 'comment' , 'Comentarios' );
-				$crud->display_as( 'sendmail' , 'Envío de Correo' );
-				$crud->display_as( 'status' , 'Estado' );
-
-				$crud->field_type('status', 'dropdown', array(
-	                '0' => 'Inactivo',
-	                '1' => 'Activo'
-	            ));
-
-	            $crud->field_type('sendmail', 'dropdown', array(
-	                '0' => 'No',
-	                '1' => 'Si'
-	            ));
-
-	            $crud->columns( 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
-				$crud->fields( 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status');
-				$crud->required_fields( 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
+            $crud->columns( 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
+			$crud->fields('etf', 'starttime', 'finishtime', 'comment', 'sendmail','status');
+			$crud->required_fields('etf', 'starttime', 'finishtime','status' );
 
 
-				$crud->unset_export();
-				$crud->unset_print();
-				$crud->unset_read();
+			$crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
 
-				$output = $crud->render();
-				$dataHeader['PageTitle'] = $titulo;
-				$dataHeader['css_files'] = $output->css_files;
-				$dataFooter['js_files'] = $output->js_files;
-				$dataContent['debug'] = $debug;
+			$output = $crud->render();
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
 
-				$data['header'] = $this->load->view('admin/header', $dataHeader);
-				$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+			$data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
 
-				$data['content'] = $this->load->view('admin/blank', $output);
-				$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
 
 
-			}else{
-				redirect("admin/login");
-			}
+		}else{
+			redirect("admin/login");
+		}
 		 	
 	}
 
@@ -472,8 +454,8 @@ class Admin extends CI_Controller{
             ));
 
 			$crud->columns( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
-			$crud->fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
-			$crud->required_fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next' );
+			$crud->fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_attended', 'status', 'next', 'diagnosis' );
+			$crud->required_fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_attended', 'status', 'next' );
 
             $crud->unset_export();
 			$crud->unset_print();
@@ -547,6 +529,8 @@ class Admin extends CI_Controller{
 
 			$crud->display_as( 'name' , 'Ciudad' );
 			$crud->display_as( 'status' , 'Estado' );
+
+			$crud->set_relation('id_province', 'geo_province', 'name');
 
 			$crud->field_type('status', 'dropdown', array(
                 '0' => 'Inactivo',
