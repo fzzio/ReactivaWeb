@@ -219,10 +219,9 @@ class Admin extends CI_Controller{
 	}
 
 
-
 	/**
 	 * CRUD de terapias
-	 * @return [type] [description]
+	 * @return lista todas las terapias
 	 */
 	function therapys() {
 			$debug = false;
@@ -330,6 +329,158 @@ class Admin extends CI_Controller{
 		 	
 	}
 
+
+	public function admin_nivel(){
+		$debug = false;
+		if ($this->AdminSecurityCheck()) {
+			$titulo = 'Nivel de administrador';
+			$crud = new grocery_CRUD();
+			$crud ->set_table('rbac_admin_group');
+			$crud -> set_subject($titulo);
+
+			$crud -> display_as('id_admin','Administrador');
+			$crud -> display_as('id_group','Grupo');
+
+			$crud->set_primary_key('id_admin','admin_name');
+			$crud->set_relation('id_admin', 'admin_name', 'name');
+			$crud->set_relation('id_group', 'rbac_group', 'name');
+
+			$crud -> columns('id_admin','id_group');
+			$crud -> fields('id_admin','id_group');
+			$crud -> required_fields('id_admin','id_group');
+
+			$crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
+
+	public function pacientes(){
+		$debug = false;
+
+		if ($this->AdminSecurityCheck()){
+            $titulo = "Pacientes";
+
+            $crud = new grocery_CRUD();
+			$crud->set_table("patient");
+			$crud->set_subject( $titulo );
+
+			$crud->display_as( 'ci' , 'Cedula' );
+			$crud->display_as( 'name' , 'Nombres' );
+			$crud->display_as( 'lastname' , 'Apellidos' );
+			$crud->display_as( 'born' , 'Fecha de Nacimiento' );
+			$crud->display_as( 'gender' , 'Genero' );
+			$crud->display_as( 'phone' , 'Telefono' );
+			$crud->display_as( 'cellphone' , 'Celular' );
+			$crud->display_as( 'adress' , 'Direccion' );
+			$crud->display_as( 'email' , 'Correo' );
+
+			$crud->field_type('born', 'date');
+			
+			$crud->field_type('gender', 'dropdown', array(
+                '0' => 'Femenino',
+                '1' => 'Masculino'
+            ));
+
+			$crud->columns( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email' );
+			$crud->fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email');
+			$crud->required_fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email' );
+
+            $crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
+
+	public function consultas(){
+		$debug = false;
+
+		if ($this->AdminSecurityCheck()){
+            $titulo = "Consultas";
+
+            $crud = new grocery_CRUD();
+			$crud->set_table("patient_consult");
+			$crud->set_subject( $titulo );  
+
+			$crud->set_relation('id_patient','patient','{name} {lastname}');
+			$crud->set_relation('id_doctor_created','acc_med','{name} {lastname}');
+			$crud->set_relation('id_doctor_attended','acc_med','{name} {lastname}');
+
+			$crud->display_as( 'id_patient' , 'Paciente' );
+			$crud->display_as( 'id_doctor_created' , 'Médico' );
+			$crud->display_as( 'id_doctor_attended' , 'Atendido por' );
+			$crud->display_as( 'date_created' , 'Fecha de creación' );
+			$crud->display_as( 'date_attended' , 'Fecha de atención' );
+			$crud->display_as( 'status' , 'Estado' );
+			$crud->display_as( 'next' , 'Próxima consulta' );
+			$crud->display_as( 'diagnosis' , 'Diágnostico' );
+
+			$crud->field_type('status', 'dropdown', array(
+                '0' => 'No atendido',
+                '1' => 'Atendido'
+            ));
+
+			$crud->field_type('born', 'text');
+
+			$crud->field_type('next', 'dropdown', array(
+                '0' => 'No',
+                '1' => 'Si'
+            ));
+
+			$crud->columns( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
+			$crud->fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
+			$crud->required_fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next' );
+
+            $crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
 
 
 	/* CRUD ends*/
