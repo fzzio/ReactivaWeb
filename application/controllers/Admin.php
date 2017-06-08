@@ -218,6 +218,46 @@ class Admin extends CI_Controller{
 		}
 	}
 
+	public function admin_nivel(){
+		$debug = false;
+		if ($this->AdminSecurityCheck()) {
+			$titulo = 'Nivel de administrador';
+			$crud = new grocery_CRUD();
+			$crud ->set_table('rbac_admin_group');
+			$crud -> set_subject($titulo);
+
+			$crud -> display_as('id_admin','Administrador');
+			$crud -> display_as('id_group','Grupo');
+
+			$crud->set_primary_key('id_admin','admin_name');
+			$crud->set_relation('id_admin', 'admin_name', 'name');
+			$crud->set_relation('id_group', 'rbac_group', 'name');
+
+			$crud -> columns('id_admin','id_group');
+			$crud -> fields('id_admin','id_group');
+			$crud -> required_fields('id_admin','id_group');
+
+			$crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
+
 	/* CRUD ends*/
 	/* Helpers starts*/
 	function AdminSecurityCheck(){

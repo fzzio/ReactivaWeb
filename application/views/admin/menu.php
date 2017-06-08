@@ -49,6 +49,9 @@
 								<li>
 									<a href="<?php echo site_url('admin/users'); ?>">Usuarios</a>
 								</li>
+								<li>
+									<a href="<?php echo site_url('admin/admin_nivel'); ?>">Nivel de administrador</a>
+								</li>
 							</ul>
 						</li>
 						<li>
