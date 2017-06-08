@@ -49,12 +49,45 @@
 								<li>
 									<a href="<?php echo site_url('admin/users'); ?>">Usuarios</a>
 								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-book"></i> Terapias<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
 								<li>
-									<a href="<?php echo site_url('therapyCtr/therapys'); ?>">Terapias</a>
+									<a href="<?php echo site_url('admin/pacientes'); ?>">Pacientes</a>
 								</li>
+								
+							</ul>
+							<ul class="nav nav-third-level">
 								<li>
-									<a href="<?php echo site_url('admin/users'); ?>">Ejercicios</a>
+									<a href="<?php echo site_url('admin/terapias'); ?>">Terapias</a>
 								</li>
+							</ul>
+							<ul class="nav nav-third-level">
+								<li>
+									<a href="<?php echo site_url('admin/ejercicios'); ?>">Ejercicios</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+                            <a href="#"><i class="fa fa-globe"></i>Geografía<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="<?php echo site_url('admin/provincias'); ?>">Provincias</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo site_url('admin/ciudad'); ?>">Ciudades</a>
+                                </li>
+                            </ul>
+                        </li>
+						<li>
+							<a href="#"><i class="fa fa-info"></i> Web<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li>
+									<a href="<?php echo site_url('admin/contactos'); ?>"> Contactos</a>
+								</li>
+								
 							</ul>
 						</li>
 					</ul>
