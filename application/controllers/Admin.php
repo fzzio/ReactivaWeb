@@ -258,6 +258,58 @@ class Admin extends CI_Controller{
 		}
 	}
 
+	public function pacientes(){
+		$debug = false;
+
+		if ($this->AdminSecurityCheck()){
+            $titulo = "Pacientes";
+
+            $crud = new grocery_CRUD();
+			$crud->set_table("patient");
+			$crud->set_subject( $titulo );
+
+			$crud->display_as( 'ci' , 'Cedula' );
+			$crud->display_as( 'name' , 'Nombres' );
+			$crud->display_as( 'lastname' , 'Apellidos' );
+			$crud->display_as( 'born' , 'Fecha de Nacimiento' );
+			$crud->display_as( 'gender' , 'Genero' );
+			$crud->display_as( 'phone' , 'Telefono' );
+			$crud->display_as( 'cellphone' , 'Celular' );
+			$crud->display_as( 'adress' , 'Direccion' );
+			$crud->display_as( 'email' , 'Correo' );
+
+			$crud->field_type('born', 'date');
+			
+			$crud->field_type('gender', 'dropdown', array(
+                '0' => 'Femenino',
+                '1' => 'Masculino'
+            ));
+
+			$crud->columns( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email' );
+			$crud->fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email');
+			$crud->required_fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email' );
+
+            $crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
+
 	/* CRUD ends*/
 	/* Helpers starts*/
 	function AdminSecurityCheck(){
