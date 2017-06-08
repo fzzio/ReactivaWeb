@@ -10,6 +10,7 @@ class Admin extends CI_Controller{
 		$this->load->helper('form');
 		$this->load->helper(array('url'));
 		$this->load->model('UserAdmin');
+		$this->load->model('Geography_model');
 		$this->load->library('form_validation');
 		$this->load->library('grocery_CRUD');
 		
@@ -460,6 +461,84 @@ class Admin extends CI_Controller{
 			$crud->columns( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
 			$crud->fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
 			$crud->required_fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next' );
+
+            $crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
+
+	public function provincias(){
+		$debug = false;
+
+		if ($this->AdminSecurityCheck()){
+            $titulo = "Provincias";
+
+            $crud = new grocery_CRUD();
+			$crud->set_table("geo_province");
+			$crud->set_subject( $titulo );  
+
+			$crud->display_as( 'name' , 'Provincia' );
+			$crud->display_as( 'status' , 'Estado' );
+
+			$crud->field_type('status', 'dropdown', array(
+                '0' => 'Inactivo',
+                '1' => 'Activo'
+            ));
+
+            $crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+            $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}
+
+	public function ciudad(){
+		$debug = false;
+
+		if ($this->AdminSecurityCheck()){
+            $titulo = "Ciudades";
+
+            $crud = new grocery_CRUD();
+			$crud->set_table("geo_city");
+			$crud->set_subject( $titulo );  
+
+			$crud->display_as( 'name' , 'Ciudad' );
+			$crud->display_as( 'status' , 'Estado' );
+
+			$crud->field_type('status', 'dropdown', array(
+                '0' => 'Inactivo',
+                '1' => 'Activo'
+            ));
 
             $crud->unset_export();
 			$crud->unset_print();
