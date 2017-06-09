@@ -383,19 +383,19 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'gender' , 'Genero' );
 			$crud->display_as( 'phone' , 'Telefono' );
 			$crud->display_as( 'cellphone' , 'Celular' );
-			$crud->display_as( 'adress' , 'Direccion' );
 			$crud->display_as( 'email' , 'Correo' );
+			$crud->display_as( 'adress' , 'Direccion' );
 
 			$crud->field_type('born', 'date');
-			
+			$crud->field_type('adress', 'string');
 			$crud->field_type('gender', 'dropdown', array(
                 '0' => 'Femenino',
                 '1' => 'Masculino'
             ));
 
-			$crud->columns( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email' );
-			$crud->fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email');
-			$crud->required_fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'adress', 'email' );
+			$crud->columns( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress' );
+			$crud->fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress');
+			$crud->required_fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress' );
 
             $crud->unset_export();
 			$crud->unset_print();
@@ -446,16 +446,11 @@ class Admin extends CI_Controller{
                 '1' => 'Atendido'
             ));
 
-			$crud->field_type('born', 'text');
-
-			$crud->field_type('next', 'dropdown', array(
-                '0' => 'No',
-                '1' => 'Si'
-            ));
+			//$crud->field_type('next', 'datetime');
 
 			$crud->columns( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
-			$crud->fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_attended', 'status', 'next', 'diagnosis' );
-			$crud->required_fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_attended', 'status', 'next' );
+			$crud->fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
+			$crud->required_fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next' );
 
             $crud->unset_export();
 			$crud->unset_print();
