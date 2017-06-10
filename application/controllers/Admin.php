@@ -9,7 +9,7 @@ class Admin extends CI_Controller{
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->helper(array('url'));
-		$this->load->model('UserAdmin');
+		$this->load->model('User');
 		$this->load->model('Geography_model');
 		$this->load->library('form_validation');
 		$this->load->library('grocery_CRUD');
@@ -46,7 +46,7 @@ class Admin extends CI_Controller{
 
 	public function logout(){
 		if ($this->AdminSecurityCheck()){
-			$userAdmin = new UserAdmin();
+			$userAdmin = new User();
 			$userAdmin->logout();
 			redirect("admin/login");
 		}else{
@@ -63,7 +63,7 @@ class Admin extends CI_Controller{
             $titulo = "Administradores";
 
             $crud = new grocery_CRUD();
-			$crud->set_table("acc_admin");
+			$crud->set_table("account");
 			$crud->set_subject( $titulo );
 
 			$crud->display_as( 'name' , 'Nombres' );
@@ -123,7 +123,7 @@ class Admin extends CI_Controller{
             $titulo = "Staff médico";
 
             $crud = new grocery_CRUD();
-			$crud->set_table("acc_med");
+			$crud->set_table("account");
 			$crud->set_subject( $titulo );
 
 			$crud->display_as( 'name' , 'Nombres' );
@@ -429,8 +429,8 @@ class Admin extends CI_Controller{
 			$crud->set_subject( $titulo );  
 
 			$crud->set_relation('id_patient','patient','{name} {lastname}');
-			$crud->set_relation('id_doctor_created','acc_med','{name} {lastname}');
-			$crud->set_relation('id_doctor_attended','acc_med','{name} {lastname}');
+			$crud->set_relation('id_doctor_created','account','{name} {lastname}');
+			$crud->set_relation('id_doctor_attended','account','{name} {lastname}');
 
 			$crud->display_as( 'id_patient' , 'Paciente' );
 			$crud->display_as( 'id_doctor_created' , 'Médico' );
@@ -557,7 +557,7 @@ class Admin extends CI_Controller{
 	/* CRUD ends*/
 	/* Helpers starts*/
 	function AdminSecurityCheck(){
-		$UserAdmin = new UserAdmin();
+		$UserAdmin = new User();
 		$user = $this->session->userdata('Mail');
 		if ($user){
 			return true;
@@ -570,7 +570,7 @@ class Admin extends CI_Controller{
 		$username = $this->input->post("ra_username");
 		$password = $this->input->post("ra_password");
 
-		$userAdmin = new UserAdmin();
+		$userAdmin = new User();
 
 		$userAdmin->login($username, $password);
 

@@ -1,7 +1,7 @@
 <?php 
 if( !defined('BASEPATH')) exit ("No direct script access allowed");
 
-class UserAdmin extends CI_Model{
+class User extends CI_Model{
 	private $username;
 	private $email;
 	private $name;
@@ -16,7 +16,7 @@ class UserAdmin extends CI_Model{
 
 	//Verify if user password combination exists
 	function verifyUser($username, $password){
-		$res = $this->db->get_where("acc_admin", array('username' => $username, 'password' => md5($password)))->row();
+		$res = $this->db->get_where("account", array('username' => $username, 'password' => md5($password)))->row();
 
 		if($res){
 			return true;
@@ -27,10 +27,10 @@ class UserAdmin extends CI_Model{
 
 	//Get rbac group for admin user
 	function getGroup($username){
-		$this->db->select('rbac_admin_group.id_group');
-		$this->db->from('rbac_admin_group');
-		$this->db->join('acc_admin', 'acc_admin.id_admin = rbac_admin_group.id_admin');
-		$this->db->where('acc_admin.username', $username);
+		$this->db->select('rbac_account_group.id_group');
+		$this->db->from('rbac_account_group');
+		$this->db->join('account', 'account.id_account = rbac_account_group.id_account');
+		$this->db->where('account.username', $username);
 
 		$query = $this->db->get()->result_array();
 		$res = $query[0]['id_group'];
@@ -41,7 +41,7 @@ class UserAdmin extends CI_Model{
 	//Returns email for admin user
 	function getMail($username){
 		$this->db->select('email');
-		$this->db->from('acc_admin');
+		$this->db->from('account');
 		$this->db->where('username', $username);
 
 		$query = $this->db->get()->result_array();
@@ -53,7 +53,7 @@ class UserAdmin extends CI_Model{
 	// Returns full name of admin user
 	function getName($username){
 		$this->db->select('name, lastname');
-		$this->db->from('acc_admin');
+		$this->db->from('account');
 		$this->db->where('username', $username);
 
 		$query = $this->db->get()->result_array();
