@@ -393,6 +393,22 @@ class Admin extends CI_Controller{
                 '1' => 'Masculino'
             ));
 
+			$crud->set_rules('ci', 'Cedula', 'required|min_length[10]|max_length[10]|is_unique[patient.ci]',
+        array(
+                'required'      => 'The %s field is required.',
+                'is_unique'     => 'This %s already exists.'
+        ));
+
+			$crud->set_rules('name', 'Nombres', 'required|alpha');
+			$crud->set_rules('lastname', 'Apellidos', 'required|alpha');
+			$crud->set_rules('phone', 'Telefono', 'required|min_length[9]|numeric|max_length[9]');
+			$crud->set_rules('cellphone', 'Celular', 'required|min_length[10]|numeric|max_length[10]');
+			$crud->set_rules('email', 'Correo', 'required|valid_email');
+			$crud->set_rules('born', 'Fecha de Nacimiento', 'required|callback_date_valid',
+				array(
+								'date_valid'		=> 'The Fecha de Nacimiento field is invalid.'
+				));
+
 			$crud->columns( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress' );
 			$crud->fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress');
 			$crud->required_fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress' );
@@ -418,6 +434,17 @@ class Admin extends CI_Controller{
 		}
 	}
 
+	//Realizar corrección
+	public function date_valid ($born) {
+		$partes = explode('/', $this->input->post('born'));
+		$born = join('-', $partes);
+		if ($born < date("Y-m-d")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function consultas(){
 		$debug = false;
 
@@ -438,19 +465,22 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'date_created' , 'Fecha de creación' );
 			$crud->display_as( 'date_attended' , 'Fecha de atención' );
 			$crud->display_as( 'status' , 'Estado' );
-			$crud->display_as( 'next' , 'Próxima consulta' );
 			$crud->display_as( 'diagnosis' , 'Diágnostico' );
 
 			$crud->field_type('status', 'dropdown', array(
-                '0' => 'No atendido',
-                '1' => 'Atendido'
+                '0' => 'Atendido',
+                '1' => 'No fue atendido',
+                '2' => 'Atrasado',
+                '3' => 'Cancelado' 
             ));
+			$crud->field_type('diagnosis', 'textarea');
+			$crud->field_type('date_created', 'datetime');
 
-			//$crud->field_type('next', 'datetime');
+			$crud->callback_add_field('date_created', array($this,'_add_default_date_value'));	
 
-			$crud->columns( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
-			$crud->fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next', 'diagnosis' );
-			$crud->required_fields( 'id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_attended', 'status', 'next' );
+			$crud->columns( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
+			$crud->fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
+			$crud->required_fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_attended', 'status');
 
             $crud->unset_export();
 			$crud->unset_print();
@@ -471,6 +501,14 @@ class Admin extends CI_Controller{
 		}else{
 			redirect("admin/login");
 		}
+	}
+
+	public function _add_default_date_value(){
+		$timezone = date_default_timezone_get();
+		date_default_timezone_set($timezone);
+		$value = date('m/d/Y h:i:s', time());
+		$return = '<input id="field-date_created" name="date_created" type="text" value="'.$value.'" maxlength="19" class="datetime-input form-control hasDatepicker" >';
+		return $return;
 	}
 
 	public function provincias(){
