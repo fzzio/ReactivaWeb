@@ -184,6 +184,9 @@ class Admin extends CI_Controller{
 			$crud ->set_table('web_contact');
 			$crud -> set_subject($titulo);
 
+			$crud->unset_add();
+			$crud->unset_edit();
+
 			$crud -> field_type('date','date');
 			$crud -> field_type('name','string');
 			$crud -> field_type('email','string');
