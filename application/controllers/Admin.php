@@ -222,6 +222,15 @@ class Admin extends CI_Controller{
 		}
 	}
 
+
+	/**
+	 * CRUD de todas las terapias
+	 * @return una lista con todas las terapias disponibles
+	 *
+	 * datos usados
+	 * INSERT INTO `patient` (`ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`,`adress`,`email`) VALUES
+	( '0924262397', 'Israel', 'Zurita', '2016-09-23','1','072421191','0988829914','La Troncal', 'izurita@espol.edu.ec');
+	 */
 	public function terapias() {
 		$debug = false;
 
@@ -232,7 +241,7 @@ class Admin extends CI_Controller{
 			$crud->set_table("patient_therapy");
 			$crud->set_subject( $titulo );
 
-			///$crud->display_as( 'date_create' , 'Fecha de Creación' );
+			$crud->display_as( 'date_create' , 'Fecha de Creación' );
 			$crud->display_as( 'eta' , 'Inicio Estimado' );
 			$crud->display_as( 'etf' , 'Fin Estimado' );
 			$crud->display_as( 'starttime' , 'Hora Inicio' );
@@ -285,7 +294,7 @@ class Admin extends CI_Controller{
 	 * DATOS USADOS
 	 * 
 	 * INSERT INTO `game_limb` (`id_limb`, `name`) VALUES (1, 'Juego De la Tortuga');
-       INSERT INTO `game_exercise` (`id_exercise`, `name`, `detail`, `id_limb`) VALUES (1, 'Movimientos de Pierna','Mover las piernas en distintos angulos', '1');
+       INSERT INTO `game_exercise` (`id_exercise`, `name`, `description`, `id_limb`) VALUES (1, 'Movimientos de Pierna','Mover las piernas en distintos angulos', '1');
 	 */
 	function exercises() {
 			$debug = false;
@@ -298,11 +307,11 @@ class Admin extends CI_Controller{
 				$crud->set_subject( $titulo );
 
 				$crud->display_as( 'name' , 'Nombre' );
-				$crud->display_as( 'detail' , 'Detalles' );
+				$crud->display_as( 'detail' , 'Descripción' );
 
-	            $crud->columns( 'name', 'detail' );
-				$crud->fields('name', 'detail');
-				$crud->required_fields( 'name', 'detail' );
+	            $crud->columns( 'name', 'description' );
+				$crud->fields('name', 'description');
+				$crud->required_fields( 'name', 'description' );
 
 
 				$crud->unset_export();
