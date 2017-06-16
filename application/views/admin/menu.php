@@ -74,6 +74,11 @@
 							</ul>
 							<ul class="nav nav-third-level">
 								<li>
+									<a href="<?php echo site_url('admin/terapia_foto'); ?>">Evidencia de Terapias</a>
+								</li>
+							</ul>
+							<ul class="nav nav-third-level">
+								<li>
 									<a href="<?php echo site_url('admin/exercises'); ?>">Ejercicios</a>
 								</li>
 							</ul>
