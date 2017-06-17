@@ -288,6 +288,56 @@ class Admin extends CI_Controller{
 		 	
 	}
 
+	public function terapia_foto() {
+		$debug = false;
+
+		if ($this->AdminSecurityCheck()) {
+			$titulo = 'Fotos de Terapias';
+
+            $crud = new grocery_CRUD();
+			$crud->set_table('patient_therapy_photo');
+
+			//$crud->set_relation_n_n('Paciente','patient_therapy','patient','id_patient','id_patient','name');
+			$crud->set_relation('id_therapy','patient_therapy','id_therapy');
+			$crud->set_subject( $titulo );
+
+			$crud->display_as( 'id_therapy' , 'Numero de Terapia' );
+			$crud->display_as( 'img' , 'Imagen' );
+			$crud->set_field_upload('img','assets/uploads',"jpg|png");
+			
+			$crud->display_as( 'comment' , 'Comentario' );
+
+            $crud->columns('id_therapy', 'img', 'comment' );
+			$crud->fields('id_therapy', 'img', 'comment' );
+			$crud->required_fields('id_therapy', 'img', 'comment');
+
+
+			$crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+			$data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+
+
+		}else{
+			redirect("admin/login");
+		}
+		 	
+	}
+
+
+
+
 	/**
 	 * CRUD de la tabla game_exercise
 	 * @return lista con todos los ejercicios
