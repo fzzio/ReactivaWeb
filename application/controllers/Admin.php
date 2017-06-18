@@ -20,13 +20,21 @@ class Admin extends CI_Controller{
 
 	public function index(){
 		if ($this->AdminSecurityCheck()){
-            $dataHeader['PageTitle'] = "Reactiva";
+			
+			$id_permission = 3;
 
-            $data['header'] = $this->load->view('admin/header', $dataHeader);
-            $data['menu'] = $this->load->view('admin/menu', array());
+			if(User::getPermission($this->session->userData('ID'), $id_permission)){
+				$dataHeader['PageTitle'] = "Reactiva";
 
-            $data['contenido'] = $this->load->view('admin/index', array());
-            $data['footer'] = $this->load->view('admin/footer-gc', array());
+	            $data['header'] = $this->load->view('admin/header', $dataHeader);
+	            $data['menu'] = $this->load->view('admin/menu', array());
+
+	            $data['contenido'] = $this->load->view('admin/index', array());
+	            $data['footer'] = $this->load->view('admin/footer-gc', array());
+			}else{
+				redirect("admin/login");
+			}
+      
 		}else{
 			redirect("admin/login");
 		}
@@ -56,7 +64,11 @@ class Admin extends CI_Controller{
 
 
 	/* CRUD Starts*/
-	public function admins(){
+
+	/**
+	 * CRUD de todas las cuentas disponibles para el sistema
+	 */
+	public function accounts(){
 		$debug = false;
 
 		if ($this->AdminSecurityCheck()){
@@ -116,46 +128,30 @@ class Admin extends CI_Controller{
 		}
 	}
 
-	public function users(){
+	/**
+	 * CRUD de todas la asignación de grupos de usuarios a las cuentas
+	 */
+
+	public function account_level(){
 		$debug = false;
+		if ($this->AdminSecurityCheck()) {
+			$titulo = 'Nivel de administrador';
+			$crud = new grocery_CRUD();
+			$crud ->set_table('rbac_account_group');
+			$crud -> set_subject($titulo);
 
-		if ($this->AdminSecurityCheck()){
-            $titulo = "Staff médico";
+			$crud -> display_as('id_admin','Administrador');
+			$crud -> display_as('id_group','Grupo');
 
-            $crud = new grocery_CRUD();
-			$crud->set_table("account");
-			$crud->set_subject( $titulo );
+			$crud->set_primary_key('id_admin','admin_name');
+			$crud->set_relation('id_admin', 'admin_name', 'name');
+			$crud->set_relation('id_group', 'rbac_group', 'name');
 
-			$crud->display_as( 'name' , 'Nombres' );
-			$crud->display_as( 'lastname' , 'Apellidos' );
-			$crud->display_as( 'username' , 'Usuario' );
-			$crud->display_as( 'email' , 'Correo' );
-			$crud->display_as( 'password' , 'Contraseña' );
-			$crud->display_as( 'last_ip' , 'Última IP' );
-			$crud->display_as( 'last_login' , 'Última Conexión' );
-			$crud->display_as( 'status' , 'Estado' );
+			$crud -> columns('id_admin','id_group');
+			$crud -> fields('id_admin','id_group');
+			$crud -> required_fields('id_admin','id_group');
 
-			$crud->field_type('status', 'dropdown', array(
-                '0' => 'Inactivo',
-                '1' => 'Activo'
-            ));
-
-			$crud->field_type('last_login', 'readonly');
-			$crud->field_type('last_ip', 'readonly');
-
-			$crud->callback_edit_field('password',array($this,'set_password_input_to_empty'));
-            $crud->callback_add_field('password',array($this,'set_password_input_to_empty'));
-
-            $crud->field_type('password','password');
-
-            $crud->callback_before_update(array($this,'encrypt_pw'));
-            $crud->callback_before_insert(array($this,'encrypt_pw'));
-
-			$crud->columns( 'name', 'lastname', 'username', 'email', 'last_ip', 'last_login', 'status' );
-			$crud->fields( 'name', 'lastname', 'username', 'email', 'password', 'status');
-			$crud->required_fields( 'name', 'lastname', 'username', 'email', 'status'  );
-
-            $crud->unset_export();
+			$crud->unset_export();
 			$crud->unset_print();
 			$crud->unset_read();
 
@@ -226,10 +222,6 @@ class Admin extends CI_Controller{
 	/**
 	 * CRUD de todas las terapias
 	 * @return una lista con todas las terapias disponibles
-	 *
-	 * datos usados
-	 * INSERT INTO `patient` (`ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`,`adress`,`email`) VALUES
-	( '0924262397', 'Israel', 'Zurita', '2016-09-23','1','072421191','0988829914','La Troncal', 'izurita@espol.edu.ec');
 	 */
 	public function terapias() {
 		$debug = false;
@@ -336,15 +328,9 @@ class Admin extends CI_Controller{
 	}
 
 
-
-
 	/**
 	 * CRUD de la tabla game_exercise
 	 * @return lista con todos los ejercicios
-	 * DATOS USADOS
-	 * 
-	 * INSERT INTO `game_limb` (`id_limb`, `name`) VALUES (1, 'Juego De la Tortuga');
-       INSERT INTO `game_exercise` (`id_exercise`, `name`, `description`, `id_limb`) VALUES (1, 'Movimientos de Pierna','Mover las piernas en distintos angulos', '1');
 	 */
 	function exercises() {
 			$debug = false;
@@ -388,45 +374,7 @@ class Admin extends CI_Controller{
 	}
 
 
-	public function admin_nivel(){
-		$debug = false;
-		if ($this->AdminSecurityCheck()) {
-			$titulo = 'Nivel de administrador';
-			$crud = new grocery_CRUD();
-			$crud ->set_table('rbac_admin_group');
-			$crud -> set_subject($titulo);
-
-			$crud -> display_as('id_admin','Administrador');
-			$crud -> display_as('id_group','Grupo');
-
-			$crud->set_primary_key('id_admin','admin_name');
-			$crud->set_relation('id_admin', 'admin_name', 'name');
-			$crud->set_relation('id_group', 'rbac_group', 'name');
-
-			$crud -> columns('id_admin','id_group');
-			$crud -> fields('id_admin','id_group');
-			$crud -> required_fields('id_admin','id_group');
-
-			$crud->unset_export();
-			$crud->unset_print();
-			$crud->unset_read();
-
-			$output = $crud->render();
-
-			$dataHeader['PageTitle'] = $titulo;
-			$dataHeader['css_files'] = $output->css_files;
-			$dataFooter['js_files'] = $output->js_files;
-			$dataContent['debug'] = $debug;
-
-            $data['header'] = $this->load->view('admin/header', $dataHeader);
-			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
-
-			$data['content'] = $this->load->view('admin/blank', $output);
-			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
-		}else{
-			redirect("admin/login");
-		}
-	}
+	
 
 	public function pacientes(){
 		$debug = false;
@@ -655,11 +603,13 @@ class Admin extends CI_Controller{
 
 
 	/* CRUD ends*/
+
 	/* Helpers starts*/
 	function AdminSecurityCheck(){
 		$UserAdmin = new User();
-		$user = $this->session->userdata('Mail');
-		if ($user){
+		$user = $this->session->userdata('Group');
+		//Only gets admin and superadmin
+		if ($user == 1 or $user ==2){
 			return true;
 		}else{
 			return false;
@@ -674,9 +624,9 @@ class Admin extends CI_Controller{
 
 		$userAdmin->login($username, $password);
 
-		print_r($this->session->userdata);
+		$user = $this->session->userdata('Group');
 
-		if ($this->session->userdata) {
+		if ($user == 1 or $user ==2){
             redirect("admin/index");
         }else{
             redirect("admin/logout");
@@ -693,8 +643,10 @@ class Admin extends CI_Controller{
 	}
 
 	function set_password_input_to_empty() {
-		return "<input type='text' name='password' value='' />";
+		return "<input type='password' name='password' value='' />";
 	}
+
+	/* Helpers ends*/
 }
 
 ?>

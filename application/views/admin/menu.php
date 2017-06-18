@@ -44,13 +44,10 @@
 							<a href="#"><i class="fa fa-file"></i> Usuarios<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li>
-									<a href="<?php echo site_url('admin/admins'); ?>">Administradores</a>
+									<a href="<?php echo site_url('admin/accounts'); ?>">Usuarios</a>
 								</li>
 								<li>
-									<a href="<?php echo site_url('admin/users'); ?>">Usuarios</a>
-								</li>
-								<li>
-									<a href="<?php echo site_url('admin/admin_nivel'); ?>">Nivel de administrador</a>
+									<a href="<?php echo site_url('admin/account_level'); ?>">Nivel de usuarios</a>
 								</li>
 							</ul>
 						</li>
