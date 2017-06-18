@@ -123,8 +123,10 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `phone` varchar(50) NOT NULL,
   `cellphone` varchar(50) NOT NULL,
   `adress` text NOT NULL,
+  `deleteInfo_ci` varchar(10) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_patient`)
+  PRIMARY KEY (`id_patient`),
+  UNIQUE KEY `ci` (`ci`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
@@ -222,8 +224,8 @@ CREATE TABLE IF NOT EXISTS `rbac_group_permission` (
   `id_permission` int(11) NOT NULL,
   PRIMARY KEY (`id_group`,`id_permission`),
   KEY `FK__rbac_permission` (`id_permission`),
-  CONSTRAINT `FK__rbac_group` FOREIGN KEY (`id_group`) REFERENCES `rbac_group` (`id_group`),
-  CONSTRAINT `FK__rbac_permission` FOREIGN KEY (`id_permission`) REFERENCES `rbac_permission` (`id_permission`)
+  CONSTRAINT `FK__rbac_group` FOREIGN KEY (`id_group`) REFERENCES `rbac_group` (`id_group`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK__rbac_permission` FOREIGN KEY (`id_permission`) REFERENCES `rbac_permission` (`id_permission`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
@@ -233,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `rbac_permission` (
   `name` varchar(200) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id_permission`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='rbac control for admins';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='rbac control for admins';
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.web_contact
