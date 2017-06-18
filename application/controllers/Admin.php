@@ -20,10 +20,10 @@ class Admin extends CI_Controller{
 
 	public function index(){
 		if ($this->AdminSecurityCheck()){
-			
-			$id_permission = 3;
 
-			if(User::getPermission($this->session->userData('ID'), $id_permission)){
+			$id_permission = 3;
+			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
+			if($grant_permission){
 				$dataHeader['PageTitle'] = "Reactiva";
 
 	            $data['header'] = $this->load->view('admin/header', $dataHeader);

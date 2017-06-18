@@ -69,7 +69,7 @@ class User extends CI_Model{
 		$this->db->where('username', $username);
 
 		$query = $this->db->get()->result_array();
-		$res = $query[0]['id_user'];
+		$res = $query[0]['id_account'];
 
 		return $res;
 	}
@@ -78,7 +78,6 @@ class User extends CI_Model{
 		if ($this->verifyUser($username, $password)){
 			$admin_data = array("Group" => $this->getGroup($username), "ID" => $this->getID($username), "Mail" => $this->getMail($username), "Name" => $this->getName($username));
 			$this->session->set_userdata($admin_data);
-			//print_r($admin_data);
 			return true;
 		} else {
 			return false;
@@ -89,15 +88,17 @@ class User extends CI_Model{
 		$this->session->sess_destroy();
 	}
 
-	function getPermission($id_user, $id_permission){
-		$this->db->select("rbac_group_permission.id_permission");
-		$this->db->from('rbac_account_group');
-		$this->db->join('account', 'account.id_account = rbac_account_group.id_account');
-		$this->db->join('rbac_group_permission', 'rbac_group_permission.id_group = rbac_account_group.id_group');
-		$this->db->where('account.id_account', $id_user);
-		$this->db->where('rbac_group_permission.id_permission', $id_permission);
+	public static function getPermission($id_user, $id_permission){
+		$instance_CI =& get_instance();
 
-		$query = $this->db->get()->row();
+		$instance_CI->db->select("rbac_group_permission.id_permission");
+		$instance_CI->db->from('rbac_account_group');
+		$instance_CI->db->join('account', 'account.id_account = rbac_account_group.id_account');
+		$instance_CI->db->join('rbac_group_permission', 'rbac_group_permission.id_group = rbac_account_group.id_group');
+		$instance_CI->db->where('account.id_account', $id_user);
+		$instance_CI->db->where('rbac_group_permission.id_permission', $id_permission);
+
+		$query = $instance_CI->db->get()->row();
 
 		if($query){
 			return true;
