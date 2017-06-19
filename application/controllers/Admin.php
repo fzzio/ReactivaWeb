@@ -223,7 +223,7 @@ class Admin extends CI_Controller{
 	 * CRUD de todas las terapias
 	 * @return una lista con todas las terapias disponibles
 	 */
-	public function terapias() {
+	public function terapia() {
 		$debug = false;
 
 		if ($this->AdminSecurityCheck()) {

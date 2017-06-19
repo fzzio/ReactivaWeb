@@ -92,9 +92,9 @@ class User extends CI_Model{
 		$instance_CI =& get_instance();
 
 		$instance_CI->db->select("rbac_group_permission.id_permission");
-		$instance_CI->db->from('rbac_account_group');
-		$instance_CI->db->join('account', 'account.id_account = rbac_account_group.id_account');
-		$instance_CI->db->join('rbac_group_permission', 'rbac_group_permission.id_group = rbac_account_group.id_group');
+		$instance_CI->db->from('rbac_group_permission');
+		$instance_CI->db->join('rbac_group', 'rbac_group.id_group = rbac_group_permission.id_group');
+		$instance_CI->db->join('account', 'account.id_group = rbac_group.id_group');
 		$instance_CI->db->where('account.id_account', $id_user);
 		$instance_CI->db->where('rbac_group_permission.id_permission', $id_permission);
 
