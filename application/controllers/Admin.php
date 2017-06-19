@@ -456,8 +456,10 @@ class Admin extends CI_Controller{
 			$crud->set_subject( $titulo );  
 
 			$crud->set_relation('id_patient','patient','{name} {lastname}');
-			$crud->set_relation('id_doctor_created','account','{name} {lastname}');
-			$crud->set_relation('id_doctor_attended','account','{name} {lastname}');
+			$crud->set_primary_key('id_account','account_med');
+			$crud->set_relation('id_doctor_created','account_med','{full_name}');
+			$crud->set_relation('id_doctor_attended','account_med','{full_name}');
+			
 
 			$crud->display_as( 'id_patient' , 'Paciente' );
 			$crud->display_as( 'id_doctor_created' , 'Médico' );
@@ -480,7 +482,7 @@ class Admin extends CI_Controller{
 
 			$crud->columns( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
 			$crud->fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
-			$crud->required_fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_attended', 'status');
+			$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
             $crud->unset_export();
 			$crud->unset_print();
