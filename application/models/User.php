@@ -27,9 +27,9 @@ class User extends CI_Model{
 
 	//Get rbac group for admin user
 	function getGroup($username){
-		$this->db->select('rbac_account_group.id_group');
-		$this->db->from('rbac_account_group');
-		$this->db->join('account', 'account.id_account = rbac_account_group.id_account');
+		$this->db->select('rbac_group.id_group');
+		$this->db->from('rbac_group');
+		$this->db->join('account', 'account.id_group = rbac_group.id_group');
 		$this->db->where('account.username', $username);
 
 		$query = $this->db->get()->result_array();

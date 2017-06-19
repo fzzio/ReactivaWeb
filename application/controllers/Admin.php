@@ -72,11 +72,21 @@ class Admin extends CI_Controller{
 		$debug = false;
 
 		if ($this->AdminSecurityCheck()){
-            $titulo = "Administradores";
+
+            $titulo = "Usuario";
 
             $crud = new grocery_CRUD();
 			$crud->set_table("account");
 			$crud->set_subject( $titulo );
+
+			$id_permission = 2;
+			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
+
+			//Only for admin. Limitation over group access
+			if($grant_permission){
+				$crud->where('id_group !=', 1);
+			}
+
 
 			$crud->display_as( 'name' , 'Nombres' );
 			$crud->display_as( 'lastname' , 'Apellidos' );
@@ -85,6 +95,7 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'password' , 'Contraseña' );
 			$crud->display_as( 'last_ip' , 'Última IP' );
 			$crud->display_as( 'last_login' , 'Última Conexión' );
+			$crud->display_as( 'id_group' , 'Grupo' );
 			$crud->display_as( 'status' , 'Estado' );
 
 			$crud->field_type('status', 'dropdown', array(
@@ -92,8 +103,14 @@ class Admin extends CI_Controller{
                 '1' => 'Activo'
             ));
 
+            $crud->set_relation('id_group', 'rbac_group', 'name');
+
 			$crud->field_type('last_login', 'readonly');
 			$crud->field_type('last_ip', 'readonly');
+
+			$crud->set_rules('name', 'Nombres', 'required|alpha');
+			$crud->set_rules('lastname', 'Apellidos', 'required|alpha');
+			$crud->set_rules('email', 'Correo', 'required|valid_email');
 
 			$crud->callback_edit_field('password',array($this,'set_password_input_to_empty'));
             $crud->callback_add_field('password',array($this,'set_password_input_to_empty'));
@@ -103,9 +120,9 @@ class Admin extends CI_Controller{
             $crud->callback_before_update(array($this,'encrypt_pw'));
             $crud->callback_before_insert(array($this,'encrypt_pw'));
 
-			$crud->columns( 'name', 'lastname', 'username', 'email', 'last_ip', 'last_login', 'status' );
-			$crud->fields( 'name', 'lastname', 'username', 'email', 'password', 'status');
-			$crud->required_fields( 'name', 'lastname', 'username', 'email', 'status'  );
+			$crud->columns( 'name', 'lastname', 'username', 'email', 'last_ip', 'last_login', 'id_group', 'status' );
+			$crud->fields( 'name', 'lastname', 'username', 'email', 'password', 'id_group','status');
+			$crud->required_fields( 'name', 'lastname', 'username', 'email', 'id_group','status'  );
 
             $crud->unset_export();
 			$crud->unset_print();
@@ -128,91 +145,54 @@ class Admin extends CI_Controller{
 		}
 	}
 
-	/**
-	 * CRUD de todas la asignación de grupos de usuarios a las cuentas
-	 */
-
-	public function account_level(){
-		$debug = false;
-		if ($this->AdminSecurityCheck()) {
-			$titulo = 'Nivel de administrador';
-			$crud = new grocery_CRUD();
-			$crud ->set_table('rbac_account_group');
-			$crud -> set_subject($titulo);
-
-			$crud -> display_as('id_admin','Administrador');
-			$crud -> display_as('id_group','Grupo');
-
-			$crud->set_primary_key('id_admin','admin_name');
-			$crud->set_relation('id_admin', 'admin_name', 'name');
-			$crud->set_relation('id_group', 'rbac_group', 'name');
-
-			$crud -> columns('id_admin','id_group');
-			$crud -> fields('id_admin','id_group');
-			$crud -> required_fields('id_admin','id_group');
-
-			$crud->unset_export();
-			$crud->unset_print();
-			$crud->unset_read();
-
-			$output = $crud->render();
-
-			$dataHeader['PageTitle'] = $titulo;
-			$dataHeader['css_files'] = $output->css_files;
-			$dataFooter['js_files'] = $output->js_files;
-			$dataContent['debug'] = $debug;
-
-            $data['header'] = $this->load->view('admin/header', $dataHeader);
-			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
-
-			$data['content'] = $this->load->view('admin/blank', $output);
-			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
-		}else{
-			redirect("admin/login");
-		}
-	}
 
 	public function contactos(){
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
-			$titulo = 'Contactos';
-			$crud = new grocery_CRUD();
-			$crud ->set_table('web_contact');
-			$crud -> set_subject($titulo);
+			$id_permission = 10;
+			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
+			if($grant_permission){
+				$titulo = 'Contactos';
+				$crud = new grocery_CRUD();
+				$crud ->set_table('web_contact');
+				$crud -> set_subject($titulo);
 
-			$crud->unset_add();
-			$crud->unset_edit();
+				$crud->unset_add();
+				$crud->unset_edit();
 
-			$crud -> field_type('date','date');
-			$crud -> field_type('name','string');
-			$crud -> field_type('email','string');
-			$crud -> field_type('message','text');
+				$crud->display_as( 'date' , 'Fecha de contacto' );
+				$crud->display_as( 'name' , 'Nombre del contacto' );
+				$crud->display_as( 'message' , 'Mensaje' );
+				$crud->display_as( 'email' , 'Correo' );
 
-			$crud -> display_as('date', 'Fecha');
-			//tocara hacer la expresion regular para que acepte alpha y espacio
-			//$crud -> set_rules('name', 'Nombre de Contacto','alpha');
-						
-			$crud -> set_rules('email','Correo','valid_email');
-			
-			$crud -> columns('date','name','email','message');
-			$crud -> fields('date','name','email','message');
-			$crud -> required_fields('date','name','email','message');
-			$crud->unset_export();
-			$crud->unset_print();
-			$crud->unset_read();
+				$crud -> display_as('date', 'Fecha');
+				//tocara hacer la expresion regular para que acepte alpha y espacio
+				//$crud -> set_rules('name', 'Nombre de Contacto','alpha');
+							
+				$crud -> set_rules('email','Correo','valid_email');
+				
+				$crud -> columns('date','name','email','message');
+				$crud -> fields('date','name','email','message');
+				$crud -> required_fields('date','name','email','message');
+				$crud->unset_export();
+				$crud->unset_print();
+				$crud->unset_read();
 
-			$output = $crud->render();
+				$output = $crud->render();
 
-			$dataHeader['PageTitle'] = $titulo;
-			$dataHeader['css_files'] = $output->css_files;
-			$dataFooter['js_files'] = $output->js_files;
-			$dataContent['debug'] = $debug;
+				$dataHeader['PageTitle'] = $titulo;
+				$dataHeader['css_files'] = $output->css_files;
+				$dataFooter['js_files'] = $output->js_files;
+				$dataContent['debug'] = $debug;
 
-            $data['header'] = $this->load->view('admin/header', $dataHeader);
-			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+	            $data['header'] = $this->load->view('admin/header', $dataHeader);
+				$data['menu'] = $this->load->view('admin/menu', $dataHeader );
 
-			$data['content'] = $this->load->view('admin/blank', $output);
-			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+				$data['content'] = $this->load->view('admin/blank', $output);
+				$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+			}else{
+				redirect("admin/index");
+			}
 		}else{
 			redirect("admin/login");
 		}
@@ -223,7 +203,7 @@ class Admin extends CI_Controller{
 	 * CRUD de todas las terapias
 	 * @return una lista con todas las terapias disponibles
 	 */
-	public function terapia() {
+	public function terapias() {
 		$debug = false;
 
 		if ($this->AdminSecurityCheck()) {
@@ -233,6 +213,9 @@ class Admin extends CI_Controller{
 			$crud->set_table("patient_therapy");
 			$crud->set_subject( $titulo );
 
+			$crud->display_as( 'id_patient' , 'Paciente' );
+			$crud->display_as( 'id_doctor_created' , 'Doctor que creó la cita' );
+			$crud->display_as( 'id_med_attended' , 'Doctor que la atendió' );
 			$crud->display_as( 'date_create' , 'Fecha de Creación' );
 			$crud->display_as( 'eta' , 'Inicio Estimado' );
 			$crud->display_as( 'etf' , 'Fin Estimado' );
@@ -241,6 +224,13 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'comment' , 'Comentarios' );
 			$crud->display_as( 'sendmail' , 'Envío de Correo' );
 			$crud->display_as( 'status' , 'Estado' );
+
+			$crud->set_primary_key('id_account','account_med');
+			$crud->set_relation('id_patient', 'patient', '{name} {lastname}');
+			$crud->set_relation('id_doctor_created', 'account_med', 'full_name');
+			$crud->set_relation('id_med_attended', 'account_med', 'full_name');
+
+			$crud->field_type('date_create', 'readonly');
 
 			$crud->field_type('status', 'dropdown', array(
                 '0' => 'Inactivo',
@@ -252,8 +242,8 @@ class Admin extends CI_Controller{
                 '1' => 'Si'
             ));
 
-            $crud->columns( 'eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
-			$crud->fields('etf', 'starttime', 'finishtime', 'comment', 'sendmail','status');
+            $crud->columns( 'id_patient', 'id_doctor_created','id_med_attended','date_create','eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
+			$crud->fields('id_patient', 'id_doctor_created','id_med_attended','eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
 			$crud->required_fields('etf', 'starttime', 'finishtime','status' );
 
 
