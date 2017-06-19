@@ -215,7 +215,7 @@ class Admin extends CI_Controller{
 
 			$crud->display_as( 'id_patient' , 'Paciente' );
 			$crud->display_as( 'id_doctor_created' , 'Doctor que creó la cita' );
-			$crud->display_as( 'id_med_attended' , 'Doctor que la atendió' );
+			$crud->display_as( 'id_doctor_attended' , 'Doctor que la atendió' );
 			$crud->display_as( 'date_create' , 'Fecha de Creación' );
 			$crud->display_as( 'eta' , 'Inicio Estimado' );
 			$crud->display_as( 'etf' , 'Fin Estimado' );
@@ -228,13 +228,14 @@ class Admin extends CI_Controller{
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_patient', 'patient', '{name} {lastname}');
 			$crud->set_relation('id_doctor_created', 'account_med', 'full_name');
-			$crud->set_relation('id_med_attended', 'account_med', 'full_name');
+			$crud->set_relation('id_doctor_attended', 'account_med', 'full_name');
 
 			$crud->field_type('date_create', 'readonly');
 
 			$crud->field_type('status', 'dropdown', array(
-                '0' => 'Inactivo',
-                '1' => 'Activo'
+                '0' => 'Pendiente',
+                '1' => 'Cancelado',
+                '2' => 'Atendido'
             ));
 
             $crud->field_type('sendmail', 'dropdown', array(
@@ -242,10 +243,11 @@ class Admin extends CI_Controller{
                 '1' => 'Si'
             ));
 
-            $crud->columns( 'id_patient', 'id_doctor_created','id_med_attended','date_create','eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
-			$crud->fields('id_patient', 'id_doctor_created','id_med_attended','eta', 'etf', 'starttime', 'finishtime', 'comment', 'sendmail','status' );
-			$crud->required_fields('etf', 'starttime', 'finishtime','status' );
+            $crud->columns( 'id_patient', 'id_doctor_created','id_doctor_attended','date_create','eta', 'etf',  'comment', 'sendmail','status' );
+			$crud->fields('id_patient', 'id_doctor_created','id_doctor_attended','eta', 'etf', 'comment', 'sendmail','status' );
+			$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
 
+			$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
 
 			$crud->unset_export();
 			$crud->unset_print();
@@ -634,6 +636,15 @@ class Admin extends CI_Controller{
 
 	function set_password_input_to_empty() {
 		return "<input type='password' name='password' value='' />";
+	}
+
+	public function check_dates($fecha2, $fecha1){
+		if ($fecha2 > $fecha1){
+			return TRUE;
+		}else{
+			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
+			return FALSE;
+		}
 	}
 
 	/* Helpers ends*/
