@@ -33,9 +33,16 @@ CREATE TABLE IF NOT EXISTS `account` (
   UNIQUE KEY `username` (`username`),
   KEY `FK_account_rbac_group` (`id_group`),
   CONSTRAINT `FK_account_rbac_group` FOREIGN KEY (`id_group`) REFERENCES `rbac_group` (`id_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
+-- Dumping structure for view reactiva.account_med
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `account_med` (
+  `id_account` INT(11) NOT NULL,
+  `full_name` VARCHAR(101) NOT NULL COLLATE 'utf8_general_ci'
+) ENGINE=MyISAM;
+
 -- Dumping structure for table reactiva.ci_sessions
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `id` varchar(128) NOT NULL,
@@ -130,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id_patient`),
   UNIQUE KEY `ci` (`ci`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_consult
@@ -157,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `patient_consult` (
 CREATE TABLE IF NOT EXISTS `patient_therapy` (
   `id_therapy` int(11) NOT NULL AUTO_INCREMENT,
   `id_patient` int(11) NOT NULL,
-  `date_created` datetime NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `id_doctor_created` int(11) NOT NULL COMMENT 'Doctor who assigned appointment',
   `id_med_attended` int(11) DEFAULT NULL COMMENT 'Staff who attended the therapy',
   `eta` datetime NOT NULL COMMENT 'Estimated time to start',
@@ -233,14 +240,19 @@ CREATE TABLE IF NOT EXISTS `rbac_permission` (
 -- Dumping structure for table reactiva.web_contact
 CREATE TABLE IF NOT EXISTS `web_contact` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` int(11) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
   `name` varchar(50) DEFAULT NULL,
   `message` text DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
+-- Dumping structure for view reactiva.account_med
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `account_med`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `account_med` AS SELECT account.id_account, CONCAT(account.name, ' ', account.lastname) AS 'full_name' FROM account WHERE account.id_group = 4 ;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

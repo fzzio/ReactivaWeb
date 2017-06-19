@@ -11,11 +11,13 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping data for table reactiva.account: ~2 rows (approximately)
+-- Dumping data for table reactiva.account: ~4 rows (approximately)
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` (`id_account`, `username`, `email`, `password`, `name`, `lastname`, `last_ip`, `last_login`, `status`, `id_group`) VALUES
 	(1, 'mvelasco', 'madelyne@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Madelyne', 'Velasco', '', '0000-00-00 00:00:00', 1, 1),
-	(2, 'forrala', 'fabricio@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Fabricio', 'Orrala', '127.0.0.1', '0000-00-00 00:00:00', 1, 2);
+	(2, 'forrala', 'fabricio@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Fabricio', 'Orrala', '127.0.0.1', '0000-00-00 00:00:00', 1, 2),
+	(3, 'fndos', 'fndos@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Fernando', 'Sanchez', '', '0000-00-00 00:00:00', 1, 4),
+	(4, 'izurita', 'izurita@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Israel', 'Zurita', '', '0000-00-00 00:00:00', 1, 4);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.game_exercise: ~0 rows (approximately)
@@ -45,10 +47,11 @@ INSERT INTO `game_limb` (`id_limb`, `name`) VALUES
 /*!40000 ALTER TABLE `log_actions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `log_actions` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient: ~1 rows (approximately)
+-- Dumping data for table reactiva.patient: ~2 rows (approximately)
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
 INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`, `adress`, `deleteInfo_ci`, `email`) VALUES
-	(1, '0926803990', 'Made', 'Velasco Mite', '2017-06-15', 0, '123123', '123123', 'Km 8.5 Via a Daule Cdla Colinas al Sol, Ave 1ra 317 y calle 3ra', NULL, 'm_velasco93@live.com');
+	(1, '0926803990', 'Made', 'Velasco Mite', '2017-06-15', 0, '123123', '123123', 'Km 8.5 Via a Daule Cdla Colinas al Sol, Ave 1ra 317 y calle 3ra', NULL, 'm_velasco93@live.com'),
+	(2, '0926804006', 'Edgar', 'Moreira', '2017-01-19', 1, '042250902', '7596100742', 'Gladstone Terrace, 4', NULL, 'emoreira@gmail.com');
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_consult: ~0 rows (approximately)
@@ -77,7 +80,7 @@ INSERT INTO `rbac_group` (`id_group`, `name`) VALUES
 	(5, 'Terapista');
 /*!40000 ALTER TABLE `rbac_group` ENABLE KEYS */;
 
--- Dumping data for table reactiva.rbac_group_permission: ~2 rows (approximately)
+-- Dumping data for table reactiva.rbac_group_permission: ~18 rows (approximately)
 /*!40000 ALTER TABLE `rbac_group_permission` DISABLE KEYS */;
 INSERT INTO `rbac_group_permission` (`id_group`, `id_permission`) VALUES
 	(1, 1),
@@ -88,6 +91,7 @@ INSERT INTO `rbac_group_permission` (`id_group`, `id_permission`) VALUES
 	(1, 7),
 	(1, 8),
 	(1, 9),
+	(1, 10),
 	(2, 2),
 	(2, 3),
 	(2, 4),
@@ -95,7 +99,8 @@ INSERT INTO `rbac_group_permission` (`id_group`, `id_permission`) VALUES
 	(2, 6),
 	(2, 7),
 	(2, 8),
-	(2, 9);
+	(2, 9),
+	(2, 10);
 /*!40000 ALTER TABLE `rbac_group_permission` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.rbac_permission: ~24 rows (approximately)
@@ -110,7 +115,7 @@ INSERT INTO `rbac_permission` (`id_permission`, `name`, `description`) VALUES
 	(7, 'CRUD patient_consult', NULL),
 	(8, 'CRUD patient_therapy_exer', NULL),
 	(9, 'CRUD patient_therapy_photo', NULL),
-	(10, 'CRUD web_contact', NULL),
+	(10, 'CRUD web_contact', 'Ver los contactos a la página'),
 	(11, 'Create patient', NULL),
 	(12, 'Edit patient', NULL),
 	(13, 'View patients', NULL),
@@ -127,8 +132,10 @@ INSERT INTO `rbac_permission` (`id_permission`, `name`, `description`) VALUES
 	(24, 'Delete therapy', NULL);
 /*!40000 ALTER TABLE `rbac_permission` ENABLE KEYS */;
 
--- Dumping data for table reactiva.web_contact: ~0 rows (approximately)
+-- Dumping data for table reactiva.web_contact: ~1 rows (approximately)
 /*!40000 ALTER TABLE `web_contact` DISABLE KEYS */;
+INSERT INTO `web_contact` (`id`, `date`, `name`, `message`, `email`) VALUES
+	(1, '2017-06-18 22:09:27', 'Fernando Sánchez', 'Hola', 'fndos@gmail.com');
 /*!40000 ALTER TABLE `web_contact` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
