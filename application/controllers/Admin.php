@@ -483,7 +483,7 @@ class Admin extends CI_Controller{
 			$crud->callback_add_field('date_created', array($this,'_add_default_date_value'));	
 
 			$crud->columns( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
-			$crud->fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
+			$crud->fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_attended', 'status', 'diagnosis' );
 			$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
             $crud->unset_export();
