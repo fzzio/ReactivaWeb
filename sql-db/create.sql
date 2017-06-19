@@ -28,8 +28,11 @@ CREATE TABLE IF NOT EXISTS `account` (
   `last_ip` varchar(45) NOT NULL,
   `last_login` datetime NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 for active/0 inactive',
+  `id_group` int(11) NOT NULL DEFAULT 5,
   PRIMARY KEY (`id_account`),
-  UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `username` (`username`),
+  KEY `FK_account_rbac_group` (`id_group`),
+  CONSTRAINT `FK_account_rbac_group` FOREIGN KEY (`id_group`) REFERENCES `rbac_group` (`id_group`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
@@ -196,17 +199,6 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_photo` (
   `comment` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_therapy`,`img`),
   CONSTRAINT `FK_patient_therapy_photo_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Data exporting was unselected.
--- Dumping structure for table reactiva.rbac_account_group
-CREATE TABLE IF NOT EXISTS `rbac_account_group` (
-  `id_account` int(11) NOT NULL,
-  `id_group` int(11) NOT NULL,
-  PRIMARY KEY (`id_account`,`id_group`),
-  KEY `FK_rbac_admin_group_rbac_group` (`id_group`),
-  CONSTRAINT `FK_rbac_admin_group_acc_admin` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`),
-  CONSTRAINT `FK_rbac_admin_group_rbac_group` FOREIGN KEY (`id_group`) REFERENCES `rbac_group` (`id_group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.

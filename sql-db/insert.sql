@@ -11,11 +11,11 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping data for table reactiva.account: ~1 rows (approximately)
+-- Dumping data for table reactiva.account: ~2 rows (approximately)
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` (`id_account`, `username`, `email`, `password`, `name`, `lastname`, `last_ip`, `last_login`, `status`) VALUES
-	(1, 'mvelasco', 'madelyne@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Madelyne', 'Velasco', '', '0000-00-00 00:00:00', 1),
-	(2, 'forrala', 'fabricio@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Fabricio', 'Orrala', '127.0.0.1', '0000-00-00 00:00:00', 1);
+INSERT INTO `account` (`id_account`, `username`, `email`, `password`, `name`, `lastname`, `last_ip`, `last_login`, `status`, `id_group`) VALUES
+	(1, 'mvelasco', 'madelyne@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Madelyne', 'Velasco', '', '0000-00-00 00:00:00', 1, 1),
+	(2, 'forrala', 'fabricio@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Fabricio', 'Orrala', '127.0.0.1', '0000-00-00 00:00:00', 1, 2);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.game_exercise: ~0 rows (approximately)
@@ -67,13 +67,6 @@ INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`,
 /*!40000 ALTER TABLE `patient_therapy_photo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `patient_therapy_photo` ENABLE KEYS */;
 
--- Dumping data for table reactiva.rbac_account_group: ~2 rows (approximately)
-/*!40000 ALTER TABLE `rbac_account_group` DISABLE KEYS */;
-INSERT INTO `rbac_account_group` (`id_account`, `id_group`) VALUES
-	(1, 1),
-	(2, 2);
-/*!40000 ALTER TABLE `rbac_account_group` ENABLE KEYS */;
-
 -- Dumping data for table reactiva.rbac_group: ~5 rows (approximately)
 /*!40000 ALTER TABLE `rbac_group` DISABLE KEYS */;
 INSERT INTO `rbac_group` (`id_group`, `name`) VALUES
@@ -84,14 +77,28 @@ INSERT INTO `rbac_group` (`id_group`, `name`) VALUES
 	(5, 'Terapista');
 /*!40000 ALTER TABLE `rbac_group` ENABLE KEYS */;
 
--- Dumping data for table reactiva.rbac_group_permission: ~0 rows (approximately)
+-- Dumping data for table reactiva.rbac_group_permission: ~2 rows (approximately)
 /*!40000 ALTER TABLE `rbac_group_permission` DISABLE KEYS */;
 INSERT INTO `rbac_group_permission` (`id_group`, `id_permission`) VALUES
+	(1, 1),
 	(1, 3),
-	(2, 3);
+	(1, 4),
+	(1, 5),
+	(1, 6),
+	(1, 7),
+	(1, 8),
+	(1, 9),
+	(2, 2),
+	(2, 3),
+	(2, 4),
+	(2, 5),
+	(2, 6),
+	(2, 7),
+	(2, 8),
+	(2, 9);
 /*!40000 ALTER TABLE `rbac_group_permission` ENABLE KEYS */;
 
--- Dumping data for table reactiva.rbac_permission: ~19 rows (approximately)
+-- Dumping data for table reactiva.rbac_permission: ~24 rows (approximately)
 /*!40000 ALTER TABLE `rbac_permission` DISABLE KEYS */;
 INSERT INTO `rbac_permission` (`id_permission`, `name`, `description`) VALUES
 	(1, 'CRUD accounts full', 'Incluye super adminsitrador'),
