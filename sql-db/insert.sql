@@ -58,8 +58,11 @@ INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`,
 /*!40000 ALTER TABLE `patient_consult` DISABLE KEYS */;
 /*!40000 ALTER TABLE `patient_consult` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient_therapy: ~0 rows (approximately)
+-- Dumping data for table reactiva.patient_therapy: ~2 rows (approximately)
 /*!40000 ALTER TABLE `patient_therapy` DISABLE KEYS */;
+INSERT INTO `patient_therapy` (`id_therapy`, `id_patient`, `date_created`, `id_doctor_created`, `id_doctor_attended`, `eta`, `etf`, `comment`, `sendmail`, `status`) VALUES
+	(4, 1, '2017-06-19 00:33:38', 4, 3, '2017-06-19 00:33:52', '2017-06-19 00:33:55', 'qwe', 0, 0),
+	(5, 2, '2017-06-19 00:36:26', 3, 4, '2017-06-20 00:00:00', '2017-06-19 00:00:00', '<p>\r\n	qwe</p>\r\n', 0, 0);
 /*!40000 ALTER TABLE `patient_therapy` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy_exer: ~0 rows (approximately)

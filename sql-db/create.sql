@@ -166,22 +166,20 @@ CREATE TABLE IF NOT EXISTS `patient_therapy` (
   `id_patient` int(11) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `id_doctor_created` int(11) NOT NULL COMMENT 'Doctor who assigned appointment',
-  `id_med_attended` int(11) DEFAULT NULL COMMENT 'Staff who attended the therapy',
+  `id_doctor_attended` int(11) NOT NULL COMMENT 'Staff who attended the therapy',
   `eta` datetime NOT NULL COMMENT 'Estimated time to start',
   `etf` datetime NOT NULL COMMENT 'Estimated time to finish',
-  `starttime` datetime DEFAULT NULL COMMENT 'If attended, start time',
-  `finishtime` datetime DEFAULT NULL COMMENT 'If attended, finish time',
   `comment` text DEFAULT NULL,
-  `sendmail` tinyint(4) NOT NULL,
-  `status` tinyint(4) NOT NULL,
+  `sendmail` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0: No, 1:Si',
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0: Pendiente, 1:Cancelada, 2:Atendida',
   PRIMARY KEY (`id_therapy`),
   KEY `FK_patient_therapy_patient` (`id_patient`),
-  KEY `FK_patient_therapy_acc_med` (`id_doctor_created`),
-  KEY `FK_patient_therapy_acc_med_2` (`id_med_attended`),
-  CONSTRAINT `FK_patient_therapy_acc_med` FOREIGN KEY (`id_doctor_created`) REFERENCES `acc_med` (`id_med`),
-  CONSTRAINT `FK_patient_therapy_acc_med_2` FOREIGN KEY (`id_med_attended`) REFERENCES `acc_med` (`id_med`),
+  KEY `FK_patient_therapy_account` (`id_doctor_created`),
+  KEY `FK_patient_therapy_account_2` (`id_doctor_attended`),
+  CONSTRAINT `FK_patient_therapy_account` FOREIGN KEY (`id_doctor_created`) REFERENCES `account` (`id_account`),
+  CONSTRAINT `FK_patient_therapy_account_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_therapy_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy_exer
