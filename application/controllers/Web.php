@@ -20,7 +20,7 @@ class Web extends CI_Controller{
 		if ($this->SecurityCheck()){
 			 redirect("web/index");
 		}else{
-			$dataHeader['PageTitle'] = "";
+			$dataHeader['PageTitle'] = "Login";
 
 			$data['header'] = $this->load->view('web/header', $dataHeader);
         	$data['menu'] = $this->load->view('web/menu', array());
@@ -81,6 +81,16 @@ class Web extends CI_Controller{
 			redirect("web/login");
 		}
 	}
+
+	function SecurityCheck(){
+		$UserAdmin = new User();
+		$user = $this->session->userdata('Group');
+		if ($user){
+			return true;
+		}else{
+			return false;
+		}
+	}	
 	
 	 /* Helpers ends*/
 }

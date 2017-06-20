@@ -1,0 +1,73 @@
+.login{
+	height: 100vh;
+}
+
+.center-row{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*Gradient generated at http://www.colorzilla.com/gradient-editor/ */
+.login-left{
+	background: #0062a3;
+	background: -moz-linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, #0062a3), color-stop(100%, #2e4766));
+	background: -webkit-linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	background: -o-linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	background: -ms-linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	background: linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0062a3', endColorstr='#2e4766', GradientType=1 );
+}
+
+.login-right{
+	background: #ffe168;
+	background: -moz-linear-gradient(-45deg, #ffe168 0%, #f5ba43 100%);
+	background: -webkit-gradient(left top, right bottom, color-stop(0%, #ffe168), color-stop(100%, #f5ba43));
+	background: -webkit-linear-gradient(-45deg, #ffe168 0%, #f5ba43 100%);
+	background: -o-linear-gradient(-45deg, #ffe168 0%, #f5ba43 100%);
+	background: -ms-linear-gradient(-45deg, #ffe168 0%, #f5ba43 100%);
+	background: linear-gradient(135deg, #ffe168 0%, #f5ba43 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe168', endColorstr='#f5ba43', GradientType=1 );
+}
+
+#ra_username, #ra_password{
+	border: 0;
+	outline: 0;
+	background-color: transparent !important;
+	border-bottom: 1px solid black;
+}
+
+.inicia{
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.label-input{
+	color: white;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+.login-btn{
+	background-color: #ffcf57;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	width: 180px;
+	border-radius: 20px;
+}
+
+.a-forget, .a-forget:hover, .a-forget:active{
+	color: #ffcf57 !important;
+}
+/*Override*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-transition-delay: 9999s;
+	transition-delay: 9999s;
+}
+
