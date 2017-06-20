@@ -287,11 +287,12 @@ class Admin extends CI_Controller{
 
 			$crud->display_as( 'id_therapy' , 'Terapia' );
 			$crud->display_as( 'img' , 'Imagen' );
-			$crud->set_field_upload('img','assets/uploads',"jpg|png");
+			$crud->set_field_upload('img','assets/uploads',"jpg|png|jpeg|bmp");
 			
 			$crud->display_as( 'comment' , 'Comentario' );
 
-			$crud->set_relation('id_therapy','patient_therapy_list','{full_name} {eta}');
+			//$crud->set_relation('id_therapy','patient_therapy_list','{full_name} {eta}');
+			$crud->set_relation('id_therapy','patient_therapy','{id_therapy} {date_created}');
 			$crud->set_primary_key('id_therapy, eta','patient_therapy_list');
 
             $crud->columns('id_therapy', 'img', 'comment' );
