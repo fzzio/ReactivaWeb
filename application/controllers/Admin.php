@@ -439,16 +439,7 @@ class Admin extends CI_Controller{
 		}
 	}
 
-	//Realizar corrección
-	public function date_valid ($born) {
-		$partes = explode('/', $this->input->post('born'));
-		$born = join('-', $partes);
-		if ($born < date("Y-m-d")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	
 
 	public function consultas(){
 		$debug = false;
@@ -515,85 +506,7 @@ class Admin extends CI_Controller{
 		return $return;
 	}
 
-	public function provincias(){
-		$debug = false;
-
-		if ($this->AdminSecurityCheck()){
-            $titulo = "Provincias";
-
-            $crud = new grocery_CRUD();
-			$crud->set_table("geo_province");
-			$crud->set_subject( $titulo );  
-
-			$crud->display_as( 'name' , 'Provincia' );
-			$crud->display_as( 'status' , 'Estado' );
-
-			$crud->field_type('status', 'dropdown', array(
-                '0' => 'Inactivo',
-                '1' => 'Activo'
-            ));
-
-            $crud->unset_export();
-			$crud->unset_print();
-			$crud->unset_read();
-
-			$output = $crud->render();
-
-			$dataHeader['PageTitle'] = $titulo;
-			$dataHeader['css_files'] = $output->css_files;
-			$dataFooter['js_files'] = $output->js_files;
-			$dataContent['debug'] = $debug;
-
-            $data['header'] = $this->load->view('admin/header', $dataHeader);
-			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
-
-			$data['content'] = $this->load->view('admin/blank', $output);
-			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
-		}else{
-			redirect("admin/login");
-		}
-	}
-
-	public function ciudad(){
-		$debug = false;
-
-		if ($this->AdminSecurityCheck()){
-            $titulo = "Ciudades";
-
-            $crud = new grocery_CRUD();
-			$crud->set_table("geo_city");
-			$crud->set_subject( $titulo );  
-
-			$crud->display_as( 'name' , 'Ciudad' );
-			$crud->display_as( 'status' , 'Estado' );
-
-			$crud->set_relation('id_province', 'geo_province', 'name');
-
-			$crud->field_type('status', 'dropdown', array(
-                '0' => 'Inactivo',
-                '1' => 'Activo'
-            ));
-
-            $crud->unset_export();
-			$crud->unset_print();
-			$crud->unset_read();
-
-			$output = $crud->render();
-
-			$dataHeader['PageTitle'] = $titulo;
-			$dataHeader['css_files'] = $output->css_files;
-			$dataFooter['js_files'] = $output->js_files;
-			$dataContent['debug'] = $debug;
-
-            $data['header'] = $this->load->view('admin/header', $dataHeader);
-			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
-
-			$data['content'] = $this->load->view('admin/blank', $output);
-			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
-		}else{
-			redirect("admin/login");
-		}
-	}
+	
 
 
 	/* CRUD ends*/
@@ -646,6 +559,17 @@ class Admin extends CI_Controller{
 		}else{
 			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
 			return FALSE;
+		}
+	}
+
+	//Realizar corrección
+	public function date_valid ($born) {
+		$partes = explode('/', $this->input->post('born'));
+		$born = join('-', $partes);
+		if ($born < date("Y-m-d")) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 

@@ -74,39 +74,6 @@ CREATE TABLE IF NOT EXISTS `game_limb` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
--- Dumping structure for table reactiva.geo_city
-CREATE TABLE IF NOT EXISTS `geo_city` (
-  `id_city` int(11) NOT NULL AUTO_INCREMENT,
-  `id_province` int(11) DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`id_city`),
-  KEY `FK_geo_city_geo_province` (`id_province`),
-  CONSTRAINT `FK_geo_city_geo_province` FOREIGN KEY (`id_province`) REFERENCES `geo_province` (`id_province`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Data exporting was unselected.
--- Dumping structure for table reactiva.geo_country
-CREATE TABLE IF NOT EXISTS `geo_country` (
-  `id_country` int(11) NOT NULL AUTO_INCREMENT,
-  `sortname` varchar(50) DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Data exporting was unselected.
--- Dumping structure for table reactiva.geo_province
-CREATE TABLE IF NOT EXISTS `geo_province` (
-  `id_province` int(11) NOT NULL AUTO_INCREMENT,
-  `id_country` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `status` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`id_province`),
-  KEY `FK_geo_province_geo_country` (`id_country`),
-  CONSTRAINT `FK_geo_province_geo_country` FOREIGN KEY (`id_country`) REFERENCES `geo_country` (`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Data exporting was unselected.
 -- Dumping structure for table reactiva.log_actions
 CREATE TABLE IF NOT EXISTS `log_actions` (
   `id` int(11) NOT NULL,
@@ -143,21 +110,21 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- Dumping structure for table reactiva.patient_consult
 CREATE TABLE IF NOT EXISTS `patient_consult` (
   `id_consult` int(11) NOT NULL AUTO_INCREMENT,
-  `id_patient` int(11) DEFAULT NULL,
-  `id_doctor_created` int(11) DEFAULT NULL,
+  `id_patient` int(11) NOT NULL,
+  `id_doctor_created` int(11) NOT NULL,
   `id_doctor_attended` int(11) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_attended` datetime DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL COMMENT '0: Pendiente, 1: Cancelada, 2: Asistida',
   `diagnosis` text DEFAULT NULL,
   PRIMARY KEY (`id_consult`),
   KEY `FK_patient_consult_patient` (`id_patient`),
   KEY `FK_patient_consult_acc_doctor` (`id_doctor_created`),
   KEY `FK_patient_consult_acc_doctor_2` (`id_doctor_attended`),
-  CONSTRAINT `FK_patient_consult_acc_doctor` FOREIGN KEY (`id_doctor_created`) REFERENCES `acc_med` (`id_med`),
-  CONSTRAINT `FK_patient_consult_acc_doctor_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `acc_med` (`id_med`),
+  CONSTRAINT `FK_patient_consult_acc_doctor` FOREIGN KEY (`id_doctor_created`) REFERENCES `account` (`id_account`),
+  CONSTRAINT `FK_patient_consult_acc_doctor_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_consult_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy
@@ -197,6 +164,13 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_exer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
+-- Dumping structure for view reactiva.patient_therapy_list
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `patient_therapy_list` (
+  `full_name` VARCHAR(101) NOT NULL COLLATE 'utf8_general_ci',
+  `eta` DATETIME NOT NULL COMMENT 'Estimated time to start'
+) ENGINE=MyISAM;
+
 -- Dumping structure for table reactiva.patient_therapy_photo
 CREATE TABLE IF NOT EXISTS `patient_therapy_photo` (
   `id_therapy` int(11) NOT NULL,
@@ -250,6 +224,11 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `account_med`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `account_med` AS SELECT account.id_account, CONCAT(account.name, ' ', account.lastname) AS 'full_name' FROM account WHERE account.id_group = 4 ;
+
+-- Dumping structure for view reactiva.patient_therapy_list
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `patient_therapy_list`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `patient_therapy_list` AS SELECT CONCAT(patient.name, ' ', patient.lastname) AS 'full_name', patient_therapy.eta FROM patient_therapy JOIN patient ON patient_therapy.id_patient = patient.id_patient JOIN patient_therapy_photo ON patient_therapy.id_therapy = patient_therapy_photo.id_therapy ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
