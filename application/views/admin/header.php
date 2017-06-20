@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
 
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common/custom-bootstrap-margin-padding.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/custom-bootstrap-margin-padding.css'); ?>">
 
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	

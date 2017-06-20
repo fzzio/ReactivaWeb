@@ -281,15 +281,18 @@ class Admin extends CI_Controller{
             $crud = new grocery_CRUD();
 			$crud->set_table('patient_therapy_photo');
 
-			//$crud->set_relation_n_n('Paciente','patient_therapy','patient','id_patient','id_patient','name');
-			$crud->set_relation('id_therapy','patient_therapy','id_therapy');
+			//$crud->set_relation_n_n('Paciente','patient_therapy_photo','patient_therapy','id_patient','id_patient','name');
+
 			$crud->set_subject( $titulo );
 
-			$crud->display_as( 'id_therapy' , 'Numero de Terapia' );
+			$crud->display_as( 'id_therapy' , 'Terapia' );
 			$crud->display_as( 'img' , 'Imagen' );
 			$crud->set_field_upload('img','assets/uploads',"jpg|png");
 			
 			$crud->display_as( 'comment' , 'Comentario' );
+
+			$crud->set_relation('id_therapy','patient_therapy_list','{full_name} {eta}');
+			$crud->set_primary_key('id_therapy, eta','patient_therapy_list');
 
             $crud->columns('id_therapy', 'img', 'comment' );
 			$crud->fields('id_therapy', 'img', 'comment' );
@@ -457,12 +460,6 @@ class Admin extends CI_Controller{
 			$crud->set_table("patient_consult");
 			$crud->set_subject( $titulo );  
 
-			$crud->set_relation('id_patient','patient','{name} {lastname}');
-			$crud->set_primary_key('id_account','account_med');
-			$crud->set_relation('id_doctor_created','account_med','{full_name}');
-			$crud->set_relation('id_doctor_attended','account_med','{full_name}');
-			
-
 			$crud->display_as( 'id_patient' , 'Paciente' );
 			$crud->display_as( 'id_doctor_created' , 'Médico' );
 			$crud->display_as( 'id_doctor_attended' , 'Atendido por' );
@@ -471,19 +468,22 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'status' , 'Estado' );
 			$crud->display_as( 'diagnosis' , 'Diágnostico' );
 
+			$crud->set_primary_key('id_account','account_med');
+			$crud->set_relation('id_patient','patient','{name} {lastname}');
+			$crud->set_relation('id_doctor_created','account_med','{full_name}');
+			$crud->set_relation('id_doctor_attended','account_med','{full_name}');
+			
+
 			$crud->field_type('status', 'dropdown', array(
-                '0' => 'Atendido',
-                '1' => 'No fue atendido',
-                '2' => 'Atrasado',
-                '3' => 'Cancelado' 
+                '0' => 'Pendiente',
+                '1' => 'Cancelado',
+                '2' => 'Atendido'
             ));
-			$crud->field_type('diagnosis', 'textarea');
+
 			$crud->field_type('date_created', 'datetime');
 
-			$crud->callback_add_field('date_created', array($this,'_add_default_date_value'));	
-
 			$crud->columns( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
-			$crud->fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
+			$crud->fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_attended', 'status', 'diagnosis' );
 			$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
             $crud->unset_export();
