@@ -79,15 +79,6 @@ class Admin extends CI_Controller{
 			$crud->set_table("account");
 			$crud->set_subject( $titulo );
 
-			$id_permission = 2;
-			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
-
-			//Only for admin. Limitation over group access
-			if($grant_permission){
-				$crud->where('id_group !=', 1);
-			}
-
-
 			$crud->display_as( 'name' , 'Nombres' );
 			$crud->display_as( 'lastname' , 'Apellidos' );
 			$crud->display_as( 'username' , 'Usuario' );
@@ -98,12 +89,30 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'id_group' , 'Grupo' );
 			$crud->display_as( 'status' , 'Estado' );
 
+			$id_permission = 1;
+			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
+
+
+			//Superadmin check. Grant access to all users
+			if($grant_permission){
+				$crud->set_relation('id_group', 'rbac_group', 'name');
+			}else{
+				$id_permission = 2;
+				$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
+
+				//Only for admin. Limitation over group access
+				if($grant_permission){
+					$crud->where('account.id_group !=', 1);
+					$crud->set_relation('id_group', 'rbac_group', 'name', array('id_group !=' => ' 1 '));
+				}
+			}
+
+
 			$crud->field_type('status', 'dropdown', array(
                 '0' => 'Inactivo',
                 '1' => 'Activo'
             ));
 
-            $crud->set_relation('id_group', 'rbac_group', 'name');
 
 			$crud->field_type('last_login', 'readonly');
 			$crud->field_type('last_ip', 'readonly');
