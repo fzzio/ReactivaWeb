@@ -247,7 +247,8 @@ class Admin extends CI_Controller{
 			$crud->fields('id_patient', 'id_doctor_created','id_doctor_attended','eta', 'etf', 'comment', 'sendmail','status' );
 			$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
 
-			$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
+			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
+			$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
 
 			$crud->unset_export();
 			$crud->unset_print();
@@ -554,8 +555,17 @@ class Admin extends CI_Controller{
 		return "<input type='password' name='password' value='' />";
 	}
 
-	public function check_dates($fecha2, $fecha1){
+	/*public function check_dates($fecha2, $fecha1){
 		if ($fecha2 > $fecha1){
+			return TRUE;
+		}else{
+			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
+			return FALSE;
+		}
+	}*/
+
+	public function check_dates($fecha2){
+		if ($fecha2 > $this->input->post('eta')){
 			return TRUE;
 		}else{
 			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
