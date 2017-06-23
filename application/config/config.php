@@ -24,10 +24,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$site_root  = "http://".$_SERVER['HTTP_HOST'];
+$site_root = 'http';
+if ( isset($_SERVER["HTTPS"]) && ($_SERVER["HTTPS"] == "on") ) {
+    $site_root .= "s";
+}
+$site_root .= "://";
+$site_root .= $_SERVER['HTTP_HOST'];
 $site_root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+$config['base_url']	= $site_root;
 
-$config['base_url'] = $site_root;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,7 +85,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']	= 'spanish';
 
 /*
 |--------------------------------------------------------------------------
@@ -328,7 +333,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'ReactivaKey';
 
 /*
 |--------------------------------------------------------------------------
