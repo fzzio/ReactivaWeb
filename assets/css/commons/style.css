@@ -1,10 +1,87 @@
 body{
 	font-family: 'Montserrat';
 }
+#wrapper{
+	display: block;
+}
 
 .align-center{
 	margin: 0 auto;
-    text-align: center;
-    align-items: center;
-    display: block;
+	text-align: center;
+	align-items: center;
+	display: block;
+}
+#page-wrapper{
+	height: 97%;
+	margin-left: 15%;
+	padding: 0% 0% 5% 5%;
+	position: fixed;
+}
+#sidebar-wrapper{
+	padding-left: 0px;
+	padding-right: 0px;
+	height: 100%;
+	position: fixed;
+	background: linear-gradient(360deg, #0062a3, #2e4766);
+	background-size: 500% 500%;
+
+	-webkit-animation: animSide 15s ease infinite;
+	-moz-animation: animSide 15s ease infinite;
+	-o-animation: animSide 15s ease infinite;
+	animation: animSide 15s ease infinite;
+}
+.sidebar-nav, .nav{
+	height: 100%;
+}
+@-webkit-keyframes animSide {
+	0%{background-position:0% 82%}
+	50%{background-position:100% 19%}
+	100%{background-position:0% 82%}
+}
+@-moz-keyframes animSide {
+	0%{background-position:0% 82%}
+	50%{background-position:100% 19%}
+	100%{background-position:0% 82%}
+}
+@-o-keyframes animSide {
+	0%{background-position:0% 82%}
+	50%{background-position:100% 19%}
+	100%{background-position:0% 82%}
+}
+@keyframes animSide { 
+	0%{background-position:0% 82%}
+	50%{background-position:100% 19%}
+	100%{background-position:0% 82%}
+}
+.nav li{
+	border-bottom-style: solid;
+	border-color: white;
+	border-width: 1px;
+}
+.nav li a{
+	color: white;
+	padding-left: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-right: 0px;
+	margin: 0px;
+	text-align: center;
+}
+.nav li a:hover{
+	color: #50bfa3;
+}
+
+.nav li a:hover{
+	color: #50bfa3;
+}
+
+#logout, #index{
+	font-weight: bold;
+}
+#index a{
+	font-size: 20pt;
+	color: #50bfa3;
+}
+#logout{
+	bottom: 0px;
 }

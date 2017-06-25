@@ -19,4 +19,4 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/login-style.css'); ?>">
 </head>
 <body>
-	<div id = 'wrapper'>
+	<div class="toggled" id = 'wrapper'>
