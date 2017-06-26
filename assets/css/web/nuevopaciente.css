@@ -1,0 +1,169 @@
+body{
+  	font-family: 'Montserrat';
+ }
+
+ h1 {
+ 	/*font-family: 'Montserrat';*/
+ 	/*font-size: 300%;*/
+ 	color: white;
+ 	font-weight: bold;
+ }
+
+ h2 {
+ 	/*font-size: 260%;*/
+ 	color: white;
+ 	font-weight: bold;
+ }
+
+.container-fluid {
+	/*font-family: 'Montserrat';*/
+	margin-left:  1.5%;
+	margin-top:   .3%;
+	margin-right: .1%;
+}
+
+#dosbtns {
+	text-align: center;
+	/*display: inline-block;*/
+}
+
+#btnguardar {
+	padding-top: 2.5%;
+	margin: 1%;
+	margin-top: 2%;
+	float: left;
+	
+}
+
+#btncancelar {
+	padding-top: 2.5%;
+	margin: 1%;
+	margin-top: 2%;
+	float: left;
+
+}
+
+
+
+
+
+.cabezerapaciente {
+	display: inline-block;
+}
+
+#cabezerabotones {
+	
+}
+
+#cabezeratitulo {
+	
+}
+.datapersonal {
+	clear: both;
+}
+
+#dataphoto {
+	text-align: center;
+
+}
+
+.cuadrado {
+	display: inline-block;
+    width: 100px; 
+    height: 100px; 
+    border: .5px solid white;
+    border-radius: 5%;
+}
+
+
+.inputbasic {
+	
+	
+}
+
+.inputcontact {
+	
+	
+}
+
+.form-control {
+	background: #ffffff;
+}
+
+.btnimg {
+	/*color: #50bfa3;*/
+	margin-top: 1%;
+	width: 46%;
+	margin: .6%;
+}
+
+img {
+    
+    
+}
+
+.input-file {
+	display: none;
+}
+
+/*#input-photo {
+	display: none;
+}
+*/
+input[type=text]  {
+	color: #ffffff;
+}
+
+.inputbasic {
+	background-color: #ffffff;
+}
+
+
+#dataenfermedades {
+	margin: .6%;
+	margin-bottom: 12%;
+}
+
+#datacomentarios {
+	margin: .6%;
+	margin-bottom: 12%;
+}
+
+/*.datoscontacto {
+	float: left;
+	margin: 1em;
+}
+
+.tinfoclinica {
+	clear: left;
+}
+
+.datosinfoclinica {
+	float: left;
+}
+
+.imagenclass {
+	width: 10%;
+}
+
+.infopersonal {
+	width: 40%;
+}
+
+.infosecundaria {
+	width: 40%;
+}
+
+
+.formparticular {
+	clear: both;
+}
+
+.alinearlabel {
+	float: left;
+}
+.alinearinputs {
+	float: right;
+	width: 60%;
+}
+*/
