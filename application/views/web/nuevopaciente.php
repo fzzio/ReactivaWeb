@@ -132,13 +132,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Domicilio</label>
+								<label class="col-sm-4 control-label">Domicilio</label>
 								<div class="col-sm-8">
 									<input class="form-control inputcontact" type="text">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Telf contacto</label>
+								<label class="col-sm-4 control-label">Telf contacto</label>
 								<div class="col-sm-8">
 									<input class="form-control inputcontact" type="text">
 								</div>
@@ -208,7 +208,7 @@
 									<div class="datosinfoclinica">
 										<form>
 											<div class="form-group" id="dataenfermedades">
-												<label for="exampleInputEmail1">Enfermedades</label>
+												<label>Enfermedades</label>
 												<textarea class="form-control" rows="2"></textarea>
 											</div>
 										</form>
@@ -218,7 +218,7 @@
 									<div class="datosinfoclinica">
 										<form>
 											<div class="form-group" id="datacomentarios">
-												<label for="exampleInputEmail1">Observaciones y comentarios</label>
+												<label>Observaciones y comentarios</label>
 												<textarea class="form-control" rows="2"></textarea>
 											</div>
 										</form>
