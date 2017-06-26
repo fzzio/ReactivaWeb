@@ -29,7 +29,7 @@
 							'name' => 'ra_password',
 							'value' => '',
 							'required' => 'required',
-							'placeholder' => 'contraseña',
+							'placeholder' => 'Contraseña',
 							'class' => 'form-control ',
 							));?>
 					</div>
@@ -52,8 +52,14 @@
 			</div>
 			</div>
 		</div>
-		<div class = 'col-md-6 login login-right'>
-
+		<div class = 'col-md-6 login-right login ml-0 mr-0'>
+			<div class = 'center-row'>
+				<div class = 'row'>
+					<div class = 'col-md-offset-2 col-md-8'>
+						<img src = "<?php echo base_url('assets/img/web/rea-login.png'); ?>" class ="img-responsive">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
