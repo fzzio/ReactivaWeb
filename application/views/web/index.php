@@ -1,11 +1,9 @@
 <!-- Page Content -->
 <div id="page-wrapper" class="col-lg-10 col-md-10">
-	<div class="col-lg-9 container">
+	<div class="col-lg-9 col-md-9 container">
 		<h3 class="title">ADMINISTRAR PACIENTES</h3>
-		<button type="button" class="btn btn-nuevo"><span class="glyphicon glyphicon-plus"></span> 
-		<a href="<?php echo site_url('web/nuevopaciente'); ?>">NUEVO REGISTRO</a>
-		</button>
-		<table class="table">
+		<button type="button" class="btn btn-nuevo"><span class="glyphicon glyphicon-plus"></span> NUEVO REGISTRO</button>
+		<table class="table patient">
 	    <thead>
 	      <tr>
 	      	<th></th>
@@ -98,7 +96,7 @@
 	        <td>Erasmo Israel</td>
 	        <td>Pezantes De Los Monos</td>
 	        <td>11</td>
-	        <td>0000000000</td>
+	        <td>000000000</td>
 	        <td>eras@example.com</td>
 	      </tr>
 	      <tr>
@@ -110,8 +108,32 @@
 	        <td>Reina Andrea</td>
 	        <td>Queen Claudia</td>
 	        <td>45</td>
-	        <td>0000000000</td>
+	        <td>000000000</td>
 	        <td>reina@example.com</td>
+	      </tr>
+	      <tr>
+	      	<td>
+	      		<button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>
+	      		<button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-pencil"></span></button>
+	      		<button type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+	      	</td>
+	        <td>Tina Tatiana</td>
+	        <td>Freire Paredes</td>
+	        <td>45</td>
+	        <td>000000000</td>
+	        <td>tina@example.com</td>
+	      </tr>
+	      <tr>
+	      	<td>
+	      		<button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>
+	      		<button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-pencil"></span></button>
+	      		<button type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+	      	</td>
+	        <td>Tina Tatiana</td>
+	        <td>Freire Paredes</td>
+	        <td>45</td>
+	        <td>000000000</td>
+	        <td>tina@example.com</td>
 	      </tr>
 	    </tbody>
 	  </table>
