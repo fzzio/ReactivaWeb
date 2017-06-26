@@ -17,6 +17,7 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/style.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/login-style.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/nuevopaciente.css'); ?>">
 </head>
 <body>
 	<div class="toggled" id = 'wrapper'>
