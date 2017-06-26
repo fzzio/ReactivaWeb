@@ -53,6 +53,7 @@ body{
 	50%{background-position:100% 19%}
 	100%{background-position:0% 82%}
 }
+
 .nav li{
 	border-bottom-style: solid;
 	border-color: white;
@@ -68,11 +69,8 @@ body{
 	text-align: center;
 }
 .nav li a:hover{
-	color: #50bfa3;
-}
-
-.nav li a:hover{
-	color: #50bfa3;
+	background: #50bfa3;
+	color: #1d3651;
 }
 
 #logout, #index{
@@ -84,4 +82,149 @@ body{
 }
 #logout{
 	bottom: 0px;
+}
+
+/*---------------------------------------------------------------------------------*/
+#page-wrapper {
+	background: linear-gradient(270deg, #53c0a5, #4ab3bf);
+	background-size: 400% 400%;
+	-webkit-animation: animPage 30s ease infinite;
+	-moz-animation: animPage 30s ease infinite;
+	animation: animPage 30s ease infinite;
+}
+
+@-webkit-keyframes animPage {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes animPage {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes animPage { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+footer {
+	background: #2c4666;
+	height: 37px;
+	color: white;
+	position: absolute;
+	top: 100vh;
+}
+small {
+	margin: auto;
+	padding-left: 38%;
+	position: absolute;
+	bottom: 1.4vh;
+}
+
+#osa {
+	width: 200px;
+	height: 135px;
+	margin-left: 90px;
+	position: absolute;
+	bottom: 0vh;
+	left: 60vw;
+}
+
+.title {
+	color: white;
+	margin-top: 27px;
+	margin-bottom: 25px;
+	font-weight: bold;
+}
+
+.table {
+	margin-top: 20px;
+	background: #90d6cb;
+	border-radius: 4px;
+}
+.table th {
+	color: white;
+}
+.table td {
+	color: #1d3651;
+	font-weight: normal;
+}
+
+.btn-nuevo {
+	font-weight: bold;
+	color: #50bfa3;
+	background: #1d3651;
+}
+
+.btn-nuevo:hover, .btn-nuevo:active, .btn-nuevo:focus {
+	color: white;
+}
+
+.glyphicon-plus {
+	background: #53c0a5;
+	color: white;
+	border-radius: 50%;
+	padding: 4px;
+}
+
+/* lg (Laptop L) */ 
+@media (min-width: 1200px) {
+	#page-wrapper {
+		margin-left: 225px;
+		height: 100%;
+		width: 100%;
+	}
+	footer {
+		margin-left: 225px;
+	}
+}
+
+/* md (Laptop) */
+@media (min-width: 992px) and (max-width: 1199px) {
+	#page-wrapper {
+		margin-left: 172px;
+		height: 100%;
+		width: 100%;
+	}
+	#index {
+		padding-right: 5px;
+    padding-left: 5px;
+	}
+	footer {
+		margin-left: 172px;
+	}
+}
+
+/* sm (Tablet)*/
+@media (min-width: 768px) and (max-width: 991px) {
+ 	#page-wrapper {
+ 		margin-left: 150px;
+		height: 100%;
+		width: 100%;
+	}
+	#side-wrapper {
+		width: 300px;
+	}
+	#index {
+		padding-right: 5px;
+    padding-left: 5px;
+	}
+	footer {
+		margin-left: 150px;
+	}
+}
+
+/* xs (Mobile L M S)*/
+@media (max-width: 767px) {
+	#page-wrapper {
+		margin-left: 150px;
+		height: 100%;
+		width: 100%;
+	}
+	#index {
+		padding-right: 5px;
+    padding-left: 5px;
+	}
 }
