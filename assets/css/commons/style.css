@@ -12,7 +12,10 @@ body{
 	display: block;
 }
 #page-wrapper{
-	padding: 0% 0% 5% 5%;
+	height: 97%;
+  margin-left: 15%;
+  padding: 0% 0% 5% 5%;
+  position: fixed;
 }
 #sidebar-wrapper{
 	padding-left: 0px;

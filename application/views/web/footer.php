@@ -1,7 +1,7 @@
 		</div>
 		<footer class="col-lg-10">
 			<small>REACTIVA 2017 &copy; Todos los derechos reservados.</small>
-			<img id="osa" src="../../images/rea-footer.png" alt="osa">
+			<img src = "<?php echo base_url('assets/img/web/rea-footer.png'); ?>" class ="img-responsive">
 		</footer>
 	</body>
 	

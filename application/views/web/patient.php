@@ -6,7 +6,7 @@
 			<div class="info-left col-lg-2 col-md-2">
 				<button type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-pencil"></span> &nbsp; Editar datos</button>
 				<button type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove"></span> &nbsp; Eliminar</button>
-				<img id="profile" src="../../images/rea-profile.png" alt="profile" height="110" width="110">
+				<img src = "<?php echo base_url('assets/img/web/rea-profile.png'); ?>" class ="img-responsive">
 			</div>
 			<div class="info col-lg-4 col-md-4">
 				<br>Nombres: <input type="text" value="María De Los Ángeles"><br>
