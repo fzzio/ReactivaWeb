@@ -1,43 +1,48 @@
-/*#page-wrapper {
-	position: relative;
-	background: linear-gradient(270deg, #53c0a5, #4ab3bf);
-	background-size: 400% 400%;
-	-webkit-animation: animPage 30s ease infinite;
-	-moz-animation: animPage 30s ease infinite;
-	animation: animPage 30s ease infinite;
-}*/
-
 @-webkit-keyframes animPage {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
+
 @-moz-keyframes animPage {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
+
 @keyframes animPage { 
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
 
-footer {
+.page-main, .page-patient {
+	position: relative;
+	background: linear-gradient(270deg, #53c0a5, #4ab3bf);
+	background-size: 400% 400%;
+	-webkit-animation: animPage 30s ease infinite;
+	-moz-animation: animPage 30s ease infinite;
+	animation: animPage 30s ease infinite;
+}
+
+.page-footer {
+	position: fixed;
 	background: #2c4666;
 	height: 37px;
 	color: white;
-	position: absolute;
-	top: 0vh;
-}
-small {
-	margin: auto;
-	padding-left: 38%;
-	position: absolute;
-	bottom: 1.4vh;
+	top: 95vh;
 }
 
-#osa {
+.page-center {
+	position: absolute;
+	margin: auto;
+	padding-left: 38%;
+	padding-bottom: 2px;
+	bottom: 1.4vh;
+	font-size: 12px;
+}
+
+.img-footer {
 	width: 200px;
 	height: 135px;
 	margin-left: 90px;
@@ -52,6 +57,7 @@ small {
 	margin-bottom: 25px;
 	font-weight: bold;
 }
+
 .sub-title {
 	color: white;
 	margin-top: 27px;
@@ -59,22 +65,27 @@ small {
 	border-style: none none solid none;
 	border-width: 1px;
 }
+
 .title-3 {
 	font-weight: bold;
 	color: #1d3651;
 }
+
 .info-left, .info {
 	font-weight: normal;
 	color: white;
 }
+
 .info-left input, .info-right, .info input {
 	font-weight: normal;
 	color: #1d3651;
 }
+
 .info-left .btn-success {
 	height: 27px;
 	margin-bottom: 10px;
 }
+
 .info-left .btn-danger {
 	height: 27px;
 	margin-bottom: 10px;
@@ -82,17 +93,21 @@ small {
   padding-left: 0px;
   padding-right: 25px;
 }
+
 .info {
 	bottom: 20px;
 }
+
 .patient {
 	margin-top: 20px;
 	background: #90d6cb;
 	border-radius: 4px;
 }
+
 .patient th {
 	color: white;
 }
+
 .patient td {
 	color: #1d3651;
 	font-weight: normal;
@@ -101,6 +116,7 @@ small {
 .consult th {
 	color: white;
 }
+
 .consult td {
 	color: #1d3651;
 	font-weight: normal;
@@ -112,12 +128,13 @@ small {
 	background: #1d3651;
 }
 
-input, input:focus {
+.patient-input, .patient-input:focus {
+	padding-top: 10px;
 	background-color:transparent;
 	border-style: none;
 }
 
-textarea {
+.patient-textarea {
 	background: #97ced1;
 	border-style: none;
 	border-radius: 2px;
@@ -132,64 +149,39 @@ textarea {
 	background: #53c0a5;
 	color: white;
 	border-radius: 50%;
-	padding: 4px;
+	padding: 5px;
+	padding-left: 6px;
+	padding-right: 4px;
 }
 
 /* lg (Laptop L) */ 
 @media (min-width: 1200px) {
-	/*#page-wrapper {
-  	left: 225px;
+	.page-main, .page-patient, .page-footer {
+		left: 16.49vw;	
+	}
+
+	.page-main {
+		height: 100vh;
+	}
+
+	.page-patient {
 		height: 100%;
-	}*/
-	footer {
-		left: 225px;
+	}
+
+	.page-footer {
+		width: 83.3%;
 	}
 }
 
 /* md (Laptop) */
 @media (min-width: 992px) and (max-width: 1199px) {
-	/*#page-wrapper {
-		left: 172px;
-		height: 100%;
-		width: 100%;
-	}*/
-	#index {
-		padding-right: 5px;
-    padding-left: 5px;
-	}
-	footer {
-		left: 172px;
-	}
-}
 
+}
 /* sm (Tablet)*/
 @media (min-width: 768px) and (max-width: 991px) {
- 	/*#page-wrapper {
- 		left: 150px;
-		height: 100%;
-		width: 100%;
-	}*/
-	/*#side-wrapper {
-		width: 300px;
-	}*/
-	#index {
-		padding-right: 5px;
-    padding-left: 5px;
-	}
-	footer {
-		left: 150px;
-	}
-}
 
+}
 /* xs (Mobile L M S)*/
 @media (max-width: 767px) {
-	/*#page-wrapper {
-		left: 150px;
-		height: 100%;
-		width: 100%;
-	}*/
-	#index {
-		padding-right: 5px;
-    left: 5px;
-	}
+
 }

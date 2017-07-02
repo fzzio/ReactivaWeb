@@ -1,23 +1,23 @@
-body{
+body {
 	font-family: 'Montserrat';
 }
-#wrapper{
+
+#wrapper {
 	display: block;
 }
 
-.align-center{
+.align-center {
 	margin: 0 auto;
 	text-align: center;
 	align-items: center;
 	display: block;
 }
-#page-wrapper{
-	height: 97%;
-  margin-left: 15%;
+
+#page-wrapper {
   padding: 0% 0% 5% 5%;
-  position: fixed;
 }
-#sidebar-wrapper{
+
+#sidebar-wrapper {
 	padding-left: 0px;
 	padding-right: 0px;
 	height: 100%;
@@ -30,36 +30,42 @@ body{
 	-o-animation: animSide 15s ease infinite;
 	animation: animSide 15s ease infinite;
 }
-.sidebar-nav, .nav{
+
+.sidebar-nav, .nav {
 	height: 100%;
 }
+
 @-webkit-keyframes animSide {
 	0%{background-position:0% 82%}
 	50%{background-position:100% 19%}
 	100%{background-position:0% 82%}
 }
+
 @-moz-keyframes animSide {
 	0%{background-position:0% 82%}
 	50%{background-position:100% 19%}
 	100%{background-position:0% 82%}
 }
+
 @-o-keyframes animSide {
 	0%{background-position:0% 82%}
 	50%{background-position:100% 19%}
 	100%{background-position:0% 82%}
 }
+
 @keyframes animSide { 
 	0%{background-position:0% 82%}
 	50%{background-position:100% 19%}
 	100%{background-position:0% 82%}
 }
 
-.nav li{
+.nav li {
 	border-bottom-style: solid;
 	border-color: white;
 	border-width: 1px;
 }
-.nav li a{
+
+.nav li a {
 	color: white;
 	padding-left: 0px;
 	padding-top: 20px;
@@ -68,18 +74,26 @@ body{
 	margin: 0px;
 	text-align: center;
 }
-.nav li a:hover, .nav li a:active, .nav li a:focus{
+
+.nav li a:hover, .nav li a:active, .nav li a:focus {
 	background: #50bfa3;
 	color: #1d3651;
 }
 
-#logout, #index{
+#logout, #index {
 	font-weight: bold;
 }
-#index a{
+
+#index a {
 	font-size: 20pt;
 	color: #50bfa3;
 }
-#logout{
+
+#index a:hover, #index a:active, #index a:focus {
+	background: #50bfa3;
+	color: #1d3651;
+}
+
+#logout {
 	bottom: 0px;
 }

@@ -5,7 +5,7 @@
 				<a href="<?php echo site_url('admin/pacientes'); ?>">REACTIVA</a>
 			</li>
 			<li>
-				<a href="<?php echo site_url('admin/pacientes'); ?>">Pacientes</a>
+				<a href="<?php echo site_url('web/index'); ?>">Pacientes</a>
 			</li>
 			<li>
 				<a href="<?php echo site_url('admin/pacientes'); ?>">Agenda</a>

@@ -30,18 +30,24 @@ class Web extends CI_Controller{
 	}
 
 	public function index(){
-
 		$dataHeader['PageTitle'] = "Bienvenidos";
 
-        $data['header'] = $this->load->view('web/header', $dataHeader);
-        $data['menu'] = $this->load->view('web/menu', array());
+	  $data['header'] = $this->load->view('web/header', $dataHeader);
+	  $data['menu'] = $this->load->view('web/menu', array());
 
-        $data['contenido'] = $this->load->view('web/index', array());
-        $data['footer'] = $this->load->view('web/footer', array());
+	  $data['contenido'] = $this->load->view('web/index', array());
+	  $data['page-footer'] = $this->load->view('web/page-footer', array());
+  }
 
-    }
+  public function patient(){
+		$dataHeader['PageTitle'] = "Paciente";
 
-	
+    $data['header'] = $this->load->view('web/header', $dataHeader);
+    $data['menu'] = $this->load->view('web/menu', array());
+
+    $data['contenido'] = $this->load->view('web/patient', array());
+    $data['page-footer'] = $this->load->view('web/page-footer', array());
+  }
 
 	public function logout(){
 		if ($this->SecurityCheck()){

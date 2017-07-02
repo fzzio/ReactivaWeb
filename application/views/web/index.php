@@ -1,5 +1,5 @@
 <!-- Page Content -->
-<div id="page-wrapper" class="col-lg-10 col-md-10">
+<div id="page-wrapper" class="page-main col-lg-10 col-md-10">
 	<div class="col-lg-9 col-md-9 container">
 		<h3 class="title">ADMINISTRAR PACIENTES</h3>
 		<button type="button" class="btn btn-nuevo"><span class="glyphicon glyphicon-plus"></span> NUEVO REGISTRO</button>

@@ -1,5 +1,5 @@
 <!-- Page Content -->
-<div id="page-wrapper" class="col-lg-10 col-md-10">
+<div id="page-wrapper" class="page-patient col-lg-10 col-md-10">
 	<div class="col-lg-9 col-md-9 container">
 		<h3 class="title">Datos del Paciente</h3>
 		<div class="row">
@@ -9,18 +9,18 @@
 				<img src = "<?php echo base_url('assets/img/web/rea-profile.png'); ?>" class ="img-responsive">
 			</div>
 			<div class="info col-lg-4 col-md-4">
-				<br>Nombres: <input type="text" value="María De Los Ángeles"><br>
-				<br>Apellidos: <input type="text" value="Hermenejido De Los Monteros"><br>
-				<br>Ced/RUC: <input type="text" value="999999999"><br>
-				<br>Fecha nac: <input type="text" value="12/11/1990"><br>
-				<br>Cont emerg: <input type="text" value="Lucia Solis De Los Monteros"><br>
+				<p>Nombres: <input class="patient-input" type="text" value="María De Los Ángeles"></p>
+				<p>Apellidos: <input class="patient-input" type="text" value="Hermenejido Montero"></p>
+				<p>Ced/RUC: <input class="patient-input" type="text" value="999999999"></p>
+				<p>Fecha nac: <input class="patient-input" type="text" value="12/11/1990"></p>
+				<p>Cont emerg: <input class="patient-input" type="text" value="Lucia Solis"></p>
 			</div>
 			<div class="info col-lg-4 col-md-4">
-				<br>Telf fijo: <input type="text" value="042983882"><br>
-				<br>Celular: <input type="text" value="0983738738"><br>
-				<br>Email: <input type="text" value="algo@algo.com"><br>
-				<br>Domicilio: <input type="text" value="Urdesa, Ficus y Mirtus"><br>
-				<br>Telf contac: <input type="text" value="09898736454"><br>
+				<p>Telf fijo: <input class="patient-input" type="text" value="042983882"></p>
+				<p>Celular: <input class="patient-input" type="text" value="0983738738"></p>
+				<p>Email: <input class="patient-input" type="text" value="algo@algo.com"></p>
+				<p>Domicilio: <input class="patient-input" type="text" value="Urdesa, Ficus y Mirtus"></p>
+				<p>Telf contac: <input class="patient-input" type="text" value="09898736454"></p>
 			</div>
 		</div>
 		<h4 class="sub-title">HISTORIAL DE CITAS Y TERAPIAS</h3>
@@ -67,14 +67,14 @@
 		<h4 class="sub-title">Información clínica</h3>
 		<div class="row">
 			<div class="info-left col-lg-5 col-md-5">
-				<br>Sexo: <input type="text" value="Femenino"><br>
-				<br>Tipo sangre: <input type="text" value="O+"><br>
-				<br>Algergias medic.: <input type="text" value="Penicilina"><br>
-				<br>Algergias: <input type="text" value="Polen"><br>
+				<p>Sexo: <input class="patient-input" type="text" value="Femenino"><p>
+				<p>Tipo sangre: <input class="patient-input" type="text" value="O+"><p>
+				<p>Algergias medic: <input class="patient-input" type="text" value="Penicilina"><p>
+				<p>Algergias: <input class="patient-input" type="text" value="Polen"><p>
 			</div>
 			<div class="info-right col-lg-4 col-md-4">
 				<h5 class="title-3">Observaciones</h5>
-				<textarea rows="6" cols="50">At vero eos et accusamus et justo odio dignissimos ducimus qui blanditilis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint accaecati cupiditate non provident. similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</textarea>
+				<textarea class="patient-textarea" rows="6" cols="50">At vero eos et accusamus et justo odio dignissimos ducimus qui blanditilis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint accaecati cupiditate non provident. similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</textarea>
 			</div>
 		</div>
 	</div>
