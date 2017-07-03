@@ -1,14 +1,10 @@
-<div class="container">
-	<div class = 'row pt-150'>
-		<div class="col-md-4 col-md-offset-4">
-<!-- 
-<img class="img-responsive" src="<?php echo base_url('assets/img/dh.png'); ?>">
--->
-</div>
-</div>
+<div class="container-fluid login">
 
-<div class="row pt-80">
-	<div class= "col-md-4 col-md-offset-4">
+<div class="row  ">
+	<div class= "col-md-4 col-md-offset-4 login">
+	<div class = 'center-row panel-sg'>
+		<p class = 'align-center txt-white'> Por favor ingrese su usuario y contraseña:</p>
+		<br>
 		<?php echo form_open('admin/authenticate' , array('id' => 'frm-login')); ?>  
 		<fieldset>
 			<div class="input-group">
@@ -43,12 +39,13 @@
 					</div>
 					-->
 					<div class="clearfix"></div><br>
-					<div class="input-group pull-right">
-						<button type="submit" class="btn btn-cdr btn-sgl">Iniciar sesión</button>
+					<div class="input-group align-center">
+						<button type="submit" class="btn login-btn ">Iniciar sesión</button>
 					</div>
 				</fieldset>
 				<?php echo form_close(); ?>
+				</div>
 			</div>
 		</div>
 
-	</div>
+</div>

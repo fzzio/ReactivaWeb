@@ -1,0 +1,48 @@
+body{
+	font-family: 'Montserrat'; 	
+	background: #0062a3;
+	background: -moz-linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, #0062a3), color-stop(100%, #2e4766));
+	background: -webkit-linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	background: -o-linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	background: -ms-linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	background: linear-gradient(45deg, #0062a3 0%, #2e4766 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0062a3', endColorstr='#2e4766', GradientType=1 );
+}
+
+.align-center {
+	margin: 0 auto;
+	text-align: center;
+	align-items: center;
+	display: block;
+}
+
+
+.login {
+	height: 100vh;
+}
+
+.center-row {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.panel-sg .input-group-addon {
+    border-radius: 0px;
+    background-color: #ffcf57;
+    color: #2e4766;
+    border: 1px solid #a75a8f;
+}
+
+.login-btn {
+	background-color: #ffcf57;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	width: 180px;
+	border-radius: 20px;
+}
+
+.txt-white{
+	color: white;
+}

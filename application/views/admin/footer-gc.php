@@ -1,5 +1,19 @@
         </div><!-- fin #wrapper -->
 
+        <?php if ( ($this->router->method != "login") || ($this->router->method != "logout") ): ?>
+       
+                <footer class="row">
+                	<div class = 'container-fluid pt-10 pb-10'>
+	                	<p class="align-center">
+	                    	<a href="#" target="_blank">Reactiva </a> <?php echo date('Y') ?> © Todos los derechos reservados
+	                    </p>
+                	</div>
+                    
+                  
+                </footer>
+           
+        <?php endif ?>
+
   		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  		
 		
         <?php if (isset($js_files)): ?> 

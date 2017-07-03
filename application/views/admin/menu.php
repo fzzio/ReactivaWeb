@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-sg navbar-static-top" role="navigation" style="margin-bottom: 0">
+<nav  class="navbar navbar-ra navbar-static-top top-header" role="navigation" style="margin-bottom: 0" >
 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -13,7 +13,7 @@
 		</a>
 	</div>
 
-	<ul class="nav navbar-nav navbar-right">
+	<ul class="nav navbar-top-links navbar-right">
 		<li class = 'dropdown'>
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 				<span class="capitalize">
@@ -29,7 +29,7 @@
 	</ul>
 
 
-	<div class="navbar-default sidebar" role="navigation">
+	<div class="navbar-default sidebar admin-sidebar" role="navigation" >
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
 				<li>
