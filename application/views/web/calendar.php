@@ -28,7 +28,7 @@
 	  							<tr>
 	  								<td class="elemento">
 	  									<div class="elemento-focus">
-	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
+	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#ModalCita">
 	  											<h4 class="list-group-item-heading">Nadia Ericka Pezantes Hermenejido</h4>
 	  											<p class="list-group-item-text">Horario 9h00 a 10h00</p>
 	  										</a>
@@ -38,7 +38,7 @@
 	  							<tr>
 	  								<td class="elemento">
 	  									<div class="elemento-focus">
-	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
+	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#ModalCita">
 	  											<h4 class="list-group-item-heading">Lesly Dayan Heran Sanchez</h4>
 	  											<p class="list-group-item-text">Horario 11h00 a 12h00</p>
 	  										</a>
@@ -48,7 +48,7 @@
 	  							<tr>
 	  								<td class="elemento">
 	  									<div class="elemento-focus">
-	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
+	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#ModalCita">
 	  											<h4 class="list-group-item-heading">Pablo Pedro Peñafiel Guerrero</h4>
 	  											<p class="list-group-item-text">Horario 13h00 a 14h00</p>
 	  										</a>
@@ -58,7 +58,7 @@
 	  							<tr>
 	  								<td class="elemento">
 	  									<div class="elemento-focus">
-	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
+	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#ModalCita">
 	  											<h4 class="list-group-item-heading">Mario Fernando Pérez Contreras</h4>
 	  											<p class="list-group-item-text">Horario 15h00 a 16h00</p>
 	  										</a>
@@ -68,7 +68,7 @@
 	  							<tr>
 	  								<td class="elemento">
 	  									<div class="elemento-focus">
-	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
+	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#ModalCita">
 	  											<h4 class="list-group-item-heading">Henry Antonio Pereira Pereira</h4>
 	  											<p class="list-group-item-text">Horario 17h00 a 18h00</p>
 	  										</a>
@@ -78,7 +78,7 @@
 	  							<tr>
 	  								<td class="elemento">
 	  									<div class="elemento-focus">
-	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
+	  										<a href="#" class="list-group-item" data-toggle="modal" data-target="#ModalCita">
 	  											<h4 class="list-group-item-heading">Reina Andrea Queen Claudia</h4>
 	  											<p class="list-group-item-text">Horario 19h00 a 20h00</p>
 	  										</a>
@@ -105,19 +105,20 @@
 
 		</div>
 
-		<div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+		<div class="modal fade" tabindex="-1" id="ModalCita" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Modal title</h4>
+						<h4 class="modal-title">CITA DEL DÍA</h4>
 					</div>
 					<div class="modal-body">
-						<p>One fine body&hellip;</p>
+						<p>Nadia Ericka Pezantes Hermenejido</p>
+						<p>Horario 9h00 a 10h00</p>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+						<button type="button" class="btn btn-primary">Guardar Cambios</button>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
