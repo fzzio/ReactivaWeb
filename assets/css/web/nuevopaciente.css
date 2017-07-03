@@ -2,37 +2,34 @@ body{
   	font-family: 'Montserrat';
  }
 
- h1 {
- 	/*font-family: 'Montserrat';*/
- 	/*font-size: 300%;*/
- 	color: white;
+ .titulosfont {
+	color: white;
  	font-weight: bold;
- }
-
- h2 {
- 	/*font-size: 260%;*/
- 	color: white;
- 	font-weight: bold;
- }
-
+}
+/*
 .container-fluid {
-	/*font-family: 'Montserrat';*/
+	font-family: 'Montserrat';
+	margin-left:  1.5%;
+	margin-top:   .3%;
+	margin-right: .1%;
+}*/
+
+#newpatientcontainer {
+	font-family: 'Montserrat';
 	margin-left:  1.5%;
 	margin-top:   .3%;
 	margin-right: .1%;
 }
 
-#dosbtns {
-	text-align: center;
-	/*display: inline-block;*/
+.dosbtns {
+	margin-top: 2%;
 }
 
-#btnguardar {
+/*#btnguardar {
 	padding-top: 2.5%;
 	margin: 1%;
 	margin-top: 2%;
-	float: left;
-	
+	float: left;	
 }
 
 #btncancelar {
@@ -42,10 +39,50 @@ body{
 	float: left;
 
 }
+*/
+#btncancelarnewpat {
+	background: #be1e2d;
+    color: #ffffff;
+}
 
+#btnsavenewpat {
+	background-color: #1d3651;
+}
 
+.selectfontc {
+	background-color: #FFFFFF;
+	opacity: 0.4;
+	border-radius: 0px;
+}
 
+.textareaf:focus {
+	background-color: white;
+    opacity: 1;
+}
 
+.btntextwiht {
+	color: white;
+	text-decoration-color: white;
+}
+
+.textlabels {
+	color: #1d3651;
+}
+
+#inputdia {
+	padding-right: 5px;
+	padding-left: 0px;
+}
+
+#inputmes {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+#inputanio {
+	padding-right: 0px;
+	padding-left: 5px;
+}
 
 .cabezerapaciente {
 	display: inline-block;
@@ -97,21 +134,20 @@ body{
 	margin: .6%;
 }
 
-img {
-    
-    
-}
-
 .input-file {
 	display: none;
 }
 
-/*#input-photo {
-	display: none;
+input[type=text] {
+	background-color: #FFFFFF;
+	opacity: 0.4;
+	border: 1px;
+	border-radius: 0px;
 }
-*/
-input[type=text]  {
-	color: #ffffff;
+
+input[type=text]:focus {
+    background-color: white;
+    opacity: 1;
 }
 
 .inputbasic {
@@ -128,42 +164,3 @@ input[type=text]  {
 	margin: .6%;
 	margin-bottom: 12%;
 }
-
-/*.datoscontacto {
-	float: left;
-	margin: 1em;
-}
-
-.tinfoclinica {
-	clear: left;
-}
-
-.datosinfoclinica {
-	float: left;
-}
-
-.imagenclass {
-	width: 10%;
-}
-
-.infopersonal {
-	width: 40%;
-}
-
-.infosecundaria {
-	width: 40%;
-}
-
-
-.formparticular {
-	clear: both;
-}
-
-.alinearlabel {
-	float: left;
-}
-.alinearinputs {
-	float: right;
-	width: 60%;
-}
-*/

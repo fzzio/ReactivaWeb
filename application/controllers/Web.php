@@ -54,6 +54,17 @@ class Web extends CI_Controller{
     $data['page-footer'] = $this->load->view('web/page-footer', array());
   }
 
+
+   public function newpaciente(){
+		$dataHeader['PageTitle'] = "Paciente";
+
+    $data['header'] = $this->load->view('web/header', $dataHeader);
+    $data['menu'] = $this->load->view('web/menu', array());
+
+    $data['contenido'] = $this->load->view('web/nuevopaciente', array());
+    $data['page-footer'] = $this->load->view('web/page-footer', array());
+  }
+
 	public function logout(){
 		if ($this->SecurityCheck()){
 			$userAdmin = new User();
