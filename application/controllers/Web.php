@@ -51,7 +51,7 @@ class Web extends CI_Controller{
     $data['menu'] = $this->load->view('web/menu', array());
 
     $data['contenido'] = $this->load->view('web/patient', array());
-    $data['page-footer'] = $this->load->view('web/page-footer', array());
+    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
   }
 
 
@@ -62,6 +62,16 @@ class Web extends CI_Controller{
     $data['menu'] = $this->load->view('web/menu', array());
 
     $data['contenido'] = $this->load->view('web/nuevopaciente', array());
+    $data['page-footer'] = $this->load->view('web/page-footer', array());
+  }
+
+  public function calendar(){
+		$dataHeader['PageTitle'] = "Agenda";
+
+    $data['header'] = $this->load->view('web/header', $dataHeader);
+    $data['menu'] = $this->load->view('web/menu', array());
+
+    $data['contenido'] = $this->load->view('web/calendar', array());
     $data['page-footer'] = $this->load->view('web/page-footer', array());
   }
 

@@ -1,0 +1,151 @@
+@-webkit-keyframes CalendarAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@-moz-keyframes CalendarAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@keyframes CalendarAnimation { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.page-calendar {
+	position: relative;
+	background: linear-gradient(270deg, #654c8e, #a75a8f);
+	background-size: 400% 400%;
+	-webkit-animation: CalendarAnimation 30s ease infinite;
+	-moz-animation: CalendarAnimation 30s ease infinite;
+	animation: CalendarAnimation 30s ease infinite;
+}
+
+.calendar-nav {
+	background-color: #1d3651;
+  position: relative;
+  left: 228px;
+  height: 79px;
+  border-bottom-style: solid;
+	border-color: #50bfa3;
+	border-width: 1px;
+}
+
+ul.nav-tabs {
+	position: absolute;
+	top: 13px;
+	left: 76px;
+}
+
+.nav-tabs li, .nav-tabs {
+	border-style: none;
+	border-width: 0px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	background-color: #50bfa3;
+	color: #1d3651;
+	position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 0px;
+  border-style: none;
+  font-size: large;
+}
+
+.nav-tabs li a {
+	color: white;
+	background-color: transparent;
+	position: relative;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 0px;
+  border-style: none;
+	font-size: large;
+}
+
+.calendar-container {
+	margin-top: 5%;
+}
+
+.calendar-table {
+	overflow-y: scroll;
+	position: absolute;
+}
+
+.elemento {
+	width: 400px;
+	padding: 1%;
+	border-radius: 5px;
+	background-color: transparent;
+	color: #1d3651;
+}
+
+.elemento a {
+	background-color: #e9dce7;
+	color: #1d3651;
+}
+
+.elemento-focus .list-group-item h4 {
+	color: #1d3651;
+}
+
+.elemento-focus a:hover, .elemento-focus a:focus {
+	background-color: #50bfa3;
+	color: #1d3651;
+}
+
+/* lg (Laptop L) */ 
+@media (min-width: 1200px) {
+	.page-calendar, .page-footer {
+		left: 228px;	
+	}
+
+	.page-calendar {
+		height: 87.9vh;
+	}
+
+	.page-footer {
+		width: 83.4%;
+	}
+
+	.datepicker-days {
+		border: 1px solid white;
+		border-radius: 4px;
+		width: 345px;
+		font-size:28px;
+	}
+
+	.calendar-right {
+    left: 50px;
+  }
+
+	.calendar-table {
+	height: 300px;
+	width: 400px;
+	}
+
+	.calendar-nuevo {
+		position: absolute;
+    top: 335px;
+    left: 120px;
+    font-size: 16px;
+	}
+}
+
+/* md (Laptop) */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+/* sm (Tablet)*/
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+/* xs (Mobile L M S)*/
+@media (max-width: 767px) {
+
+}
