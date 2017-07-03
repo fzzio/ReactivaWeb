@@ -30,13 +30,18 @@ class Web extends CI_Controller{
 	}
 
 	public function index(){
+		if ($this->SecurityCheck()){
+
 		$dataHeader['PageTitle'] = "Bienvenidos";
 
-	  $data['header'] = $this->load->view('web/header', $dataHeader);
-	  $data['menu'] = $this->load->view('web/menu', array());
+		$data['header'] = $this->load->view('web/header', $dataHeader);
+		$data['menu'] = $this->load->view('web/menu', array());
 
-	  $data['contenido'] = $this->load->view('web/index', array());
-	  $data['page-footer'] = $this->load->view('web/page-footer', array());
+		$data['contenido'] = $this->load->view('web/index', array());
+		$data['page-footer'] = $this->load->view('web/page-footer', array());
+		}else{
+			redirect("web/login");
+		}
   }
 
   public function patient(){
@@ -62,24 +67,23 @@ class Web extends CI_Controller{
 	 /* Helpers starts*/
 
 	 public function authenticate(){
-		$username = $this->input->post("ra_username");
-		$password = $this->input->post("ra_password");
+		$username = $this->input->post("wa_username");
+		$password = $this->input->post("wa_password");
 
 		$userAdmin = new User();
 
 		$userAdmin->login($username, $password);
 
 		$user = $this->session->userdata('Group');
+
 		if ($user){
-			if ($user == 3) {
-            redirect("web/user");
+			if ($user == 1 or $user ==2) {
+            redirect("admin/login");
 	        }else{
-	        	if ($user == 2){
-	        		redirect("web/assistant");
+	        	if ($user == 3 or $user ==4){
+	        		redirect("web/index");
 	        	}else{
-	        		if ($user == 1){
-	        			 redirect("admin/logout");
-	        		}
+	        		redirect("web/logout");
 	        	}
 			}
 		}else{
@@ -90,7 +94,7 @@ class Web extends CI_Controller{
 	function SecurityCheck(){
 		$UserAdmin = new User();
 		$user = $this->session->userdata('Group');
-		if ($user){
+		if ($user == 3 or $user ==4){
 			return true;
 		}else{
 			return false;

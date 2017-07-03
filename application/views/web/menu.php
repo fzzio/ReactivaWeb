@@ -11,13 +11,13 @@
 				<a href="<?php echo site_url('admin/pacientes'); ?>">Agenda</a>
 			</li>
 			<li>
-				<a href="<?php echo site_url('admin/pacientes'); ?>">Diagn&oacute;sticos</a>
+				<a href="<?php echo site_url('admin/pacientes'); ?>">Diagnósticos</a>
 			</li>
 			<li>
 				<a href="<?php echo site_url('admin/pacientes'); ?>">Opcion 4</a>
 			</li>
 			<li id="logout">
-				<a href="<?php echo site_url('admin/logout'); ?>">CERRAR SESI&Oacute;N</a>
+				<a href="<?php echo site_url('web/logout'); ?>">Cerrar sesión</a>
 			</li>
 		</ul>
 	</div>

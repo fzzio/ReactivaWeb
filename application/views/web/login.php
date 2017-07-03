@@ -8,13 +8,13 @@
 
 			<div class ='row mt-20'>
 				<div class = 'col-md-offset-3 col-md-6'>
-				<?php echo form_open('' , array('id' => 'frm-login')); ?>  
+				<?php echo form_open('web/authenticate' , array('id' => 'frm-login')); ?>  
 				<fieldset>
 					<label class ='label-input'>Usuario</label>
 					<div class="input-group align-center">
 						<?php echo form_input(array(
-							'id' => 'ra_username',
-							'name' => 'ra_username',
+							'id' => 'wa_username',
+							'name' => 'wa_username',
 							'value' => '',
 							'required' => 'required',
 							'placeholder' => 'Usuario',
@@ -25,8 +25,8 @@
 					<label class ='label-input'>Contraseña</label>
 					<div class="input-group align-center">
 						<?php echo form_password(array(
-							'id' => 'ra_password',
-							'name' => 'ra_password',
+							'id' => 'wa_password',
+							'name' => 'wa_password',
 							'value' => '',
 							'required' => 'required',
 							'placeholder' => 'Contraseña',
