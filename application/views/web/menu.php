@@ -5,16 +5,16 @@
 				<a href="<?php echo site_url('web/index'); ?>">REACTIVA</a>
 			</li>
 			<li>
-				<a href="<?php echo site_url('web/patient'); ?>">Pacientes</a>
+				<a href="<?php echo site_url('web/pacientes'); ?>">Pacientes</a>
 			</li>
 			<li>
 				<a href="<?php echo site_url('web/calendar'); ?>">Agenda</a>
 			</li>
 			<li>
-				<a href="<?php echo site_url('admin/pacientes'); ?>">Diagnósticos</a>
+				<a href="#">Diagnósticos</a>
 			</li>
 			<li>
-				<a href="<?php echo site_url('admin/pacientes'); ?>">Opcion 4</a>
+				<a href="#">Opcion 4</a>
 			</li>
 			<li id="logout">
 				<a href="<?php echo site_url('web/logout'); ?>">Cerrar sesión</a>

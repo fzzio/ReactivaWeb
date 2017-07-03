@@ -1,5 +1,5 @@
-<div id="page-wrapper" class="col-lg-10 col-md-10">
-	<div class="container-fluid" id="newpatientcontainer">
+<div id="page-wrapper" class="page-main col-lg-10 col-md-10">
+	<div class="col-lg-9 col-md-9 container">
 			<div>
 				<div>
 					<div class="row">

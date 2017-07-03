@@ -18,11 +18,11 @@
 		  	<div class="container-fluid">
 		  		<div class="calendar-container row">
 		  			
-		  			<div class="calendar-left col-lg-5 col-md-5">
+		  			<div class="calendar-left col-lg-6 col-md-6">
 		  				<div id="calendar-picker"></div>
 		  			</div><!-- /.calendar-side -->
 
-		  			<div class="calendar-right col-lg-4 col-md-4">
+		  			<div class="calendar-right col-lg-6 col-md-6">
 	  					<table  class="scrollbar">
 	  						<tbody class="calendar-table">
 	  							<tr>
