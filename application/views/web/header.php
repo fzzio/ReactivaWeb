@@ -10,6 +10,7 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/bootstrap-datepicker.min.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/custom-bootstrap-margin-padding.css'); ?>">
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -18,7 +19,12 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/style.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/login-style.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/patient-style.css'); ?>">
+
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/nuevopaciente.css'); ?>">
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/calendar-style.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/nuevopaciente.css'); ?>
+
 </head>
 <body>
 	<div class="toggled" id = 'wrapper'>

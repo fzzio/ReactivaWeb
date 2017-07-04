@@ -1,16 +1,16 @@
-@-webkit-keyframes animPage {
+@-webkit-keyframes PatientAnimation {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
 
-@-moz-keyframes animPage {
+@-moz-keyframes PatientAnimation {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
 
-@keyframes animPage { 
+@keyframes PatientAnimation { 
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
@@ -20,12 +20,12 @@
 	position: relative;
 	background: linear-gradient(270deg, #53c0a5, #4ab3bf);
 	background-size: 400% 400%;
-	-webkit-animation: animPage 30s ease infinite;
-	-moz-animation: animPage 30s ease infinite;
-	animation: animPage 30s ease infinite;
+	-webkit-animation: PatientAnimation 30s ease infinite;
+	-moz-animation: PatientAnimation 30s ease infinite;
+	animation: PatientAnimation 30s ease infinite;
 }
 
-.page-footer {
+.page-footer, .patient-footer {
 	position: fixed;
 	background: #2c4666;
 	height: 37px;
@@ -156,7 +156,11 @@
 
 /* lg (Laptop L) */ 
 @media (min-width: 1200px) {
-	.page-main, .page-patient, .page-footer {
+	.page-main, .page-footer {
+		left: 228px;	
+	}
+
+	.page-patient, .patient-footer {
 		left: 16.49vw;	
 	}
 
@@ -168,7 +172,7 @@
 		height: 100%;
 	}
 
-	.page-footer {
+	.page-footer, .patient-footer {
 		width: 83.3%;
 	}
 }

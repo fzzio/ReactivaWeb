@@ -42,27 +42,67 @@ class Web extends CI_Controller{
 		}else{
 			redirect("web/login");
 		}
-  }
+	}
 
-  public function patient(){
-		$dataHeader['PageTitle'] = "Paciente";
+	public function pacientes(){
+		if ($this->SecurityCheck()){
 
-    $data['header'] = $this->load->view('web/header', $dataHeader);
-    $data['menu'] = $this->load->view('web/menu', array());
+		$dataHeader['PageTitle'] = "Lista de pacientes";
 
-    $data['contenido'] = $this->load->view('web/patient', array());
-    $data['page-footer'] = $this->load->view('web/page-footer', array());
-  }
+	    $data['header'] = $this->load->view('web/header', $dataHeader);
+	    $data['menu'] = $this->load->view('web/menu', array());
+
+	    $data['contenido'] = $this->load->view('web/paciente-lista', array());
+	    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
+		}else{
+			redirect("web/login");
+		}
+	}
 
 
-   public function newpaciente(){
-		$dataHeader['PageTitle'] = "Paciente";
+	public function paciente(){
+		if ($this->SecurityCheck()){
 
-    $data['header'] = $this->load->view('web/header', $dataHeader);
-    $data['menu'] = $this->load->view('web/menu', array());
+			$dataHeader['PageTitle'] = "Ver paciente";
 
-    $data['contenido'] = $this->load->view('web/nuevopaciente', array());
-    $data['page-footer'] = $this->load->view('web/page-footer', array());
+		    $data['header'] = $this->load->view('web/header', $dataHeader);
+		    $data['menu'] = $this->load->view('web/menu', array());
+
+		    $data['contenido'] = $this->load->view('web/patient', array());
+		    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
+		}else{
+			redirect("web/login");
+		}
+	}
+
+
+   public function nuevoPaciente(){
+   		if ($this->SecurityCheck()){
+			$dataHeader['PageTitle'] = "Paciente";
+
+		    $data['header'] = $this->load->view('web/header', $dataHeader);
+		    $data['menu'] = $this->load->view('web/menu', array());
+
+		    $data['contenido'] = $this->load->view('web/nuevopaciente', array());
+		    $data['page-footer'] = $this->load->view('web/page-footer', array());
+
+    	}else{
+			redirect("web/login");
+		}
+  	}
+
+  public function calendar(){
+  		if ($this->SecurityCheck()){
+			$dataHeader['PageTitle'] = "Agenda";
+
+			$data['header'] = $this->load->view('web/header', $dataHeader);
+			$data['menu'] = $this->load->view('web/menu', array());
+
+			$data['contenido'] = $this->load->view('web/calendar', array());
+			$data['page-footer'] = $this->load->view('web/page-footer', array());
+    	}else{
+			redirect("web/login");
+		}
   }
 
 	public function logout(){

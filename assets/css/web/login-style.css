@@ -32,6 +32,17 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe168', endColorstr='#f5ba43', GradientType=1 );
 }
 
+@media screen and (max-width: 600px) {
+  .login-right {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+}
+
 #ra_username, #ra_password {
 	border: 0;
 	outline: 0;
