@@ -13,11 +13,11 @@
 
 
 -- Dumping database structure for reactiva
-DROP DATABASE IF EXISTS `reactiva`;
 CREATE DATABASE IF NOT EXISTS `reactiva` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `reactiva`;
 
 -- Dumping structure for table reactiva.account
+DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `id_account` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(200) NOT NULL,
@@ -33,10 +33,11 @@ CREATE TABLE IF NOT EXISTS `account` (
   UNIQUE KEY `username` (`username`),
   KEY `FK_account_rbac_group` (`id_group`),
   CONSTRAINT `FK_account_rbac_group` FOREIGN KEY (`id_group`) REFERENCES `rbac_group` (`id_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for view reactiva.account_med
+DROP VIEW IF EXISTS `account_med`;
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `account_med` (
   `id_account` INT(11) NOT NULL,
@@ -44,6 +45,7 @@ CREATE TABLE `account_med` (
 ) ENGINE=MyISAM;
 
 -- Dumping structure for table reactiva.ci_sessions
+DROP TABLE IF EXISTS `ci_sessions`;
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
@@ -54,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.game_exercise
+DROP TABLE IF EXISTS `game_exercise`;
 CREATE TABLE IF NOT EXISTS `game_exercise` (
   `id_exercise` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -63,18 +66,22 @@ CREATE TABLE IF NOT EXISTS `game_exercise` (
   PRIMARY KEY (`id_exercise`),
   KEY `FK_game_exercise_game_limb` (`id_limb`),
   CONSTRAINT `FK_game_exercise_game_limb` FOREIGN KEY (`id_limb`) REFERENCES `game_limb` (`id_limb`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.game_limb
+DROP TABLE IF EXISTS `game_limb`;
 CREATE TABLE IF NOT EXISTS `game_limb` (
   `id_limb` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `icon` varchar(50) DEFAULT NULL,
+  `description` mediumtext DEFAULT NULL,
   PRIMARY KEY (`id_limb`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.log_actions
+DROP TABLE IF EXISTS `log_actions`;
 CREATE TABLE IF NOT EXISTS `log_actions` (
   `id` int(11) NOT NULL,
   `logType` varchar(255) NOT NULL,
@@ -90,6 +97,7 @@ CREATE TABLE IF NOT EXISTS `log_actions` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient
+DROP TABLE IF EXISTS `patient`;
 CREATE TABLE IF NOT EXISTS `patient` (
   `id_patient` int(11) NOT NULL AUTO_INCREMENT,
   `ci` varchar(10) NOT NULL COMMENT 'CI',
@@ -104,16 +112,17 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id_patient`),
   UNIQUE KEY `ci` (`ci`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_consult
+DROP TABLE IF EXISTS `patient_consult`;
 CREATE TABLE IF NOT EXISTS `patient_consult` (
   `id_consult` int(11) NOT NULL AUTO_INCREMENT,
   `id_patient` int(11) NOT NULL,
   `id_doctor_created` int(11) NOT NULL,
   `id_doctor_attended` int(11) DEFAULT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_created` datetime NOT NULL,
   `date_attended` datetime DEFAULT NULL,
   `status` tinyint(4) NOT NULL COMMENT '0: Pendiente, 1: Cancelada, 2: Asistida',
   `diagnosis` text DEFAULT NULL,
@@ -124,14 +133,15 @@ CREATE TABLE IF NOT EXISTS `patient_consult` (
   CONSTRAINT `FK_patient_consult_acc_doctor` FOREIGN KEY (`id_doctor_created`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_consult_acc_doctor_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_consult_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy
+DROP TABLE IF EXISTS `patient_therapy`;
 CREATE TABLE IF NOT EXISTS `patient_therapy` (
   `id_therapy` int(11) NOT NULL AUTO_INCREMENT,
   `id_patient` int(11) NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_created` datetime NOT NULL,
   `id_doctor_created` int(11) NOT NULL COMMENT 'Doctor who assigned appointment',
   `id_doctor_attended` int(11) NOT NULL COMMENT 'Staff who attended the therapy',
   `eta` datetime NOT NULL COMMENT 'Estimated time to start',
@@ -146,10 +156,22 @@ CREATE TABLE IF NOT EXISTS `patient_therapy` (
   CONSTRAINT `FK_patient_therapy_account` FOREIGN KEY (`id_doctor_created`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_therapy_account_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_therapy_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+-- Dumping structure for table reactiva.patient_therapy_comment
+DROP TABLE IF EXISTS `patient_therapy_comment`;
+CREATE TABLE IF NOT EXISTS `patient_therapy_comment` (
+  `id_therapy` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `msg` text DEFAULT NULL,
+  PRIMARY KEY (`id_therapy`,`date`),
+  CONSTRAINT `FK_patient_therapy_comment_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy_exer
+DROP TABLE IF EXISTS `patient_therapy_exer`;
 CREATE TABLE IF NOT EXISTS `patient_therapy_exer` (
   `id_therapy` int(11) NOT NULL,
   `id_exercise` int(11) NOT NULL,
@@ -165,6 +187,7 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_exer` (
 
 -- Data exporting was unselected.
 -- Dumping structure for view reactiva.patient_therapy_list
+DROP VIEW IF EXISTS `patient_therapy_list`;
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `patient_therapy_list` (
   `full_name` VARCHAR(101) NOT NULL COLLATE 'utf8_general_ci',
@@ -172,16 +195,19 @@ CREATE TABLE `patient_therapy_list` (
 ) ENGINE=MyISAM;
 
 -- Dumping structure for table reactiva.patient_therapy_photo
+DROP TABLE IF EXISTS `patient_therapy_photo`;
 CREATE TABLE IF NOT EXISTS `patient_therapy_photo` (
   `id_therapy` int(11) NOT NULL,
-  `img` varchar(50) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `img` varchar(500) NOT NULL,
   `comment` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_therapy`,`img`),
+  PRIMARY KEY (`id_therapy`,`date`),
   CONSTRAINT `FK_patient_therapy_photo_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.rbac_group
+DROP TABLE IF EXISTS `rbac_group`;
 CREATE TABLE IF NOT EXISTS `rbac_group` (
   `id_group` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -190,6 +216,7 @@ CREATE TABLE IF NOT EXISTS `rbac_group` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.rbac_group_permission
+DROP TABLE IF EXISTS `rbac_group_permission`;
 CREATE TABLE IF NOT EXISTS `rbac_group_permission` (
   `id_group` int(11) NOT NULL,
   `id_permission` int(11) NOT NULL,
@@ -201,6 +228,7 @@ CREATE TABLE IF NOT EXISTS `rbac_group_permission` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.rbac_permission
+DROP TABLE IF EXISTS `rbac_permission`;
 CREATE TABLE IF NOT EXISTS `rbac_permission` (
   `id_permission` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
@@ -210,9 +238,10 @@ CREATE TABLE IF NOT EXISTS `rbac_permission` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.web_contact
+DROP TABLE IF EXISTS `web_contact`;
 CREATE TABLE IF NOT EXISTS `web_contact` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `date` datetime NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `message` text DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
@@ -221,11 +250,13 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
 
 -- Data exporting was unselected.
 -- Dumping structure for view reactiva.account_med
+DROP VIEW IF EXISTS `account_med`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `account_med`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `account_med` AS SELECT account.id_account, CONCAT(account.name, ' ', account.lastname) AS 'full_name' FROM account WHERE account.id_group = 4 ;
 
 -- Dumping structure for view reactiva.patient_therapy_list
+DROP VIEW IF EXISTS `patient_therapy_list`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `patient_therapy_list`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `patient_therapy_list` AS SELECT CONCAT(patient.name, ' ', patient.lastname) AS 'full_name', patient_therapy.eta FROM patient_therapy JOIN patient ON patient_therapy.id_patient = patient.id_patient JOIN patient_therapy_photo ON patient_therapy.id_therapy = patient_therapy_photo.id_therapy ;

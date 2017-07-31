@@ -11,7 +11,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping data for table reactiva.account: ~6 rows (approximately)
+-- Dumping data for table reactiva.account: ~7 rows (approximately)
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` (`id_account`, `username`, `email`, `password`, `name`, `lastname`, `last_ip`, `last_login`, `status`, `id_group`) VALUES
 	(1, 'mvelasco', 'madelyne@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Madelyne', 'Velasco', '', '0000-00-00 00:00:00', 1, 1),
@@ -23,22 +23,24 @@ INSERT INTO `account` (`id_account`, `username`, `email`, `password`, `name`, `l
 	(7, 'jcedeno', 'jcedeno@espol.edu.ec', '21232f297a57a5a743894a0e4a801fc3', 'Jorge', 'Cedeno', '', '0000-00-00 00:00:00', 0, 2);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
--- Dumping data for table reactiva.game_exercise: ~0 rows (approximately)
+-- Dumping data for table reactiva.game_exercise: ~1 rows (approximately)
 /*!40000 ALTER TABLE `game_exercise` DISABLE KEYS */;
+INSERT INTO `game_exercise` (`id_exercise`, `name`, `description`, `id_limb`, `script_name`) VALUES
+	(1, 'Osa', '<p>\r\n	wer</p>\r\n', 1, 'osa_brazo');
 /*!40000 ALTER TABLE `game_exercise` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.game_limb: ~2 rows (approximately)
 /*!40000 ALTER TABLE `game_limb` DISABLE KEYS */;
-INSERT INTO `game_limb` (`id_limb`, `name`) VALUES
-	(1, 'Brazo'),
-	(2, 'Pierna');
+INSERT INTO `game_limb` (`id_limb`, `name`, `icon`, `description`) VALUES
+	(1, 'Brazo', NULL, NULL),
+	(2, 'Pierna', NULL, NULL);
 /*!40000 ALTER TABLE `game_limb` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.log_actions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `log_actions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `log_actions` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient: ~1 rows (approximately)
+-- Dumping data for table reactiva.patient: ~3 rows (approximately)
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
 INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`, `adress`, `deleteInfo_ci`, `email`) VALUES
 	(1, '0926803990', 'Made', 'Velasco Mite', '2017-06-15', 0, '123123', '123123', 'Km 8.5 Via a Daule Cdla Colinas al Sol, Ave 1ra 317 y calle 3ra', NULL, 'm_velasco93@live.com'),
@@ -46,10 +48,10 @@ INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`,
 	(3, 'TTTTTTTTTT', 'AAAAAAAAAAAAAAAAAAA', 'AAAAAAAAAAAAAAAAAAA', '1988-06-02', 0, '999999999', '9999999999', 'AAAAAAAAAAAAAAAAAAA', NULL, 'MV@COM.C');
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient_consult: ~2 rows (approximately)
+-- Dumping data for table reactiva.patient_consult: ~3 rows (approximately)
 /*!40000 ALTER TABLE `patient_consult` DISABLE KEYS */;
 INSERT INTO `patient_consult` (`id_consult`, `id_patient`, `id_doctor_created`, `id_doctor_attended`, `date_created`, `date_attended`, `status`, `diagnosis`) VALUES
-	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-28 00:00:00', 0, NULL),
+	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-02 00:00:00', 1, NULL),
 	(16, 3, 4, NULL, '2017-06-21 14:30:45', '2007-06-21 05:36:59', 1, '<p>\r\n	ABC</p>\r\n');
 /*!40000 ALTER TABLE `patient_consult` ENABLE KEYS */;
 
@@ -61,14 +63,16 @@ INSERT INTO `patient_therapy` (`id_therapy`, `id_patient`, `date_created`, `id_d
 	(6, 1, '2017-06-21 11:20:52', 4, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', NULL, 0, 0);
 /*!40000 ALTER TABLE `patient_therapy` ENABLE KEYS */;
 
+-- Dumping data for table reactiva.patient_therapy_comment: ~0 rows (approximately)
+/*!40000 ALTER TABLE `patient_therapy_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient_therapy_comment` ENABLE KEYS */;
+
 -- Dumping data for table reactiva.patient_therapy_exer: ~0 rows (approximately)
 /*!40000 ALTER TABLE `patient_therapy_exer` DISABLE KEYS */;
 /*!40000 ALTER TABLE `patient_therapy_exer` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy_photo: ~0 rows (approximately)
 /*!40000 ALTER TABLE `patient_therapy_photo` DISABLE KEYS */;
-INSERT INTO `patient_therapy_photo` (`id_therapy`, `img`, `comment`) VALUES
-	(4, '8ff84-1016-oreos-addictive.jpg', 'Test');
 /*!40000 ALTER TABLE `patient_therapy_photo` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.rbac_group: ~5 rows (approximately)
