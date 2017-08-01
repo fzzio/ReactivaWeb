@@ -53,15 +53,6 @@
 	        <td>Erick Cedeño</td>
 	        <td>Tobillo</td>
 	      </tr>
-	      <tr>
-	      	<td>
-	      		<button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>
-	      	</td>
-	        <td>Consulta</td>
-	        <td>12-09-2017</td>
-	        <td>Daniel García</td>
-	        <td>Rodilla</td>
-	      </tr>
 	    </tbody>
 	  </table>
 		<h4 class="sub-title">Información clínica</h3>

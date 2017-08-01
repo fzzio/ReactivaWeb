@@ -12,6 +12,7 @@ class Web extends CI_Controller{
 		$this->load->library('form_validation');
 		$this->load->model('User');
 		$this->load->model('Therapy');
+		$this->load->model('Patient');
 
 		date_default_timezone_set("America/Guayaquil");
 	}
@@ -47,13 +48,16 @@ class Web extends CI_Controller{
 	public function pacientes(){
 		if ($this->SecurityCheck()){
 
-		$dataHeader['PageTitle'] = "Lista de pacientes";
+			$patients = Patient::getPatients();
+			$dataContent['patients'] = $patients;
 
-	    $data['header'] = $this->load->view('web/header', $dataHeader);
-	    $data['menu'] = $this->load->view('web/menu', array());
+			$dataHeader['PageTitle'] = "Lista de pacientes";
 
-	    $data['contenido'] = $this->load->view('web/paciente-lista', array());
-	    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
+		    $data['header'] = $this->load->view('web/header', $dataHeader);
+		    $data['menu'] = $this->load->view('web/menu', array());
+
+		    $data['contenido'] = $this->load->view('web/paciente-lista', $dataContent);
+		    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
 		}else{
 			redirect("web/login");
 		}
@@ -63,13 +67,25 @@ class Web extends CI_Controller{
 	public function paciente(){
 		if ($this->SecurityCheck()){
 
-			$dataHeader['PageTitle'] = "Ver paciente";
+			$id_paciente = $this->uri->segment(3);
 
-		    $data['header'] = $this->load->view('web/header', $dataHeader);
-		    $data['menu'] = $this->load->view('web/menu', array());
+			$paciente_obj = Patient::getPatientById($id_paciente);
 
-		    $data['contenido'] = $this->load->view('web/patient', array());
-		    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
+			if(!is_null($paciente_obj)){
+				$dataContent['paciente'] = $paciente_obj;
+
+				$dataHeader['PageTitle'] = "Paciente";
+
+			    $data['header'] = $this->load->view('web/header', $dataHeader);
+			    $data['menu'] = $this->load->view('web/menu', array());
+
+			    $data['contenido'] = $this->load->view('web/patient', $dataContent);
+			    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
+			}else{
+				redirect("web/pacientes");
+			}
+
+			
 		}else{
 			redirect("web/login");
 		}
