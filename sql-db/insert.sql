@@ -40,22 +40,20 @@ INSERT INTO `game_limb` (`id_limb`, `name`, `icon`, `description`) VALUES
 /*!40000 ALTER TABLE `log_actions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `log_actions` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient: ~3 rows (approximately)
+-- Dumping data for table reactiva.patient: ~2 rows (approximately)
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
-INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`, `adress`, `deleteInfo_ci`, `email`) VALUES
-	(1, '0926803990', 'Made', 'Velasco Mite', '2017-06-15', 0, '123123', '123123', 'Km 8.5 Via a Daule Cdla Colinas al Sol, Ave 1ra 317 y calle 3ra', NULL, 'm_velasco93@live.com'),
-	(2, '0926804006', 'Edgar', 'Moreira', '2017-01-19', 1, '042250902', '7596100742', 'Gladstone Terrace, 4', NULL, 'emoreira@gmail.com'),
-	(3, 'TTTTTTTTTT', 'AAAAAAAAAAAAAAAAAAA', 'AAAAAAAAAAAAAAAAAAA', '1988-06-02', 0, '999999999', '9999999999', 'AAAAAAAAAAAAAAAAAAA', NULL, 'MV@COM.C');
+INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`, `address`, `blood`, `rh`, `allergies`, `observations`, `illness`, `img`, `deleteInfo_ci`, `email`) VALUES
+	(1, '0926803990', 'Made', 'Velasco Mite', '1993-04-12', 0, '123123', '123123', 'Km 8.5 Via a Daule Cdla Colinas al Sol, Ave 1ra 317 y calle 3ra', 'A', '+', 'Polvo, penicilina, acetaminofén', 'No puede doblar el brazo derecho completamente', 'Rinitis alérgica aguda', '', NULL, 'm_velasco93@live.com'),
+	(2, '0926804006', 'Edgar', 'Moreira', '2017-01-19', 1, '042250902', '7596100742', 'Gladstone Terrace, 4', '', '+', '', '', '', '', NULL, 'emoreira@gmail.com');
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient_consult: ~3 rows (approximately)
+-- Dumping data for table reactiva.patient_consult: ~1 rows (approximately)
 /*!40000 ALTER TABLE `patient_consult` DISABLE KEYS */;
 INSERT INTO `patient_consult` (`id_consult`, `id_patient`, `id_doctor_created`, `id_doctor_attended`, `date_created`, `date_attended`, `status`, `diagnosis`) VALUES
-	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-02 00:00:00', 1, NULL),
-	(16, 3, 4, NULL, '2017-06-21 14:30:45', '2007-06-21 05:36:59', 1, '<p>\r\n	ABC</p>\r\n');
+	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-02 00:00:00', 1, NULL);
 /*!40000 ALTER TABLE `patient_consult` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient_therapy: ~2 rows (approximately)
+-- Dumping data for table reactiva.patient_therapy: ~3 rows (approximately)
 /*!40000 ALTER TABLE `patient_therapy` DISABLE KEYS */;
 INSERT INTO `patient_therapy` (`id_therapy`, `id_patient`, `date_created`, `id_doctor_created`, `id_doctor_attended`, `eta`, `etf`, `comment`, `sendmail`, `status`) VALUES
 	(4, 1, '2017-06-19 00:33:38', 4, 3, '2017-06-19 00:33:52', '2017-06-19 00:33:55', 'qwe', 0, 0),
@@ -85,7 +83,7 @@ INSERT INTO `rbac_group` (`id_group`, `name`) VALUES
 	(5, 'Terapista');
 /*!40000 ALTER TABLE `rbac_group` ENABLE KEYS */;
 
--- Dumping data for table reactiva.rbac_group_permission: ~16 rows (approximately)
+-- Dumping data for table reactiva.rbac_group_permission: ~18 rows (approximately)
 /*!40000 ALTER TABLE `rbac_group_permission` DISABLE KEYS */;
 INSERT INTO `rbac_group_permission` (`id_group`, `id_permission`) VALUES
 	(1, 1),
@@ -137,7 +135,7 @@ INSERT INTO `rbac_permission` (`id_permission`, `name`, `description`) VALUES
 	(24, 'Delete therapy', NULL);
 /*!40000 ALTER TABLE `rbac_permission` ENABLE KEYS */;
 
--- Dumping data for table reactiva.web_contact: ~0 rows (approximately)
+-- Dumping data for table reactiva.web_contact: ~1 rows (approximately)
 /*!40000 ALTER TABLE `web_contact` DISABLE KEYS */;
 INSERT INTO `web_contact` (`id`, `date`, `name`, `message`, `email`) VALUES
 	(1, '2017-06-18 22:09:27', 'Fernando Sánchez', 'Hola', 'fndos@gmail.com');

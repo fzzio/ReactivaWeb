@@ -13,11 +13,11 @@
 
 
 -- Dumping database structure for reactiva
+DROP DATABASE IF EXISTS `reactiva`;
 CREATE DATABASE IF NOT EXISTS `reactiva` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `reactiva`;
 
 -- Dumping structure for table reactiva.account
-DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `id_account` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(200) NOT NULL,
@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS `account` (
 
 -- Data exporting was unselected.
 -- Dumping structure for view reactiva.account_med
-DROP VIEW IF EXISTS `account_med`;
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `account_med` (
   `id_account` INT(11) NOT NULL,
@@ -45,7 +44,6 @@ CREATE TABLE `account_med` (
 ) ENGINE=MyISAM;
 
 -- Dumping structure for table reactiva.ci_sessions
-DROP TABLE IF EXISTS `ci_sessions`;
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
@@ -56,7 +54,6 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.game_exercise
-DROP TABLE IF EXISTS `game_exercise`;
 CREATE TABLE IF NOT EXISTS `game_exercise` (
   `id_exercise` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -70,7 +67,6 @@ CREATE TABLE IF NOT EXISTS `game_exercise` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.game_limb
-DROP TABLE IF EXISTS `game_limb`;
 CREATE TABLE IF NOT EXISTS `game_limb` (
   `id_limb` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -81,7 +77,6 @@ CREATE TABLE IF NOT EXISTS `game_limb` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.log_actions
-DROP TABLE IF EXISTS `log_actions`;
 CREATE TABLE IF NOT EXISTS `log_actions` (
   `id` int(11) NOT NULL,
   `logType` varchar(255) NOT NULL,
@@ -97,7 +92,6 @@ CREATE TABLE IF NOT EXISTS `log_actions` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient
-DROP TABLE IF EXISTS `patient`;
 CREATE TABLE IF NOT EXISTS `patient` (
   `id_patient` int(11) NOT NULL AUTO_INCREMENT,
   `ci` varchar(10) NOT NULL COMMENT 'CI',
@@ -107,7 +101,13 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `gender` tinyint(4) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `cellphone` varchar(50) NOT NULL,
-  `adress` text NOT NULL,
+  `address` text NOT NULL,
+  `blood` varchar(2) NOT NULL DEFAULT 'O',
+  `rh` varchar(1) NOT NULL DEFAULT '+',
+  `allergies` text NOT NULL,
+  `observations` text NOT NULL,
+  `illness` text NOT NULL,
+  `img` varchar(200) NOT NULL,
   `deleteInfo_ci` varchar(10) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id_patient`),
@@ -116,7 +116,6 @@ CREATE TABLE IF NOT EXISTS `patient` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_consult
-DROP TABLE IF EXISTS `patient_consult`;
 CREATE TABLE IF NOT EXISTS `patient_consult` (
   `id_consult` int(11) NOT NULL AUTO_INCREMENT,
   `id_patient` int(11) NOT NULL,
@@ -137,7 +136,6 @@ CREATE TABLE IF NOT EXISTS `patient_consult` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy
-DROP TABLE IF EXISTS `patient_therapy`;
 CREATE TABLE IF NOT EXISTS `patient_therapy` (
   `id_therapy` int(11) NOT NULL AUTO_INCREMENT,
   `id_patient` int(11) NOT NULL,
@@ -160,7 +158,6 @@ CREATE TABLE IF NOT EXISTS `patient_therapy` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy_comment
-DROP TABLE IF EXISTS `patient_therapy_comment`;
 CREATE TABLE IF NOT EXISTS `patient_therapy_comment` (
   `id_therapy` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp(),
@@ -171,7 +168,6 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_comment` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy_exer
-DROP TABLE IF EXISTS `patient_therapy_exer`;
 CREATE TABLE IF NOT EXISTS `patient_therapy_exer` (
   `id_therapy` int(11) NOT NULL,
   `id_exercise` int(11) NOT NULL,
@@ -187,7 +183,6 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_exer` (
 
 -- Data exporting was unselected.
 -- Dumping structure for view reactiva.patient_therapy_list
-DROP VIEW IF EXISTS `patient_therapy_list`;
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `patient_therapy_list` (
   `full_name` VARCHAR(101) NOT NULL COLLATE 'utf8_general_ci',
@@ -195,7 +190,6 @@ CREATE TABLE `patient_therapy_list` (
 ) ENGINE=MyISAM;
 
 -- Dumping structure for table reactiva.patient_therapy_photo
-DROP TABLE IF EXISTS `patient_therapy_photo`;
 CREATE TABLE IF NOT EXISTS `patient_therapy_photo` (
   `id_therapy` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp(),
@@ -207,7 +201,6 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_photo` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.rbac_group
-DROP TABLE IF EXISTS `rbac_group`;
 CREATE TABLE IF NOT EXISTS `rbac_group` (
   `id_group` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -216,7 +209,6 @@ CREATE TABLE IF NOT EXISTS `rbac_group` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.rbac_group_permission
-DROP TABLE IF EXISTS `rbac_group_permission`;
 CREATE TABLE IF NOT EXISTS `rbac_group_permission` (
   `id_group` int(11) NOT NULL,
   `id_permission` int(11) NOT NULL,
@@ -228,7 +220,6 @@ CREATE TABLE IF NOT EXISTS `rbac_group_permission` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.rbac_permission
-DROP TABLE IF EXISTS `rbac_permission`;
 CREATE TABLE IF NOT EXISTS `rbac_permission` (
   `id_permission` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
@@ -238,7 +229,6 @@ CREATE TABLE IF NOT EXISTS `rbac_permission` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.web_contact
-DROP TABLE IF EXISTS `web_contact`;
 CREATE TABLE IF NOT EXISTS `web_contact` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` datetime NOT NULL,
@@ -250,13 +240,11 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
 
 -- Data exporting was unselected.
 -- Dumping structure for view reactiva.account_med
-DROP VIEW IF EXISTS `account_med`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `account_med`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `account_med` AS SELECT account.id_account, CONCAT(account.name, ' ', account.lastname) AS 'full_name' FROM account WHERE account.id_group = 4 ;
 
 -- Dumping structure for view reactiva.patient_therapy_list
-DROP VIEW IF EXISTS `patient_therapy_list`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `patient_therapy_list`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `patient_therapy_list` AS SELECT CONCAT(patient.name, ' ', patient.lastname) AS 'full_name', patient_therapy.eta FROM patient_therapy JOIN patient ON patient_therapy.id_patient = patient.id_patient JOIN patient_therapy_photo ON patient_therapy.id_therapy = patient_therapy_photo.id_therapy ;
