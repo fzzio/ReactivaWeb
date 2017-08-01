@@ -33,6 +33,9 @@
 	top: 95vh;
 }
 
+.mayusc{
+	text-transform: uppercase;
+}
 .page-center {
 	position: absolute;
 	bottom: 1.4vh;
@@ -123,6 +126,24 @@
 	background: #1d3651;
 }
 
+.pag-nav{
+	color: white;
+}
+.glyphicon-ring{
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	border: none;
+	color: white;
+	display: inline-table;
+	text-align: center;
+}
+
+.glyphicon-ring .glyphicon-bordered {
+  font-size: 15px;
+  vertical-align: middle;
+  display: table-cell;
+}
 
 .btn-nuevo:hover, .btn-nuevo:active, .btn-nuevo:focus {
 	color: white;

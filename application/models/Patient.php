@@ -261,6 +261,36 @@ class Patient extends CI_Model{
 		}
 	}
 
+	public function record_count() {
+        return $this->db->count_all("Patient");
+    }
+
+    public function fetch_patients($limit, $start) {
+    	$instance_CI =& get_instance();
+
+		$patients = null;
+
+		$instance_CI->db->select("patient.id_patient, patient.name, patient.lastname, DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(patient.born, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(patient.born, '00-%m-%d')) as `age`, patient.ci, patient.email");
+		$instance_CI->db->from('patient');
+		$instance_CI->db->limit($limit, $start);
+			$patients = $instance_CI->db->get()->result_array();
+
+        if(!is_null($patients)){
+        	$patients_obj_array = array();
+            foreach ($patients as $pax) {
+                $patients_obj_array[] = array(
+					'id_patient'=>$pax['id_patient'],
+					'name'=>$pax['name'],
+					'lastname'=>$pax['lastname'],
+					'born'=>$pax['age'],
+					'ci'=>$pax['ci'],
+					'email'=>$pax['email']);
+            }
+            return $patients_obj_array;
+        }
+        return null;
+   }
+
 	/*DATABASE GETTING FUNCTIONS ENDS*/
 }
 

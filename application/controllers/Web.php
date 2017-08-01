@@ -10,6 +10,7 @@ class Web extends CI_Controller{
 		$this->load->helper('form');
 		$this->load->helper(array('url'));
 		$this->load->library('form_validation');
+		$this->load->library('pagination');
 		$this->load->model('User');
 		$this->load->model('Therapy');
 		$this->load->model('Patient');
@@ -48,8 +49,27 @@ class Web extends CI_Controller{
 	public function pacientes(){
 		if ($this->SecurityCheck()){
 
-			$patients = Patient::getPatients();
-			$dataContent['patients'] = $patients;
+			$config = array();
+			$config["base_url"] = site_url() . "/web/pacientes";
+			$config["total_rows"] = $this->Patient->record_count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 5;
+   			$config['prev_link'] = "<span class = 'glyphicon glyphicon-chevron-left ml-5'></span>";
+   			$config['next_link'] = "<span class = 'glyphicon glyphicon-chevron-right ml-5'></span>";
+   			$config['cur_tag_open'] = "<b class = 'ml-5'>";
+   			$config['cur_tag_close'] = '</b>';
+   			$config['num_tag_open'] = "<a class = 'ml-5'>";
+   			$config['num_tag_close'] = '</a>';
+   			$config['full_tag_open'] = "<div class = 'pag-nav'>";
+   			$config['full_tag_close'] = '</div>';
+
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+			$dataContent["results"] = $this->Patient->fetch_patients($config["per_page"], $page);
+       		$dataContent["links"] = $this->pagination->create_links();
+
 
 			$dataHeader['PageTitle'] = "Lista de pacientes";
 
@@ -111,14 +131,24 @@ class Web extends CI_Controller{
 
   	public function editarPaciente(){
    		if ($this->SecurityCheck()){
-			$dataHeader['PageTitle'] = "Paciente";
+   			
+   			$id_paciente = $this->uri->segment(3);
 
-		    $data['header'] = $this->load->view('web/header', $dataHeader);
-		    $data['menu'] = $this->load->view('web/menu', array());
+			$paciente_obj = Patient::getPatientById($id_paciente);
 
-		    $data['contenido'] = $this->load->view('web/editpaciente', array());
-		    $data['page-footer'] = $this->load->view('web/page-footer', array());
+			if(!is_null($paciente_obj)){
+				$dataContent['paciente'] = $paciente_obj;
 
+				$dataHeader['PageTitle'] = "Paciente";
+
+			    $data['header'] = $this->load->view('web/header', $dataHeader);
+			    $data['menu'] = $this->load->view('web/menu', array());
+
+			    $data['contenido'] = $this->load->view('web/editpaciente', $dataContent);
+			    $data['page-footer'] = $this->load->view('web/page-footer', array());
+		    }else{
+				redirect("web/pacientes");
+			}
     	}else{
 			redirect("web/login");
 		}

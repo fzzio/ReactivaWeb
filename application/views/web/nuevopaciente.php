@@ -1,4 +1,4 @@
-<div id="page-wrapper" class="page-main col-md-10">
+<div id="page-wrapper" class="page-patient col-md-10">
 	<div class="col-md-11">
 	<?php echo form_open_multipart('web/newPatient' , array('id' => 'frm-new')); ?>
 		<div class="row">
@@ -7,12 +7,12 @@
 			</div>
 			<div class="col-md-2 mt-20">
 				<button type="submit" class="btn btn-default btn-primary btn-general">
-					<span class="glyphicon glyphicon-download-alt " aria-hidden="true"></span>Guardar
+					<span class="glyphicon glyphicon-download-alt " aria-hidden="true"></span> Guardar
 				</button>
 			</div>
 			<div class="col-md-2 mt-20">
 				<a type="button" class="btn btn-default btn-danger btn-general" >
-					<span class="glyphicon glyphicon-remove-sign " aria-hidden="true"></span>Cancelar
+					<span class="glyphicon glyphicon-remove-sign " aria-hidden="true"></span> Cancelar
 				</a>
 			</div>
 		</div>
