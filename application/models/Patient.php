@@ -13,6 +13,9 @@ class Patient extends CI_Model{
 	private $address;
 	private $deleteInfo_ci;
 	private $email;
+	private $blood;
+	private $allergies;
+	private $imagen;
 
 	function __construct() {
 		parent::__construct();
@@ -108,13 +111,37 @@ class Patient extends CI_Model{
 		$this->email = $email;
 	}
 
+	public function getBlood(){
+		return $this->blood;
+	}
+
+	public function setBlood($blood){
+		$this->blood = $blood;
+	}
+
+	public function getAllergies(){
+		return $this->allergies;
+	}
+
+	public function setAllergies($allergies){
+		$this->allergies = $allergies;
+	}
+
+	public function getImagen(){
+		return $this->imagen;
+	}
+
+	public function setImagen($imagen){
+		$this->imagen = $imagen;
+	}
+
 	/* MODEL'S SETTERS AND GETTERS */
 
 	public function getPatient(){
 		return $this;
 	}
 
-	public function setPatient($ID, $CI, $name, $lastname, $born, $gender, $phone, $cellphone, $address, $deleteInfo_ci, $email){
+	public function setPatient($ID, $CI, $name, $lastname, $born, $gender, $phone, $cellphone, $address, $deleteInfo_ci, $email, $blood, $allergies, $imagen){
 		$this->setID($ID);
 		$this->setCI($CI);
 		$this->setName($name);
@@ -126,6 +153,9 @@ class Patient extends CI_Model{
 		$this->setAddress($address);
 		$this->setDeleteInfo_ci($deleteInfo_ci);
 		$this->setEmail($email);
+		$this->setBlood($blood);
+		$this->setAllergies($allergies);
+		$this->setImagen($imagen);
 	}
 
 	/*DATABASE GETTING FUNCTIONS*/
@@ -136,7 +166,7 @@ class Patient extends CI_Model{
 
 			$patient = null;
 
-			$instance_CI->db->select('patient.id_patient, patient.ci, patient.name, patient.lastname, patient.born, patient.gender, patient.phone, patient.cellphone, patient.address, patient.deleteInfo_ci, patient.email');
+			$instance_CI->db->select('patient.id_patient, patient.ci, patient.name, patient.lastname, patient.born, patient.gender, patient.phone, patient.cellphone, patient.address, patient.deleteInfo_ci, patient.email, patient.blood, patient.allergies, patient.img');
 			$instance_CI->db->from('patient');
 			$instance_CI->db->where('patient.id_patient', $id_patient);
 			$patient = $instance_CI->db->get()->row();
@@ -155,7 +185,10 @@ class Patient extends CI_Model{
 					$patient->cellphone,
 					$patient->address,
 					$patient->deleteInfo_ci,
-					$patient->email);
+					$patient->email,
+					$patient->blood,
+					$patient->allergies,
+					($patient->img != "") ? base_url('assets/uploads/patient/').$patient->img : base_url('assets/img/web/rea-profile.png'));
 				return $patient_obj;
 			}else{
 				return null;

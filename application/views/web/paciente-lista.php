@@ -19,7 +19,7 @@
 			<?php foreach($patients as $pax){ ?>
 			<tr>
 				<td>
-					<a type="button" href="<?php echo site_url('web/paciente'); ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>
+					<a type="button" href="<?php echo site_url('web/paciente/').$pax['id_patient']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>
 					<button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-pencil"></span></button>
 					<button type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
 				</td>
