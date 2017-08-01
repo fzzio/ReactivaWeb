@@ -20,10 +20,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/login-style.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/patient-style.css'); ?>">
 
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/nuevopaciente.css'); ?>">
-
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/calendar-style.css'); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/nuevopaciente.css'); ?>
+
 
 </head>
 <body>

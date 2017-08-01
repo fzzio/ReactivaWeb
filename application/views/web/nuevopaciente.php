@@ -1,204 +1,181 @@
-<div id="page-wrapper" class="page-main col-lg-10 col-md-10">
-	<div class="col-lg-9 col-md-9 container">
-			<div>
-				<div>
-					<div class="row">
-						<div class="col-sm-6 col-md-8">
-							<h1 class="titulosfont">Nuevo registro de paciente</h1>	
-						</div>
-						<div class="col-sm-3 col-md-2 dosbtns">
-							<div id="btnguardar">
-								<button type="button" class="btn btn-default btn-md" id="btnsavenewpat">
-									<span class="glyphicon glyphicon-download-alt btntextwiht" aria-hidden="true"></span><b class="btntextwiht">  GUARDAR</b>
-								</button>
-							</div>
-						</div>
-						<div class="col-sm-3 col-md-2 dosbtns">
-							<div id="btncancelar">
-								<button type="button" class="btn btn-default btn-md" id="btncancelarnewpat">
-									<span class="glyphicon glyphicon-remove-sign btntextwiht" aria-hidden="true"></span><b class="btntextwiht"> CANCELAR</b>
-								</button>
-							</div>
-						</div>
-					</div>
-					<section>
-						<div class="datapersonal">
-							<h2 class="titulosfont">Datos personales y de contacto</h2>
-							<hr>
-						</div>
-						<div class="form-horizontal">
-							<div class="col-sm-2 col-md-2">
-								<!-- <div class="datoscontacto imagenclass"> -->
-								<form>
-									<div class="form-group" id="dataphoto" >
-										<!-- <img src="img/profile.png"> -->
-										<div class="cuadrado"></div>
-										<div>
-											<div>
-												<button class="btn btn-primary btn-xs btnimg">Tomar Foto</button>
-												<!-- <input type="file" name="userphoto" class="input-file" /> -->
-											</div>
-											<div>
-												<button class="btn btn-primary btn-xs btnimg">Subir Archivo</button>
-												<!-- <span>
-													<label class="btn btn-primary btn-xs input-file">
-													<input type="file" id="input-photo"  class="input-file"/>Subir Archivo</label>
-												</span> -->
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-							<!-- <div class="datoscontacto infopersonal"> -->
-
-							<div class="col-sm-6 col-md-6">
-								<div class="form-group">
-									<label  class="col-sm-5 control-label textlabels">Nombres</label>
-									<div class="col-sm-7">
-										<input  class="form-control inputbasic input-sm" type="text">
-									</div>
-								</div>
-								<div class="form-group">
-									<label  class="col-sm-5 control-label">Apellidos</label>
-									<div class="col-sm-7">
-										<input  class="form-control inputbasic input-sm" type="text">
-									</div>
-								</div>
-								<div class="form-group">
-									<label  class="col-sm-5 control-label">Ced/RUC</label>
-									<div class="col-sm-7">
-										<input class="form-control inputbasic input-sm" type="text">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-5  control-label">Fecha nac</label>
-									<div class="col-sm-7">
-										<div class="col-sm-4 col-md-4" id="inputdia">
-											<input class=" col-sm-4 form-control inputbasic input-sm" type="text" placeholder="DD">
-										</div>
-										<div class="col-sm-4 col-md-4" id="inputmes">
-											<input class=" col-sm-4 form-control inputbasic input-sm" type="text" placeholder="MM">
-										</div>
-										<div class="col-sm-4 col-md-4" id="inputanio">
-											<input class=" col-sm-4 form-control inputbasic input-sm" type="text" placeholder="AA">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-5 control-label">Cont emerg</label>
-									<div class="col-sm-7">
-										<input class="form-control inputbasic input-sm" type="text">
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-4 col-md-4">
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Telf fijo</label>
-									<div class="col-sm-8">
-										<input class="form-control inputcontact input-sm" type="text">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Celular</label>
-									<div class="col-sm-8">
-										<input class="form-control inputcontact input-sm" type="text">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Email</label>
-									<div class="col-sm-8">
-										<input class="form-control inputcontact input-sm" type="text">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Domicilio</label>
-									<div class="col-sm-8">
-										<input class="form-control inputcontact input-sm" type="text">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Telf contacto</label>
-									<div class="col-sm-8">
-										<input class="form-control inputcontact input-sm" type="text">
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section>
-						<h2 class="titulosfont">Información clínica</h2>
-						<hr>
-						<div class="form-horizontal">
-							
-						
-							<div class="row">
-								<div class="form-group col-md-4">
-									<label class="col-sm-4 control-label">Sexo</label>
-									<div class="col-sm-8">
-										<select class="form-control selectfontc input-sm" >
-											<option>Sleccionar</option>
-											<option>Masculino</option>
-											<option>Femenino</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group col-md-8">
-									<label  class="col-sm-4 control-label">Alergias a medicamentos</label>
-									<div class="form-horizontal">
-										<div class="col-sm-3">
-											<select class="form-control selectfontc input-sm" >
-												<option>Si</option>
-												<option>No</option>
-											</select>
-										</div>
-										<div class="col-sm-5">
-											<input class="form-control input-sm" type="text" placeholder="Especifique">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="form-group col-md-4">
-									<label class="col-sm-4 control-label">Tipo Sangre</label>
-									<div class="col-sm-8">
-										<select class="form-control selectfontc input-sm" >
-											<option>Sleccionar</option>
-											<option>O+</option>
-											<option>B+</option>
-											<option>B-</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group col-md-8">	
-										<label class="col-sm-4 col-md-4 control-label">Otras Alergias</label>
-										<div class="col-sm-3 col-md-3">
-											<select class="form-control selectfontc input-sm" data-width="15%" >
-												<option>Si</option>
-												<option>No</option>
-											</select>
-										</div>
-										<div class="col-sm-5 col-md-5">
-											<input class="form-control input-sm" type="text"  placeholder="Especifique">
-										</div>
-								</div>
-							</div>
-								
-							
-							<div class="row">
-							
-									<div class="col-sm-6 col-md-6">
-													<label class="col-sm-6 col-md-6">Enfermedades</label>
-													<textarea class="col-sm-6 col-md-6 form-control selectfontc textareaf" rows="2"></textarea>
-									</div>
-									<div class="col-sm-6 col-md-6">
-													<label class="col-sm-6 col-md-6">Observaciones</label>
-													<textarea class="col-sm-6 col-md-6 form-control selectfontc textareaf" rows="2"></textarea>
-									</div>
-							</div>
-						</div>
-					</section>
-				</div>	
+<div id="page-wrapper" class="page-main col-md-10">
+	<div class="col-md-11">
+	<?php echo form_open_multipart('web/newPatient' , array('id' => 'frm-new')); ?>
+		<div class="row">
+			<div class="col-md-8">
+				<h3 class="title">Nuevo registro de paciente</h3>
+			</div>
+			<div class="col-md-2 mt-20">
+				<button type="button" class="btn btn-default btn-primary btn-general">
+					<span class="glyphicon glyphicon-download-alt " aria-hidden="true"></span>Guardar
+				</button>
+			</div>
+			<div class="col-md-2 mt-20">
+				<a type="button" class="btn btn-default btn-danger btn-general" >
+					<span class="glyphicon glyphicon-remove-sign " aria-hidden="true"></span>Cancelar
+				</a>
 			</div>
 		</div>
+
+		<div class = 'row'>
+			<h4 class = 'title'>Datos personales y de contacto</h4>
+			<hr>
+		</div>
+		<div class = 'row'>
+			<div class = 'col-md-2'>
+				<img src = "<?php echo base_url('assets/img/web/rea-profile.png'); ?>" class ="img-responsive ">
+				<label class="btn btn-primary btn-upload" for="my-file-selector">
+				    <input id="my-file-selector" type="file" style="display:none" 
+				    onchange="$('#upload-file-info').html(this.files[0].name)">
+				    Subir archivo
+				</label>
+<span class='label label-info' id="upload-file-info"></span>
+			</div>
+			<div class = 'col-md-5'>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-name" class = 'pax-label'>Nombres</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-name" name= 'pax-name' required="true">
+						</div>
+				
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-lastname" class = 'pax-label'>Apellidos</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-lastname" name= 'pax-lastname' required="true">
+						</div>
+				
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-ci" class = 'pax-label'>Cédula</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-ci" name= 'pax-ci' required="true">
+						</div>
+				
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-born" class = 'pax-label'>Fecha de nacimiento</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-born" name= 'pax-born' required="true">
+						</div>
+				
+					</div>
+				</div>
+			</div>
+			<div class = 'col-md-5'>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-phone" class = 'pax-label'>Teléfono</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-phone" name= 'pax-phone' required="true">
+						</div>
+				
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-cellphone" class = 'pax-label'>Celular</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-cellphone" name= 'pax-cellphone' required="true">
+						</div>
+				
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-mail" class = 'pax-label'>Mail</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-mail" name= 'pax-mail' required="true">
+						</div>
+				
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-address" class = 'pax-label'>Domicilio</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-address" name= 'pax-address' required="true">
+						</div>
+				
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class = 'row'>
+			<h4 class = 'title'>Información clínica</h4>
+			<hr>
+		</div>
+		<div class = 'row'>
+			<div class = 'col-md-4'>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-gender" class = 'pax-label'>Sexo</label>
+						</div>
+							<div class = 'col-xs-8'>
+							<select id="pax-gender" class="form-control patient-input" name="pax-gender">
+								<option id= '0' value = '0'>Femenino</option>
+								<option id= '1' value = '1'>Masculino</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="dish-servido" class = 'pax-label'>Tipo de sangre</label>
+						</div>
+							<div class = 'col-xs-8'>
+							<select id="dish-servido" class="form-control patient-input" name="pax-blood">
+								<option id= 'A' value = 'A'>A</option>
+								<option id= 'B' value = 'B'>B</option>
+								<option id= 'O' value = 'O'>O</option>
+								<option id= 'AB' value = 'AB'>AB</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class = 'col-md-8'>
+			</div>
+		</div>
+		<div class = 'row'>
+			<div class = 'col-md-6'>
+				<div class="form-group">
+					<label for="dish-description" class = 'pax-label'>Alergias</label>
+					<textarea class="form-control patient-input" id="dish-description" name = 'dish-description' rows="2"></textarea>
+				</div>
+			</div>
+			<div class = 'col-md-6'>
+				<div class="form-group">
+					<label for="dish-description" class = 'pax-label'>Observaciones y comentarios</label>
+					<textarea class="form-control patient-input" id="dish-description" name = 'dish-description' rows="2" ></textarea>
+				</div>
+			</div>
+		</div>
+	<?php echo form_close(); ?>
+	</div>
 </div>

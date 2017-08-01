@@ -54,6 +54,13 @@
 	display: block;
 }
 
+.pax-label{
+	color: #2C4666;
+	font-weight: bold;
+	text-align: right !important;
+	display: block;
+}
+
 .patient-content{
 	color: #2C4666;
 }
@@ -69,12 +76,24 @@
 	border-width: 1px;
 }
 
+.btn-upload{
+	background-color:#193751;
+}
+
+.btn-general{
+	color: white;
+	width: 150px;
+}
 .title-3 {
 	font-weight: bold;
 	color: #1d3651;
 }
 
-
+.patient-input{
+	border-radius: 0px;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.30);
+}
 .patient {
 	background: #90d6cb;
 	border-radius: 4px;
@@ -104,16 +123,6 @@
 	background: #1d3651;
 }
 
-.patient-input, .patient-input:focus {
-	background-color:transparent;
-	border-style: none;
-}
-
-.patient-textarea {
-	background: #97ced1;
-	border-style: none;
-	border-radius: 2px;
-}
 
 .btn-nuevo:hover, .btn-nuevo:active, .btn-nuevo:focus {
 	color: white;

@@ -107,6 +107,21 @@ class Web extends CI_Controller{
 		}
   	}
 
+  	public function editarPaciente(){
+   		if ($this->SecurityCheck()){
+			$dataHeader['PageTitle'] = "Paciente";
+
+		    $data['header'] = $this->load->view('web/header', $dataHeader);
+		    $data['menu'] = $this->load->view('web/menu', array());
+
+		    $data['contenido'] = $this->load->view('web/editpaciente', array());
+		    $data['page-footer'] = $this->load->view('web/page-footer', array());
+
+    	}else{
+			redirect("web/login");
+		}
+  	}
+
   public function calendar(){
   		if ($this->SecurityCheck()){
 			$dataHeader['PageTitle'] = "Agenda";

@@ -1,11 +1,11 @@
 <!-- Page Content -->
 <div id="page-wrapper" class="page-patient col-lg-10 col-md-10">
-	<div class="col-md-10">
+	<div class="col-md-11">
 		<h3 class="title">Datos del Paciente</h3>
 		<div class="row">
 			<div class="col-md-2">
-				<button type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-pencil"></span>Editar datos</button>
-				<button type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove"></span>Eliminar</button>
+				<button type="button" class="btn btn-success btn-general"><span class="glyphicon glyphicon-pencil"></span>Editar datos</button>
+				<button type="button" class="btn btn-danger btn-general"><span class="glyphicon glyphicon-remove"></span>Eliminar</button>
 				<img src = "<?php echo $paciente->getImagen() ?>" class ="img-responsive ">
 			</div>
 			<div class = 'col-md-4'>
