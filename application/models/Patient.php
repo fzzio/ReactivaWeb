@@ -16,6 +16,9 @@ class Patient extends CI_Model{
 	private $blood;
 	private $allergies;
 	private $imagen;
+	private $rh;
+	private $observations;
+	private $illness;
 
 	function __construct() {
 		parent::__construct();
@@ -135,13 +138,39 @@ class Patient extends CI_Model{
 		$this->imagen = $imagen;
 	}
 
-	/* MODEL'S SETTERS AND GETTERS */
+	public function getRh(){
+		return $this->rh;
+	}
+
+	public function setRh($rh){
+		$this->rh = $rh;
+	}
+
+	public function getObservations(){
+		return $this->observations;
+	}
+
+	public function setObservations($observations){
+		$this->observations = $observations;
+	}
+
+	public function getIllness(){
+		return $this->illness;
+	}
+
+	public function setIllness($illness){
+		$this->illness = $illness;
+	}
+
+	/*ATTRIBUTE'S GETTERS AND SETTERS ENDS */
+
+	/* MODEL'S SETTERS AND GETTERS STARTS*/
 
 	public function getPatient(){
 		return $this;
 	}
 
-	public function setPatient($ID, $CI, $name, $lastname, $born, $gender, $phone, $cellphone, $address, $deleteInfo_ci, $email, $blood, $allergies, $imagen){
+	public function setPatient($ID, $CI, $name, $lastname, $born, $gender, $phone, $cellphone, $address, $deleteInfo_ci, $email, $blood, $allergies, $imagen, $rh, $observations, $illness){
 		$this->setID($ID);
 		$this->setCI($CI);
 		$this->setName($name);
@@ -156,9 +185,14 @@ class Patient extends CI_Model{
 		$this->setBlood($blood);
 		$this->setAllergies($allergies);
 		$this->setImagen($imagen);
+		$this->setRh($rh);
+		$this->setObservations($observations);
+		$this->setIllness($illness);
 	}
 
-	/*DATABASE GETTING FUNCTIONS*/
+	/*MODEL'S SETTERS AND GETTERS ENDS*/
+
+	/*DATABASE GETTING FUNCTIONS STARTS*/
 
 	public static function getPatientById($id_patient){
 		if (!is_null($id_patient)){
@@ -166,7 +200,7 @@ class Patient extends CI_Model{
 
 			$patient = null;
 
-			$instance_CI->db->select('patient.id_patient, patient.ci, patient.name, patient.lastname, patient.born, patient.gender, patient.phone, patient.cellphone, patient.address, patient.deleteInfo_ci, patient.email, patient.blood, patient.allergies, patient.img');
+			$instance_CI->db->select('patient.id_patient, patient.ci, patient.name, patient.lastname, patient.born, patient.gender, patient.phone, patient.cellphone, patient.address, patient.deleteInfo_ci, patient.email, patient.blood, patient.allergies, patient.img, patient.rh, patient.observations, patient.illness');
 			$instance_CI->db->from('patient');
 			$instance_CI->db->where('patient.id_patient', $id_patient);
 			$patient = $instance_CI->db->get()->row();
@@ -188,7 +222,10 @@ class Patient extends CI_Model{
 					$patient->email,
 					$patient->blood,
 					$patient->allergies,
-					($patient->img != "") ? base_url('assets/uploads/patient/').$patient->img : base_url('assets/img/web/rea-profile.png'));
+					($patient->img != "") ? base_url('assets/uploads/patient/').$patient->img : base_url('assets/img/web/rea-profile.png'),
+					$patient->rh,
+					$patient->observations,
+					$patient->illness);
 				return $patient_obj;
 			}else{
 				return null;
@@ -223,6 +260,8 @@ class Patient extends CI_Model{
 			return null;
 		}
 	}
+
+	/*DATABASE GETTING FUNCTIONS ENDS*/
 }
 
 ?>

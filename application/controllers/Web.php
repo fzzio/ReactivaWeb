@@ -107,6 +107,8 @@ class Web extends CI_Controller{
 		}
   	}
 
+
+
   	public function editarPaciente(){
    		if ($this->SecurityCheck()){
 			$dataHeader['PageTitle'] = "Paciente";
@@ -122,8 +124,8 @@ class Web extends CI_Controller{
 		}
   	}
 
-  public function calendar(){
-  		if ($this->SecurityCheck()){
+	public function calendar(){
+			if ($this->SecurityCheck()){
 			$dataHeader['PageTitle'] = "Agenda";
 
 			$data['header'] = $this->load->view('web/header', $dataHeader);
@@ -131,10 +133,10 @@ class Web extends CI_Controller{
 
 			$data['contenido'] = $this->load->view('web/calendar', array());
 			$data['page-footer'] = $this->load->view('web/page-footer', array());
-    	}else{
+		}else{
 			redirect("web/login");
 		}
-  }
+	}
 
 	public function logout(){
 		if ($this->SecurityCheck()){
@@ -145,6 +147,73 @@ class Web extends CI_Controller{
 			redirect("web/login");
 		}
 	}
+	/*FORM UPLOAD STARTS*/
+	public function newPatient(){
+  		//Start upload config
+		$config['upload_path']          = 'assets/uploads/dishes/';
+        $config['allowed_types']        = 'gif|jpeg|jpg|png|tiff';
+        $config['max_size']             = 2048;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+        $config['encrypt_name']			= TRUE;
+        $config['remove_spaces']		= TRUE;
+        $config['detect_mime']			= TRUE;
+        //End config upload
+
+        $img = "";
+
+        $name = $this->input->post("pax-name");
+        $lastname = $this->input->post("pax-lastname");
+        $ci = $this->input->post("pax-ci");
+        $dd_born = $this->input->post("pax-born-dd");
+        $mm_born = $this->input->post("pax-born-mm");
+        $yy_born =$this->input->post("pax-born-yy");
+        $phone = $this->input->post("pax-phone");
+        $cellphone = $this->input->post("pax-cellphone");
+        $mail = $this->input->post("pax-mail");
+        $address = $this->input->post("pax-address");
+        $gender = $this->input->post("pax-gender");
+        $blood = $this->input->post("pax-blood");
+        $rh = $this->input->post("pax-rh");
+        $allergies = $this->input->post("pax-allergies");
+        $illness = $this->input->post("pax-illness");
+        $observations = $this->input->post("pox-observation");
+
+        $this->load->library('upload', $config);
+
+        if($this->upload->do_upload("pax-photo")) {
+            $img_data = $this->upload->data();
+            $img = $img_data["file_name"];
+        }
+
+
+        $data = array(
+        	'ci'=>$ci,
+        	'name'=>$name,
+        	'lastname'=>$lastname,
+        	'born'=>$yy_born.'-'.$mm_born.'-'.$dd_born,
+        	'gender'=>$gender,
+        	'phone'=>$phone,
+        	'cellphone'=>$cellphone,
+        	'address'=>$address,
+        	'blood'=>$blood,
+        	'rh'=>$rh,
+        	'allergies'=>$allergies,
+        	'observations'=>$observations,
+        	'illness'=>$illness,
+        	'img'=>$img,
+        	'email'=>$mail,
+        	);
+
+        $this->db->insert('patient', $data);
+        $id_patient = $this->db->insert_id();
+
+        redirect("web/paciente/".$id_patient);
+
+  	}
+
+	/*FORM UPLOAD ENDS*/
+
 
 	 /* Helpers starts*/
 

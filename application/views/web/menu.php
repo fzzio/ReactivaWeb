@@ -13,9 +13,6 @@
 			<li>
 				<a href="#">Diagnósticos</a>
 			</li>
-			<li>
-				<a href="#">Opcion 4</a>
-			</li>
 			<li id="logout">
 				<a href="<?php echo site_url('web/logout'); ?>">Cerrar sesión</a>
 			</li>

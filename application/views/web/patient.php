@@ -4,8 +4,8 @@
 		<h3 class="title">Datos del Paciente</h3>
 		<div class="row">
 			<div class="col-md-2">
-				<button type="button" class="btn btn-success btn-general"><span class="glyphicon glyphicon-pencil"></span>Editar datos</button>
-				<button type="button" class="btn btn-danger btn-general"><span class="glyphicon glyphicon-remove"></span>Eliminar</button>
+				<a type="button" class="btn btn-success btn-general mb-10" href="<?php echo site_url('web/editarPaciente/').$paciente->getId(); ?>"><span class="glyphicon glyphicon-pencil"></span>Editar datos</a>
+				<a type="button" class="btn btn-danger btn-general mb-10" href="<?php echo site_url('web/eliminarPaciente/').$paciente->getId(); ?>"><span class="glyphicon glyphicon-remove"></span>Eliminar</a>
 				<img src = "<?php echo $paciente->getImagen() ?>" class ="img-responsive ">
 			</div>
 			<div class = 'col-md-4'>
@@ -124,7 +124,7 @@
 						<p><span class = 'patient-label'>Tipo de sangre:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'><?php echo $paciente->getBlood() ?></span> </p>
+						<p><span class = 'patient-content'><?php echo $paciente->getBlood().$paciente->getRh() ?></span> </p>
 					</div>
 				</div>
 				<div class = 'row'>
@@ -139,7 +139,10 @@
 			
 			<div class="col-lg-4 col-md-4">
 				<h5 class="title-3">Observaciones</h5>
-				<textarea class="patient-textarea" rows="6" cols="50">At vero eos et accusamus et justo odio dignissimos ducimus qui blanditilis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint accaecati cupiditate non provident. similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</textarea>
+				<p class = 'patient-input'><?php echo $paciente->getObservations() ?></p>
+				<h5 class="title-3">Enfermedades</h5>
+				<p class = 'patient-input'><?php echo $paciente->getIllness() ?></p>
+
 			</div>
 		</div>
 	</div>
