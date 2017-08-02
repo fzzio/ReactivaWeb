@@ -11,6 +11,7 @@ class Web extends CI_Controller{
 		$this->load->helper(array('url'));
 		$this->load->library('form_validation');
 		$this->load->library('pagination');
+		$this->load->model('Calendar');
 		$this->load->model('User');
 		$this->load->model('Therapy');
 		$this->load->model('Patient');
@@ -156,13 +157,16 @@ class Web extends CI_Controller{
 
 	public function calendar(){
 			if ($this->SecurityCheck()){
-			$dataHeader['PageTitle'] = "Agenda";
+				
+				$dataHeader['PageTitle'] = "Agenda";
 
-			$data['header'] = $this->load->view('web/header', $dataHeader);
-			$data['menu'] = $this->load->view('web/menu', array());
+				$dataContent['controller']=$this;
 
-			$data['contenido'] = $this->load->view('web/calendar', array());
-			$data['page-footer'] = $this->load->view('web/page-footer', array());
+				$data['header'] = $this->load->view('web/header', $dataHeader);
+				$data['menu'] = $this->load->view('web/menu', array());
+
+				$data['contenido'] = $this->load->view('web/calendar', $dataContent);
+				$data['page-footer'] = $this->load->view('web/page-footer', array());
 		}else{
 			redirect("web/login");
 		}
@@ -353,4 +357,125 @@ class Web extends CI_Controller{
 	}	
 	
 	 /* Helpers ends*/
+
+	 /*CALENDAR FUNCTIONS START*/
+
+	function eventGet(){
+		$event_post = $this->input->post();
+
+		if(isset($event_post) && !empty($event_post)){
+			switch($event_post){
+			case 'getCalender':
+				$this->getCalender($event_post['year'],$event_post['month']);
+				break;
+			case 'getEvents':
+				$this->getEvents($event_post['date']);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	function getEvents(){
+		$date = $this->input->post('date');
+		$eventListHTML = '';
+
+		//Get events based on the current date
+		$result =  Calendar::getDayEvents($date);
+
+		if($result->num_rows> 0){
+			$eventListHTML = '<h2>'.date("d M Y",strtotime($date)).'</h2>';
+			$eventListHTML .= '<ul>';
+			while($row = $result->fetch_assoc()){ 
+	            $eventListHTML .= '<li>'.$row['fullname'].' '.$row['hour'].'</li>';
+	        }
+			$eventListHTML .= '</ul>';
+		}
+		echo $eventListHTML;
+	}
+
+
+	function getCalender($year = '',$month = ''){
+		$CI =& get_instance();
+		$dateYear = ($year != '')?$year:date("Y");
+		$dateMonth = ($month != '')?$month:date("m");
+		$date = $dateYear.'-'.$dateMonth.'-01';
+		$currentMonthFirstDay = date("N",strtotime($date));
+		$totalDaysOfMonth = cal_days_in_month(CAL_GREGORIAN,$dateMonth,$dateYear);
+		$totalDaysOfMonthDisplay = ($currentMonthFirstDay == 7)?($totalDaysOfMonth):($totalDaysOfMonth + $currentMonthFirstDay);
+		$boxDisplay = ($totalDaysOfMonthDisplay <= 35)?35:42;
+	?>
+		<div id="calender_section">
+			<div class = 'col-md-7'>
+				<h2>
+		        	<a href="javascript:void(0);" onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">
+		        		<span class = 'glyphicon glyphicon-chevron-left'></span>
+		        	</a>
+		            <select name="month_dropdown" class="month_dropdown dropdown"><?php echo Calendar::getAllMonths($dateMonth); ?></select>
+		            <a href="javascript:void(0);" onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' + 1 Month')); ?>','<?php echo date("m",strtotime($date.' + 1 Month')); ?>');">
+		            	<span class = 'glyphicon glyphicon-chevron-right'></span>
+		            </a>
+		        </h2>
+				<div id="calender_section_top">
+					<ul>
+						<li>Lun</li>
+						<li>Mar</li>
+						<li>Mie</li>
+						<li>Jue</li>
+						<li>Vie</li>
+						<li>Sab</li>
+						<li>Dom</li>
+					</ul>
+				</div>
+				<div id="calender_section_bot">
+					<ul>
+					<?php 
+						$dayCount = 1; 
+						for($cb=1;$cb<=$boxDisplay;$cb++){
+							if(($cb >= $currentMonthFirstDay+1 || $currentMonthFirstDay == 7) && $cb <= ($totalDaysOfMonthDisplay)){
+								//Current date
+								$currentDate = $dateYear.'-'.$dateMonth.'-'.$dayCount;
+								$eventNum = 0;
+								//Get number of events based on the current date
+								$eventNum =  Calendar::getCountDay($currentDate);
+								//Define date cell color
+								if(strtotime($currentDate) == strtotime(date("Y-m-d"))){
+									echo '<li date="'.$currentDate.'" class="grey date_cell">';
+								}elseif($eventNum > 0){
+									echo '<li date="'.$currentDate.'" class="light_sky date_cell">';
+								}else{
+									echo '<li date="'.$currentDate.'" class="date_cell">';
+								}
+								//Date cell
+								echo '<span>';
+								echo $dayCount;
+								echo '</span>';
+								
+								echo '<a onclick="getEvents(\''.$currentDate.'\');">';
+								echo $eventNum;
+								echo '</a>';
+								
+								echo '</li>';
+								$dayCount++;
+					?>
+					<?php }else{ ?>
+						<li><span>&nbsp;</span></li>
+					<?php } } ?>
+					</ul>
+				</div>
+			</div>
+			<div class = 'col-md-4'>
+				<div id="event_list" class="none">
+					
+				</div>
+			</div>
+	
+		</div>
+	<?php
+	}
+
+	 /*CALENDAR FUNCTIONS ENDS*/
 }
+
+?>

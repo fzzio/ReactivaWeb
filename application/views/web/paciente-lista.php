@@ -2,7 +2,7 @@
 <div id="page-wrapper" class="page-main col-lg-10 col-md-10">
 
 <div class="col-lg-10 col-md-10 ">
-	<h3 class="title mayusc">Administrar pacientse</h3>
+	<h3 class="title mayusc">Administrar pacientes</h3>
 	<a type="button" class="btn btn-nuevo" href="<?php echo site_url('web/nuevoPaciente'); ?>">
 		<div class = 'glyphicon-ring'>
 			<span class="glyphicon glyphicon-plus glyphicon-bordered" ></span>
