@@ -360,43 +360,43 @@ class Web extends CI_Controller{
 
 	 /*CALENDAR FUNCTIONS START*/
 
-	function eventGet(){
+	public function eventGet(){
 		$event_post = $this->input->post();
-
-		if(isset($event_post) && !empty($event_post)){
-			switch($event_post){
-			case 'getCalender':
+		if(!empty($event_post)){
+			if($event_post['func'] == 'getCalender'){
 				$this->getCalender($event_post['year'],$event_post['month']);
-				break;
-			case 'getEvents':
-				$this->getEvents($event_post['date']);
-				break;
-			default:
-				break;
-			}
+			}else{
+				if ($event_post['func'] == 'getEvents'){
+					$this->getEvents($event_post['date']);
+				}
+			}	
+			
+				
 		}
 	}
 
-	function getEvents(){
-		$date = $this->input->post('date');
+	public function getEvents($date = ''){
 		$eventListHTML = '';
 
 		//Get events based on the current date
 		$result =  Calendar::getDayEvents($date);
-
-		if($result->num_rows> 0){
+		if(count($result) > 0){
 			$eventListHTML = '<h2>'.date("d M Y",strtotime($date)).'</h2>';
-			$eventListHTML .= '<ul>';
-			while($row = $result->fetch_assoc()){ 
-	            $eventListHTML .= '<li>'.$row['fullname'].' '.$row['hour'].'</li>';
-	        }
+			$eventListHTML .= '<ul  class="list-unstyled" >';
+			foreach($result as $row){
+				$eventListHTML .= '<li>'.$row['fullname'].' '.$row['hour'].'</li>';
+			}
 			$eventListHTML .= '</ul>';
+		}else{
+			$eventListHTML = '<h2>'.date("d M Y",strtotime($date)).'</h2>';
+			$eventListHTML = '<p> No hay citas</p>';
 		}
+		
 		echo $eventListHTML;
 	}
 
 
-	function getCalender($year = '',$month = ''){
+	public function getCalender($year = '',$month = ''){
 		$CI =& get_instance();
 		$dateYear = ($year != '')?$year:date("Y");
 		$dateMonth = ($month != '')?$month:date("m");
@@ -419,13 +419,13 @@ class Web extends CI_Controller{
 		        </h2>
 				<div id="calender_section_top">
 					<ul>
+						<li>Dom</li>
 						<li>Lun</li>
 						<li>Mar</li>
 						<li>Mie</li>
 						<li>Jue</li>
 						<li>Vie</li>
 						<li>Sab</li>
-						<li>Dom</li>
 					</ul>
 				</div>
 				<div id="calender_section_bot">

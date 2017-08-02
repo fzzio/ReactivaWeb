@@ -49,9 +49,21 @@ class Calendar extends CI_Model{
 		$instance_CI->db->where('DATE(date_planned)', $date);
 		$instance_CI->db->order_by('hour', 'DESC');
 
-		$result =  $instance_CI->db->get()->row_array();
+		$result =  $instance_CI->db->get()->result_array();
 
-		return $result;
+		if(!is_null($result)){
+			$patients_obj_array = array();
+			foreach ($result as $pax) {
+                $patients_obj_array[] = array(
+					'id_consult'=>$pax['id_consult'],
+					'fullname'=>$pax['fullname'],
+					'hour'=>$pax['hour']);
+            }
+            return $patients_obj_array;
+		}else{
+			return null;
+		}
+
 
 	}
 	
