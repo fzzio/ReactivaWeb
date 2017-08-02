@@ -384,7 +384,17 @@ class Web extends CI_Controller{
 			$eventListHTML = '<h2>'.date("d M Y",strtotime($date)).'</h2>';
 			$eventListHTML .= '<ul  class="list-unstyled" >';
 			foreach($result as $row){
-				$eventListHTML .= '<li>'.$row['fullname'].' '.$row['hour'].'</li>';
+				$eventListHTML .= 
+				'<li class="item-agenda mb-10 pl-5 pr-5"> 
+					<div class = "row">
+						<div class = "col-xs-6">
+							Paciente: '.$row['fullname'].'
+						</div>
+						<div class = "col-xs-6">
+							Horario: '.$row['hour'].'
+						</div>
+					</div>
+				</li>';
 			}
 			$eventListHTML .= '</ul>';
 		}else{
@@ -407,16 +417,17 @@ class Web extends CI_Controller{
 		$boxDisplay = ($totalDaysOfMonthDisplay <= 35)?35:42;
 	?>
 		<div id="calender_section">
+			<div class = 'row'>
 			<div class = 'col-md-7'>
-				<h2>
+				<div class = 'mon-header pt-50'>
 		        	<a href="javascript:void(0);" onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">
 		        		<span class = 'glyphicon glyphicon-chevron-left'></span>
 		        	</a>
-		            <select name="month_dropdown" class="month_dropdown dropdown"><?php echo Calendar::getAllMonths($dateMonth); ?></select>
+		            <span class = 'mr-15 ml-15'><?php echo date("F", mktime(0, 0, 0, $dateMonth, 10)); ?></span>
 		            <a href="javascript:void(0);" onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' + 1 Month')); ?>','<?php echo date("m",strtotime($date.' + 1 Month')); ?>');">
 		            	<span class = 'glyphicon glyphicon-chevron-right'></span>
 		            </a>
-		        </h2>
+		        </div>
 				<div id="calender_section_top">
 					<ul>
 						<li>Dom</li>
@@ -451,10 +462,15 @@ class Web extends CI_Controller{
 								echo '<span>';
 								echo $dayCount;
 								echo '</span>';
+
+								if($eventNum>0){
+									echo '<a class = "agenda-day" onclick="getEvents(\''.$currentDate.'\');">';
+									echo $eventNum;
+									echo '</a>';
+								}
 								
-								echo '<a onclick="getEvents(\''.$currentDate.'\');">';
-								echo $eventNum;
-								echo '</a>';
+								
+								
 								
 								echo '</li>';
 								$dayCount++;
@@ -465,12 +481,12 @@ class Web extends CI_Controller{
 					</ul>
 				</div>
 			</div>
-			<div class = 'col-md-4'>
+			<div class = 'col-md-5'>
 				<div id="event_list" class="none">
 					
 				</div>
 			</div>
-	
+			</div>
 		</div>
 	<?php
 	}
