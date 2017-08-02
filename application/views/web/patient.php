@@ -137,12 +137,13 @@
 				</div>
 			</div>
 			
-			<div class="col-lg-4 col-md-4">
+			<div class="col-md-5">
 				<h5 class="title-3">Observaciones</h5>
-				<p class = 'patient-input'><?php echo $paciente->getObservations() ?></p>
-				<h5 class="title-3">Enfermedades</h5>
-				<p class = 'patient-input'><?php echo $paciente->getIllness() ?></p>
-
+				<p class = 'p-5 patient-input'><?php echo $paciente->getObservations() ?></p>
+				<h5 class="title-3">Alergias</h5>
+				<p class = 'p-5 patient-input'><?php echo $paciente->getAllergies() ?></p>
+				<h5 class="title-3">Observaciones</h5>
+				<p class = 'p-5 patient-input'><?php echo $paciente->getObservations() ?></p>
 			</div>
 		</div>
 	</div>

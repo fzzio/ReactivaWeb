@@ -71,13 +71,13 @@
 							<label for="pax-born" class = 'pax-label'>Fecha de nacimiento</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="DD" id="pax-born-dd" name= 'pax-born-dd' required="true">
+							<input class="form-control patient-input" type="numeric" placeholder="DD" id="pax-born-dd" name= 'pax-born-dd' required="true">
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="MM" id="pax-born-mm" name= 'pax-born-mm' required="true">
+							<input class="form-control patient-input" type="numeric" placeholder="MM" id="pax-born-mm" name= 'pax-born-mm' required="true">
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="AAAA" id="pax-born-yy" name= 'pax-born-yy' required="true">
+							<input class="form-control patient-input" type="numeric" placeholder="AAAA" id="pax-born-yy" name= 'pax-born-yy' required="true">
 						</div>
 				
 					</div>

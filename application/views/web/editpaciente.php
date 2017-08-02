@@ -3,7 +3,7 @@
 	<?php echo form_open_multipart('web/editPatient' , array('id' => 'frm-new')); ?>
 		<div class="row">
 			<div class="col-md-8 pl-0 ml-0">
-				<h3 class="title">Nuevo registro de paciente</h3>
+				<h3 class="title">Editar registro de paciente</h3>
 			</div>
 			<div class="col-md-2 mt-20">
 				<button type="submit" class="btn btn-default btn-primary btn-general">
@@ -31,6 +31,7 @@
 				</label>
 <span class='label label-info' id="upload-file-info"></span>
 			</div>
+			<input type="hidden" name="pax-id" value="<?php echo $paciente->getId(); ?>" />
 			<div class = 'col-md-5'>
 				<div class = 'row pb-10'>
 					<div class="form-group">
@@ -38,7 +39,7 @@
 							<label for="pax-name" class = 'pax-label'>Nombres</label>
 						</div>
 						<div class = 'col-xs-9'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-name" name= 'pax-name' required="true">
+							<input class="form-control patient-input"  value="<?php echo $paciente->getName()?>" type="text" placeholder="" id="pax-name" name= 'pax-name' required="true">
 						</div>
 				
 					</div>
@@ -49,7 +50,7 @@
 							<label for="pax-lastname" class = 'pax-label'>Apellidos</label>
 						</div>
 						<div class = 'col-xs-9'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-lastname" name= 'pax-lastname' required="true">
+							<input class="form-control patient-input"  value="<?php echo $paciente->getLastname() ?>" type="text" placeholder="" id="pax-lastname" name= 'pax-lastname' required="true">
 						</div>
 				
 					</div>
@@ -60,7 +61,7 @@
 							<label for="pax-ci" class = 'pax-label'>Cédula</label>
 						</div>
 						<div class = 'col-xs-9'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-ci" name= 'pax-ci' required="true">
+							<input class="form-control patient-input"  value="<?php echo $paciente->getCI() ?>" type="text" placeholder="" id="pax-ci" name= 'pax-ci' required="true">
 						</div>
 				
 					</div>
@@ -70,14 +71,15 @@
 						<div class = 'col-xs-3'>
 							<label for="pax-born" class = 'pax-label'>Fecha de nacimiento</label>
 						</div>
+						<?php $items = explode('-', $paciente->getBorn());?>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="DD" id="pax-born-dd" name= 'pax-born-dd' required="true">
+							<input class="form-control patient-input"  value="<?php echo $items[2] ?>" type="numeric" placeholder="DD" id="pax-born-dd" name= 'pax-born-dd' required="true">
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="MM" id="pax-born-mm" name= 'pax-born-mm' required="true">
+							<input class="form-control patient-input"  value="<?php echo $items[1] ?>" type="numeric" placeholder="MM" id="pax-born-mm" name= 'pax-born-mm' required="true">
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="AAAA" id="pax-born-yy" name= 'pax-born-yy' required="true">
+							<input class="form-control patient-input"  value="<?php echo $items[0] ?>" type="numeric" placeholder="AAAA" id="pax-born-yy" name= 'pax-born-yy' required="true">
 						</div>
 				
 					</div>
@@ -90,7 +92,7 @@
 							<label for="pax-phone" class = 'pax-label'>Teléfono</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-phone" name= 'pax-phone' required="true">
+							<input class="form-control patient-input"  value="<?php echo $paciente->getPhone() ?>" type="text" placeholder="" id="pax-phone" name= 'pax-phone' required="true">
 						</div>
 				
 					</div>
@@ -101,7 +103,7 @@
 							<label for="pax-cellphone" class = 'pax-label'>Celular</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-cellphone" name= 'pax-cellphone' required="true">
+							<input class="form-control patient-input"  value="<?php echo $paciente->getCellphone() ?>"  type="text" placeholder="" id="pax-cellphone" name= 'pax-cellphone' required="true">
 						</div>
 				
 					</div>
@@ -112,7 +114,7 @@
 							<label for="pax-mail" class = 'pax-label'>Mail</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="mail" placeholder="" id="pax-mail" name= 'pax-mail' required="true">
+							<input class="form-control patient-input"  value="<?php echo $paciente->getEmail() ?>" type="mail" placeholder="" id="pax-mail" name= 'pax-mail' required="true">
 						</div>
 				
 					</div>
@@ -123,7 +125,7 @@
 							<label for="pax-address" class = 'pax-label'>Domicilio</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-address" name= 'pax-address' required="true">
+							<input class="form-control patient-input"  value="<?php echo $paciente->getAddress() ?>" type="text" placeholder="" id="pax-address" name= 'pax-address' required="true">
 						</div>
 				
 					</div>
@@ -143,8 +145,8 @@
 						</div>
 							<div class = 'col-xs-8'>
 							<select id="pax-gender" class="form-control patient-input" name="pax-gender">
-								<option id= '0' value = '0'>Femenino</option>
-								<option id= '1' value = '1'>Masculino</option>
+								<option id= '0' value = '0' <?php if($paciente->getGender()== 0){ echo "selected";} ?>>Femenino</option>
+								<option id= '1' value = '1' <?php if($paciente->getGender()== 1){ echo "selected";} ?>>Masculino</option>
 							</select>
 						</div>
 					</div>
@@ -163,10 +165,10 @@
 						</div>
 							<div class = 'col-xs-8'>
 							<select id="pax-blood" class="form-control patient-input" name="pax-blood">
-								<option id= 'O' value = 'O'>O</option>
-								<option id= 'A' value = 'A'>A</option>
-								<option id= 'B' value = 'B'>B</option>
-								<option id= 'AB' value = 'AB'>AB</option>
+								<option id= 'O' value = 'O' <?php if($paciente->getBlood()== 'O'){ echo "selected";} ?>>O</option>
+								<option id= 'A' value = 'A' <?php if($paciente->getBlood()== 'A'){ echo "selected";} ?>>A</option>
+								<option id= 'B' value = 'B' <?php if($paciente->getBlood()== 'B'){ echo "selected";} ?>>B</option>
+								<option id= 'AB' value = 'AB' <?php if($paciente->getBlood()== 'AB'){ echo "selected";} ?>>AB</option>
 							</select>
 						</div>
 					</div>
@@ -180,8 +182,8 @@
 						</div>
 							<div class = 'col-xs-8'>
 							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
-								<option id= '+' value = '+'>+</option>
-								<option id= '-' value = '-'>-</option>
+								<option id= '+' value = '+' <?php if($paciente->getRH()== '+'){ echo "selected";} ?>>+</option>
+								<option id= '-' value = '-' <?php if($paciente->getRH()== '-'){ echo "selected";} ?>>-</option>
 
 							</select>
 						</div>
@@ -193,19 +195,19 @@
 			<div class = 'col-md-6'>
 				<div class="form-group">
 					<label for="pax-allergies" class = 'pax-label'>Alergias</label>
-					<textarea class="form-control patient-input" id="pax-allergies" name = 'pax-allergies' rows="3"></textarea>
+					<textarea class="form-control patient-input" id="pax-allergies" name = 'pax-allergies' rows="3"><?php echo $paciente->getAllergies() ?></textarea>
 				</div>
 			</div>
 			<div class = 'col-md-6'>
 				<div class="form-group">
 					<label for="pax-illness" class = 'pax-label'>Enfermedades</label>
-					<textarea class="form-control patient-input" id="pax-illness" name = 'pax-illness' rows="3" ></textarea>
+					<textarea class="form-control patient-input" id="pax-illness" name = 'pax-illness'  rows="3" ><?php echo $paciente->getIllness() ?></textarea>
 				</div>
 			</div>
 			<div class = 'col-md-6'>
 				<div class="form-group">
 					<label for="pax-observation" class = 'pax-label'>Observaciones y comentarios</label>
-					<textarea class="form-control patient-input" id="pax-observation" name = 'pax-observation' rows="3" ></textarea>
+					<textarea class="form-control patient-input" id="pax-observation" name = 'pax-observation' rows="3" ><?php echo $paciente->getObservations() ?></textarea>
 				</div>
 			</div>
 		</div>

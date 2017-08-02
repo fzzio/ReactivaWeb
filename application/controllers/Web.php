@@ -207,7 +207,8 @@ class Web extends CI_Controller{
         $rh = $this->input->post("pax-rh");
         $allergies = $this->input->post("pax-allergies");
         $illness = $this->input->post("pax-illness");
-        $observations = $this->input->post("pox-observation");
+        $observations = $this->input->post("pax-observation");
+        $img = $this->input->post("pax-photo");
 
         $this->load->library('upload', $config);
 
@@ -215,7 +216,6 @@ class Web extends CI_Controller{
             $img_data = $this->upload->data();
             $img = $img_data["file_name"];
         }
-
 
         $data = array(
         	'ci'=>$ci,
@@ -240,6 +240,76 @@ class Web extends CI_Controller{
 
         redirect("web/paciente/".$id_patient);
 
+  	}
+
+  	public function editPatient(){
+  		//Start upload config
+		$config['upload_path']          = 'assets/uploads/dishes/';
+        $config['allowed_types']        = 'gif|jpeg|jpg|png|tiff';
+        $config['max_size']             = 2048;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+        $config['encrypt_name']			= TRUE;
+        $config['remove_spaces']		= TRUE;
+        $config['detect_mime']			= TRUE;
+        //End config upload
+
+        $img = "";
+
+        $id_patient = $this->input->post("pax-id");
+        $name = $this->input->post("pax-name");
+        $lastname = $this->input->post("pax-lastname");
+        $ci = $this->input->post("pax-ci");
+        $dd_born = $this->input->post("pax-born-dd");
+        $mm_born = $this->input->post("pax-born-mm");
+        $yy_born =$this->input->post("pax-born-yy");
+        $phone = $this->input->post("pax-phone");
+        $cellphone = $this->input->post("pax-cellphone");
+        $mail = $this->input->post("pax-mail");
+        $address = $this->input->post("pax-address");
+        $gender = $this->input->post("pax-gender");
+        $blood = $this->input->post("pax-blood");
+        $rh = $this->input->post("pax-rh");
+        $allergies = $this->input->post("pax-allergies");
+        $illness = $this->input->post("pax-illness");
+        $observations = $this->input->post("pax-observation");
+        $img = $this->input->post('dish-prev-img');
+
+
+        if (!is_null($img)){
+			$strip_foto = explode("/", $img);
+			$img = $strip_foto[7];
+		}
+
+        $this->load->library('upload', $config);
+
+        if($this->upload->do_upload("pax-photo")) {
+            $img_data = $this->upload->data();
+            $img = $img_data["file_name"];
+        }
+
+        $data = array(
+        	'ci'=>$ci,
+        	'name'=>$name,
+        	'lastname'=>$lastname,
+        	'born'=>$yy_born.'-'.$mm_born.'-'.$dd_born,
+        	'gender'=>$gender,
+        	'phone'=>$phone,
+        	'cellphone'=>$cellphone,
+        	'address'=>$address,
+        	'blood'=>$blood,
+        	'rh'=>$rh,
+        	'allergies'=>$allergies,
+        	'observations'=>$observations,
+        	'illness'=>$illness,
+        	'img'=>$img,
+        	'email'=>$mail,
+        	);
+
+        $this->db->where('patient.id_patient', $id_patient);
+		$this->db->update('patient', $data);
+
+        redirect("web/paciente/".$id_patient);
   	}
 
 	/*FORM UPLOAD ENDS*/
