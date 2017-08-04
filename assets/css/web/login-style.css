@@ -57,20 +57,66 @@
 	color: white;
 	font-weight: bold;
 	font-size: 20px;
+	letter-spacing: 3px;
 }
 
 .label-input {
 	color: white;
 	text-transform: uppercase;
 	font-weight: normal;
-	font-size: 12px;
+	font-size: 14px;
+	letter-spacing: 3px;
+
 }
+
+
+input[type="checkbox"] {
+  display: none;
+}
+label {
+  cursor: pointer;
+}
+input[type="checkbox"] + label:before {
+  border: 0.25px solid white;
+  border-radius: 2px;
+  content: "\00a0";
+  display: inline-block;
+  font: 16px/1em sans-serif;
+  height: 16px;
+  margin: 0 .25em 0 0;
+  padding: 0;
+  vertical-align: top;
+  width: 16px;
+}
+input[type="checkbox"]:checked + label:before {
+  background: #fff;
+  color: #333;
+  content: "\2713";
+  text-align: center;
+}
+input[type="checkbox"]:checked + label:after {
+  font-weight: bold;
+}
+
 
 .login-btn {
 	background-color: #ffcf57;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	width: 180px;
+	width: 200px;
 	border-radius: 20px;
+	font-weight: bold;
+	color: #2C4866;
+	font-size: 20px;
+}
+
+.remember{
+	color:white;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.remember input{
+	color: transparent;
 }
 
 .a-forget, .a-forget:hover, .a-forget:active {

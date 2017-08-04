@@ -38,9 +38,8 @@
 					<div class="clearfix"></div><br>
 					<div class="input-group  align-center">
 						<div class="checkbox ">
-							<label>
-								<input name="remember" type="checkbox" value="Recuerdame" id="remember"> Recordarme
-							</label>
+							<input  name="remember" type="checkbox" value="Recuerdame" id="remember"> 
+							<label class = 'remember'>Recordarme</label>
 						</div>
 					</div>
 					<div class="input-group  align-center">
