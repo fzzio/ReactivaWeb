@@ -1,7 +1,7 @@
 <!-- Page Content -->
-<div id="page-wrapper" class="page-main col-lg-10 col-md-10">
+<div id="page-wrapper" class="page-main mt-0 pt-0 mb-0 pb-0 pr-0 mr-0">
 
-<div class="col-lg-10 col-md-10 ">
+<div class="col-md-10 ">
 	<h3 class="title mayusc">Administrar pacientes</h3>
 	<a type="button" class="btn btn-nuevo" href="<?php echo site_url('web/nuevoPaciente'); ?>">
 		<div class = 'glyphicon-ring'>

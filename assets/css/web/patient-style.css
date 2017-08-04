@@ -36,11 +36,6 @@
 .mayusc{
 	text-transform: uppercase;
 }
-.page-center {
-	position: absolute;
-	bottom: 1.4vh;
-	font-size: 12px;
-}
 
 .img-footer {
 	width: 200px;

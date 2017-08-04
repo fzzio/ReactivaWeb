@@ -1,8 +1,9 @@
 		</div>
+		<!--
 		<footer class="page-footer">
 			<p class="page-center">REACTIVA 2017 &copy; Todos los derechos reservados.</p>
 			<img src = "<?php echo base_url('assets/img/web/rea-footer.png'); ?>" class ="img-footer">
-		</footer>
+		</footer> -->
 	</body>
 	
 		<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>

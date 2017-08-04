@@ -28,8 +28,8 @@
 .calendar-nav {
 	background-color: #1d3651;
   position: relative;
-  left: 228px;
-  height: 79px;
+
+  height: 78px;
   border-bottom-style: solid;
 	border-color: #50bfa3;
 	border-width: 1px;
@@ -38,7 +38,7 @@
 ul.nav-tabs {
 	position: absolute;
 	top: 13px;
-	left: 76px;
+
 }
 
 .nav-tabs li, .nav-tabs {

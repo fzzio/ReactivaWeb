@@ -37,8 +37,10 @@ class Web extends CI_Controller{
 
 		$dataHeader['PageTitle'] = "Bienvenidos";
 
+		$menuContent['selection']="None";
+
 		$data['header'] = $this->load->view('web/header', $dataHeader);
-		$data['menu'] = $this->load->view('web/menu', array());
+		$data['menu'] = $this->load->view('web/menu', $menuContent);
 
 		$data['contenido'] = $this->load->view('web/index', array());
 		$data['page-footer'] = $this->load->view('web/page-footer', array());
@@ -71,14 +73,15 @@ class Web extends CI_Controller{
 			$dataContent["results"] = $this->Patient->fetch_patients($config["per_page"], $page);
        		$dataContent["links"] = $this->pagination->create_links();
 
+       		$menuContent['selection']="patient";
 
 			$dataHeader['PageTitle'] = "Lista de pacientes";
 
 		    $data['header'] = $this->load->view('web/header', $dataHeader);
-		    $data['menu'] = $this->load->view('web/menu', array());
+		    $data['menu'] = $this->load->view('web/menu', $menuContent);
 
 		    $data['contenido'] = $this->load->view('web/paciente-lista', $dataContent);
-		    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
+		    $data['footer'] = $this->load->view('web/page-footer', array());
 		}else{
 			redirect("web/login");
 		}
@@ -97,11 +100,13 @@ class Web extends CI_Controller{
 
 				$dataHeader['PageTitle'] = "Paciente";
 
+				$menuContent['selection']="patient";
+
 			    $data['header'] = $this->load->view('web/header', $dataHeader);
-			    $data['menu'] = $this->load->view('web/menu', array());
+			    $data['menu'] = $this->load->view('web/menu', $menuContent);
 
 			    $data['contenido'] = $this->load->view('web/patient', $dataContent);
-			    $data['patient-footer'] = $this->load->view('web/patient-footer', array());
+			    $data['page-footer'] = $this->load->view('web/page-footer', array());
 			}else{
 				redirect("web/pacientes");
 			}
@@ -117,8 +122,10 @@ class Web extends CI_Controller{
    		if ($this->SecurityCheck()){
 			$dataHeader['PageTitle'] = "Paciente";
 
+			$menuContent['selection']="patient";
+
 		    $data['header'] = $this->load->view('web/header', $dataHeader);
-		    $data['menu'] = $this->load->view('web/menu', array());
+		    $data['menu'] = $this->load->view('web/menu', $menuContent);
 
 		    $data['contenido'] = $this->load->view('web/nuevopaciente', array());
 		    $data['page-footer'] = $this->load->view('web/page-footer', array());
@@ -138,12 +145,14 @@ class Web extends CI_Controller{
 			$paciente_obj = Patient::getPatientById($id_paciente);
 
 			if(!is_null($paciente_obj)){
+				$menuContent['selection']="patient";
+
 				$dataContent['paciente'] = $paciente_obj;
 
 				$dataHeader['PageTitle'] = "Paciente";
 
 			    $data['header'] = $this->load->view('web/header', $dataHeader);
-			    $data['menu'] = $this->load->view('web/menu', array());
+			    $data['menu'] = $this->load->view('web/menu', $menuContent);
 
 			    $data['contenido'] = $this->load->view('web/editpaciente', $dataContent);
 			    $data['page-footer'] = $this->load->view('web/page-footer', array());
@@ -157,13 +166,14 @@ class Web extends CI_Controller{
 
 	public function calendar(){
 			if ($this->SecurityCheck()){
-				
+				$menuContent['selection']="calendar";
+
 				$dataHeader['PageTitle'] = "Agenda";
 
 				$dataContent['controller']=$this;
 
 				$data['header'] = $this->load->view('web/header', $dataHeader);
-				$data['menu'] = $this->load->view('web/menu', array());
+				$data['menu'] = $this->load->view('web/menu', $menuContent);
 
 				$data['contenido'] = $this->load->view('web/calendar', $dataContent);
 				$data['page-footer'] = $this->load->view('web/page-footer', array());

@@ -79,7 +79,6 @@ label {
 input[type="checkbox"] + label:before {
   border: 0.25px solid white;
   border-radius: 2px;
-  content: "\00a0";
   display: inline-block;
   font: 16px/1em sans-serif;
   height: 16px;

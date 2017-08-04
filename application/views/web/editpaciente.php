@@ -1,4 +1,4 @@
-<div id="page-wrapper" class="page-patient col-md-10">
+<div id="page-wrapper" class="page-patient">
 	<div class="col-md-11">
 	<?php echo form_open_multipart('web/editPatient' , array('id' => 'frm-new')); ?>
 		<div class="row">

@@ -3,21 +3,31 @@ body,html{
 	font-family: 'Montserrat';
 }
 
+.navbar {
+	min-height: unset;
+	
+}
+#wrapper{
+	background: #2e4766;
+	background: -moz-linear-gradient(-45deg, #2e4766 0%, #0062a3 100%);
+	background: -webkit-linear-gradient(-45deg, #2e4766 0%,#0062a3 100%);
+	background: linear-gradient(135deg, #2e4766 0%,#0062a3 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e4766', endColorstr='#0062a3',GradientType=1 );
+	height: 100vh;
 
-/*Remove rounded coners*/
-
-nav.sidebar.navbar {
-	background-color: green;
 }
 
 .admin-sidebar{
 	background-color: transparent;
+
+}
+.top-header{
+	background-color: #1d3651;
 }
 
-
 #side-menu li a.active{
-	background-color: #1d3651;
-	color: #50bfa3;
+	background-color: #50bfa3;
+	color: white;
 }
 
 .navbar-ra .nav>li>a{
@@ -29,118 +39,13 @@ nav.sidebar.navbar {
     background-color: #50bfa3;
 }
 
-/* Add gap to nav and right windows.*/
-.main{
-	padding: 10px 10px 0 10px;
+.box-header.well {
+    background-color: #50bfa3;
+    border-radius: 0px;
+    border-color: #1d3651;
 }
 
-/* .....NavBar: Icon only with coloring/layout.....*/
+#index{
+	background-color: #1d3651;
 
-/*small/medium side display*/
-@media (min-width: 768px) {
-
-	/*Allow main to be next to Nav*/
-	.main{
-		position: absolute;
-		width: calc(100% - 40px); /*keeps 100% minus nav size*/
-		margin-left: 40px;
-		float: right;
-	}
-
-	/*lets nav bar to be showed on mouseover*/
-	nav.sidebar:hover + .main{
-		margin-left: 200px;
-	}
-
-	/*Center Brand*/
-	nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-		margin-left: 0px;
-	}
-	/*Center Brand*/
-	nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
-		text-align: center;
-		width: 100%;
-		margin-left: 0px;
-	}
-
-	/*Center Icons*/
-	nav.sidebar a{
-		padding-right: 13px;
-	}
-
-	/*adds border top to first nav box */
-	nav.sidebar .navbar-nav > li:first-child{
-		border-top: 0.5px white solid;
-	}
-
-
-	/*allows nav box to use 100% width*/
-	nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
-		padding: 0 0px 0 0px;
-	}
-
-
-	/*gives sidebar width/height*/
-	nav.sidebar{
-		width: 200px;
-		height: 100%;
-		margin-left: -160px;
-		float: left;
-		z-index: 8000;
-		margin-bottom: 0px;
-	}
-
-	/*give sidebar 100% width;*/
-	nav.sidebar li {
-		width: 100%;
-	}
-
-	/* Move nav to full on mouse over*/
-	nav.sidebar:hover{
-		margin-left: 0px;
-	}
-	/*for hiden things when navbar hidden*/
-	.forAnimate{
-		opacity: 0;
-	}
-}
-
-/* .....NavBar: Fully showing nav bar..... */
-
-@media (min-width: 1330px) {
-
-	/*Allow main to be next to Nav*/
-	.main{
-		width: calc(100% - 200px); /*keeps 100% minus nav size*/
-		margin-left: 200px;
-	}
-
-	/*Show all nav*/
-	nav.sidebar{
-		margin-left: 0px;
-		float: left;
-	}
-	/*Show hidden items on nav*/
-	nav.sidebar .forAnimate{
-		opacity: 1;
-	}
-}
-
-nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-	color: red;
-	background-color: transparent;
-}
-
-nav:hover .forAnimate{
-	opacity: 1;
-}
-section{
-	padding-left: 15px;
-}
-
-.align-center {
-	margin: 0 auto;
-	text-align: center;
-	align-items: center;
-	display: block;
 }

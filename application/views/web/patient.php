@@ -1,5 +1,5 @@
 <!-- Page Content -->
-<div id="page-wrapper" class="page-patient col-lg-10 col-md-10">
+<div id="page-wrapper" class="page-patient">
 	<div class="col-md-11">
 		<h3 class="title">Datos del Paciente</h3>
 		<div class="row">
