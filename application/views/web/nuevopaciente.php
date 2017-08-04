@@ -68,7 +68,7 @@
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-3 pr-0 mr-0'>
-							<label for="pax-born" class = 'pax-label'>Fecha de nacimiento *</label>
+							<label for="pax-born" class = 'pax-label'>Fecha nacimiento*</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
 							<input class="form-control patient-input" type="numeric" placeholder="DD" id="pax-born-dd" name= 'pax-born-dd' required="true">
@@ -171,13 +171,6 @@
 						</div>
 					</div>
 				</div>
-				
-				
-			</div>
-
-		</div>
-		<div class = 'row'>
-			<div class = 'col-md-4'>
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-4'>
@@ -193,8 +186,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class = 'col-md-4'>
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-4'>
@@ -210,17 +201,46 @@
 					</div>
 				</div>
 			</div>
+			<div class = 'col-md-8'>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-med-allergy" class = 'pax-label'>Alergias a medicamentos</label>
+						</div>
+						<div class = 'col-xs-3 pr-0'>
+							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
+								<option id= '-' value = '-'>NO</option>
+								<option id= '+' value = '+'>SI</option>
+							</select>
+						</div>
+						<div class = 'col-xs-5 pr-0'>
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true">
+						</div>
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-rh" class = 'pax-label'>Otras alergias</label>
+						</div>
+						<div class = 'col-xs-3 pr-0'>
+							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
+								<option id= '-' value = '-'>NO</option>
+								<option id= '+' value = '+'>SI</option>
+							</select>
+						</div>
+						<div class = 'col-xs-5 pr-0'>
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true">
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		
 		<div class = 'row'>
 			<div class = 'col-md-6'>
 				<div class="form-group">
-					<label for="pax-allergies" class = 'pax-label'>Alergias</label>
-					<textarea class="form-control patient-input" id="pax-allergies" name = 'pax-allergies' rows="3"></textarea>
-				</div>
-			</div>
-			<div class = 'col-md-6'>
-				<div class="form-group">
-					<label for="pax-illness" class = 'pax-label'>Enfermedades</label>
+					<label for="pax-illness" class = 'pax-label text-left'>Enfermedades</label>
 					<textarea class="form-control patient-input" id="pax-illness" name = 'pax-illness' rows="3" ></textarea>
 				</div>
 			</div>
