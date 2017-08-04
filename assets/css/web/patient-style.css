@@ -49,14 +49,17 @@
 .patient-label{
 	color: white;
 	font-weight: bold;
-	text-align: right !important;
+	text-align: right;
 	display: block;
 }
 
+.pull-right-label{
+	text-align: left !important;
+}
 .pax-label{
 	color: #2C4666;
 	font-weight: bold;
-	text-align: right !important;
+	text-align: right;
 	display: block;
 }
 

@@ -240,13 +240,13 @@
 		<div class = 'row'>
 			<div class = 'col-md-6'>
 				<div class="form-group">
-					<label for="pax-illness" class = 'pax-label text-left'>Enfermedades</label>
+					<label for="pax-illness" class = 'pax-label pull-right-label'>Enfermedades</label>
 					<textarea class="form-control patient-input" id="pax-illness" name = 'pax-illness' rows="3" ></textarea>
 				</div>
 			</div>
 			<div class = 'col-md-6'>
 				<div class="form-group">
-					<label for="pax-observation" class = 'pax-label'>Observaciones y comentarios</label>
+					<label for="pax-observation" class = 'pax-label pull-right-label'>Observaciones y comentarios</label>
 					<textarea class="form-control patient-input" id="pax-observation" name = 'pax-observation' rows="3" ></textarea>
 				</div>
 			</div>
