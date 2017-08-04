@@ -5,15 +5,15 @@ body,html{
 
 .navbar {
 	min-height: unset;
-	
 }
-#wrapper{
+
+#side-menu{
 	background: #2e4766;
 	background: -moz-linear-gradient(-45deg, #2e4766 0%, #0062a3 100%);
 	background: -webkit-linear-gradient(-45deg, #2e4766 0%,#0062a3 100%);
 	background: linear-gradient(135deg, #2e4766 0%,#0062a3 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e4766', endColorstr='#0062a3',GradientType=1 );
-	height: 100vh;
+	min-height: 100% ;
 
 }
 
@@ -30,11 +30,11 @@ body,html{
 	color: white;
 }
 
-.navbar-ra .nav>li>a{
+#side-menu .navbar-ra .nav>li>a{
 	color: white;
 }
 
-.navbar-ra .nav>li>a:focus, .navbar-ra .nav>li>a:hover, .navbar-ra .nav>li>a:active, .navbar-ra .nav li.dropdown.open a {
+#side-menu .navbar-ra .nav>li>a:focus, .navbar-ra .nav>li>a:hover, .navbar-ra .nav>li>a:active, .navbar-ra .nav li.dropdown.open a {
 	color: #1d3651;
     background-color: #50bfa3;
 }

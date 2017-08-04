@@ -13,8 +13,11 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/bootstrap-datepicker.min.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/custom-bootstrap-margin-padding.css'); ?>">
 
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/metisMenu.css'); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
+	<?php if ( ($this->router->method != "login") && ($this->router->method != "logout") ): ?>
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
+    <?php endif ?>
+
+	
 	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -28,5 +31,8 @@
 
 
 </head>
-<body>
-	<div id = 'wrapper' class = 'pr-0 mr-0'>
+<body>	
+	<?php if( ($this->router->method != "login")  && ($this->router->method != "logout")){
+			echo " <div id ='wrapper'>";
+		} else{
+			echo "<div>";} ?>

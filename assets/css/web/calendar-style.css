@@ -16,6 +16,7 @@
     100%{background-position:0% 50%}
 }
 
+
 .page-calendar {
 	position: relative;
 	background: linear-gradient(270deg, #654c8e, #a75a8f);
@@ -23,7 +24,9 @@
 	-webkit-animation: CalendarAnimation 30s ease infinite;
 	-moz-animation: CalendarAnimation 30s ease infinite;
 	animation: CalendarAnimation 30s ease infinite;
+	min-height: 100vh;
 }
+
 
 .calendar-nav {
 	background-color: #1d3651;
@@ -172,13 +175,10 @@ a:hover {color: #181919;text-decoration: underline;}
 
 /* lg (Laptop L) */ 
 @media (min-width: 1200px) {
-	.page-calendar, .page-footer {
+	.page-footer {
 		left: 228px;	
 	}
 
-	.page-calendar {
-		height: 87.9vh;
-	}
 
 	.page-footer {
 		width: 83.4%;

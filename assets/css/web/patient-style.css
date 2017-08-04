@@ -16,13 +16,14 @@
     100%{background-position:0% 50%}
 }
 
-.page-main, .page-patient {
+.page-main {
 	position: relative;
 	background: linear-gradient(270deg, #53c0a5, #4ab3bf);
 	background-size: 400% 400%;
 	-webkit-animation: PatientAnimation 30s ease infinite;
 	-moz-animation: PatientAnimation 30s ease infinite;
 	animation: PatientAnimation 30s ease infinite;
+	min-height: 100vh;
 }
 
 .page-footer, .patient-footer {
@@ -93,6 +94,11 @@
 	background-color: rgba(255, 255, 255, 0.30);
 }
 
+.patient-input:focus{
+	background-color: white;
+	font-weight: bold;
+}
+
 .patient {
 	background: #90d6cb;
 	border-radius: 4px;
@@ -149,38 +155,3 @@
 	border-radius: 50%;
 }
 
-/* lg (Laptop L) */ 
-@media (min-width: 1200px) {
-	.page-main, .page-footer {
-		left: 228px;	
-	}
-
-	.page-patient, .patient-footer {
-		left: 16.49vw;	
-	}
-
-	.page-main {
-		height: 100vh;
-	}
-
-	.page-patient {
-		height: 100%;
-	}
-
-	.page-footer, .patient-footer {
-		width: 83.3%;
-	}
-}
-
-/* md (Laptop) */
-@media (min-width: 992px) and (max-width: 1199px) {
-
-}
-/* sm (Tablet)*/
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-/* xs (Mobile L M S)*/
-@media (max-width: 767px) {
-
-}
