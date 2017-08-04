@@ -223,6 +223,11 @@ class Web extends CI_Controller{
         $illness = $this->input->post("pax-illness");
         $observations = $this->input->post("pax-observation");
         $img = $this->input->post("pax-photo");
+        $emergencycontact = $this->input->post("pax-emergencycontact");
+        $emergencyphone = $this->input->post("pax-emergencyphone");
+        $option_med = $this->input->post("pax-option-med");
+        $option_other = $this->input->post("pax-option-other");
+        $allergies_med = $this->input->post("");
 
         $this->load->library('upload', $config);
 

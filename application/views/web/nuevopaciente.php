@@ -205,26 +205,26 @@
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-4'>
-							<label for="pax-med-allergy" class = 'pax-label'>Alergias a medicamentos</label>
+							<label for="pax-med-allergy-medy" class = 'pax-label'>Alergias a medicamentos</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
+							<select id="pax-option-med" class="form-control patient-input" name="pax-option-med">
 								<option id= '-' value = '-'>NO</option>
 								<option id= '+' value = '+'>SI</option>
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true">
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy-med" name= 'pax-med-allergy-med' required="true">
 						</div>
 					</div>
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-4'>
-							<label for="pax-rh" class = 'pax-label'>Otras alergias</label>
+							<label for="pax-med-allergy" class = 'pax-label'>Otras alergias</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
+							<select id="pax-option-other" class="form-control patient-input" name="pax-option-other">
 								<option id= '-' value = '-'>NO</option>
 								<option id= '+' value = '+'>SI</option>
 							</select>

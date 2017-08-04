@@ -90,7 +90,7 @@
 							<label for="pax-emergencycontact" class = 'pax-label'>Contacto emergencia *</label>
 						</div>
 						<div class = 'col-xs-9 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencycontact" name= 'pax-emergencycontact' required="true">
+							<input class="form-control patient-input" value="<?php echo $paciente->getEmergency_contact() ?>" type="text" placeholder="" id="pax-emergencycontact" name= 'pax-emergencycontact' required="true">
 						</div>
 				
 					</div>
@@ -147,7 +147,7 @@
 							<label for="pax-emergencyphone" class = 'pax-label'>Teléfono de contacto *</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencyphone" name= 'pax-emergencyphone' required="true">
+							<input class="form-control patient-input" value="<?php echo $paciente->getEmergency_phone() ?>"  type="text" placeholder="" id="pax-emergencyphone" name= 'pax-emergencyphone' required="true">
 						</div>
 				
 					</div>
@@ -212,24 +212,24 @@
 						</div>
 						<div class = 'col-xs-3 pr-0'>
 							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
-								<option id= '-' value = '-'>NO</option>
-								<option id= '+' value = '+'>SI</option>
+								<option id= '-' value = '-' <?php if(empty($paciente->getAllergies_med())){ echo "selected";} ?>  >NO</option>
+								<option id= '+' value = '+' <?php if(!empty($paciente->getAllergies_med())){ echo "selected";} ?> >SI</option>
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true">
+							<input class="form-control patient-input" type="text" value="<?php echo $paciente->getAllergies_med() ?>"   placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true">
 						</div>
 					</div>
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-4'>
-							<label for="pax-rh" class = 'pax-label'>Otras alergias</label>
+							<label for="pax-med-allergy" class = 'pax-label'>Otras alergias</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
-								<option id= '-' value = '-'>NO</option>
-								<option id= '+' value = '+'>SI</option>
+							<select id="pax-select-other" class="form-control patient-input" name="pax-rh">
+								<option id= '-' value = '-' <?php if(empty($paciente->getAllergies())){ echo "selected";} ?> >NO</option>
+								<option id= '+' value = '+' <?php if(!empty($paciente->getAllergies())){ echo "selected";} ?>>SI</option>
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
