@@ -74,8 +74,6 @@
 
 .sub-title {
 	color: white;
-	border-style: none none solid none;
-	border-width: 1px;
 }
 
 .btn-upload{
@@ -108,9 +106,16 @@
 	border-radius: 4px;
 }
 
-.patient th {
+.patient th{
 	color: white;
 	font-size: 16px;
+}
+
+.consult th{
+	color: white;
+	font-size: 16px;
+	border-top: 1px solid #ddd !important;
+	text-align: center;
 }
 
 .patient td {
@@ -118,6 +123,16 @@
 	font-size: 16px;
 }
 
+.consult tr{
+	border-bottom: 1px solid #ddd !important;
+}
+
+
+.consult td{
+	color: #1d3651;
+	font-size: 14px;
+	text-align: center;
+}
 
 .btn-nuevo {
 	font-weight: bold;
