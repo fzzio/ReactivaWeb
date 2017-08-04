@@ -205,7 +205,7 @@
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-4'>
-							<label for="pax-med-allergy-medy" class = 'pax-label'>Alergias a medicamentos</label>
+							<label for="pax-med-allergy" class = 'pax-label'>Alergias a medicamentos</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
 							<select id="pax-option-med" class="form-control patient-input" name="pax-option-med">
@@ -214,7 +214,7 @@
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy-med" name= 'pax-med-allergy-med' required="true">
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergies" name= 'pax-med-allergies' required="true">
 						</div>
 					</div>
 				</div>
@@ -230,7 +230,7 @@
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true">
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-allergies" name= 'pax-allergies' required="true">
 						</div>
 					</div>
 				</div>

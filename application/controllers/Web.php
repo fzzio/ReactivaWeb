@@ -227,9 +227,17 @@ class Web extends CI_Controller{
         $emergencyphone = $this->input->post("pax-emergencyphone");
         $option_med = $this->input->post("pax-option-med");
         $option_other = $this->input->post("pax-option-other");
-        $allergies_med = $this->input->post("");
+        $allergies_med = $this->input->post("pax-med-allergies");
 
         $this->load->library('upload', $config);
+
+        if($option_med == "-"){
+        	$allergies_med = NULL;
+        }
+
+        if($option_other == "-"){
+        	$allergies = NULL;
+        }
 
         if($this->upload->do_upload("pax-photo")) {
             $img_data = $this->upload->data();
@@ -252,6 +260,9 @@ class Web extends CI_Controller{
         	'illness'=>$illness,
         	'img'=>$img,
         	'email'=>$mail,
+        	'allergies_med'=>$allergies_med,
+        	'emergency_contact'=>$emergencycontact,
+        	'emergency_phone'=>$emergencyphone
         	);
 
         $this->db->insert('patient', $data);
@@ -294,11 +305,24 @@ class Web extends CI_Controller{
         $observations = $this->input->post("pax-observation");
         $img = $this->input->post('dish-prev-img');
 
+        $emergencycontact = $this->input->post("pax-emergencycontact");
+        $emergencyphone = $this->input->post("pax-emergencyphone");
+        $option_med = $this->input->post("pax-option-med");
+        $option_other = $this->input->post("pax-option-other");
+        $allergies_med = $this->input->post("pax-med-allergies");
 
         if (!is_null($img)){
 			$strip_foto = explode("/", $img);
 			$img = $strip_foto[7];
 		}
+
+		if($option_med == "-"){
+        	$allergies_med = NULL;
+        }
+
+        if($option_other == "-"){
+        	$allergies = NULL;
+        }
 
         $this->load->library('upload', $config);
 
@@ -323,6 +347,9 @@ class Web extends CI_Controller{
         	'illness'=>$illness,
         	'img'=>$img,
         	'email'=>$mail,
+        	'allergies_med'=>$allergies_med,
+        	'emergency_contact'=>$emergencycontact,
+        	'emergency_phone'=>$emergencyphone
         	);
 
         $this->db->where('patient.id_patient', $id_patient);

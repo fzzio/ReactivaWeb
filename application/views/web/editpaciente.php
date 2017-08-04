@@ -211,13 +211,13 @@
 							<label for="pax-med-allergy" class = 'pax-label'>Alergias a medicamentos</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
+							<select id="pax-option-med" class="form-control patient-input" name="pax-option-med">
 								<option id= '-' value = '-' <?php if(empty($paciente->getAllergies_med())){ echo "selected";} ?>  >NO</option>
 								<option id= '+' value = '+' <?php if(!empty($paciente->getAllergies_med())){ echo "selected";} ?> >SI</option>
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
-							<input class="form-control patient-input" type="text" value="<?php echo $paciente->getAllergies_med() ?>"   placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true">
+							<input class="form-control patient-input" type="text" value="<?php echo $paciente->getAllergies_med() ?>"   placeholder="Especifique" id="pax-med-allergies" name= 'pax-med-allergies' required="true">
 						</div>
 					</div>
 				</div>
@@ -227,13 +227,13 @@
 							<label for="pax-med-allergy" class = 'pax-label'>Otras alergias</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<select id="pax-select-other" class="form-control patient-input" name="pax-rh">
+							<select id="pax-option-other" class="form-control patient-input" name="pax-option-other">
 								<option id= '-' value = '-' <?php if(empty($paciente->getAllergies())){ echo "selected";} ?> >NO</option>
 								<option id= '+' value = '+' <?php if(!empty($paciente->getAllergies())){ echo "selected";} ?>>SI</option>
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true" value= "<?php echo $paciente->getAllergies() ?>">
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-allergies" name= 'pax-allergies' required="true" value= "<?php echo $paciente->getAllergies() ?>">
 						</div>
 					</div>
 				</div>
