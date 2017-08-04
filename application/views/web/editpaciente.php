@@ -1,9 +1,9 @@
-<div id="page-wrapper" class="page-patient">
-	<div class="col-md-11">
+<div id="page-wrapper" class="page-main mt-0 pt-0 mb-0 pb-0 pr-0 mr-0">
+	<div class="col-md-offset-1 col-md-10">
 	<?php echo form_open_multipart('web/editPatient' , array('id' => 'frm-new')); ?>
 		<div class="row">
 			<div class="col-md-8 pl-0 ml-0">
-				<h3 class="title">Editar registro de paciente</h3>
+				<h2 class="title">Editar registro de paciente</h2>
 			</div>
 			<div class="col-md-2 mt-20">
 				<button type="submit" class="btn btn-default btn-primary btn-general">
@@ -18,8 +18,8 @@
 		</div>
 
 		<div class = 'row'>
-			<h4 class = 'title'>Datos personales y de contacto</h4>
-			<hr>
+			<h3 class = 'title mb-5'>Datos personales y de contacto</h3>
+			<hr class = 'mt-0'>
 		</div>
 		<div class = 'row'>
 			<div class = 'col-md-2'>
@@ -35,10 +35,10 @@
 			<div class = 'col-md-5'>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-3'>
-							<label for="pax-name" class = 'pax-label'>Nombres</label>
+						<div class = 'col-xs-3 pr-0 mr-0'>
+							<label for="pax-name" class = 'pax-label'>Nombres *</label>
 						</div>
-						<div class = 'col-xs-9'>
+						<div class = 'col-xs-9 pr-0'>
 							<input class="form-control patient-input"  value="<?php echo $paciente->getName()?>" type="text" placeholder="" id="pax-name" name= 'pax-name' required="true">
 						</div>
 				
@@ -46,10 +46,10 @@
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-3'>
-							<label for="pax-lastname" class = 'pax-label'>Apellidos</label>
-						</div>
-						<div class = 'col-xs-9'>
+						<div class = 'col-xs-3 pr-0 mr-0 '>
+							<label for="pax-lastname" class = 'pax-label'>Apellidos *</label>
+						</div> 
+						<div class = 'col-xs-9 pr-0'>
 							<input class="form-control patient-input"  value="<?php echo $paciente->getLastname() ?>" type="text" placeholder="" id="pax-lastname" name= 'pax-lastname' required="true">
 						</div>
 				
@@ -57,10 +57,10 @@
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-3'>
-							<label for="pax-ci" class = 'pax-label'>Cédula</label>
+						<div class = 'col-xs-3 pr-0 mr-0'>
+							<label for="pax-ci" class = 'pax-label'>Cédula *</label>
 						</div>
-						<div class = 'col-xs-9'>
+						<div class = 'col-xs-9 pr-0'>
 							<input class="form-control patient-input"  value="<?php echo $paciente->getCI() ?>" type="text" placeholder="" id="pax-ci" name= 'pax-ci' required="true">
 						</div>
 				
@@ -68,8 +68,8 @@
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-3'>
-							<label for="pax-born" class = 'pax-label'>Fecha de nacimiento</label>
+						<div class = 'col-xs-3 '>
+							<label for="pax-born" class = 'pax-label'>Fecha nacimiento*</label>
 						</div>
 						<?php $items = explode('-', $paciente->getBorn());?>
 						<div class = 'col-xs-3 pr-0'>
@@ -84,12 +84,23 @@
 				
 					</div>
 				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-3 pr-0 mr-0 ml-0 pl-0'>
+							<label for="pax-emergencycontact" class = 'pax-label'>Contacto emergencia *</label>
+						</div>
+						<div class = 'col-xs-9 pr-0'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencycontact" name= 'pax-emergencycontact' required="true">
+						</div>
+				
+					</div>
+				</div>
 			</div>
 			<div class = 'col-md-5'>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-4'>
-							<label for="pax-phone" class = 'pax-label'>Teléfono</label>
+						<div class = 'col-xs-4 pr-0 mr-0'>
+							<label for="pax-phone" class = 'pax-label'>Teléfono *</label>
 						</div>
 						<div class = 'col-xs-8'>
 							<input class="form-control patient-input"  value="<?php echo $paciente->getPhone() ?>" type="text" placeholder="" id="pax-phone" name= 'pax-phone' required="true">
@@ -99,8 +110,8 @@
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-4'>
-							<label for="pax-cellphone" class = 'pax-label'>Celular</label>
+						<div class = 'col-xs-4 pr-0 mr-0'>
+							<label for="pax-cellphone" class = 'pax-label'>Celular *</label>
 						</div>
 						<div class = 'col-xs-8'>
 							<input class="form-control patient-input"  value="<?php echo $paciente->getCellphone() ?>"  type="text" placeholder="" id="pax-cellphone" name= 'pax-cellphone' required="true">
@@ -110,8 +121,8 @@
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-4'>
-							<label for="pax-mail" class = 'pax-label'>Mail</label>
+						<div class = 'col-xs-4 pr-0 mr-0'>
+							<label for="pax-mail" class = 'pax-label'>Mail *</label>
 						</div>
 						<div class = 'col-xs-8'>
 							<input class="form-control patient-input"  value="<?php echo $paciente->getEmail() ?>" type="mail" placeholder="" id="pax-mail" name= 'pax-mail' required="true">
@@ -121,8 +132,8 @@
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-4'>
-							<label for="pax-address" class = 'pax-label'>Domicilio</label>
+						<div class = 'col-xs-4 pr-0 mr-0'>
+							<label for="pax-address" class = 'pax-label'>Domicilio *</label>
 						</div>
 						<div class = 'col-xs-8'>
 							<input class="form-control patient-input"  value="<?php echo $paciente->getAddress() ?>" type="text" placeholder="" id="pax-address" name= 'pax-address' required="true">
@@ -130,11 +141,22 @@
 				
 					</div>
 				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4 pr-0 mr-0'>
+							<label for="pax-emergencyphone" class = 'pax-label'>Teléfono de contacto *</label>
+						</div>
+						<div class = 'col-xs-8'>
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencyphone" name= 'pax-emergencyphone' required="true">
+						</div>
+				
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class = 'row'>
-			<h4 class = 'title'>Información clínica</h4>
-			<hr>
+			<h3 class = 'title mb-5'>Información clínica</h3>
+			<hr class = 'mt-0'>
 		</div>
 		<div class = 'row'>
 			<div class = 'col-md-4'>
@@ -151,13 +173,6 @@
 						</div>
 					</div>
 				</div>
-				
-				
-			</div>
-
-		</div>
-		<div class = 'row'>
-			<div class = 'col-md-4'>
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-4'>
@@ -173,8 +188,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class = 'col-md-4'>
 				<div class = 'row pb-10'>
 					<div class="form-group">
 						<div class = 'col-xs-4'>
@@ -189,24 +202,53 @@
 						</div>
 					</div>
 				</div>
+				
+			</div>
+			<div class = 'col-md-8'>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-med-allergy" class = 'pax-label'>Alergias a medicamentos</label>
+						</div>
+						<div class = 'col-xs-3 pr-0'>
+							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
+								<option id= '-' value = '-'>NO</option>
+								<option id= '+' value = '+'>SI</option>
+							</select>
+						</div>
+						<div class = 'col-xs-5 pr-0'>
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true">
+						</div>
+					</div>
+				</div>
+				<div class = 'row pb-10'>
+					<div class="form-group">
+						<div class = 'col-xs-4'>
+							<label for="pax-rh" class = 'pax-label'>Otras alergias</label>
+						</div>
+						<div class = 'col-xs-3 pr-0'>
+							<select id="pax-rh" class="form-control patient-input" name="pax-rh">
+								<option id= '-' value = '-'>NO</option>
+								<option id= '+' value = '+'>SI</option>
+							</select>
+						</div>
+						<div class = 'col-xs-5 pr-0'>
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergy" name= 'pax-med-allergy' required="true" value= "<?php echo $paciente->getAllergies() ?>">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class = 'col-md-6'>
 				<div class="form-group">
-					<label for="pax-allergies" class = 'pax-label'>Alergias</label>
-					<textarea class="form-control patient-input" id="pax-allergies" name = 'pax-allergies' rows="3"><?php echo $paciente->getAllergies() ?></textarea>
-				</div>
-			</div>
-			<div class = 'col-md-6'>
-				<div class="form-group">
-					<label for="pax-illness" class = 'pax-label'>Enfermedades</label>
+					<label for="pax-illness" class = 'pax-label pull-right-label'>Enfermedades</label>
 					<textarea class="form-control patient-input" id="pax-illness" name = 'pax-illness'  rows="3" ><?php echo $paciente->getIllness() ?></textarea>
 				</div>
 			</div>
 			<div class = 'col-md-6'>
 				<div class="form-group">
-					<label for="pax-observation" class = 'pax-label'>Observaciones y comentarios</label>
+					<label for="pax-observation" class = 'pax-label pull-right-label'>Observaciones y comentarios</label>
 					<textarea class="form-control patient-input" id="pax-observation" name = 'pax-observation' rows="3" ><?php echo $paciente->getObservations() ?></textarea>
 				</div>
 			</div>

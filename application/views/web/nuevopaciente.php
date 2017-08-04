@@ -67,7 +67,7 @@
 				</div>
 				<div class = 'row pb-10'>
 					<div class="form-group">
-						<div class = 'col-xs-3 pr-0 mr-0'>
+						<div class = 'col-xs-3 '>
 							<label for="pax-born" class = 'pax-label'>Fecha nacimiento*</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
