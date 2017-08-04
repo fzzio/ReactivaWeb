@@ -98,21 +98,24 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `name` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `born` date NOT NULL,
-  `gender` tinyint(4) NOT NULL,
+  `gender` tinyint(4) NOT NULL COMMENT '0:F, 1:M',
   `phone` varchar(50) NOT NULL,
   `cellphone` varchar(50) NOT NULL,
+  `emergency_contact` varchar(50) NOT NULL,
+  `emergency_phone` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `blood` varchar(2) NOT NULL DEFAULT 'O',
   `rh` varchar(1) NOT NULL DEFAULT '+',
-  `allergies` text NOT NULL,
-  `observations` text NOT NULL,
-  `illness` text NOT NULL,
-  `img` varchar(200) NOT NULL,
+  `allergies` text DEFAULT NULL,
+  `allergies_med` text DEFAULT NULL,
+  `observations` text DEFAULT NULL,
+  `illness` text DEFAULT NULL,
+  `img` varchar(200) DEFAULT NULL,
   `deleteInfo_ci` varchar(10) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id_patient`),
   UNIQUE KEY `ci` (`ci`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_consult
@@ -122,6 +125,7 @@ CREATE TABLE IF NOT EXISTS `patient_consult` (
   `id_doctor_created` int(11) NOT NULL,
   `id_doctor_attended` int(11) DEFAULT NULL,
   `date_created` datetime NOT NULL,
+  `date_planned` datetime NOT NULL,
   `date_attended` datetime DEFAULT NULL,
   `status` tinyint(4) NOT NULL COMMENT '0: Pendiente, 1: Cancelada, 2: Asistida',
   `diagnosis` text DEFAULT NULL,
@@ -132,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `patient_consult` (
   CONSTRAINT `FK_patient_consult_acc_doctor` FOREIGN KEY (`id_doctor_created`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_consult_acc_doctor_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_consult_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy

@@ -10,7 +10,6 @@ class Admin extends CI_Controller{
 		$this->load->helper('form');
 		$this->load->helper(array('url'));
 		$this->load->model('User');
-		$this->load->model('Geography_model');
 		$this->load->library('form_validation');
 		$this->load->library('grocery_CRUD');
 		
