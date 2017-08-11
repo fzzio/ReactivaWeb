@@ -427,13 +427,13 @@ class Web extends CI_Controller{
 			$eventListHTML .= '<ul  class="list-unstyled" >';
 			foreach($result as $row){
 				$eventListHTML .= 
-				'<li class="item-agenda mb-10 pl-5 pr-5"> 
+				'<li class="item-agenda mb-10 pl-10 pr-10"> 
 					<div class = "row">
 						<div class = "col-xs-6">
-							Paciente: '.$row['fullname'].'
+							<span class = "agenda-label">Paciente:</span> '.$row['fullname'].'
 						</div>
 						<div class = "col-xs-6">
-							Horario: '.$row['hour'].'
+							<span class = "agenda-label">Horario:</span> '.$row['hour'].'
 						</div>
 					</div>
 				</li>';
@@ -460,7 +460,7 @@ class Web extends CI_Controller{
 	?>
 
 		<div class = 'row'>
-			<div class = 'col-md-6'>
+			<div class = 'col-md-6 col-xs-12'>
 				<div class = 'mon-header pt-50'>
 		        	<a  onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">
 		        		<span class = 'glyphicon glyphicon-chevron-left'></span>
@@ -495,25 +495,28 @@ class Web extends CI_Controller{
 								//Define date cell color
 								if(strtotime($currentDate) == strtotime(date("Y-m-d"))){
 									echo '<li date="'.$currentDate.'" class="grey date_cell">';
-									echo '<span>';
-									echo $dayCount;
-									echo '</span>';	
-								}elseif($eventNum > 0){
-									echo '<li date="'.$currentDate.'" class="light_sky date_cell">';
 									echo '<a onclick="getEvents(\''.$currentDate.'\');">';
-									
-									echo '<span class = "round-day">';
+									echo '<span >';
 									echo $dayCount;
 									echo '</span>';	
-									echo '<span class="event-counter">';
+									echo '</a>';	
+								}elseif($eventNum > 0){
+									echo '<li date="'.$currentDate.'" class="date_cell">';
+									echo '<a onclick="getEvents(\''.$currentDate.'\');" class = "round-day">';
+									echo '<div class="event-mark">';
+									echo $dayCount;
+									echo '</div>';	
+									echo '<div class="event-counter">';
 									echo $eventNum;
-									echo '</span>';
+									echo '</div>';
 									echo '</a>';
 								}else{
 									echo '<li date="'.$currentDate.'" class="date_cell">';
-									echo '<span>';
+									echo '<a onclick="getEvents(\''.$currentDate.'\');">';
+									echo '<span >';
 									echo $dayCount;
 									echo '</span>';	
+									echo '</a>';	
 								}				
 								
 								
@@ -528,8 +531,14 @@ class Web extends CI_Controller{
 			</div>
 			<div class = 'col-md-6'>
 				<div id="event_list" class="none">
-					
+						<button  type="button" class="btn btn-nuevo mt-10" data-toggle="modal" data-target="#myModal">
+							<div class = 'glyphicon-ring'>
+								<span class="glyphicon glyphicon-plus glyphicon-bordered" ></span>
+							</div>
+							AGENDAR NUEVA CITA
+						</button >
 				</div>
+				
 			</div>
 		</div>
 	<?php

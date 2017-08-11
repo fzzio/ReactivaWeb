@@ -30,10 +30,9 @@
 
 .calendar-nav {
 	background-color: #1d3651;
-  position: relative;
-
-  height: 78px;
-  border-bottom-style: solid;
+	position: relative;
+	height: 78px;
+	border-bottom-style: solid;
 	border-color: #50bfa3;
 	border-width: 1px;
 }
@@ -73,14 +72,29 @@ ul.nav-tabs {
 
 #calender_section h2{ color:white; font-size:17px;  line-height:40px; }
 #calender_section h2 a{ color:#F58220; float:none;}
-#calender_section_top{ width:390px;float:left; margin-top:20px; border: 1px rgba(255, 255, 255, 0.50) solid; color:white;}
+#calender_section_top{ width:390px;float:left; border: 1px rgba(255, 255, 255, 0.50) solid; color:white;}
 #calender_section_top ul{padding:0; list-style-type:none;}
-#calender_section_top ul li{ float:left; width:55px; font-size:14px; min-height:0; background:none; box-shadow:none; margin:0; padding:0; position:relative; text-align: center; text-transform: uppercase; padding-top: 4px; padding-bottom: 4px;}
+#calender_section_top ul li{ 
+	width: 55px;
+	float:left; 
+	font-size:14px; 
+	min-height:0; 
+	background:none; 
+	box-shadow:none; 
+	margin:0; 
+	padding:0; 
+	position:relative; 
+	text-align: center; 
+	text-transform: uppercase; 
+	padding-top: 5px; 
+	padding-bottom: 5px;
+}
+
 #calender_section_bot{ width:390px; float:left; border: 1px rgba(255, 255, 255, 0.50) solid;}
 #calender_section_bot ul{ margin:0; padding:0; list-style-type:none;}
 #calender_section_bot ul li{ 
+	width: 55px;
 	float:left; 
-	width:55px; 
 	height:55px; 
 	min-height:0; 
 	background:none; 
@@ -103,9 +117,31 @@ ul.nav-tabs {
 }
 
 .event-counter{
-	color: #1d3651;
+	font-size: 14px;
+	color: #1d3651 !important;
 	background-color: #4ABFA4;
-	border-radius: 25px;
+	height: 22px;
+	width: 22px;
+	display: table-cell;
+  	text-align: center;
+  	vertical-align: middle;
+	border-radius: 50%;
+	position: absolute;
+	bottom: 50%;
+	left: 50%;
+}
+
+.event-mark{
+	height: 35px;
+	width: 35px;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 50%;
+	border: rgba(29, 54, 81, 0.60) 2px solid;
+	background-color: none;
+	line-height: 35px;
+	color: white !important;
+	top: 40% !important;
 }
 
 .mon-header{
@@ -121,12 +157,22 @@ ul.nav-tabs {
 }
 
 .item-agenda{
-	background-color: rgba(255, 255, 255, 0.60);
+	background-color: rgba(255, 255, 255, 0.70);
+	padding: 5px;
+	border-radius: 10px;
+	color: #1D3651;
 }
 
+.agenda-label{
+	font-weight: bold;
+}
+
+#event_list h2{
+	color: white;
+	text-transform: uppercase;
+}
 
 .grey{ background-color:rgba(255, 255, 255, 0.50) !important;}
-.light_sky{ background-color:#B9FFFF !important;}
 
 /*========== Hover Popup ===============*/
 .date_cell { cursor: pointer; cursor: hand; }
@@ -174,14 +220,15 @@ a:hover {color: #181919;text-decoration: underline;}
 
 @media only screen and (min-width:480px) and (max-width:767px) {
 #calender_section{ width:336px;}
-#calender_section_top ul li{ width:47px;}
-#calender_section_bot ul li{ width:47px;}
+#calender_section_top ul li{ width:55px;}
+#calender_section_bot ul li{ width:55px;}
 }
 @media only screen and (min-width: 320px) and (max-width: 479px) {
 #calender_section{ width:219px;}
 #calender_section_top ul li{ width:30px; font-size:11px;}
 #calender_section_bot ul li{ width:30px;}
-#calender_section_bot{ width:217px;}
+#calender_section_top{ width:525px;}
+#calender_section_bot{ width:525px;}
 #calender_section_bot ul li{ height:50px;}
 }
 
@@ -189,6 +236,7 @@ a:hover {color: #181919;text-decoration: underline;}
 #calender_section{ width:530px;}
 #calender_section_top ul li{ width:74px;}
 #calender_section_bot ul li{ width:74px;}
+#calender_section_top{ width:525px;}
 #calender_section_bot{ width:525px;}
 #calender_section_bot ul li{ height:50px;}
 }
@@ -228,6 +276,13 @@ a:hover {color: #181919;text-decoration: underline;}
 	}
 }
 
+
+.nueva-cite-header{
+	background-color: #1D3651;
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+}
 /* md (Laptop) */
 @media (min-width: 992px) and (max-width: 1199px) {
 

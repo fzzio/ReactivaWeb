@@ -49,6 +49,6 @@ $(document).ready(function(){
 		getCalendar('calendar_div',$('.year_dropdown').val(),$('.month_dropdown').val());
 	});
 	$(document).click(function(){
-		$('#event_list').slideUp('slow');
+		
 	});
 });
