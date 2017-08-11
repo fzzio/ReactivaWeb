@@ -458,15 +458,15 @@ class Web extends CI_Controller{
 		$totalDaysOfMonthDisplay = ($currentMonthFirstDay == 7)?($totalDaysOfMonth):($totalDaysOfMonth + $currentMonthFirstDay);
 		$boxDisplay = ($totalDaysOfMonthDisplay <= 35)?35:42;
 	?>
-		<div id="calender_section">
-			<div class = 'row'>
-			<div class = 'col-md-7'>
+
+		<div class = 'row'>
+			<div class = 'col-md-6'>
 				<div class = 'mon-header pt-50'>
-		        	<a href="javascript:void(0);" onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">
+		        	<a  onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">
 		        		<span class = 'glyphicon glyphicon-chevron-left'></span>
 		        	</a>
 		            <span class = 'mr-15 ml-15'><?php echo date("F", mktime(0, 0, 0, $dateMonth, 10)); ?></span>
-		            <a href="javascript:void(0);" onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' + 1 Month')); ?>','<?php echo date("m",strtotime($date.' + 1 Month')); ?>');">
+		            <a  onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' + 1 Month')); ?>','<?php echo date("m",strtotime($date.' + 1 Month')); ?>');">
 		            	<span class = 'glyphicon glyphicon-chevron-right'></span>
 		            </a>
 		        </div>
@@ -495,23 +495,26 @@ class Web extends CI_Controller{
 								//Define date cell color
 								if(strtotime($currentDate) == strtotime(date("Y-m-d"))){
 									echo '<li date="'.$currentDate.'" class="grey date_cell">';
+									echo '<span>';
+									echo $dayCount;
+									echo '</span>';	
 								}elseif($eventNum > 0){
 									echo '<li date="'.$currentDate.'" class="light_sky date_cell">';
+									echo '<a onclick="getEvents(\''.$currentDate.'\');">';
+									
+									echo '<span class = "round-day">';
+									echo $dayCount;
+									echo '</span>';	
+									echo '<span class="event-counter">';
+									echo $eventNum;
+									echo '</span>';
+									echo '</a>';
 								}else{
 									echo '<li date="'.$currentDate.'" class="date_cell">';
-								}
-								//Date cell
-								echo '<span>';
-								echo $dayCount;
-								echo '</span>';
-
-								if($eventNum>0){
-									echo '<a class = "agenda-day" onclick="getEvents(\''.$currentDate.'\');">';
-									echo $eventNum;
-									echo '</a>';
-								}
-								
-								
+									echo '<span>';
+									echo $dayCount;
+									echo '</span>';	
+								}				
 								
 								
 								echo '</li>';
@@ -523,11 +526,10 @@ class Web extends CI_Controller{
 					</ul>
 				</div>
 			</div>
-			<div class = 'col-md-5'>
+			<div class = 'col-md-6'>
 				<div id="event_list" class="none">
 					
 				</div>
-			</div>
 			</div>
 		</div>
 	<?php

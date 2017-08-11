@@ -12,7 +12,7 @@
 		</div>
 <!-- Page Content -->
 
-	<div class="container col-lg-9 col-md-9">
+	<div class="container col-md-offset-1 col-md-10">
 		<!-- Tab panes -->
 		<div class="tab-content">
 		  <div role="tabpanel" class="tab-pane active" id="calendar">

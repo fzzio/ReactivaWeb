@@ -84,11 +84,14 @@ body {
 
 #logout, #index {
 	font-weight: bold;
+	border-top-style: solid;
+	border-color: rgba(255, 255, 255, 0.25);
+	border-width: 0.5px !important; 
 }
 
 #index a {
 	font-size: 20pt;
-	color: #50bfa3;
+	color: #50bfa3 !important;
 }
 
 #index a:hover, #index a:active, #index a:focus {
@@ -97,6 +100,7 @@ body {
 }
 
 #logout {
+	position: fixed;
 	bottom: 0px;
 }
 
