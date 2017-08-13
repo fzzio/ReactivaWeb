@@ -141,7 +141,9 @@ ul.nav-tabs {
 	background-color: none;
 	line-height: 35px;
 	color: white !important;
-	top: 40% !important;
+	position: absolute;
+	bottom: 10% !important;
+	left: 10%;
 }
 
 .mon-header{

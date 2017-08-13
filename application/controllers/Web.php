@@ -427,21 +427,39 @@ class Web extends CI_Controller{
 			$eventListHTML .= '<ul  class="list-unstyled" >';
 			foreach($result as $row){
 				$eventListHTML .= 
-				'<li class="item-agenda mb-10 pl-10 pr-10"> 
-					<div class = "row">
-						<div class = "col-xs-6">
-							<span class = "agenda-label">Paciente:</span> '.$row['fullname'].'
+				"<li class='item-agenda mb-10 pl-10 pr-10'> 
+					<div class = 'row'>
+						<div class = 'col-xs-6'>
+							<span class = 'agenda-label'>Paciente:</span> ".$row['fullname']."
 						</div>
-						<div class = "col-xs-6">
-							<span class = "agenda-label">Horario:</span> '.$row['hour'].'
+						<div class = 'col-xs-6'>
+							<span class = 'agenda-label'>Horario:</span> ".$row['hour']."
 						</div>
 					</div>
-				</li>';
+				</li>
+
+				
+
+				";
 			}
-			$eventListHTML .= '</ul>';
+			$eventListHTML .= "</ul>
+
+			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#myModal'>
+				<div class = 'glyphicon-ring'>
+					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
+				</div>
+				AGENDAR NUEVA CITA
+			</button >
+			";
 		}else{
-			$eventListHTML = '<h2>'.date("d M Y",strtotime($date)).'</h2>';
-			$eventListHTML = '<p> No hay citas</p>';
+			$eventListHTML .= '<h2>'.date("d M Y",strtotime($date)).'</h2>';
+			$eventListHTML .= '<p> No hay citas</p>';
+			$eventListHTML .= "<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#myModal'>
+				<div class = 'glyphicon-ring'>
+					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
+				</div>
+				AGENDAR NUEVA CITA
+			</button >";
 		}
 		
 		echo $eventListHTML;
@@ -530,13 +548,8 @@ class Web extends CI_Controller{
 				</div>
 			</div>
 			<div class = 'col-md-6'>
-				<div id="event_list" class="none">
-						<button  type="button" class="btn btn-nuevo mt-10" data-toggle="modal" data-target="#myModal">
-							<div class = 'glyphicon-ring'>
-								<span class="glyphicon glyphicon-plus glyphicon-bordered" ></span>
-							</div>
-							AGENDAR NUEVA CITA
-						</button >
+				<div id="event_list" class="pt-50">
+						
 				</div>
 				
 			</div>

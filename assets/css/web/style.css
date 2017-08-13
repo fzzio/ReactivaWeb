@@ -47,5 +47,8 @@ body,html{
 
 #index{
 	background-color: #1d3651;
+}
 
+#index a:hover, #index a:focus{
+	color: white !important;
 }
