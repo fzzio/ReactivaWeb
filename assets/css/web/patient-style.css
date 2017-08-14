@@ -89,6 +89,13 @@
 	color: #1d3651;
 }
 
+td > .search-table{
+	max-width: 30px !important;
+}
+
+table.dataTable thead th, table.dataTable thead td{
+	border-bottom: none !important;
+}
 .patient-input{
 	border-radius: 0px;
 	border: none;
@@ -101,15 +108,16 @@
 	font-weight: bold;
 }
 
-.patient {
-	background: #90d6cb;
-	border-radius: 4px;
+.patient{
+	background: #90d6cb !important;
+	border-radius: 4px !important;
 }
 
-.patient th{
-	color: white;
-	font-size: 16px;
+.patient tr{
+	background: #90d6cb !important;
 }
+
+
 
 .consult th{
 	color: white;
@@ -119,7 +127,13 @@
 }
 
 .patient td {
-	color: #1d3651;
+	color: #1d3651 !important;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.patient th{
+	color: white !important;
 	font-size: 16px;
 }
 

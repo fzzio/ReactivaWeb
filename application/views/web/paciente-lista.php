@@ -10,18 +10,20 @@
 			NUEVO REGISTRO
 
 		</a>
-		<table class="table patient mt-20">
+		<table id = "list-patient" class="table patient mt-20">
 			<thead>
-				<tr>
-					<th></th>
-					<th class = 'text-center'>NOMBRES</th>
-					<th class = 'text-center'>APELLIDOS</th>
-					<th class = 'text-center'>EDAD</th>
-					<th class = 'text-center'>CÉDULA</th>
-					<th class = 'text-center'>EMAIL</th>
+				<tr class = 'search-row'>
+					<td></td>
+					<td class = 'text-center'>NOMBRES <div class = 'search-table'></div></td>
+					<td class = 'text-center'>APELLIDOS <div class = 'search-table'></div></td>
+					<td class = 'text-center'>EDAD <div class = 'search-table'></div></td>
+					<td class = 'text-center'>CÉDULA <div class = 'search-table'></div></td>
+					<td class = 'text-center'>EMAIL <div class = 'search-table'></div></td>
 				</tr>
+				
 			</thead>
 			<tbody>
+
 				<?php foreach($results as $pax){ ?>
 				<tr>
 					<td>
@@ -39,7 +41,7 @@
 			</tbody>
 		</table>
 
-		<p><?php echo $links; ?></p>
+			
 		</div>
 	</div>
 

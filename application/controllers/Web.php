@@ -52,26 +52,8 @@ class Web extends CI_Controller{
 	public function pacientes(){
 		if ($this->SecurityCheck()){
 
-			$config = array();
-			$config["base_url"] = site_url() . "/web/pacientes";
-			$config["total_rows"] = $this->Patient->record_count();
-			$config["per_page"] = 10;
-			$config["uri_segment"] = 3;
-			$config['num_links'] = 5;
-   			$config['prev_link'] = "<span class = 'glyphicon glyphicon-chevron-left ml-5'></span>";
-   			$config['next_link'] = "<span class = 'glyphicon glyphicon-chevron-right ml-5'></span>";
-   			$config['cur_tag_open'] = "<b class = 'ml-5'>";
-   			$config['cur_tag_close'] = '</b>';
-   			$config['num_tag_open'] = "<a class = 'ml-5'>";
-   			$config['num_tag_close'] = '</a>';
-   			$config['full_tag_open'] = "<div class = 'pag-nav'>";
-   			$config['full_tag_close'] = '</div>';
 
-			$this->pagination->initialize($config);
-			$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-			$dataContent["results"] = $this->Patient->fetch_patients($config["per_page"], $page);
-       		$dataContent["links"] = $this->pagination->create_links();
+			$dataContent["results"] = Patient::getPatients();
 
        		$menuContent['selection']="patient";
 

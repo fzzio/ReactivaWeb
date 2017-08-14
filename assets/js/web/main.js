@@ -34,8 +34,7 @@ $(document).ready(function () {
 				normalizer: function(value) {
 					return $.trim(value);
 				}
-			},
-			''
+			}
 		},
 		messages:{
 			'pax-name': "Sólo se permiten letras",
@@ -46,4 +45,24 @@ $(document).ready(function () {
 		}
 	});
 
+
+	$("#list-patient").each(function(){
+		$('#list-patient thead td div').each( function () {
+        	var title = $(this).text();
+        	$(this).html( '<input type="text" placeholder="'+title+'" />' );
+    	});
+
+    	var table = $('#list-patient').DataTable(
+    		
+    	);
+
+    	table.columns().every( function (){
+    		var that = this;
+    		$('input', this.header()).on('keyup change', function(){
+    			if(that.search() !== this.value){
+    				that.search(this.value).draw();
+    			}
+    		});
+    	});
+	});
 });
