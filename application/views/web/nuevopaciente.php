@@ -7,12 +7,12 @@
 			</div>
 			<div class="col-md-2 mt-20">
 				<button type="submit" class="btn btn-default btn-primary btn-general">
-					<span class="glyphicon glyphicon-download-alt " aria-hidden="true"></span> Guardar
+					<span class="glyphicon glyphicon-download-alt " aria-hidden></span> Guardar
 				</button>
 			</div>
 			<div class="col-md-2 mt-20">
 				<a type="button" class="btn btn-default btn-danger btn-general" >
-					<span class="glyphicon glyphicon-remove-sign " aria-hidden="true"></span> Cancelar
+					<span class="glyphicon glyphicon-remove-sign " aria-hidden></span> Cancelar
 				</a>
 			</div>
 		</div>
@@ -38,7 +38,7 @@
 							<label for="pax-name" class = 'pax-label'>Nombres *</label>
 						</div>
 						<div class = 'col-xs-9 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-name" name= 'pax-name' required="true">
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-name" name= 'pax-name' required>
 						</div>
 				
 					</div>
@@ -49,7 +49,7 @@
 							<label for="pax-lastname" class = 'pax-label'>Apellidos *</label>
 						</div> 
 						<div class = 'col-xs-9 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-lastname" name= 'pax-lastname' required="true">
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-lastname" name= 'pax-lastname' required>
 						</div>
 				
 					</div>
@@ -60,7 +60,7 @@
 							<label for="pax-ci" class = 'pax-label'>Cédula *</label>
 						</div>
 						<div class = 'col-xs-9 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-ci" name= 'pax-ci' required="true">
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-ci" name= 'pax-ci' required>
 						</div>
 				
 					</div>
@@ -71,13 +71,13 @@
 							<label for="pax-born" class = 'pax-label'>Fecha nacimiento*</label>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="numeric" placeholder="DD" id="pax-born-dd" name= 'pax-born-dd' required="true">
+							<input class="form-control patient-input" type="numeric" placeholder="DD" id="pax-born-dd" name= 'pax-born-dd' required>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="numeric" placeholder="MM" id="pax-born-mm" name= 'pax-born-mm' required="true">
+							<input class="form-control patient-input" type="numeric" placeholder="MM" id="pax-born-mm" name= 'pax-born-mm' required>
 						</div>
 						<div class = 'col-xs-3 pr-0'>
-							<input class="form-control patient-input" type="numeric" placeholder="AAAA" id="pax-born-yy" name= 'pax-born-yy' required="true">
+							<input class="form-control patient-input" type="numeric" placeholder="AAAA" id="pax-born-yy" name= 'pax-born-yy' required>
 						</div>
 				
 					</div>
@@ -88,7 +88,7 @@
 							<label for="pax-emergencycontact" class = 'pax-label'>Contacto emergencia *</label>
 						</div>
 						<div class = 'col-xs-9 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencycontact" name= 'pax-emergencycontact' required="true">
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencycontact" name= 'pax-emergencycontact' required>
 						</div>
 				
 					</div>
@@ -101,7 +101,7 @@
 							<label for="pax-phone" class = 'pax-label'>Teléfono *</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-phone" name= 'pax-phone' required="true">
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-phone" name= 'pax-phone' required>
 						</div>
 				
 					</div>
@@ -112,7 +112,7 @@
 							<label for="pax-cellphone" class = 'pax-label'>Celular *</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-cellphone" name= 'pax-cellphone' required="true">
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-cellphone" name= 'pax-cellphone' required>
 						</div>
 				
 					</div>
@@ -123,7 +123,7 @@
 							<label for="pax-mail" class = 'pax-label'>Mail *</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="mail" placeholder="" id="pax-mail" name= 'pax-mail' required="true">
+							<input class="form-control patient-input" type="mail" placeholder="" id="pax-mail" name= 'pax-mail' required>
 						</div>
 				
 					</div>
@@ -134,7 +134,7 @@
 							<label for="pax-address" class = 'pax-label'>Domicilio *</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-address" name= 'pax-address' required="true">
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-address" name= 'pax-address' required>
 						</div>
 				
 					</div>
@@ -145,7 +145,7 @@
 							<label for="pax-emergencyphone" class = 'pax-label'>Teléfono de contacto *</label>
 						</div>
 						<div class = 'col-xs-8'>
-							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencyphone" name= 'pax-emergencyphone' required="true">
+							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencyphone" name= 'pax-emergencyphone' required>
 						</div>
 				
 					</div>
@@ -214,7 +214,7 @@
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergies" name= 'pax-med-allergies' required="true">
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-med-allergies" name= 'pax-med-allergies'>
 						</div>
 					</div>
 				</div>
@@ -230,7 +230,7 @@
 							</select>
 						</div>
 						<div class = 'col-xs-5 pr-0'>
-							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-allergies" name= 'pax-allergies' required="true">
+							<input class="form-control patient-input" type="text" placeholder="Especifique" id="pax-allergies" name= 'pax-allergies'>
 						</div>
 					</div>
 				</div>
