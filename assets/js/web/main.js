@@ -52,9 +52,14 @@ $(document).ready(function () {
         	$(this).html( '<input type="text" placeholder="'+title+'" />' );
     	});
 
-    	var table = $('#list-patient').DataTable(
-    		
+    	var table = $('#list-patient').DataTable({
+    		"lengthChange": false,
+    		"bInfo" : false,
+    		"dataTables_filter": false,
+    		}
     	);
+
+    	$('#list-patient_filter').remove();
 
     	table.columns().every( function (){
     		var that = this;
