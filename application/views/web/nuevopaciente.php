@@ -147,7 +147,6 @@
 						<div class = 'col-xs-8'>
 							<input class="form-control patient-input" type="text" placeholder="" id="pax-emergencyphone" name= 'pax-emergencyphone' required>
 						</div>
-				
 					</div>
 				</div>
 			</div>

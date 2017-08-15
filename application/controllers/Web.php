@@ -16,6 +16,7 @@ class Web extends CI_Controller{
 		$this->load->model('Therapy');
 		$this->load->model('Patient');
 
+		setlocale(LC_ALL,"es_ES");
 		date_default_timezone_set("America/Guayaquil");
 	}
 
@@ -405,19 +406,22 @@ class Web extends CI_Controller{
 		//Get events based on the current date
 		$result =  Calendar::getDayEvents($date);
 		if(count($result) > 0){
+
 			$eventListHTML = '<h2>'.date("d M Y",strtotime($date)).'</h2>';
 			$eventListHTML .= '<ul  class="list-unstyled" >';
 			foreach($result as $row){
 				$eventListHTML .= 
 				"<li class='item-agenda mb-10 pl-10 pr-10'> 
-					<div class = 'row'>
-						<div class = 'col-xs-6'>
-							<span class = 'agenda-label'>Paciente:</span> ".$row['fullname']."
+					<button  type='button' class='btn mt-10' data-toggle='modal' data-target='#verCita'>
+						<div class = 'row'>
+							<div class = 'col-xs-6'>
+								<span class = 'agenda-label'>Paciente:</span> ".$row['fullname']."
+							</div>
+							<div class = 'col-xs-6'>
+								<span class = 'agenda-label'>Horario:</span> ".$row['hour']."
+							</div>
 						</div>
-						<div class = 'col-xs-6'>
-							<span class = 'agenda-label'>Horario:</span> ".$row['hour']."
-						</div>
-					</div>
+					</button
 				</li>
 
 				
