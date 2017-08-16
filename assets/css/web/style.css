@@ -47,8 +47,17 @@ body,html{
 
 #index{
 	background-color: #1d3651;
+	height: 80px;
+	text-align: center;
+    vertical-align: middle;
 }
 
 #index a:hover, #index a:focus{
 	color: white !important;
+}
+
+#index a{
+	height: 80px;
+	font-size: 30px !important;
+
 }

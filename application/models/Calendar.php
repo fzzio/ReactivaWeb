@@ -66,6 +66,18 @@ class Calendar extends CI_Model{
 
 
 	}
+
+	public static function getConsultById($id_consult){
+		$instance_CI =& get_instance();
+		$instance_CI->db->select("patient_consult.`id_consult`, CONCAT(patient.`name`, ' ', patient.`lastname`) AS `fullname`, TIME(patient_consult.`date_planned`) AS `hour`");
+		$instance_CI->db->from('patient_consult');
+		$instance_CI->db->join('patient', "patient_consult.`id_patient` = patient.`id_patient`");
+		$instance_CI->db->where('DATE(date_planned)', $date);
+		$instance_CI->db->order_by('hour', 'DESC');
+
+		$result =  $instance_CI->db->get()->result_array();
+		
+	}
 	
 }
 ?>

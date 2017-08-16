@@ -411,8 +411,8 @@ class Web extends CI_Controller{
 			$eventListHTML .= '<ul  class="list-unstyled" >';
 			foreach($result as $row){
 				$eventListHTML .= 
-				"<li class='item-agenda mb-10 pl-10 pr-10'> 
-					<button  type='button' class='btn mt-10' data-toggle='modal' data-target='#verCita'>
+				"<li class='item-agenda mb-10 pl-10 pr-10' data-toggle='modal' data-target='#verCita'> 
+					
 						<div class = 'row'>
 							<div class = 'col-xs-6'>
 								<span class = 'agenda-label'>Paciente:</span> ".$row['fullname']."
@@ -421,7 +421,7 @@ class Web extends CI_Controller{
 								<span class = 'agenda-label'>Horario:</span> ".$row['hour']."
 							</div>
 						</div>
-					</button
+					
 				</li>
 
 				
