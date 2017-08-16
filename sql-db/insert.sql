@@ -17,7 +17,7 @@ INSERT INTO `account` (`id_account`, `username`, `email`, `password`, `name`, `l
 	(1, 'mvelasco', 'madelyne@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Madelyne', 'Velasco', '', '0000-00-00 00:00:00', 1, 1),
 	(2, 'forrala', 'fabricio@cajanegra.com.ec', '21232f297a57a5a743894a0e4a801fc3', 'Fabricio', 'Orrala', '127.0.0.1', '0000-00-00 00:00:00', 1, 2),
 	(3, 'fndos', 'fndos@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Fernando', 'Sanchez', '', '0000-00-00 00:00:00', 1, 4),
-	(4, 'izurita', 'izurita@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Israel', 'Zurita', '', '0000-00-00 00:00:00', 1, 4),
+	(4, 'izurita', 'izurita@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Israel', 'Zurita', '', '0000-00-00 00:00:00', 1, 5),
 	(5, 'ejrocafuerte', 'ejrocafuerte@espol.edu.ec', '21232f297a57a5a743894a0e4a801fc3', 'Erick', 'Rocafuerte', '', '0000-00-00 00:00:00', 1, 1),
 	(6, 'gadacast', 'gadacast@espol.edu.ec', '21232f297a57a5a743894a0e4a801fc3', 'Galo', 'Castillo', '', '0000-00-00 00:00:00', 1, 2),
 	(7, 'jcedeno', 'jcedeno@espol.edu.ec', '21232f297a57a5a743894a0e4a801fc3', 'Jorge', 'Cedeno', '', '0000-00-00 00:00:00', 0, 2);
@@ -25,9 +25,13 @@ INSERT INTO `account` (`id_account`, `username`, `email`, `password`, `name`, `l
 
 -- Dumping data for table reactiva.game_exercise: ~1 rows (approximately)
 /*!40000 ALTER TABLE `game_exercise` DISABLE KEYS */;
-INSERT INTO `game_exercise` (`id_exercise`, `name`, `description`, `id_limb`, `script_name`) VALUES
-	(1, 'Osa', '<p>\r\n	wer</p>\r\n', 1, 'osa_brazo');
+INSERT INTO `game_exercise` (`id_exercise`, `name`, `description`, `script_name`, `img`) VALUES
+	(1, 'Osa', '<p>\r\n	wer</p>\r\n', 'osa_brazo', NULL);
 /*!40000 ALTER TABLE `game_exercise` ENABLE KEYS */;
+
+-- Dumping data for table reactiva.game_exercise_limb: ~0 rows (approximately)
+/*!40000 ALTER TABLE `game_exercise_limb` DISABLE KEYS */;
+/*!40000 ALTER TABLE `game_exercise_limb` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.game_limb: ~2 rows (approximately)
 /*!40000 ALTER TABLE `game_limb` DISABLE KEYS */;
@@ -40,10 +44,10 @@ INSERT INTO `game_limb` (`id_limb`, `name`, `icon`, `description`) VALUES
 /*!40000 ALTER TABLE `log_actions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `log_actions` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient: ~12 rows (approximately)
+-- Dumping data for table reactiva.patient: ~13 rows (approximately)
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
 INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`, `emergency_contact`, `emergency_phone`, `address`, `blood`, `rh`, `allergies`, `allergies_med`, `observations`, `illness`, `img`, `deleteInfo_ci`, `email`) VALUES
-	(1, '0926803990', 'Made', 'Velasco Mite', '1993-04-12', 0, '123123', '123123', '', '', 'Km 8.5 Via a Daule Cdla Colinas al Sol, Ave 1ra 317 y calle 3ra', 'A', '+', 'Polvo, penicilina, acetaminofén', NULL, 'No puede doblar el brazo derecho completamente', 'Rinitis alérgica aguda', '', NULL, 'm_velasco93@live.com'),
+	(1, '0926803990', 'Made', 'Velasco Mite', '1993-04-12', 0, '123123', '123123', '122123', '456456', 'Km 8.5 Via a Daule Cdla Colinas al Sol, Ave 1ra 317 y calle 3ra', 'A', '+', NULL, NULL, 'No puede doblar el brazo derecho completamente', 'Rinitis alérgica aguda', NULL, NULL, 'm_velasco93@live.com'),
 	(2, '0926804006', 'Edgar', 'Moreira', '2017-01-19', 1, '042250902', '7596100742', '', '', 'Gladstone Terrace, 4', '', '+', '', NULL, '', '', '', NULL, 'emoreira@gmail.com'),
 	(5, '0909033425', 'Fabriciooo', 'Orrala Parrales', '1989-06-25', 1, '042254895', '042254895', '', '', 'Urdesa Central', 'A', '-', 'A Henry ', NULL, 'Hola mundo', 'Miopia', NULL, NULL, 'fabricio@cajanegra.com.ec'),
 	(6, '0907976698', 'Henry', 'Lomas Sanchez', '1985-04-23', 1, '042254895', '042254895', '', '', 'Urdesa Central', 'A', '+', 'A Fabricio y a Edwin', NULL, NULL, 'Por lo general del estomago', '', NULL, 'henry@cajanegra.com.ec'),
@@ -54,23 +58,28 @@ INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`,
 	(11, '0903066789', 'Viviana', 'Laurido Aguirre', '1996-12-12', 0, '07596100742', '07596100742', '', '', 'Samborondón', 'B', '+', '', NULL, NULL, '', '', NULL, 'vlaurido@espol.edu.ec'),
 	(12, '0967556884', 'Galo', 'Castillo Reyes', '1995-05-25', 1, '042252638', '042252638', '', '', 'Alborada', 'O', '+', '', NULL, NULL, '', '', NULL, 'gadacast@espol.edu.ec'),
 	(13, '0873645775', 'Rodrigo', 'Castro Reyes', '1993-05-30', 1, '042252638', '042252638', '', '', 'Alborada', 'AB', '+', '', NULL, NULL, '', '', NULL, 'rodfcast@espol.edu.ec'),
-	(15, '0909033426', 'Madelyne', 'Velasco Mite', '1996-05-25', 0, '07596100742', '07596100742', '', '', 'Guayaquil', 'O', '+', '', NULL, '', '', NULL, NULL, 'mbguaranda@espol.edu.ec');
+	(15, '0909033426', 'Madelyne', 'Velasco Mite', '1996-05-25', 0, '07596100742', '07596100742', '', '', 'Guayaquil', 'O', '+', '', NULL, '', '', NULL, NULL, 'mbguaranda@espol.edu.ec'),
+	(18, '0873645778', 'Jose Luis', 'Masson ', '1995-12-24', 1, '042254895', '042254895', 'Joxy', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'jlmasson@espol.edu.ec');
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_consult: ~3 rows (approximately)
 /*!40000 ALTER TABLE `patient_consult` DISABLE KEYS */;
-INSERT INTO `patient_consult` (`id_consult`, `id_patient`, `id_doctor_created`, `id_doctor_attended`, `date_created`, `date_planned`, `date_attended`, `status`, `diagnosis`) VALUES
-	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-19 22:51:01', '2017-06-02 00:00:00', 1, NULL),
-	(19, 11, 3, NULL, '2017-08-02 10:35:45', '2017-08-02 19:36:00', NULL, 0, NULL),
-	(20, 8, 5, NULL, '2017-08-02 14:36:00', '2017-08-02 14:36:00', NULL, 0, NULL);
+INSERT INTO `patient_consult` (`id_consult`, `id_patient`, `id_doctor_created`, `id_doctor_attended`, `date_created`, `date_planned`, `date_attended`, `status`, `diagnosis`, `observations`) VALUES
+	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-19 22:51:01', '2017-06-02 00:00:00', 1, NULL, NULL),
+	(19, 11, 3, NULL, '2017-08-02 10:35:45', '2017-08-02 19:36:00', NULL, 0, NULL, NULL),
+	(20, 8, 5, NULL, '2017-08-02 14:36:00', '2017-08-02 14:36:00', NULL, 0, NULL, NULL);
 /*!40000 ALTER TABLE `patient_consult` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient_therapy: ~2 rows (approximately)
+-- Dumping data for table reactiva.patient_consult_limb: ~0 rows (approximately)
+/*!40000 ALTER TABLE `patient_consult_limb` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient_consult_limb` ENABLE KEYS */;
+
+-- Dumping data for table reactiva.patient_therapy: ~3 rows (approximately)
 /*!40000 ALTER TABLE `patient_therapy` DISABLE KEYS */;
-INSERT INTO `patient_therapy` (`id_therapy`, `id_patient`, `date_created`, `id_doctor_created`, `id_doctor_attended`, `eta`, `etf`, `comment`, `sendmail`, `status`) VALUES
-	(4, 1, '2017-06-19 00:33:38', 4, 3, '2017-06-19 00:33:52', '2017-06-19 00:33:55', 'qwe', 0, 0),
-	(5, 2, '2017-06-19 00:36:26', 3, 4, '2017-06-20 00:00:00', '2017-06-19 00:00:00', '<p>\r\n	qwe</p>\r\n', 0, 0),
-	(6, 1, '2017-06-21 11:20:52', 4, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', NULL, 0, 0);
+INSERT INTO `patient_therapy` (`id_therapy`, `id_consulta`, `id_patient`, `date_created`, `id_doctor_created`, `id_doctor_attended`, `eta`, `etf`, `comment`, `sendmail`, `status`, `valoration`, `time_elapse`) VALUES
+	(4, NULL, 1, '2017-06-19 00:33:38', 4, 3, '2017-06-19 00:33:52', '2017-06-19 00:33:55', 'qwe', 0, 0, NULL, NULL),
+	(5, NULL, 2, '2017-06-19 00:36:26', 3, 4, '2017-06-20 00:00:00', '2017-06-19 00:00:00', '<p>\r\n	qwe</p>\r\n', 0, 0, NULL, NULL),
+	(6, NULL, 1, '2017-06-21 11:20:52', 4, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', NULL, 0, 0, NULL, NULL);
 /*!40000 ALTER TABLE `patient_therapy` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy_comment: ~0 rows (approximately)
