@@ -27,9 +27,15 @@
 						<?php foreach($results as $pax){ ?>
 						<tr>
 							<td>
-								<a type="button" href="<?php echo site_url('web/paciente/').$pax['id_patient']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>
-								<a type="button" class="btn btn-xs btn-success" href="<?php echo site_url('web/editarPaciente/').$pax['id_patient']; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
-								<button type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+								<a type="button" href="<?php echo site_url('web/paciente/').$pax['id_patient']; ?>" class="btn btn-xs btn-primary">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</a>
+								<a type="button" class="btn btn-xs btn-success" href="<?php echo site_url('web/editarPaciente/').$pax['id_patient']; ?>">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+								<a type="button" class="btn btn-xs btn-danger" href="<?php echo site_url('web/deletePatient/').$pax['id_patient']; ?>" >
+									<span class="glyphicon glyphicon-remove" onClick='javascript:return confirm("¿Estás seguro que deseas borrar?;")' ></span>
+								</a>
 							</td>
 							<td class = 'text-center left-cell'><?php echo $pax['name'];?></td>
 							<td class = 'text-center'><?php echo $pax['lastname'];?></td>

@@ -148,18 +148,18 @@ class Web extends CI_Controller{
   	}
 
 	public function calendar(){
-			if ($this->SecurityCheck()){
-				$menuContent['selection']="calendar";
+		if ($this->SecurityCheck()){
+			$menuContent['selection']="calendar";
 
-				$dataHeader['PageTitle'] = "Agenda";
+			$dataHeader['PageTitle'] = "Agenda";
 
-				$dataContent['controller']=$this;
+			$dataContent['controller']=$this;
 
-				$data['header'] = $this->load->view('web/header', $dataHeader);
-				$data['menu'] = $this->load->view('web/menu', $menuContent);
+			$data['header'] = $this->load->view('web/header', $dataHeader);
+			$data['menu'] = $this->load->view('web/menu', $menuContent);
 
-				$data['contenido'] = $this->load->view('web/calendar', $dataContent);
-				$data['page-footer'] = $this->load->view('web/page-footer', array());
+			$data['contenido'] = $this->load->view('web/calendar', $dataContent);
+			$data['page-footer'] = $this->load->view('web/page-footer', array());
 		}else{
 			redirect("web/login");
 		}
@@ -174,6 +174,8 @@ class Web extends CI_Controller{
 			redirect("web/login");
 		}
 	}
+
+
 	/*FORM UPLOAD STARTS*/
 	public function newPatient(){
   		//Start upload config
@@ -339,6 +341,21 @@ class Web extends CI_Controller{
 		$this->db->update('patient', $data);
 
         redirect("web/paciente/".$id_patient);
+  	}
+
+  	public function deletePatient(){
+  		if ($this->SecurityCheck()){
+  			$id_patient = $this->uri->segment(3);
+
+  			$this->db->where('patient.id_patient', $id_patient);
+			$this->db->delete('patient');
+
+			redirect('web/pacientes');
+
+  		}else{
+  			redirect('web/index');
+  		}
+
   	}
 
 	/*FORM UPLOAD ENDS*/
