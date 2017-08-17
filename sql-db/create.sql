@@ -70,8 +70,8 @@ CREATE TABLE IF NOT EXISTS `game_exercise_limb` (
   `id_limb` int(11) NOT NULL,
   PRIMARY KEY (`id_game`,`id_limb`),
   KEY `FK_game_exercise_limb_game_limb` (`id_limb`),
-  CONSTRAINT `FK_game_exercise_limb_game_exercise` FOREIGN KEY (`id_game`) REFERENCES `game_exercise` (`id_exercise`),
-  CONSTRAINT `FK_game_exercise_limb_game_limb` FOREIGN KEY (`id_limb`) REFERENCES `game_limb` (`id_limb`)
+  CONSTRAINT `FK_game_exercise_limb_game_exercise` FOREIGN KEY (`id_game`) REFERENCES `game_exercise` (`id_exercise`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_game_exercise_limb_game_limb` FOREIGN KEY (`id_limb`) REFERENCES `game_limb` (`id_limb`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `game_limb` (
   `icon` varchar(50) DEFAULT NULL,
   `description` mediumtext DEFAULT NULL,
   PRIMARY KEY (`id_limb`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.log_actions
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `patient_consult` (
   KEY `FK_patient_consult_acc_doctor_2` (`id_doctor_attended`),
   CONSTRAINT `FK_patient_consult_acc_doctor` FOREIGN KEY (`id_doctor_created`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_consult_acc_doctor_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `account` (`id_account`),
-  CONSTRAINT `FK_patient_consult_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`)
+  CONSTRAINT `FK_patient_consult_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
@@ -182,8 +182,8 @@ CREATE TABLE IF NOT EXISTS `patient_therapy` (
   KEY `FK_patient_therapy_patient_consult` (`id_consulta`),
   CONSTRAINT `FK_patient_therapy_account` FOREIGN KEY (`id_doctor_created`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_therapy_account_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `account` (`id_account`),
-  CONSTRAINT `FK_patient_therapy_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`),
-  CONSTRAINT `FK_patient_therapy_patient_consult` FOREIGN KEY (`id_consulta`) REFERENCES `patient_consult` (`id_consult`)
+  CONSTRAINT `FK_patient_therapy_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_patient_therapy_patient_consult` FOREIGN KEY (`id_consulta`) REFERENCES `patient_consult` (`id_consult`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_comment` (
   `date` datetime NOT NULL DEFAULT current_timestamp(),
   `msg` text DEFAULT NULL,
   PRIMARY KEY (`id_therapy`,`date`),
-  CONSTRAINT `FK_patient_therapy_comment_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`)
+  CONSTRAINT `FK_patient_therapy_comment_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
@@ -207,8 +207,8 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_exer` (
   `duration` time DEFAULT '00:00:00',
   PRIMARY KEY (`id_therapy`,`id_exercise`),
   KEY `FK_patient_therapy_exer_game_exercise` (`id_exercise`),
-  CONSTRAINT `FK_patient_therapy_exer_game_exercise` FOREIGN KEY (`id_exercise`) REFERENCES `game_exercise` (`id_exercise`),
-  CONSTRAINT `FK_patient_therapy_exer_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`)
+  CONSTRAINT `FK_patient_therapy_exer_game_exercise` FOREIGN KEY (`id_exercise`) REFERENCES `game_exercise` (`id_exercise`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_patient_therapy_exer_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `patient_therapy_photo` (
   `img` varchar(500) NOT NULL,
   `comment` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_therapy`,`date`),
-  CONSTRAINT `FK_patient_therapy_photo_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`)
+  CONSTRAINT `FK_patient_therapy_photo_patient_therapy` FOREIGN KEY (`id_therapy`) REFERENCES `patient_therapy` (`id_therapy`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.

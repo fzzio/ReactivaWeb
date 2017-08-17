@@ -26,7 +26,7 @@
 
 						<?php foreach($results as $pax){ ?>
 						<tr>
-							<td>
+							<td>	
 								<a type="button" href="<?php echo site_url('web/paciente/').$pax['id_patient']; ?>" class="btn btn-xs btn-primary">
 									<span class="glyphicon glyphicon-eye-open"></span>
 								</a>
