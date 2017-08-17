@@ -61,3 +61,20 @@ body,html{
 	font-size: 30px !important;
 
 }
+
+#footer-rea{
+	position: fixed;
+	bottom: 0vh;
+	height: 37px;
+	background: #2c4666;
+	color: white;
+	width: inherit;
+}
+
+.img-footer {
+	width: 200px;
+	height: 135px;
+	position: fixed;
+	bottom: 0vh;
+	right: 3%;
+}

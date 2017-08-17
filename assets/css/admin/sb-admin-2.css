@@ -11,7 +11,7 @@
     padding-left: 0;
 }
 
-#page-wrapper {
+#page-wrapper, #footer-rea {
     padding: 0;
 }
 
@@ -25,7 +25,7 @@
         padding-left: 225px;
     }
 
-    #page-wrapper {
+    #page-wrapper, #footer-rea {
         padding: 10px;
     }
 }

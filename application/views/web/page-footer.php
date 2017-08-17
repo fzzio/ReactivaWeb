@@ -1,8 +1,17 @@
+		<div id = "footer-rea">
+			<div class = 'container'>
+				<p class="text-center">
+					Reactiva <?php echo date('Y') ?> © Todos los derechos reservados
+				</p>
+				<img src = "<?php echo base_url('assets/img/web/rea-footer.png'); ?>" class ="img-footer">
+			</div>
+		</div>
+
 		</div>
 		<!--
 		<footer class="page-footer">
 			<p class="page-center">REACTIVA 2017 &copy; Todos los derechos reservados.</p>
-			<img src = "<?php echo base_url('assets/img/web/rea-footer.png'); ?>" class ="img-footer">
+			
 		</footer> -->
 	</body>
 	

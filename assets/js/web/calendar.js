@@ -33,6 +33,13 @@ function addEvent(date){
 	});
 }
 
+function updateCitaModal(){
+	$.ajax({
+		type: 'POST',
+		
+	})
+}
+
 $(document).ready(function(){
 	$('.date_cell').mouseenter(function(){
 		date = $(this).attr('date');

@@ -38,13 +38,7 @@
 	text-transform: uppercase;
 }
 
-.img-footer {
-	width: 200px;
-	height: 135px;
-	position: absolute;
-	bottom: 0vh;
-	left: 60vw;
-}
+
 
 .patient-label{
 	color: white;
