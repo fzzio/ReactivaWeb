@@ -479,16 +479,17 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'id_doctor_created' , 'Médico' );
 			$crud->display_as( 'id_doctor_attended' , 'Atendido por' );
 			$crud->display_as( 'date_created' , 'Fecha de creación' );
+			$crud->display_as( 'date_planned' , 'Fecha prevista' );
 			$crud->display_as( 'date_attended' , 'Fecha de atención' );
 			$crud->display_as( 'status' , 'Estado' );
-			$crud->display_as( 'diagnosis' , 'Diágnostico' );
+			$crud->display_as( 'diagnosis' , 'Diágnostico' );			
+			$crud->display_as( 'observations' , 'Observaciones' );
 
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_patient','patient','{name} {lastname}');
 			$crud->set_relation('id_doctor_created','account_med','{full_name}');
 			$crud->set_relation('id_doctor_attended','account_med','{full_name}');
 			
-
 			$crud->field_type('status', 'dropdown', array(
                 '0' => 'Pendiente',
                 '1' => 'Cancelado',
@@ -497,9 +498,9 @@ class Admin extends CI_Controller{
 
 			$crud->field_type('date_created', 'datetime');
 
-			$crud->columns( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
-			$crud->fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_attended', 'status', 'diagnosis' );
-			$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
+			$crud->columns('id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
+			$crud->fields('id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
+			//$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
             $crud->unset_export();
 			$crud->unset_print();
