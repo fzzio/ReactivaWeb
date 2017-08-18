@@ -203,6 +203,56 @@ class Services extends CI_Controller {
     	header('Content-type: application/json');
         echo json_encode($resultado);
     }
+
+    public function getTherapyHistory(){
+    	$query = $this->input->post();
+
+    	$id_therapy = $query['id'];
+
+    	$this->db->select("patient_therapy.id_therapy,
+    		patient_therapy.id_consulta,
+    		DATE(patient_therapy.`eta`) AS `date`,
+    		CONCAT(patient.name, ' ', patient.lastname) as `fullname`,
+    		CONCAT(account.name, ' ', account.lastname) AS `therapist`");
+    	$this->db->from('patient_therapy');
+    	$this->db->join('account', 'account.id_account = patient_therapy.id_doctor_attended');
+    	$this->db->join('patient', 'patient.id_patient = patient_therapy.id_patient');
+    	$this->db->where('patient_therapy.id_therapy', $id_therapy);
+    	$terapia = $this->db->get()->row_array();
+
+    	$id_consult= $terapia['id_consulta'];
+
+    	$this->db->select("patient_consult_limb.id_limb");
+		$this->db->from('patient_consult_limb');
+		$this->db->where('patient_consult_limb.id_consult', $id_consult);
+		$extremidades = $this->db->get()->result_array();
+
+		$this->db->select("TIME_FORMAT(TIME(patient_therapy_comment.date), '%H:%i')  AS `hour`,
+			patient_therapy_comment.msg");
+		$this->db->from('patient_therapy_comment');
+		$this->db->where('patient_therapy_comment.id_therapy', $id_therapy);
+		$comentarios = $this->db->get_compiled_select();
+
+		$prepare_concat = "TIME_FORMAT(TIME(patient_therapy_photo.date), '%H:%i') AS `hour` ,
+			CONCAT('".base_url('assets/uploads/therapy_photo/')."',patient_therapy_photo.img) AS `msg` ";
+
+		$this->db->select($prepare_concat);
+		$this->db->from('patient_therapy_photo');
+		$this->db->where('patient_therapy_photo.id_therapy', $id_therapy);
+		$fotos = $this->db->get_compiled_select();
+
+		$historial = $this->db->query($comentarios." UNION ".$fotos."ORDER BY hour ASC")->result();
+
+		$resultado = array();
+
+		$resultado['therapy'] = $terapia;
+		$resultado['limb'] = $extremidades;
+		$resultado['history'] = $historial;
+
+		header('Content-type: application/json');
+        echo json_encode($resultado);
+
+    }
 }
     
 ?>
