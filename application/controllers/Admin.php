@@ -67,7 +67,7 @@ class Admin extends CI_Controller{
 	/**
 	 * CRUD de todas las cuentas disponibles para el sistema
 	 */
-	public function accounts(){
+	/*public function accounts(){
 		$debug = false;
 
 		if ($this->AdminSecurityCheck()){
@@ -144,6 +144,90 @@ class Admin extends CI_Controller{
 			$dataContent['debug'] = $debug;
 
             $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		}else{
+			redirect("admin/login");
+		}
+	}*/
+
+	public function accounts(){
+		$debug = false;
+
+		if ($this->AdminSecurityCheck()){
+
+            $titulo = "Usuario";
+
+            $crud = new grocery_CRUD();
+			$crud->set_table("account");
+			$crud->set_subject( $titulo );
+
+			$crud->display_as( 'name' , 'Nombres' );
+			$crud->display_as( 'lastname' , 'Apellidos' );
+			$crud->display_as( 'username' , 'Usuario' );
+			$crud->display_as( 'email' , 'Correo' );
+			$crud->display_as( 'password' , 'Contraseña' );
+			$crud->display_as( 'last_ip' , 'Última IP' );
+			$crud->display_as( 'last_login' , 'Última Conexión' );
+			$crud->display_as( 'id_group' , 'Grupo' );
+			$crud->display_as( 'status' , 'Estado' );
+
+			$id_permission = 1;
+			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
+
+
+			//Superadmin check. Grant access to all users
+			if($grant_permission){
+				$crud->set_relation('id_group', 'rbac_group', 'name');
+			}else{
+				$id_permission = 2;
+				$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
+
+				//Only for admin. Limitation over group access
+				if($grant_permission){
+					$crud->where('account.id_group !=', 1);
+					$crud->set_relation('id_group', 'rbac_group', 'name', array('id_group !=' => ' 1 '));
+				}
+			}
+
+
+			$crud->field_type('status', 'dropdown', array(
+                '0' => 'Inactivo',
+                '1' => 'Activo'
+            ));
+
+
+			//$crud->field_type('last_login', 'readonly');
+			//$crud->field_type('last_ip', 'readonly');
+
+			//$crud->set_rules('name', 'Nombres', 'required|alpha');
+			//$crud->set_rules('lastname', 'Apellidos', 'required|alpha');
+			//$crud->set_rules('email', 'Correo', 'required|valid_email');
+
+			$crud->callback_edit_field('password',array($this,'set_password_input_to_empty'));
+            $crud->callback_add_field('password',array($this,'set_password_input_to_empty'));
+            $crud->field_type('password','password');
+            $crud->callback_before_update(array($this,'encrypt_pw'));
+            $crud->callback_before_insert(array($this,'encrypt_pw'));
+
+			$crud->columns( 'name', 'lastname', 'username', 'email', 'last_ip', 'last_login', 'id_group', 'status' );
+			$crud->fields( 'name', 'lastname', 'username', 'email', 'password', 'id_group','status');
+			//$crud->required_fields( 'name', 'lastname', 'username', 'email', 'id_group','status'  );
+
+      $crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+
+			$output = $crud->render();
+
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+
+      $data['header'] = $this->load->view('admin/header', $dataHeader);
 			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
 
 			$data['content'] = $this->load->view('admin/blank', $output);
@@ -565,9 +649,9 @@ class Admin extends CI_Controller{
         }
 	}
 
-	function encrypt_pw($post_array, $pk) {
+	function encrypt_pw($post_array) {
 		if(!empty($post_array['password'])) {
-            $post_array['password'] = md5($post_array['password']);
+            $post_array['password'] = md5($_POST['password']);
         }else{
         	unset($post_array['password']);
         }
