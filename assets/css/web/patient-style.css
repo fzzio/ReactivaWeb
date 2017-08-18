@@ -65,6 +65,12 @@
 	display: block;
 }
 
+.pax-label-modal-right{
+	color: #50BFA3;
+	font-weight: bold;
+	text-align: left;
+	display: block;
+}
 
 .patient-content{
 	color: #2C4666;

@@ -158,12 +158,20 @@
 							<p id = 'modal-email' class = 'patient-content'></p>
 						</div>
 					</div>
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Estado:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-status' class = 'patient-content'></p>
+						</div>
+					</div>
 				</div>
 				<div class = 'row'>
-					<div class = 'col-xs-offset-1 col-xs-10'>
-						<p class = 'pax-label-modal'>Observaciones</p>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class = 'pax-label-modal-right'>Observaciones</p>
 					</div>
-					<div class = 'col-xs-offset-1 col-xs-10'>
+					<div class = 'col-xs-offset-2 col-xs-8'>
 						<p class="" id="modal-observations" ></p>
 					</div>
 				</div>
@@ -180,8 +188,8 @@
 							</a>
 						</div>
 						<div class = 'col-xs-4'>
-							<a class = 'align-center btn-red'>
-								<span class = 'glyphicon glyphicon-remove' href = '#'></span> Cancelar
+							<a type = 'button' class = 'align-center btn-red' href = '#'>
+								<span class = 'glyphicon glyphicon-remove' onClick='javascript:return confirm("¿Estás seguro que deseas cancelar la cita?;")'></span> Cancelar
 							</a>
 						</div>
 					</div>

@@ -49,6 +49,10 @@ function updateCitaModal(id_cita){
 			$("#modal-cellphone").text(data['patient']['cellphone']);
 			$("#modal-email").text(data['patient']['email']);
 			$("#modal-observations").text(data['consult']['observations']);
+			$("#modal-status").text(data['consult']['status']);
+
+			url =  "cancelConsult/"+data['consult']['id_consult'] ;
+			$(".btn-red").attr('href',url);
 			
 		},
 		error: function(error){

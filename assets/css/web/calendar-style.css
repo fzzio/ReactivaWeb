@@ -278,34 +278,45 @@ a:hover {color: #181919;text-decoration: underline;}
 	}
 }
 
-.btn-green{
+.btn-green, .btn-green:focus, .btn-green:hover{
 	background-color: #56A647;
 	color: white;
 	border-radius: 6px;
-	height: 25px;
+	height: 30px;
+	line-height: 30px;
 	width: 160px;
 	text-transform: uppercase;
-	vertical-align: center;
+	vertical-align: middle !important;
+	text-decoration: none;
 }
 
-.btn-red{
+.btn-red, .btn-red:focus, .btn-red:hover{
 	background-color: #C01D2E;
 	color: white;
 	border-radius: 6px;
-	height: 25px;
+	height: 30px;
+	line-height: 30px;
 	width: 160px;
 	text-transform: uppercase;
-	vertical-align: center;
+	vertical-align: middle !important;
+	text-decoration: none;
 }
 
-.btn-turquoise{
+.btn-turquoise, .btn-turquoise:focus, .btn-turquoise:hover{
 	background-color: #4ABFA4;
 	color: white;
 	border-radius: 6px;
-	height: 25px;
+	height: 30px;
+	line-height: 30px;
 	width: 160px;
 	text-transform: uppercase;
-	vertical-align: center;
+	vertical-align: middle !important;
+	text-decoration: none;
+}
+
+#modal-observations{
+	border: rgba(29, 54, 81, 0.20) 1px solid;
+	padding: 5px;
 }
 
 .nueva-cite-header{
@@ -313,6 +324,7 @@ a:hover {color: #181919;text-decoration: underline;}
 	color: white;
 	text-transform: uppercase;
 	text-align: center;
+
 }
 /* md (Laptop) */
 @media (min-width: 992px) and (max-width: 1199px) {

@@ -53,7 +53,7 @@ class Services extends CI_Controller {
     public function citaGet(){
     	$query = $this->input->post();
 
-    	$this->db->select('patient_consult.id_consult, patient_consult.id_patient, TIME(patient_consult.`date_planned`) AS `hour`, patient_consult.observations, patient_consult.status');
+    	$this->db->select("patient_consult.id_consult, patient_consult.id_patient, TIME(patient_consult.`date_planned`) AS `hour`, patient_consult.observations, CASE WHEN patient_consult.status = 0 THEN 'Pendiente' WHEN patient_consult.status = 1 THEN 'Cancelada' WHEN patient_consult.status = 2 THEN 'Asistió' END as `status` ");
     	$this->db->from('patient_consult');
     	$this->db->where('patient_consult.id_consult', $query['id']);
     	$consulta = $this->db->get()->row_array();

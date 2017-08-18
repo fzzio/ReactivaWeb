@@ -358,6 +358,21 @@ class Web extends CI_Controller{
 
   	}
 
+  	public function cancelConsult(){
+  		if ($this->SecurityCheck()){
+  			$id_consult = $this->uri->segment(3);
+
+  			$this->db->set('patient_consult.status', 1);
+  			$this->db->where('patient_consult.id_consult', $id_consult);
+			$this->db->update('patient_consult');
+
+			redirect('web/calendar');
+
+  		}else{
+  			redirect('web/index');
+  		}
+  	}
+
 	/*FORM UPLOAD ENDS*/
 
 
