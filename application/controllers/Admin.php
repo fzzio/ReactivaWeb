@@ -290,8 +290,6 @@ class Admin extends CI_Controller{
             $crud = new grocery_CRUD();
 			$crud->set_table('patient_therapy_photo');
 
-			//$crud->set_relation_n_n('Paciente','patient_therapy_photo','patient_therapy','id_patient','id_patient','name');
-
 			$crud->set_subject( $titulo );
 
 			$crud->display_as( 'id_therapy' , 'Terapia' );
@@ -353,12 +351,12 @@ class Admin extends CI_Controller{
 				$crud->fields('name', 'description', 'script_name');
 				$crud->required_fields( 'name', 'description', 'script_name' );
 
-
 				$crud->unset_export();
 				$crud->unset_print();
 				$crud->unset_read();
 
 				$output = $crud->render();
+
 				$dataHeader['PageTitle'] = $titulo;
 				$dataHeader['css_files'] = $output->css_files;
 				$dataFooter['js_files'] = $output->js_files;
@@ -394,25 +392,42 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'name' , 'Nombres' );
 			$crud->display_as( 'lastname' , 'Apellidos' );
 			$crud->display_as( 'born' , 'Fecha de Nacimiento' );
-			$crud->display_as( 'gender' , 'Genero' );
+			$crud->display_as( 'gender' , 'Sexo' );
 			$crud->display_as( 'phone' , 'Telefono' );
 			$crud->display_as( 'cellphone' , 'Celular' );
-			$crud->display_as( 'email' , 'Correo' );
-			$crud->display_as( 'adress' , 'Direccion' );
+			$crud->display_as( 'emergency_contact' , 'Contacto emergencia' );
+			$crud->display_as( 'emergency_phone' , 'Teléfono emergencia' );
+			$crud->display_as( 'address' , 'Domicilio' );
+			$crud->display_as( 'blood' , 'Tipo de sangre' );
+			$crud->display_as( 'rh' , 'Factor RH' );
+			$crud->display_as( 'allergies' , 'Otras alergias' );
+			$crud->display_as( 'allergies_med' , 'Alergias a medicamentos' );
+			$crud->display_as( 'observations' , 'Observaciones y comentarios' );
+			$crud->display_as( 'illness' , 'Enfermedades' );
+			$crud->display_as( 'email' , 'Mail' );
 
 			$crud->field_type('born', 'date');
-			$crud->field_type('adress', 'string');
+			$crud->field_type('address', 'string');
 			$crud->field_type('gender', 'dropdown', array(
                 '0' => 'Femenino',
                 '1' => 'Masculino'
             ));
+			$crud->field_type('blood', 'dropdown', array(
+                'O' => 'O',
+                'A' => 'A',
+                'B' => 'B',
+                'AB' => 'AB'
+            ));
+			$crud->field_type('rh', 'dropdown', array(
+                '+' => '+',
+                '-' => '-'
+            ));
 
-			$crud->set_rules('ci', 'Cedula', 'required|min_length[10]|max_length[10]|is_unique[patient.ci]',
+			/*$crud->set_rules('ci', 'Cedula', 'required|min_length[10]|max_length[10]|is_unique[patient.ci]',
         array(
                 'required'      => 'The %s field is required.',
                 'is_unique'     => 'This %s already exists.'
         ));
-
 			$crud->set_rules('name', 'Nombres', 'required|alpha');
 			$crud->set_rules('lastname', 'Apellidos', 'required|alpha');
 			$crud->set_rules('phone', 'Telefono', 'required|min_length[9]|numeric|max_length[9]');
@@ -421,13 +436,13 @@ class Admin extends CI_Controller{
 			$crud->set_rules('born', 'Fecha de Nacimiento', 'required|callback_date_valid',
 				array(
 								'date_valid'		=> 'The Fecha de Nacimiento field is invalid.'
-				));
+				));*/
 
-			$crud->columns( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress' );
-			$crud->fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress');
-			$crud->required_fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress' );
+			$crud->columns('ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'emergency_contact', 'emergency_phone', 'address', 'blood', 'rh', 'allergies', 'allergies_med', 'observations', 'illness', 'email');
+			$crud->fields('ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'emergency_contact', 'emergency_phone', 'address', 'blood', 'rh', 'allergies', 'allergies_med', 'observations', 'illness', 'email');
+			//$crud->required_fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress' );
 
-            $crud->unset_export();
+      $crud->unset_export();
 			$crud->unset_print();
 			$crud->unset_read();
 
@@ -464,16 +479,17 @@ class Admin extends CI_Controller{
 			$crud->display_as( 'id_doctor_created' , 'Médico' );
 			$crud->display_as( 'id_doctor_attended' , 'Atendido por' );
 			$crud->display_as( 'date_created' , 'Fecha de creación' );
+			$crud->display_as( 'date_planned' , 'Fecha prevista' );
 			$crud->display_as( 'date_attended' , 'Fecha de atención' );
 			$crud->display_as( 'status' , 'Estado' );
-			$crud->display_as( 'diagnosis' , 'Diágnostico' );
+			$crud->display_as( 'diagnosis' , 'Diágnostico' );			
+			$crud->display_as( 'observations' , 'Observaciones' );
 
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_patient','patient','{name} {lastname}');
 			$crud->set_relation('id_doctor_created','account_med','{full_name}');
 			$crud->set_relation('id_doctor_attended','account_med','{full_name}');
 			
-
 			$crud->field_type('status', 'dropdown', array(
                 '0' => 'Pendiente',
                 '1' => 'Cancelado',
@@ -482,9 +498,9 @@ class Admin extends CI_Controller{
 
 			$crud->field_type('date_created', 'datetime');
 
-			$crud->columns( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_created', 'date_attended', 'status', 'diagnosis' );
-			$crud->fields( 'id_doctor_created', 'id_doctor_attended', 'id_patient', 'date_attended', 'status', 'diagnosis' );
-			$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
+			$crud->columns('id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
+			$crud->fields('id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
+			//$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
             $crud->unset_export();
 			$crud->unset_print();
