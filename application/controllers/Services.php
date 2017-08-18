@@ -123,7 +123,7 @@ class Services extends CI_Controller {
     }
 
     public function patientHistory(){
-    	$query = $this->input->get();
+    	$query = $this->input->post();
 
     	$id_patient = $query['id'];
 
