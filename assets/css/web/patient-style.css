@@ -50,12 +50,21 @@
 .pull-right-label{
 	text-align: left !important;
 }
+
 .pax-label{
 	color: #2C4666;
 	font-weight: bold;
 	text-align: right;
 	display: block;
 }
+
+.pax-label-modal{
+	color: #50BFA3;
+	font-weight: bold;
+	text-align: right;
+	display: block;
+}
+
 
 .patient-content{
 	color: #2C4666;

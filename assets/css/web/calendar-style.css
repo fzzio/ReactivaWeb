@@ -278,6 +278,35 @@ a:hover {color: #181919;text-decoration: underline;}
 	}
 }
 
+.btn-green{
+	background-color: #56A647;
+	color: white;
+	border-radius: 6px;
+	height: 25px;
+	width: 160px;
+	text-transform: uppercase;
+	vertical-align: center;
+}
+
+.btn-red{
+	background-color: #C01D2E;
+	color: white;
+	border-radius: 6px;
+	height: 25px;
+	width: 160px;
+	text-transform: uppercase;
+	vertical-align: center;
+}
+
+.btn-turquoise{
+	background-color: #4ABFA4;
+	color: white;
+	border-radius: 6px;
+	height: 25px;
+	width: 160px;
+	text-transform: uppercase;
+	vertical-align: center;
+}
 
 .nueva-cite-header{
 	background-color: #1D3651;

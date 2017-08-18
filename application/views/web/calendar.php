@@ -97,65 +97,92 @@
 
 	<div class="modal fade" id="verCita" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
-			<div class="modal-content">
+			<div class="modal-content pb-20">
 				<div class="modal-header nueva-cite-header">
 					<h4 class="modal-title">Cita del día</h4>
 				</div>
 				<div class="modal-body">
 					<div class = 'row'>
-						<div class = 'col-xs-3'>
-							<p><span class = 'pax-label'>Paciente:</span></p>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Paciente:</span></p>
 						</div>
-						<div class = 'col-xs-9'>
-							<p><span class = 'patient-content'>Andres Felipe Gallego</span></p>
-						</div>
-					</div>
-					<div class = 'row'>
-						<div class = 'col-xs-3'>
-							<p><span class = 'pax-label'>Hora de la cita:</span></p>
-						</div>
-						<div class = 'col-xs-9'>
-							<p><span class = 'patient-content'>9:00 - 10:00</span></p>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-fullname' class = 'patient-content'></p>
 						</div>
 					</div>
 					<div class = 'row'>
-						<div class = 'col-xs-3'>
-							<p><span class = 'pax-label'>Sexo:</span></p>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Hora de la cita:</span></p>
 						</div>
-						<div class = 'col-xs-9'>
-							<p><span class = 'patient-content'>Femenino</span></p>
-						</div>
-					</div>
-					<div class = 'row'>
-						<div class = 'col-xs-3'>
-							<p><span class = 'pax-label'>Fecha de nacimiento:</span></p>
-						</div>
-						<div class = 'col-xs-9'>
-							<p><span class = 'patient-content'>14/11/1996</span></p>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-date' class = 'patient-content'></p>
 						</div>
 					</div>
 					<div class = 'row'>
-						<div class = 'col-xs-3'>
-							<p><span class = 'pax-label'>Cédula:</span></p>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Sexo:</span></p>
 						</div>
-						<div class = 'col-xs-9'>
-							<p><span class = 'patient-content'>0927856770</span></p>
-						</div>
-					</div>
-					<div class = 'row'>
-						<div class = 'col-xs-3'>
-							<p><span class = 'pax-label'>Celular:</span></p>
-						</div>
-						<div class = 'col-xs-9'>
-							<p><span class = 'patient-content'>0927856770</span></p>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-gender' class = 'patient-content'></p>
 						</div>
 					</div>
 					<div class = 'row'>
-						<div class = 'col-xs-3'>
-							<p><span class = 'pax-label'>Email:</span></p>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Fecha de nacimiento:</span></p>
 						</div>
-						<div class = 'col-xs-9'>
-							<p><span class = 'patient-content'>adrelik@gmail.com</span></p>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-born' class = 'patient-content'></p>
+						</div>
+					</div>
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Cédula:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-ci' class = 'patient-content'></p>
+						</div>
+					</div>
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Celular:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-cellphone' class = 'patient-content'></p>
+						</div>
+					</div>
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Email:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-email' class = 'patient-content'></p>
+						</div>
+					</div>
+				</div>
+				<div class = 'row'>
+					<div class = 'col-xs-offset-1 col-xs-10'>
+						<p class = 'pax-label-modal'>Observaciones</p>
+					</div>
+					<div class = 'col-xs-offset-1 col-xs-10'>
+						<p class="" id="modal-observations" ></p>
+					</div>
+				</div>
+				<div class = 'row'>
+					<div class = 'col-xs-offset-1 col-xs-10'>
+						<div class = 'col-xs-4'>
+							<a class = 'align-center btn-turquoise'>
+								<span class = 'glyphicon glyphicon-asterisk' href = '#'></span> Iniciar cita
+							</a>
+						</div>
+						<div class = 'col-xs-4'>
+							<a class = 'align-center btn-green'>
+								<span class = 'glyphicon glyphicon-calendar' href = '#'></span> Reagendar
+							</a>
+						</div>
+						<div class = 'col-xs-4'>
+							<a class = 'align-center btn-red'>
+								<span class = 'glyphicon glyphicon-remove' href = '#'></span> Cancelar
+							</a>
 						</div>
 					</div>
 				</div>

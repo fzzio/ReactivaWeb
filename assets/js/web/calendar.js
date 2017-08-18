@@ -28,16 +28,35 @@ function addEvent(date){
 		data:"func=addEvent&date="+date,
 		success:function(html){
 			$('#event_list').html(html);
-			$('#event_list').slideDown('slow');
 		}
 	});
 }
 
-function updateCitaModal(){
+function updateCitaModal(id_cita){
 	$.ajax({
+		url: "/ReactivaWeb/index.php/services/citaGet",
 		type: 'POST',
-		
-	})
+		data: {
+			"id" : String(id_cita)
+		},
+		dataType:'json',
+		success: function(data){
+			$("#modal-fullname").text(data['patient']['fullname']);
+			$("#modal-date").text(data['consult']['hour']);
+			$("#modal-gender").text(data['patient']['gender']);
+			$("#modal-born").text(data['patient']['born']);
+			$("#modal-ci").text(data['patient']['ci']);
+			$("#modal-cellphone").text(data['patient']['cellphone']);
+			$("#modal-email").text(data['patient']['email']);
+			$("#modal-observations").text(data['consult']['observations']);
+
+			console.log(data['consult'])
+			
+		},
+		error: function(error){
+			console.error(error);
+		}
+	});
 }
 
 $(document).ready(function(){
