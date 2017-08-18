@@ -118,7 +118,46 @@ class Services extends CI_Controller {
     		array_push($resultado, $row_array);
     	}
 
+    	header('Content-type: application/json');
+        echo json_encode($resultado);
+    }
 
+    public function patientHistory(){
+    	$query = $this->input->get();
+
+    	$id_patient = $query['id'];
+
+    	$this->db->select("CONCAT(patient.name, ' ', patient.lastname) as `fullname`");
+    	$this->db->from('patient');
+    	$this->db->where('patient.id_patient', $id_patient);
+    	$paciente = $this->db->get()->row_array();
+
+    	$this->db->select("patient_consult.id_consult, 
+    		patient_consult.diagnosis, 
+    		DATE(patient_consult.`date_attended`) AS `date`, 
+    		CONCAT(account.name, ' ', account.lastname) AS `doctor`");
+    	$this->db->from('patient_consult');
+    	$this->db->join('account', 'account.id_account = patient_consult.id_doctor_attended');
+    	$this->db->where('patient_consult.status', 2);
+    	$consulta = $this->db->get()->row_array();
+
+    	$id_consulta = $consulta['id_consult'];
+
+    	$this->db->select("patient_therapy.id_therapy,
+    		DATE(patient_therapy.`eta`) AS `date`,
+    		CONCAT(account.name, ' ', account.lastname) AS `therapist`");
+    	$this->db->from('patient_therapy');
+    	$this->db->join('account', 'account.id_account = patient_therapy.id_doctor_attended');
+    	$this->db->where('patient_therapy.id_consulta', $id_consulta);
+    	$this->db->where('patient_therapy.status', 3);
+    	$terapias = $this->db->get()->result_array();
+
+
+    	$resultado = array();
+
+    	$resultado['patient'] = $paciente;
+    	$resultado['consult'] = $consulta;
+    	$resultado['therapies'] = $terapias;
 
     	header('Content-type: application/json');
         echo json_encode($resultado);

@@ -49,8 +49,6 @@ function updateCitaModal(id_cita){
 			$("#modal-cellphone").text(data['patient']['cellphone']);
 			$("#modal-email").text(data['patient']['email']);
 			$("#modal-observations").text(data['consult']['observations']);
-
-			console.log(data['consult'])
 			
 		},
 		error: function(error){
