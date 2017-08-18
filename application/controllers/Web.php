@@ -179,7 +179,7 @@ class Web extends CI_Controller{
 	/*FORM UPLOAD STARTS*/
 	public function newPatient(){
   		//Start upload config
-		$config['upload_path']          = 'assets/uploads/dishes/';
+		$config['upload_path']          = 'assets/img/patient-profile/';
         $config['allowed_types']        = 'gif|jpeg|jpg|png|tiff';
         $config['max_size']             = 2048;
         $config['max_width']            = 1024;
@@ -259,7 +259,7 @@ class Web extends CI_Controller{
 
   	public function editPatient(){
   		//Start upload config
-		$config['upload_path']          = 'assets/uploads/dishes/';
+		$config['upload_path']          = 'assets/img/patient-profile/';
         $config['allowed_types']        = 'gif|jpeg|jpg|png|tiff';
         $config['max_size']             = 2048;
         $config['max_width']            = 1024;

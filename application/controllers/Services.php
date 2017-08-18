@@ -74,6 +74,54 @@ class Services extends CI_Controller {
         echo json_encode($resultado);
 
     }
+
+    public function therapyGet(){
+
+    	$this->db->select('patient_therapy.id_therapy, patient_therapy.id_consulta, patient_therapy.id_patient');
+    	$this->db->from('patient_therapy');
+    	$this->db->where('patient_therapy.status', 2);
+    	$consulta = $this->db->get()->result_array();
+
+    	$resultado = array();
+
+    	foreach ($consulta as $row) {
+    		$this->db->select("CONCAT(patient.name, ' ', patient.lastname) as `fullname`, 
+    			DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(patient.born, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(patient.born, '00-%m-%d')) as `age`, 
+    			patient.img, 
+    			patient.gender");
+			$this->db->from('patient');
+			$this->db->where('patient.id_patient', $row['id_patient']);
+			$paciente = $this->db->get()->row_array();
+
+			$photo = $paciente['img'];
+
+			if(empty($photo)){
+				if($paciente['gender'] == 0){
+					$paciente['img'] = base_url('assets/img/patient-default/')."profile-f.png";
+				}else{
+					$paciente['img'] = base_url('assets/img/patient-default/')."profile-m.png";
+				}
+				
+			}
+
+			$row_array['therapy'] = $row;
+    		$row_array ['info'] = $paciente;
+
+    		$this->db->select("patient_consult_limb.id_limb");
+			$this->db->from('patient_consult_limb');
+			$this->db->where('patient_consult_limb.id_consult', $row['id_consulta']);
+			$extremidades = $this->db->get()->result_array();
+
+    		$row_array ['limbs'] = $extremidades;
+
+    		array_push($resultado, $row_array);
+    	}
+
+
+
+    	header('Content-type: application/json');
+        echo json_encode($resultado);
+    }
 }
     
 ?>

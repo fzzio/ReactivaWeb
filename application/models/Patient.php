@@ -252,7 +252,7 @@ class Patient extends CI_Model{
 					$patient->email,
 					$patient->blood,
 					$patient->allergies,
-					($patient->img != "") ? base_url('assets/uploads/patient/').$patient->img : base_url('assets/img/web/rea-profile.png'),
+					($patient->img != "") ? base_url('assets/img/patient-profile/').$patient->img : base_url('assets/img/web/rea-profile.png'),
 					$patient->rh,
 					$patient->observations,
 					$patient->illness,
