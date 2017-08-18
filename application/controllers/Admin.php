@@ -346,14 +346,12 @@ class Admin extends CI_Controller{
 
 				$crud->display_as( 'name' , 'Nombre' );
 				$crud->display_as( 'description' , 'Descripción' );
-				$crud->display_as( 'id_limb' , 'Extremidad' );
 				$crud->display_as( 'script_name' , 'Script Name' );
 
-				$crud->set_relation('id_limb','game_limb','name');
 
-	            $crud->columns( 'name', 'description', 'id_limb', 'script_name' );
-				$crud->fields('name', 'description', 'id_limb', 'script_name');
-				$crud->required_fields( 'name', 'description', 'id_limb', 'script_name' );
+	            $crud->columns( 'name', 'description', 'script_name' );
+				$crud->fields('name', 'description', 'script_name');
+				$crud->required_fields( 'name', 'description', 'script_name' );
 
 
 				$crud->unset_export();
