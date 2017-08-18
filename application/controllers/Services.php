@@ -101,7 +101,8 @@ class Services extends CI_Controller {
 				}else{
 					$paciente['img'] = base_url('assets/img/patient-default/')."profile-m.png";
 				}
-				
+			}else{
+				$paciente['img'] = base_url('assets/img/patient-default/').$paciente['img'];
 			}
 
 			$row_array['therapy'] = $row;
