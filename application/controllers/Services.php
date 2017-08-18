@@ -162,6 +162,47 @@ class Services extends CI_Controller {
     	header('Content-type: application/json');
         echo json_encode($resultado);
     }
+
+    public function getCalendar(){
+    	$query = $this->input->post();
+
+    	$month = $query['month'];
+    	$year = $query['year'];
+
+    	$this->db->select("DAY(patient_therapy.eta) AS `day`,
+    		COUNT(patient_therapy.eta) AS `count`");
+    	$this->db->from('patient_therapy');
+    	$this->db->where('MONTH(patient_therapy.eta)', $month);
+    	$this->db->where('YEAR(patient_therapy.eta)', $year);
+    	$this->db->group_by('day');
+    	$this->db->order_by('day', "ASC");
+
+    	$mes = $this->db->get()->result_array();
+
+    	$resultado = array();
+
+    	foreach ($mes as $row) {
+    		$this->db->select("patient_therapy.id_therapy,
+    			patient_therapy.id_patient,
+    			patient_therapy.id_consulta,
+    			CONCAT(patient.name, ' ', patient.lastname) as `fullname`,
+    			patient_therapy.status");
+			$this->db->from('patient_therapy');
+			$this->db->join('patient', 'patient_therapy.id_patient = patient.id_patient');
+			$this->db->where('DAY(patient_therapy.eta)', $row['day']);
+			$this->db->where('MONTH(patient_therapy.eta)', $month);
+    		$this->db->where('YEAR(patient_therapy.eta)', $year);
+			$terapias = $this->db->get()->result_array();
+
+			$row_array['day'] = $row;
+			$row_array['therapies'] = $terapias;
+
+			array_push($resultado, $row_array);
+    	}
+
+    	header('Content-type: application/json');
+        echo json_encode($resultado);
+    }
 }
     
 ?>
