@@ -222,23 +222,23 @@ class Admin extends CI_Controller{
 			$crud->set_subject( $titulo );
 
 			$crud->display_as( 'id_patient' , 'Paciente' );
+			$crud->display_as( 'date_created' , 'Fecha de Creación' );
 			$crud->display_as( 'id_doctor_created' , 'Doctor que creó la cita' );
 			$crud->display_as( 'id_doctor_attended' , 'Doctor que la atendió' );
-			$crud->display_as( 'date_create' , 'Fecha de Creación' );
 			$crud->display_as( 'eta' , 'Inicio Estimado' );
 			$crud->display_as( 'etf' , 'Fin Estimado' );
-			$crud->display_as( 'starttime' , 'Hora Inicio' );
-			$crud->display_as( 'finishtime' , 'Hora Fin' );
 			$crud->display_as( 'comment' , 'Comentarios' );
 			$crud->display_as( 'sendmail' , 'Envío de Correo' );
 			$crud->display_as( 'status' , 'Estado' );
+			$crud->display_as( 'valoration' , 'Valoración' );
+			$crud->display_as( 'time_elapse' , 'Tiempo transcurrido' );
 
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_patient', 'patient', '{name} {lastname}');
 			$crud->set_relation('id_doctor_created', 'account_med', 'full_name');
 			$crud->set_relation('id_doctor_attended', 'account_med', 'full_name');
 
-			$crud->field_type('date_create', 'readonly');
+			$crud->field_type('date_created', 'datetime');
 
 			$crud->field_type('status', 'dropdown', array(
                 '0' => 'Pendiente',
@@ -251,12 +251,12 @@ class Admin extends CI_Controller{
                 '1' => 'Si'
             ));
 
-            $crud->columns( 'id_patient', 'id_doctor_created','id_doctor_attended','date_create','eta', 'etf',  'comment', 'sendmail','status' );
-			$crud->fields('id_patient', 'id_doctor_created','id_doctor_attended','eta', 'etf', 'comment', 'sendmail','status' );
-			$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+      $crud->columns('id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf',  'comment', 'sendmail','status', 'valoration', 'time_elapse');
+			$crud->fields('id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf',  'comment', 'sendmail','status', 'valoration', 'time_elapse');
+			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
 
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
-			$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
+			$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
+			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
 
 			$crud->unset_export();
 			$crud->unset_print();
