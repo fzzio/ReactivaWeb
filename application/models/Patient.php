@@ -324,6 +324,7 @@ class Patient extends CI_Model{
         return null;
    }
 
+
 	/*DATABASE GETTING FUNCTIONS ENDS*/
 }
 

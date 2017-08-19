@@ -21,6 +21,21 @@ class Services extends CI_Controller {
         redirect("web/index");
     }
 
+    public function patientAutocomplete(){
+    	$term = trim(strip_tags($_GET['term']));
+
+    	$this->db->select("patient.id_patient AS `id`, CONCAT(patient.name, ' ', patient.lastname) AS `value`");
+    	$this->db->from('patient');
+   		$this->db->like("CONCAT(patient.name, ' ', patient.lastname)", $term);
+
+   		$res = $this->db->get()->result_array();
+
+   		$resultado = array();
+
+   		header('Content-type: application/json');
+        echo json_encode($res);
+    }
+
     public function checklogin(){
     	$query = $this->input->post();   	
 
