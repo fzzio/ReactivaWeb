@@ -11,9 +11,9 @@
 	
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/metisMenu.css'); ?>">
+	<!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/admin/metisMenu.css'); ?>">-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
-
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/style.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/custom-bootstrap-margin-padding.css'); ?>">
 
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
