@@ -416,7 +416,46 @@ class Admin extends CI_Controller {
 	 * CRUD patient_consult_limb
 	 * @return available __list
 	 */
-	
+	public function consult_limbs(){
+		$debug = false;
+		if ($this->AdminSecurityCheck()){
+			//Initialize grocery_CRUD
+      $titulo = "Extremidades Asociadas a Consultas";
+      $crud = new grocery_CRUD();
+			$crud->set_table("patient_consult_limb");
+			$crud->set_subject( $titulo );  
+			//Set display as
+			$crud->display_as( 'id_consult' , 'Consulta' );
+			$crud->display_as( 'id_limb' , 'Extremidad' );
+			//Set relation
+			$crud->set_relation('id_limb','game_limb','name');
+			$crud->set_relation('id_consult','patient_consult','id_patient');
+			//Set field type
+			//Set validations rules
+			//Required fields
+			$crud->columns('id_consult', 'id_limb');
+			$crud->fields('id_consult', 'id_limb');
+			//$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
+			//Unset options
+      $crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+			//Grocery CRUD render
+			$output = $crud->render();
+			//Data header
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+			//Loading from views
+      $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		} else {
+			redirect("admin/login");
+		}
+	}
 
 	/**
 	 * CRUD patient_therapy
