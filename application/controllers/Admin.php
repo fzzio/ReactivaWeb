@@ -416,7 +416,7 @@ class Admin extends CI_Controller {
 	 * CRUD patient_consult_limb
 	 * @return available __list
 	 */
-	public function consult_limbs(){
+	public function appointments_limbs(){
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
@@ -529,6 +529,51 @@ class Admin extends CI_Controller {
 	 * CRUD patient_therapy_comment
 	 * @return available comment list
 	 */
+	public function therapies_comments() {
+		$debug = false;
+		if ($this->AdminSecurityCheck()) {
+			//Initialize grocery_CRUD
+			$titulo = "Comentarios Asociados a Terapias";
+      $crud = new grocery_CRUD();
+			$crud->set_table("patient_therapy_comment");
+			$crud->set_subject( $titulo );
+			//Set display as
+			$crud->display_as( 'id_therapy' , 'Terapia' );
+			$crud->display_as( 'date' , 'Fecha' );
+			$crud->display_as( 'msg' , 'Comentario' );
+			//Set field type
+			$crud->field_type('date', 'datetime');
+			//Set relation
+			$crud->set_primary_key('id_account','account_med');
+			$crud->set_relation('id_therapy', 'patient_therapy', 'id_therapy');
+			//Set validations rules
+			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
+			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
+			//Required fields
+			$crud->columns('id_therapy', 'date', 'msg');
+			$crud->fields('id_therapy', 'date', 'msg');
+			$crud->required_fields('id_therapy', 'date', 'msg');
+			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+			//Unset options
+			$crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+			//Grocery CRUD render
+			$output = $crud->render();
+			//Data header
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+			//Loading from views
+			$data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		} else {
+			redirect("admin/login");
+		}	 	
+	}	
 
 	/**
 	 * CRUD patient_therapy_exer
