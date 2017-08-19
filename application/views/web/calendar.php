@@ -37,16 +37,16 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title">Agendación de una nueva cita</h4>
 				</div>
-			<?php echo form_open_multipart('target' , array('id' => 'frm-new')); ?>
+			<?php echo form_open_multipart('target' , array('id' => 'frm-nueva-cita')); ?>
 				<div class="modal-body">
 					<div class = 'row'>
 						<div class = 'col-xs-12'>
 							<div class="form-group">
-								<div class = 'col-xs-2 pr-0 mr-0'>
-									<label for="pax-paciente" class = 'pax-label'>Paciente</label>
-								</div>
+							
+									<label for="autocomplete-paciente" class = 'pax-label'>Paciente</label>
+							
 								<div class = 'col-xs-10'>
-									<input class="form-control patient-input" type="text" placeholder="" id="pax-paciente" name= 'pax-paciente' required>
+									<input class="form-control patient-input" type="text" placeholder="" id="autocomplete-paciente" name= 'autocomplete-pacient' required>
 									
 								</div>
 							</div>

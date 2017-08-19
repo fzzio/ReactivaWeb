@@ -70,6 +70,16 @@ ul.nav-tabs {
 	font-size: large;
 }
 
+#ui-id-1{
+	width: 200px;
+}
+
+
+.ui-menu-item{
+	border: 1px black solid;
+	background-color: white;
+}
+
 #calender_section h2{ color:white; font-size:17px;  line-height:40px; }
 #calender_section h2 a{ color:#F58220; float:none;}
 #calender_section_top{ width:390px;float:left; border: 1px rgba(255, 255, 255, 0.50) solid; color:white;}

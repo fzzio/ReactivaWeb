@@ -61,6 +61,10 @@ function updateCitaModal(id_cita){
 	});
 }
 
+function autocompletelist(){
+	
+}
+
 $(document).ready(function(){
 	$('.date_cell').mouseenter(function(){
 		date = $(this).attr('date');
@@ -76,7 +80,23 @@ $(document).ready(function(){
 	$('.year_dropdown').on('change',function(){
 		getCalendar('calendar_div',$('.year_dropdown').val(),$('.month_dropdown').val());
 	});
-	$(document).click(function(){
-		
+
+	$("#autocomplete-paciente").autocomplete({
+		source: "/ReactivaWeb/index.php/services/patientAutocomplete",
+		minLength: 2,
+		change: function(event, ui){
+			if(!ui.item){
+				$(this).val('');
+			}
+		},
+		select: function(event, ui){
+			$("#txtAllowSearch").val(ui.item.value); // display the selected text
+	    	$("#txtAllowSearchID").val(ui.item.id); // save selected id to hidden input
+		}
 	});
+
+	$("#autocomplete-paciente").autocomplete(
+		"option", "appendTo", "#frm-nueva-cita"
+	);
 });
+
