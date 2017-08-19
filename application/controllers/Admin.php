@@ -180,7 +180,7 @@ class Admin extends CI_Controller {
 	 * CRUD game_exercise_limb
 	 * @return available games list
 	 */
-	public function exercises_limbs() {
+	public function games() {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
@@ -417,7 +417,7 @@ class Admin extends CI_Controller {
 	 * CRUD patient_consult_limb
 	 * @return available __list
 	 */
-	public function appointments_limbs(){
+	public function app_limbs(){
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
@@ -530,7 +530,7 @@ class Admin extends CI_Controller {
 	 * CRUD patient_therapy_comment
 	 * @return available comments list
 	 */
-	public function therapies_comments() {
+	public function comments() {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
@@ -580,7 +580,7 @@ class Admin extends CI_Controller {
 	 * CRUD patient_therapy_exer
 	 * @return available exercises list
 	 */
-	public function therapies_exercises() {
+	public function th_exercises() {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
@@ -637,7 +637,7 @@ class Admin extends CI_Controller {
 	 * CRUD patient_therapy_photo
 	 * @return available photos list
 	 */
-	public function therapies_photos() {
+	public function photos() {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD

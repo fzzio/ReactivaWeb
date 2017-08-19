@@ -22,7 +22,7 @@
         <ul class="nav nav-third-level">
           <li><a href="<?php echo site_url('admin/patients'); ?>">Pacientes</a></li>
           <li><a href="<?php echo site_url('admin/appointments'); ?>">Consultas</a></li>
-          <li><a href="<?php echo site_url('admin/appointments_limbs'); ?>">Extremidades Asociadas a Consultas</a></li>
+          <li><a href="<?php echo site_url('admin/app_limbs'); ?>">Extremidades Asociadas a Consultas</a></li>
         </ul>
       </li><!--/Pacientes-->
       <!--Terapias-->
@@ -30,9 +30,9 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-book"></i> Terapias<span class="caret"></span></a>
         <ul class="nav nav-third-level">
           <li><a href="<?php echo site_url('admin/therapies'); ?>">Terapias</a></li>
-          <li><a href="<?php echo site_url('admin/therapies_comments'); ?>">Comentarios Asociados a Terapias</a></li>
-          <li><a href="<?php echo site_url('admin/therapies_exercises'); ?>">Ejercicios Asociados a Terapias</a></li>
-          <li><a href="<?php echo site_url('admin/therapies_photos'); ?>">Fotos Asociados a Terapias</a></li>
+          <li><a href="<?php echo site_url('admin/comments'); ?>">Comentarios Asociados a Terapias</a></li>
+          <li><a href="<?php echo site_url('admin/th_exercises'); ?>">Ejercicios Asociados a Terapias</a></li>
+          <li><a href="<?php echo site_url('admin/photos'); ?>">Fotos Asociados a Terapias</a></li>
         </ul>
       </li><!--/Terapias-->
       <!--Ejercicios-->
@@ -41,7 +41,7 @@
         <ul class="nav nav-third-level">
           <li><a href="<?php echo site_url('admin/exercises'); ?>">Ejercicios</a></li>
           <li><a href="<?php echo site_url('admin/limbs'); ?>">Extremidades</a></li>
-          <li><a href="<?php echo site_url('admin/exercises_limbs'); ?>">Extremidades Asociadas a Ejercicios</a></li>
+          <li><a href="<?php echo site_url('admin/games'); ?>">Extremidades Asociadas a Ejercicios</a></li>
         </ul>
       </li><!--/Ejercicios-->
       <!--Web-->
