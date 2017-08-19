@@ -152,9 +152,9 @@ class Admin extends CI_Controller {
 				$crud->display_as('description' , 'Descripción');
 				$crud->display_as('script_name' , 'Script Name');
 				//Required fields
-	      $crud->columns( 'name', 'description', 'script_name' );
+	      $crud->columns('name', 'description', 'script_name');
 				$crud->fields('name', 'description', 'script_name');
-				$crud->required_fields( 'name', 'description', 'script_name' );
+				$crud->required_fields('name', 'description', 'script_name');
 				//Unset options
 				$crud->unset_export();
 				$crud->unset_print();
@@ -180,11 +180,11 @@ class Admin extends CI_Controller {
 	 * CRUD game_exercise_limb
 	 * @return available games list
 	 */
-	public function games() {
+	public function exercises_limbs() {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = 'Extremidades Asociadas a Juegos';
+			$titulo = 'Extremidades Asociadas a Ejercicios';
 			$crud = new grocery_CRUD();
 			$crud->set_table('game_exercise_limb');
 			$crud->set_subject( $titulo );
@@ -239,6 +239,7 @@ class Admin extends CI_Controller {
 			$crud->display_as('icon', 'Icono');
 			$crud->display_as('description', 'Descripción');
 			//Set field type
+			$crud->set_field_upload('icon','assets/uploads/icons');
 			//Set validations rules
 			$crud->set_rules('name', 'Nombre', array('required', 'callback_alpha_dash_space___'));
 			$crud->set_rules('icon', 'Icono', 'required');
@@ -278,23 +279,23 @@ class Admin extends CI_Controller {
 			$crud->set_table("patient");
 			$crud->set_subject( $titulo );
 			//Set display as
-			$crud->display_as( 'ci' , 'Cedula' );
-			$crud->display_as( 'name' , 'Nombres' );
-			$crud->display_as( 'lastname' , 'Apellidos' );
-			$crud->display_as( 'born' , 'Fecha de Nacimiento' );
-			$crud->display_as( 'gender' , 'Sexo' );
-			$crud->display_as( 'phone' , 'Telefono' );
-			$crud->display_as( 'cellphone' , 'Celular' );
-			$crud->display_as( 'emergency_contact' , 'Contacto emergencia' );
-			$crud->display_as( 'emergency_phone' , 'Teléfono emergencia' );
-			$crud->display_as( 'address' , 'Domicilio' );
-			$crud->display_as( 'blood' , 'Tipo de sangre' );
-			$crud->display_as( 'rh' , 'Factor RH' );
-			$crud->display_as( 'allergies' , 'Otras alergias' );
-			$crud->display_as( 'allergies_med' , 'Alergias a medicamentos' );
-			$crud->display_as( 'observations' , 'Observaciones y comentarios' );
-			$crud->display_as( 'illness' , 'Enfermedades' );
-			$crud->display_as( 'email' , 'Correo electrónico' );
+			$crud->display_as('ci', 'Cedula');
+			$crud->display_as('name', 'Nombres');
+			$crud->display_as('lastname', 'Apellidos');
+			$crud->display_as('born', 'Fecha de Nacimiento');
+			$crud->display_as('gender', 'Sexo');
+			$crud->display_as('phone', 'Telefono');
+			$crud->display_as('cellphone', 'Celular');
+			$crud->display_as('emergency_contact', 'Contacto emergencia');
+			$crud->display_as('emergency_phone', 'Teléfono emergencia');
+			$crud->display_as('address', 'Domicilio');
+			$crud->display_as('blood', 'Tipo de sangre');
+			$crud->display_as('rh', 'Factor RH');
+			$crud->display_as('allergies', 'Otras alergias');
+			$crud->display_as('allergies_med', 'Alergias a medicamentos');
+			$crud->display_as('observations', 'Observaciones y comentarios');
+			$crud->display_as('illness', 'Enfermedades');
+			$crud->display_as('email', 'Correo electrónico');
 			//Set field type
 			$crud->field_type('born', 'date');
 			$crud->field_type('address', 'string');
@@ -365,15 +366,15 @@ class Admin extends CI_Controller {
 			$crud->set_table("patient_consult");
 			$crud->set_subject( $titulo );  
 			//Set display as
-			$crud->display_as( 'id_patient' , 'Paciente' );
-			$crud->display_as( 'id_doctor_created' , 'Médico' );
-			$crud->display_as( 'id_doctor_attended' , 'Atendido por' );
-			$crud->display_as( 'date_created' , 'Fecha de creación' );
-			$crud->display_as( 'date_planned' , 'Fecha prevista' );
-			$crud->display_as( 'date_attended' , 'Fecha de atención' );
-			$crud->display_as( 'status' , 'Estado' );
-			$crud->display_as( 'diagnosis' , 'Diágnostico' );			
-			$crud->display_as( 'observations' , 'Observaciones' );
+			$crud->display_as('id_patient', 'Paciente');
+			$crud->display_as('id_doctor_created', 'Médico');
+			$crud->display_as('id_doctor_attended', 'Atendido por');
+			$crud->display_as('date_created', 'Fecha de creación');
+			$crud->display_as('date_planned', 'Fecha prevista');
+			$crud->display_as('date_attended', 'Fecha de atención');
+			$crud->display_as('status', 'Estado');
+			$crud->display_as('diagnosis', 'Diágnostico');			
+			$crud->display_as('observations', 'Observaciones');
 			//Set relation
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_patient','patient','{name} {lastname}');
@@ -425,8 +426,8 @@ class Admin extends CI_Controller {
 			$crud->set_table("patient_consult_limb");
 			$crud->set_subject( $titulo );  
 			//Set display as
-			$crud->display_as( 'id_consult' , 'Consulta' );
-			$crud->display_as( 'id_limb' , 'Extremidad' );
+			$crud->display_as('id_consult', 'Consulta');
+			$crud->display_as('id_limb', 'Extremidad');
 			//Set relation
 			$crud->set_relation('id_limb','game_limb','name');
 			$crud->set_relation('id_consult','patient_consult','id_patient');
@@ -470,17 +471,17 @@ class Admin extends CI_Controller {
 			$crud->set_table("patient_therapy");
 			$crud->set_subject( $titulo );
 			//Set display as
-			$crud->display_as( 'id_patient' , 'Paciente' );
-			$crud->display_as( 'date_created' , 'Fecha de Creación' );
-			$crud->display_as( 'id_doctor_created' , 'Doctor que creó la cita' );
-			$crud->display_as( 'id_doctor_attended' , 'Doctor que la atendió' );
-			$crud->display_as( 'eta' , 'Inicio Estimado' );
-			$crud->display_as( 'etf' , 'Fin Estimado' );
-			$crud->display_as( 'comment' , 'Comentarios' );
-			$crud->display_as( 'sendmail' , 'Envío de Correo' );
-			$crud->display_as( 'status' , 'Estado' );
-			$crud->display_as( 'valoration' , 'Valoración' );
-			$crud->display_as( 'time_elapse' , 'Tiempo transcurrido' );
+			$crud->display_as('id_patient', 'Paciente');
+			$crud->display_as('date_created', 'Fecha de Creación');
+			$crud->display_as('id_doctor_created', 'Doctor que creó la cita');
+			$crud->display_as('id_doctor_attended', 'Doctor que la atendió');
+			$crud->display_as('eta', 'Inicio Estimado');
+			$crud->display_as('etf', 'Fin Estimado');
+			$crud->display_as('comment', 'Comentarios');
+			$crud->display_as('sendmail', 'Envío de Correo');
+			$crud->display_as('status', 'Estado');
+			$crud->display_as('valoration', 'Valoración');
+			$crud->display_as('time_elapse', 'Tiempo transcurrido');
 			//Set field type
 			$crud->field_type('date_created', 'datetime');
 			$crud->field_type('status', 'dropdown', array(
@@ -527,7 +528,7 @@ class Admin extends CI_Controller {
 	
 	/**
 	 * CRUD patient_therapy_comment
-	 * @return available comment list
+	 * @return available comments list
 	 */
 	public function therapies_comments() {
 		$debug = false;
@@ -536,11 +537,11 @@ class Admin extends CI_Controller {
 			$titulo = "Comentarios Asociados a Terapias";
       $crud = new grocery_CRUD();
 			$crud->set_table("patient_therapy_comment");
-			$crud->set_subject( $titulo );
+			$crud->set_subject($titulo);
 			//Set display as
-			$crud->display_as( 'id_therapy' , 'Terapia' );
-			$crud->display_as( 'date' , 'Fecha' );
-			$crud->display_as( 'msg' , 'Comentario' );
+			$crud->display_as('id_therapy', 'Terapia');
+			$crud->display_as('date', 'Fecha');
+			$crud->display_as('msg', 'Comentario');
 			//Set field type
 			$crud->field_type('date', 'datetime');
 			//Set relation
@@ -577,14 +578,66 @@ class Admin extends CI_Controller {
 
 	/**
 	 * CRUD patient_therapy_exer
-	 * @return available comment list
+	 * @return available exercises list
 	 */
+	public function therapies_exercises() {
+		$debug = false;
+		if ($this->AdminSecurityCheck()) {
+			//Initialize grocery_CRUD
+			$titulo = "Ejercicios Asociados a Terapias";
+      $crud = new grocery_CRUD();
+			$crud->set_table("patient_therapy_exer");
+			$crud->set_subject($titulo);
+			//Set display as
+			$crud->display_as( 'id_therapy' , 'Paciente' );
+			$crud->display_as( 'id_exercise' , 'Ejercicio' );
+			$crud->display_as( 'difficulty' , 'Dificultad' );
+			$crud->display_as( 'param0' , 'Parámetro 1' );
+			$crud->display_as( 'param1' , 'Parámetro 2' );
+			$crud->display_as( 'duration' , 'Duración' );
+			//Set field type
+			$crud->field_type('duration', 'datetime');
+			$crud->field_type('difficulty', 'dropdown', array(
+                '0' => 'Fácil',
+                '1' => 'Medio',
+                '2' => 'Difícil'
+            ));
+			//Set relation
+			$crud->set_relation('id_therapy', 'patient_therapy', 'id_therapy');
+			$crud->set_relation('id_exercise', 'game_exercise', 'id_exercise');
+			//Set validations rules
+			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
+			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
+			//Required fields
+			$crud->columns('id_therapy', 'id_exercise', 'difficulty', 'param1', 'param0', 'duration');
+			$crud->fields('id_therapy', 'id_exercise', 'difficulty', 'param1', 'param0', 'duration');
+			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+			//Unset options
+			$crud->unset_export();
+			$crud->unset_print();
+			$crud->unset_read();
+			//Grocery CRUD render
+			$output = $crud->render();
+			//Data header
+			$dataHeader['PageTitle'] = $titulo;
+			$dataHeader['css_files'] = $output->css_files;
+			$dataFooter['js_files'] = $output->js_files;
+			$dataContent['debug'] = $debug;
+			//Loading from views
+			$data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
+			$data['content'] = $this->load->view('admin/blank', $output);
+			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
+		} else {
+			redirect("admin/login");
+		}	 	
+	}	
 
 	/**
 	 * CRUD patient_therapy_photo
 	 * @return available photos list
 	 */
-	public function photos() {
+	public function therapies_photos() {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
@@ -644,11 +697,10 @@ class Admin extends CI_Controller {
 				$crud ->set_table('web_contact');
 				$crud -> set_subject($titulo);
 				//Set display as
-				$crud->display_as( 'date' , 'Fecha de contacto' );
-				$crud->display_as( 'name' , 'Nombre del contacto' );
-				$crud->display_as( 'message' , 'Mensaje' );
-				$crud->display_as( 'email' , 'Correo' );
-				$crud->display_as('date', 'Fecha');
+				$crud->display_as('date' , 'Fecha');
+				$crud->display_as('name' , 'Nombre del contacto');
+				$crud->display_as('message' , 'Mensaje' );
+				$crud->display_as('email' , 'Correo');
 				//Set validations rules
 				//$crud -> set_rules('name', 'Nombre de Contacto','alpha');
 				$crud -> set_rules('email','Correo','valid_email');

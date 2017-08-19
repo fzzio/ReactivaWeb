@@ -16,18 +16,34 @@
 			<li id="index"><a href="<?php echo site_url('admin/index'); ?>">REACTIVA</a></li>
 			<!--Usuarios-->
 			<li><a href="<?php echo site_url('admin/accounts'); ?>" class = "#"><i class="fa fa-file"></i> Usuarios</a></li>
-			<!--Terapias-->
+			<!--Pacientes-->
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-book"></i> Terapias<span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-book"></i> Pacientes<span class="caret"></span></a>
         <ul class="nav nav-third-level">
           <li><a href="<?php echo site_url('admin/patients'); ?>">Pacientes</a></li>
           <li><a href="<?php echo site_url('admin/appointments'); ?>">Consultas</a></li>
+          <li><a href="<?php echo site_url('admin/appointments_limbs'); ?>">Extremidades Asociadas a Consultas</a></li>
+        </ul>
+      </li><!--/Pacientes-->
+      <!--Terapias-->
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-book"></i> Terapias<span class="caret"></span></a>
+        <ul class="nav nav-third-level">
           <li><a href="<?php echo site_url('admin/therapies'); ?>">Terapias</a></li>
-          <li><a href="<?php echo site_url('admin/photos'); ?>">Evidencia de Terapias</a></li>
-          <li><a href="<?php echo site_url('admin/exercises'); ?>">Ejercicios</a></li>
-          <li><a href="<?php echo site_url('admin/limbs'); ?>">Extremidades</a></li>
+          <li><a href="<?php echo site_url('admin/therapies_comments'); ?>">Comentarios Asociados a Terapias</a></li>
+          <li><a href="<?php echo site_url('admin/therapies_exercises'); ?>">Ejercicios Asociados a Terapias</a></li>
+          <li><a href="<?php echo site_url('admin/therapies_photos'); ?>">Fotos Asociados a Terapias</a></li>
         </ul>
       </li><!--/Terapias-->
+      <!--Ejercicios-->
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-info"></i> Ejercicios<span class="caret"></span></a>
+        <ul class="nav nav-third-level">
+          <li><a href="<?php echo site_url('admin/exercises'); ?>">Ejercicios</a></li>
+          <li><a href="<?php echo site_url('admin/limbs'); ?>">Extremidades</a></li>
+          <li><a href="<?php echo site_url('admin/exercises_limbs'); ?>">Extremidades Asociadas a Ejercicios</a></li>
+        </ul>
+      </li><!--/Ejercicios-->
       <!--Web-->
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-info"></i> Web<span class="caret"></span></a>
