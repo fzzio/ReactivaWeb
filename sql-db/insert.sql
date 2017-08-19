@@ -40,22 +40,22 @@ DELETE FROM `game_exercise_limb`;
 DELETE FROM `game_limb`;
 /*!40000 ALTER TABLE `game_limb` DISABLE KEYS */;
 INSERT INTO `game_limb` (`id_limb`, `name`, `icon`, `description`) VALUES
-	(1, 'Brazo derecho', NULL, NULL),
-	(2, 'Brazo izquierdo', NULL, NULL),
-	(3, 'Cadera', NULL, NULL),
-	(5, 'Codo derecho', NULL, NULL),
-	(6, 'Codo izquierdo', NULL, NULL),
-	(7, 'Columna', NULL, NULL),
-	(8, 'Cuello cabeza', NULL, NULL),
-	(9, 'Espalda', NULL, NULL),
-	(10, 'Mano derecha', NULL, NULL),
-	(11, 'Mano izquierda', NULL, NULL),
-	(12, 'Pie derecho', NULL, NULL),
-	(13, 'Pie izquierdo', NULL, NULL),
-	(14, 'Pierna derecha', NULL, NULL),
-	(15, 'Pierna izquierda', NULL, NULL),
-	(16, 'Talón derecho', NULL, NULL),
-	(17, 'Talón izquierdo', NULL, NULL);
+	(1, 'Brazo derecho', '678ff-cuerpo-brazo-der.png', NULL),
+	(2, 'Brazo izquierdo', '9a45f-cuerpo-brazo-izq.png', NULL),
+	(3, 'Cadera', 'ed2fa-cuerpo-cadera.png', NULL),
+	(5, 'Codo derecho', '4d634-cuerpo-codo-der.png', NULL),
+	(6, 'Codo izquierdo', '146d9-cuerpo-codo-izq.png', NULL),
+	(7, 'Columna', '7532b-cuerpo-columna.png', NULL),
+	(8, 'Cuello cabeza', 'd3709-cuerpo-cuello-cabeza.png', NULL),
+	(9, 'Espalda', '9aff4-cuerpo-espalda.png', NULL),
+	(10, 'Mano derecha', 'a63ab-cuerpo-mano-der.png', NULL),
+	(11, 'Mano izquierda', 'ce2c2-cuerpo-mano-izq.png', NULL),
+	(12, 'Pie derecho', '3f5a2-cuerpo-pie-der.png', NULL),
+	(13, 'Pie izquierdo', '71ec2-cuerpo-pie-izq.png', NULL),
+	(14, 'Pierna derecha', '86478-cuerpo-pierna-der.png', NULL),
+	(15, 'Pierna izquierda', 'dd53b-cuerpo-pierna-izq.png', NULL),
+	(16, 'Talón derecho', 'a50be-cuerpo-talon-der.png', NULL),
+	(17, 'Talón izquierdo', 'b75d3-cuerpo-talon-izq.png', NULL);
 /*!40000 ALTER TABLE `game_limb` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.log_actions: ~0 rows (approximately)
@@ -63,7 +63,7 @@ DELETE FROM `log_actions`;
 /*!40000 ALTER TABLE `log_actions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `log_actions` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient: ~12 rows (approximately)
+-- Dumping data for table reactiva.patient: ~13 rows (approximately)
 DELETE FROM `patient`;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
 INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`, `phone`, `cellphone`, `emergency_contact`, `emergency_phone`, `address`, `blood`, `rh`, `allergies`, `allergies_med`, `observations`, `illness`, `img`, `deleteInfo_ci`, `email`) VALUES
@@ -85,28 +85,36 @@ INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`,
 DELETE FROM `patient_consult`;
 /*!40000 ALTER TABLE `patient_consult` DISABLE KEYS */;
 INSERT INTO `patient_consult` (`id_consult`, `id_patient`, `id_doctor_created`, `id_doctor_attended`, `date_created`, `date_planned`, `date_attended`, `status`, `diagnosis`, `observations`) VALUES
-	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-19 22:51:01', '2017-06-02 00:00:00', 1, NULL, NULL),
-	(19, 11, 3, NULL, '2017-08-02 10:35:45', '2017-08-02 19:36:00', NULL, 0, NULL, NULL),
-	(20, 8, 5, NULL, '2017-08-02 14:36:00', '2017-08-02 14:36:00', NULL, 0, NULL, NULL);
+	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-19 22:51:01', '2017-06-02 00:00:00', 2, 'Meningitis', 'Enfermedad en la piel'),
+	(19, 11, 3, NULL, '2017-08-02 10:35:45', '2017-08-02 19:36:00', NULL, 1, NULL, 'Indica fuerte dolor en la rodilla'),
+	(20, 8, 5, NULL, '2017-08-02 14:36:00', '2017-08-02 14:36:00', NULL, 1, NULL, 'El dolor lleva una semana'),
+	(21, 6, 3, 3, '2017-08-19 11:15:06', '2017-08-20 11:15:07', NULL, 0, NULL, NULL);
 /*!40000 ALTER TABLE `patient_consult` ENABLE KEYS */;
 
--- Dumping data for table reactiva.patient_consult_limb: ~0 rows (approximately)
+-- Dumping data for table reactiva.patient_consult_limb: ~4 rows (approximately)
 DELETE FROM `patient_consult_limb`;
 /*!40000 ALTER TABLE `patient_consult_limb` DISABLE KEYS */;
+INSERT INTO `patient_consult_limb` (`id_consult`, `id_limb`) VALUES
+	(15, 1),
+	(15, 2),
+	(19, 5),
+	(19, 6);
 /*!40000 ALTER TABLE `patient_consult_limb` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy: ~3 rows (approximately)
 DELETE FROM `patient_therapy`;
 /*!40000 ALTER TABLE `patient_therapy` DISABLE KEYS */;
 INSERT INTO `patient_therapy` (`id_therapy`, `id_consulta`, `id_patient`, `date_created`, `id_doctor_created`, `id_doctor_attended`, `eta`, `etf`, `comment`, `sendmail`, `status`, `valoration`, `time_elapse`) VALUES
-	(4, NULL, 1, '2017-06-19 00:33:38', 4, 3, '2017-06-19 00:33:52', '2017-06-19 00:33:55', 'qwe', 0, 0, NULL, NULL),
-	(5, NULL, 2, '2017-06-19 00:36:26', 3, 4, '2017-06-20 00:00:00', '2017-06-19 00:00:00', '<p>\r\n	qwe</p>\r\n', 0, 0, NULL, NULL),
-	(6, NULL, 1, '2017-06-21 11:20:52', 4, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', NULL, 0, 0, NULL, NULL);
+	(4, 15, 1, '2017-06-19 00:33:38', 4, 3, '2017-06-19 00:33:52', '2017-06-19 00:33:55', 'qwe', 0, 3, NULL, NULL),
+	(5, 15, 1, '2017-06-19 00:36:26', 3, 4, '2017-06-19 00:00:00', '2017-06-19 00:00:00', '<p>\r\n	qwe</p>\r\n', 0, 3, NULL, NULL),
+	(6, 19, 1, '2017-06-21 11:20:52', 4, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', NULL, 0, 1, NULL, NULL);
 /*!40000 ALTER TABLE `patient_therapy` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy_comment: ~0 rows (approximately)
 DELETE FROM `patient_therapy_comment`;
 /*!40000 ALTER TABLE `patient_therapy_comment` DISABLE KEYS */;
+INSERT INTO `patient_therapy_comment` (`id_therapy`, `date`, `msg`) VALUES
+	(4, '2017-08-18 02:24:09', 'ZZZZZZZZZZZZZZZZzzzz');
 /*!40000 ALTER TABLE `patient_therapy_comment` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy_exer: ~0 rows (approximately)
@@ -117,6 +125,8 @@ DELETE FROM `patient_therapy_exer`;
 -- Dumping data for table reactiva.patient_therapy_photo: ~0 rows (approximately)
 DELETE FROM `patient_therapy_photo`;
 /*!40000 ALTER TABLE `patient_therapy_photo` DISABLE KEYS */;
+INSERT INTO `patient_therapy_photo` (`id_therapy`, `date`, `img`, `comment`) VALUES
+	(4, '2017-08-18 02:18:41', '8ff84-1016-oreos-addictive.jpg', NULL);
 /*!40000 ALTER TABLE `patient_therapy_photo` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.rbac_group: ~5 rows (approximately)
