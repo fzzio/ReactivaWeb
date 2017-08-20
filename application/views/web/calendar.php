@@ -47,7 +47,7 @@
 							
 								<div class = 'col-xs-10'>
 									<input class="form-control patient-input" type="text" placeholder="" id="autocomplete-paciente" name= 'autocomplete-pacient' required>
-									
+									<input  type = "hidden" name = "id-patient" id = "id-patient" required>
 								</div>
 							</div>
 						</div>
@@ -85,8 +85,8 @@
 					<button type="submit" class="btn btn-default btn-primary btn-general">
 						<span class="glyphicon glyphicon-download-alt " aria-hidden="true"></span> Guardar
 					</button>
-					<a type="button" class="btn btn-default btn-danger btn-general" >
-						<span class="glyphicon glyphicon-remove " aria-hidden="true"></span> Cancelar
+					<a type="button" class="btn btn-default btn-danger btn-general" aria-hidden="true" data-dismiss="modal" >
+						<span class="glyphicon glyphicon-remove" ></span> Cancelar
 					</a>
 				</div>
 			<?php echo form_close(); ?>
