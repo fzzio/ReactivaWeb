@@ -288,6 +288,9 @@ class Admin extends CI_Controller {
 			//Set validations rules
 			//$crud->set_rules('name', 'Nombre', array('required', 'alpha'));
 			$crud->set_rules('icon', 'Icono', 'required');
+			$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
 
 			//Required fields
 			$crud->columns('id_limb', 'name', 'icon', 'description');
