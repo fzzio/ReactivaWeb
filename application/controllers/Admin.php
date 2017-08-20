@@ -225,40 +225,47 @@ class Admin extends CI_Controller {
 	 * CRUD game_limb
 	 * @return available limbs list
 	 */
-  public function limbs(){
+	public function limbs(){
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
-      //Initialize grocery_CRUD
-      $titulo = "Extremidades";
-      $crud = new grocery_CRUD();
+			//Initialize grocery_CRUD
+			$titulo = "Extremidades";
+			$crud = new grocery_CRUD();
 			$crud->set_table("game_limb");
 			$crud->set_subject($titulo);
+
 			//Set display as
 			$crud->display_as('id_limb', 'ID');
 			$crud->display_as('name', 'Nombre');
 			$crud->display_as('icon', 'Icono');
 			$crud->display_as('description', 'Descripción');
+
 			//Set field type
-			$crud->set_field_upload('icon','assets/uploads/icons');
+			$crud->set_field_upload('icon','assets/img/icons-exercise');
+			$crud->field_type('description', 'string');
 			//Set validations rules
-			$crud->set_rules('name', 'Nombre', array('required', 'callback_alpha_dash_space___'));
+			//$crud->set_rules('name', 'Nombre', array('required', 'alpha'));
 			$crud->set_rules('icon', 'Icono', 'required');
-      //Required fields
+			//Required fields
 			$crud->columns('id_limb', 'name', 'icon', 'description');
 			$crud->fields('id_limb', 'name', 'icon', 'description');
+
 			//Unset options
-      $crud->unset_export();
+			$crud->unset_export();
 			$crud->unset_print();
 			$crud->unset_read();
+
 			//Grocery CRUD render
 			$output = $crud->render();
+
 			//Data header
 			$dataHeader['PageTitle'] = $titulo;
 			$dataHeader['css_files'] = $output->css_files;
 			$dataFooter['js_files'] = $output->js_files;
 			$dataContent['debug'] = $debug;
+
 			//Loading from views
-      $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['header'] = $this->load->view('admin/header', $dataHeader);
 			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
 			$data['content'] = $this->load->view('admin/blank', $output);
 			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
