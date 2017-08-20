@@ -172,6 +172,15 @@ class Admin extends CI_Controller {
 				$crud->display_as('description' , 'Descripción');
 				$crud->display_as('script_name' , 'Script Name');
 
+				//Set Validation
+				$crud->set_rules('script_name', 'Script Name', 'callback_extension', array(
+								'extension' => 'El campo %s no tiene el formato correcto (script_name.js).'
+						));
+
+				$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
+
 				//Required fields
 	      $crud->columns('id_exercise', 'name', 'description', 'script_name');
 				$crud->fields('name', 'description', 'script_name');
@@ -913,6 +922,11 @@ class Admin extends CI_Controller {
 		$value = date('m/d/Y h:i:s', time());
 		$return = '<input id="field-date_created" name="date_created" type="text" value="'.$value.'" maxlength="19" class="datetime-input form-control hasDatepicker" >';
 		return $return;
+	}
+
+	public function extension($str) {
+		$ext = pathinfo($str, PATHINFO_EXTENSION);
+		return ($ext == "js");
 	}
 
 	public function check_dates($fecha2, $fecha1) {
