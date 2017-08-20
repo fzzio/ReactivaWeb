@@ -88,7 +88,12 @@ INSERT INTO `patient_consult` (`id_consult`, `id_patient`, `id_doctor_created`, 
 	(15, 1, 3, 3, '2017-06-19 22:51:01', '2017-06-19 22:51:01', '2017-06-02 00:00:00', 2, 'Meningitis', 'Enfermedad en la piel'),
 	(19, 11, 3, NULL, '2017-08-02 10:35:45', '2017-08-02 19:36:00', NULL, 1, NULL, 'Indica fuerte dolor en la rodilla'),
 	(20, 8, 5, NULL, '2017-08-02 14:36:00', '2017-08-02 14:36:00', NULL, 1, NULL, 'El dolor lleva una semana'),
-	(21, 6, 3, 3, '2017-08-19 11:15:06', '2017-08-20 11:15:07', NULL, 0, NULL, NULL);
+	(21, 6, 3, 3, '2017-08-19 11:15:06', '2017-08-20 11:15:07', NULL, 0, NULL, NULL),
+	(22, 13, 5, 5, '2017-08-20 13:28:05', '2017-08-22 13:28:05', NULL, 1, 'Esguince grado 1', 'Le duele cuando respira'),
+	(23, 18, 3, 5, '2017-07-15 13:28:05', '2017-07-16 13:28:05', '2017-07-16 13:28:05', 1, 'Calambre muscular', 'Generado por la falta de potasio'),
+	(24, 11, 3, 5, '2017-07-15 13:28:05', '2017-07-16 13:28:05', NULL, 1, NULL, 'Le duelen las rodillas'),
+	(25, 2, 5, 3, '2017-07-15 13:28:05', '2017-07-16 13:28:05', '2017-07-18 13:28:05', 1, 'Irritaciòn en la piel', 'Tiene varios dias sin banarse por la irritación');
+	
 /*!40000 ALTER TABLE `patient_consult` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_consult_limb: ~4 rows (approximately)
@@ -107,7 +112,12 @@ DELETE FROM `patient_therapy`;
 INSERT INTO `patient_therapy` (`id_therapy`, `id_consulta`, `id_patient`, `date_created`, `id_doctor_created`, `id_doctor_attended`, `eta`, `etf`, `comment`, `sendmail`, `status`, `valoration`, `time_elapse`) VALUES
 	(4, 15, 1, '2017-06-19 00:33:38', 4, 3, '2017-06-19 00:33:52', '2017-06-19 00:33:55', 'qwe', 0, 3, NULL, NULL),
 	(5, 15, 1, '2017-06-19 00:36:26', 3, 4, '2017-06-19 00:00:00', '2017-06-19 00:00:00', '<p>\r\n	qwe</p>\r\n', 0, 3, NULL, NULL),
-	(6, 19, 1, '2017-06-21 11:20:52', 4, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', NULL, 0, 1, NULL, NULL);
+	(6, 19, 1, '2017-06-21 11:20:52', 4, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', NULL, 0, 1, NULL, NULL),
+	(7, 25, 18, '2017-06-21 11:20:52', 5, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'qwe', 0, 2, NULL, NULL),
+	(8, 22, 13, '2017-06-21 11:20:52', 3, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'qwe', 0, 2, NULL, '2017-06-23 00:00:00'),
+	(9, 20, 10, '2017-06-21 11:20:52', 5, 5, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'hola', 0, 2, NULL, NULL),
+	(10, 23, 11, '2017-06-21 11:20:52', 5, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'adios', 0, 2, NULL, NULL),
+	(11, 22, 10, '2017-06-21 11:20:52', 4, 4, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'se molestó con la terapia', 0, 2, NULL, NULL);
 /*!40000 ALTER TABLE `patient_therapy` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy_comment: ~0 rows (approximately)
