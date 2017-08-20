@@ -1,5 +1,6 @@
 body{
-  	font-family: 'Montserrat'; 	
+	font-family: 'Montserrat'; 	
+	background-color: white !important;
 }
 
 .align-center {
@@ -33,15 +34,15 @@ body{
 	color: white;
 }
 
-.navbar-ra .nav>li>a:focus, .navbar-ra .nav>li>a:hover, .navbar-ra .nav>li>a:active, .navbar-ra .nav li.dropdown.open a {
+.navbar-ra .nav>li>a:focus, .navbar-ra .nav>li>a:hover, .navbar-ra .nav>li>a:active, .navbar-ra .nav li.dropdown.open a{
 	color: #1d3651;
-    background-color: #50bfa3;
+  background-color: #50bfa3;
 }
 
 .box-header.well {
-    background-color: #50bfa3;
-    border-radius: 0px;
-    border-color: #1d3651;
+  background-color: #50bfa3;
+  border-radius: 0px;
+  border-color: #1d3651;
 }
 
 footer{
