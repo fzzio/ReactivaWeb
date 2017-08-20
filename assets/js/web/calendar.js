@@ -91,7 +91,7 @@ $(document).ready(function(){
 		},
 		select: function(event, ui){
 			$("#txtAllowSearch").val(ui.item.value); // display the selected text
-	    	$("#txtAllowSearchID").val(ui.item.id); // save selected id to hidden input
+	    	$("#id-patient").val(ui.item.id); // save selected id to hidden input
 		}
 	});
 

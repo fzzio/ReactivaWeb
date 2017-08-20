@@ -104,12 +104,19 @@ class Admin extends CI_Controller {
             ));
 
 			//Set validations rules
-			$crud->set_rules('name', 'Nombres', array('required', 'callback_alpha_dash_space__'));
-			$crud->set_rules('lastname', 'Apellidos', array('required', 'callback_alpha_dash_space'));
-			$crud->set_rules('email', 'Correo electrónico', array('required', 'valid_email'));
-			$crud->set_rules('username', 'Usuario', 'required');
+			$crud->set_rules('email', 'Correo electrónico', 'required|valid_email');
+			$crud->set_rules('username', 'Usuario', 'required|alpha_numeric|is_unique[account.username]|max_length[25]');
+			$crud->set_rules('password', 'Contraseña', 'alpha_numeric|min_length[4]');
 			$crud->set_rules('id_group', 'Grupo', 'required');
 			$crud->set_rules('state', 'Estado', 'required');
+
+			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
+
+			$crud->set_rules('lastname', 'Apellidos', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
 
 			//Encrypt password
 			$crud->callback_edit_field('password',array($this,'set_password_input_to_empty'));
@@ -164,6 +171,15 @@ class Admin extends CI_Controller {
 				$crud->display_as('name' , 'Nombre');
 				$crud->display_as('description' , 'Descripción');
 				$crud->display_as('script_name' , 'Script Name');
+
+				//Set Validation
+				$crud->set_rules('script_name', 'Script Name', 'callback_extension', array(
+								'extension' => 'El campo %s no tiene el formato correcto (script_name.js).'
+						));
+
+				$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
 
 				//Required fields
 	      $crud->columns('id_exercise', 'name', 'description', 'script_name');
@@ -272,6 +288,9 @@ class Admin extends CI_Controller {
 			//Set validations rules
 			//$crud->set_rules('name', 'Nombre', array('required', 'alpha'));
 			$crud->set_rules('icon', 'Icono', 'required');
+			$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
 
 			//Required fields
 			$crud->columns('id_limb', 'name', 'icon', 'description');
@@ -316,61 +335,77 @@ class Admin extends CI_Controller {
 
 			//Set display as
 			$crud->display_as('id_patient', 'ID Paciente');
-			$crud->display_as('ci', 'Cedula');
+			$crud->display_as('ci', 'Cédula');
 			$crud->display_as('name', 'Nombres');
 			$crud->display_as('lastname', 'Apellidos');
 			$crud->display_as('born', 'Fecha de Nacimiento');
 			$crud->display_as('gender', 'Sexo');
-			$crud->display_as('phone', 'Telefono');
+			$crud->display_as('phone', 'Teléfono');
 			$crud->display_as('cellphone', 'Celular');
+			$crud->display_as('email', 'Correo electrónico');
+			$crud->display_as('img', 'Foto');
+			$crud->display_as('address', 'Domicilio');
 			$crud->display_as('emergency_contact', 'Contacto emergencia');
 			$crud->display_as('emergency_phone', 'Teléfono emergencia');
-			$crud->display_as('address', 'Domicilio');
 			$crud->display_as('blood', 'Tipo de sangre');
 			$crud->display_as('rh', 'Factor RH');
-			$crud->display_as('allergies', 'Otras alergias');
 			$crud->display_as('allergies_med', 'Alergias a medicamentos');
-			$crud->display_as('observations', 'Observaciones y comentarios');
+			$crud->display_as('allergies', 'Otras alergias');
 			$crud->display_as('illness', 'Enfermedades');
-			$crud->display_as('email', 'Correo electrónico');
-			
+			$crud->display_as('observations', 'Observaciones');
+
 			//Set field type
 			$crud->field_type('born', 'date');
 			$crud->field_type('address', 'string');
-			$crud->field_type('gender', 'dropdown', array(
-                '0' => 'Femenino',
-                '1' => 'Masculino'
-            ));
+			$crud->set_field_upload('img','assets\img\patient-profile');
+
 			$crud->field_type('blood', 'dropdown', array(
                 'O' => 'O',
                 'A' => 'A',
                 'B' => 'B',
                 'AB' => 'AB'
             ));
+
 			$crud->field_type('rh', 'dropdown', array(
                 '+' => '+',
                 '-' => '-'
             ));
+
+			$crud->field_type('gender', 'dropdown', array(
+                '0' => 'Femenino',
+                '1' => 'Masculino'
+            ));
+
 			//Set validations rules
-			/*$crud->set_rules('ci', 'Cedula', 'required|min_length[10]|max_length[10]|is_unique[patient.ci]',
-        array(
-                'required'      => 'The %s field is required.',
-                'is_unique'     => 'This %s already exists.'
-        ));
-			$crud->set_rules('name', 'Nombres', 'required|alpha');
-			$crud->set_rules('lastname', 'Apellidos', 'required|alpha');
-			$crud->set_rules('phone', 'Telefono', 'required|min_length[9]|numeric|max_length[9]');
-			$crud->set_rules('cellphone', 'Celular', 'required|min_length[10]|numeric|max_length[10]');
+			$crud->set_rules('ci', 'Cedula', 'required|exact_length[10]|is_unique[patient.ci]');
+			$crud->set_rules('phone', 'Telefono', 'required|exact_length[9]|numeric');
+			$crud->set_rules('cellphone', 'Celular', 'required|exact_length[10]|numeric');
+			$crud->set_rules('emergency_phone', 'Teléfono emergencia', 'required|exact_length[9]|numeric');
 			$crud->set_rules('email', 'Correo', 'required|valid_email');
-			$crud->set_rules('born', 'Fecha de Nacimiento', 'required|callback_date_valid',
-				array(
-								'date_valid'		=> 'The Fecha de Nacimiento field is invalid.'
-				));*/
+			$crud->set_rules('address', 'Domicilio', 'required');
+			$crud->set_rules('blood', 'Tipo de sangre', 'required');
+			$crud->set_rules('rh', 'Factor RH', 'required');
+			$crud->set_rules('gender', 'Sexo', 'required');
+
+			//$crud->set_rules('born', 'Fecha de Nacimiento', 'required|callback_date_valid', array(
+				//				'date_valid'		=> 'El campo %s no es una fecha válida.'
+				//));
 			
+			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
+
+			$crud->set_rules('lastname', 'Apellidos', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
+
+			$crud->set_rules('emergency_contact', 'Contacto emergencia', 'required|regex_match[/^([-a-z ])+$/i]', array(
+								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
+						));
+
 			//Required fields
-			$crud->columns('id_patient', 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'emergency_contact', 'emergency_phone', 'address', 'blood', 'rh', 'allergies', 'allergies_med', 'observations', 'illness', 'email');
-			$crud->fields('ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'emergency_contact', 'emergency_phone', 'address', 'blood', 'rh', 'allergies', 'allergies_med', 'observations', 'illness', 'email');
-			//$crud->required_fields( 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'adress' );
+			$crud->columns('id_patient', 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'img', 'address',  'emergency_contact', 'emergency_phone', 'blood', 'rh', 'allergies_med', 'allergies', 'illness', 'observations');
+			$crud->fields('ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'img', 'address', 'emergency_contact', 'emergency_phone', 'blood', 'rh', 'allergies_med', 'allergies', 'illness', 'observations');
 			
 			//Unset options
       $crud->unset_export();
@@ -892,25 +927,34 @@ class Admin extends CI_Controller {
 		return $return;
 	}
 
-	public function check_dates($fecha2) {
-		if ($fecha2 > $this->input->post('eta')) {
-			return TRUE;
-		} else {
-			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
-			return FALSE;
-		}
+	public function extension($str) {
+		$ext = pathinfo($str, PATHINFO_EXTENSION);
+		return ($ext == "js");
 	}
 
-	//Realizar corrección
+	public function check_dates($fecha2, $fecha1) {
+		$partes = explode('/', $this->input->post('fecha1'));
+		$fecha1 = join('-', $partes);
+
+		$partes2 = explode('/', $this->input->post('fecha2'));
+		$fecha2 = join('-', $partes2);
+
+	  if ($fecha2 >= $fecha1) {
+		  return TRUE;
+	 	} else {
+	 			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
+	 			return FALSE;
+	  }
+	}
+
+	/*//Realizar corrección
 	public function date_valid ($born) {
 		$partes = explode('/', $this->input->post('born'));
-		$born = join('-', $partes);
-		if ($born < date("Y-m-d")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+		$fecha = join('-', $partes);
+		$temp = date("d-m-Y", $fecha);
+		$current = date("d-m-Y");
+		return ($fecha < $current);
+	}*/
 
 }
 
