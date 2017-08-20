@@ -34,7 +34,7 @@ body{
 	color: white;
 }
 
-.navbar-ra .nav>li>a:focus, .navbar-ra .nav>li>a:hover, .navbar-ra .nav>li>a:active, .navbar-ra .nav li.dropdown.open a {
+.navbar-ra .nav>li>a:focus, .navbar-ra .nav>li>a:hover, .navbar-ra .nav>li>a:active, .navbar-ra .nav li.dropdown.open a{
 	color: #1d3651;
   background-color: #50bfa3;
 }
@@ -45,7 +45,7 @@ body{
   border-color: #1d3651;
 }
 
-/*footer{
+footer{
 	background-color: #1d3651;
 	color: white;
 	text-decoration: none;
@@ -54,7 +54,7 @@ body{
 footer a, footer a.active, footer a.focus{
 	color: white;
 	text-decoration: none;
-}*/
+}
 
 /*
 * {
