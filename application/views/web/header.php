@@ -14,7 +14,7 @@
 
 	<?php if ( ($this->router->method != "login") && ($this->router->method != "logout") ): ?>
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
-    <?php endif ?>
+  <?php endif ?>
 
 	
 	

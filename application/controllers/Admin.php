@@ -35,7 +35,7 @@ class Admin extends CI_Controller {
 
 	public function login() {
 		if ($this->AdminSecurityCheck()) {
-			 redirect("admin/index");
+			redirect("admin/index");
 		} else {
 			$dataHeader['PageTitle'] = "Reactiva";
 			$data['header'] = $this->load->view('admin/header', $dataHeader);
@@ -785,7 +785,7 @@ class Admin extends CI_Controller {
 	}*/
 
 	public function alpha_dash_space___($str) {
-  	if ( ! preg_match("/^([a-z ])+$/i", $str)) {
+  	if ( ! preg_match("/^[\p{L}0-9\s-]+$/u", $str) || ! preg_match("/^([-a-z ])+$/i", $str)) {
   		$this->form_validation->set_message('alpha_dash_space__', 'El campo Nombre sólo puede contener carácteres alfabéticos.');
   		return FALSE;
   	} else {
@@ -794,7 +794,7 @@ class Admin extends CI_Controller {
   }  
 
 	public function alpha_dash_space__($str) {
-  	if ( ! preg_match("/^([a-z ])+$/i", $str)) {
+  	if ( ! preg_match("/^([-a-z ])+$/i", $str)) {
   		$this->form_validation->set_message('alpha_dash_space__', 'El campo Nombres sólo puede contener carácteres alfabéticos.');
   		return FALSE;
   	} else {
@@ -803,7 +803,7 @@ class Admin extends CI_Controller {
   }  
 
   public function alpha_dash_space($str) {
-  	if ( ! preg_match("/^([a-z ])+$/i", $str)) {
+  	if ( ! preg_match("/^([-a-z ])+$/i", $str)) {
   		$this->form_validation->set_message('alpha_dash_space', 'El campo Apellidos sólo puede contener carácteres alfabéticos.');
   		return FALSE;
   	} else {

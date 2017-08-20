@@ -15,11 +15,10 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/style.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/custom-bootstrap-margin-padding.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/style.css'); ?>">
 
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-	
-	
 
 	<?php if (isset($css_files)): ?>
 		<!-- grocerycrud -->
@@ -42,6 +41,12 @@
 			return urlTmp;
 		}
 	</script>
+
+	<style rel="stylesheet">
+		#page-wrapper {
+			background-color: white;
+		}
+	</style>
 
 	<?php if ( ($this->router->method != "login") && ($this->router->method != "logout") ): ?>
        
