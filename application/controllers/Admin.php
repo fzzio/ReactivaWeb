@@ -104,10 +104,11 @@ class Admin extends CI_Controller {
             ));
 
 			//Set validations rules
-			$crud->set_rules('name', 'Nombres', array('required', 'callback_alpha_dash_space__'));
-			$crud->set_rules('lastname', 'Apellidos', array('required', 'callback_alpha_dash_space'));
-			$crud->set_rules('email', 'Correo electrónico', array('required', 'valid_email'));
-			$crud->set_rules('username', 'Usuario', 'required');
+			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([-a-z ])+$/i]');
+			$crud->set_rules('lastname', 'Apellidos', 'required|regex_match[/^([-a-z ])+$/i]');
+			$crud->set_rules('email', 'Correo electrónico', 'required|valid_email');
+			$crud->set_rules('username', 'Usuario', 'required|alpha_numeric|is_unique[account.username]|max_length[25]');
+			$crud->set_rules('password', 'Contraseña', 'alpha_numeric|min_length[4]');
 			$crud->set_rules('id_group', 'Grupo', 'required');
 			$crud->set_rules('state', 'Estado', 'required');
 
