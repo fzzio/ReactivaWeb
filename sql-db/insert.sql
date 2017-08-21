@@ -78,7 +78,15 @@ INSERT INTO `patient` (`id_patient`, `ci`, `name`, `lastname`, `born`, `gender`,
 	(11, '0903066789', 'Viviana', 'Laurido Aguirre', '1996-12-12', 0, '07596100742', '07596100742', '', '', 'Samborondón', 'B', '+', '', NULL, NULL, '', '', NULL, 'vlaurido@espol.edu.ec'),
 	(13, '0873645775', 'Rodrigo', 'Castro Reyes', '1993-05-30', 1, '042252638', '042252638', '', '', 'Alborada', 'AB', '+', '', NULL, NULL, '', '', NULL, 'rodfcast@espol.edu.ec'),
 	(15, '0909033426', 'Madelyne', 'Velasco Mite', '1996-05-25', 0, '07596100742', '07596100742', '', '', 'Guayaquil', 'O', '+', '', NULL, '', '', NULL, NULL, 'mbguaranda@espol.edu.ec'),
-	(18, '0873645778', 'Jose Luis', 'Masson ', '1995-12-24', 1, '042254895', '042254895', 'Joxy', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'jlmasson@espol.edu.ec');
+	(18, '0873645778', 'Jose Luis', 'Masson ', '1995-12-24', 1, '042254895', '042254895', 'Joxy', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'jlmasson@espol.edu.ec'),
+	(19, '0920142049', 'Gustavo Andres', 'Palacios Ross ', '1994-08-20', 1, '042254895', '042254895', '', '07596100742', 'Kennedy Norte', 'A', '-', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'gross@gmail.com'),
+	(20, '0911168680', 'MERCEDES DEL ROCIO', 'AGUILERA MOCHA ', '1995-12-24', 1, '042254895', '042254895', '', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'a@gmail.com'),
+	(21, '0915162549', 'OMAR FABRIZIO', 'AGUILERA SALAZAR', '1995-12-24', 1, '042254895', '042254895', '', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'b@gmail.com'),
+	(22, '0901752832', 'JORGE ANTONIO', 'ALBORNOZ ROSADO ', '1995-12-24', 1, '042254895', '042254895', '', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'c@gmail.com'),
+	(23, '0912474079', 'CARMEN ZULEMA', 'ALCIVAR FERNANDEZ ', '1995-12-24', 1, '042254895', '042254895', '', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'd@gmail.com'),
+	(24, '0912474087', 'JONATHAN ANDREW', 'ALLEN LERTORA ', '1995-12-24', 1, '042254895', '042254895', '', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'e@gmail.com'),
+	(25, '0908903230', 'JORGE ENRIQUE', 'ALVARADO CHANG ', '1995-12-24', 1, '042254895', '042254895', '', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'f@gmail.com'),
+	(26, '0917778581', 'MARIA GABRIELA', 'LARA BRIONES ', '1995-12-24', 1, '042254895', '042254895', '', '07596100742', 'Alborada', 'O', '+', NULL, 'qqweqwe', 'xzxvzxv', 'vbnvbn', NULL, NULL, 'g@gmail.com');
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_consult: ~3 rows (approximately)
@@ -90,9 +98,9 @@ INSERT INTO `patient_consult` (`id_consult`, `id_patient`, `id_doctor_created`, 
 	(20, 8, 5, NULL, '2017-08-02 14:36:00', '2017-08-02 14:36:00', NULL, 1, NULL, 'El dolor lleva una semana'),
 	(21, 6, 3, 3, '2017-08-19 11:15:06', '2017-08-20 11:15:07', NULL, 0, NULL, NULL),
 	(22, 13, 5, 5, '2017-08-20 13:28:05', '2017-08-22 13:28:05', NULL, 1, 'Esguince grado 1', 'Le duele cuando respira'),
-	(23, 18, 3, 5, '2017-07-15 13:28:05', '2017-07-16 13:28:05', '2017-07-16 13:28:05', 1, 'Calambre muscular', 'Generado por la falta de potasio'),
-	(24, 11, 3, 5, '2017-07-15 13:28:05', '2017-07-16 13:28:05', NULL, 1, NULL, 'Le duelen las rodillas'),
-	(25, 2, 5, 3, '2017-07-15 13:28:05', '2017-07-16 13:28:05', '2017-07-18 13:28:05', 1, 'Irritaciòn en la piel', 'Tiene varios dias sin banarse por la irritación');
+	(23, 18, 3, 5, '2017-08-22 13:28:05', '2017-08-22 13:28:05', NULL, 1, 'Calambre muscular', 'Generado por la falta de potasio'),
+	(24, 11, 3, 5, '2017-08-21 13:28:05', '2017-08-22 13:28:05', NULL, 1, NULL, 'Le duelen las rodillas'),
+	(25, 2, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'Irritaciòn en la piel', 'Tiene varios dias sin banarse por la irritación');
 	
 /*!40000 ALTER TABLE `patient_consult` ENABLE KEYS */;
 
@@ -110,14 +118,14 @@ INSERT INTO `patient_consult_limb` (`id_consult`, `id_limb`) VALUES
 DELETE FROM `patient_therapy`;
 /*!40000 ALTER TABLE `patient_therapy` DISABLE KEYS */;
 INSERT INTO `patient_therapy` (`id_therapy`, `id_consulta`, `id_patient`, `date_created`, `id_doctor_created`, `id_doctor_attended`, `eta`, `etf`, `comment`, `sendmail`, `status`, `valoration`, `time_elapse`) VALUES
-	(4, 15, 1, '2017-06-19 00:33:38', 4, 3, '2017-06-19 00:33:52', '2017-06-19 00:33:55', 'qwe', 0, 3, NULL, NULL),
-	(5, 15, 1, '2017-06-19 00:36:26', 3, 4, '2017-06-19 00:00:00', '2017-06-19 00:00:00', '<p>\r\n	qwe</p>\r\n', 0, 3, NULL, NULL),
-	(6, 19, 1, '2017-06-21 11:20:52', 4, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', NULL, 0, 1, NULL, NULL),
-	(7, 25, 18, '2017-06-21 11:20:52', 5, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'qwe', 0, 2, NULL, NULL),
-	(8, 22, 13, '2017-06-21 11:20:52', 3, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'qwe', 0, 2, NULL, '2017-06-23 00:00:00'),
-	(9, 20, 10, '2017-06-21 11:20:52', 5, 5, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'hola', 0, 2, NULL, NULL),
-	(10, 23, 11, '2017-06-21 11:20:52', 5, 3, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'adios', 0, 2, NULL, NULL),
-	(11, 22, 10, '2017-06-21 11:20:52', 4, 4, '2017-06-21 00:00:00', '2017-06-23 00:00:00', 'se molestó con la terapia', 0, 2, NULL, NULL);
+	(4, 15, 1, '2017-08-19 00:33:38', 4, 3, NULL, NULL, 'qwe', 0, 3, NULL, NULL),
+	(5, 15, 1, '2017-08-19 00:36:26', 3, 4, NULL, NULL, '<p>\r\n	qwe</p>\r\n', 0, 3, NULL, NULL),
+	(6, 19, 1, '2017-08-21 11:20:52', 4, 3, NULL, NULL, NULL, 0, 1, NULL, NULL),
+	(7, 25, 18, '2017-08-21 11:20:52', 5, 3, NULL, NULL, 'qwe', 0, 2, NULL, NULL),
+	(8, 22, 13, '2017-08-21 11:20:52', 3, 3, NULL, NULL, 'qwe', 0, 2, NULL, '2017-06-23 00:00:00'),
+	(9, 20, 10, '2017-08-21 11:20:52', 5, 5, NULL, NULL, 'hola', 0, 2, NULL, NULL),
+	(10, 23, 11, '2017-08-21 11:20:52', 5, 3, NULL, NULL, 'adios', 0, 2, NULL, NULL),
+	(11, 22, 10, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'se molestó con la terapia', 0, 2, NULL, NULL);
 /*!40000 ALTER TABLE `patient_therapy` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy_comment: ~0 rows (approximately)
