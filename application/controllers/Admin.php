@@ -172,6 +172,8 @@ class Admin extends CI_Controller {
 				$crud->display_as('description' , 'Descripción');
 				$crud->display_as('script_name' , 'Script Name');
 
+				//Set field type
+				$crud->field_type('description' , 'string');
 				//Set Validation
 				$crud->set_rules('script_name', 'Script Name', 'callback_extension', array(
 								'extension' => 'El campo %s no tiene el formato correcto (script_name.js).'
@@ -229,12 +231,12 @@ class Admin extends CI_Controller {
 
 			//Set field type
 			//Set relation
-			$crud->set_relation('id_game','game_exercise','{name}');
-			$crud->set_relation('id_limb','game_limb','{name}');
+			$crud->set_relation('id_game','game_exercise','name');
+			$crud->set_relation('id_limb','game_limb','name');
 
 			//Set validations rules
-			$crud->display_as('id_game', 'Juego', 'required');
-			$crud->display_as('id_limb', 'Extremidad', 'required');
+			$crud->set_rules('id_game', 'Juego', 'required');
+			$crud->set_rules('id_limb', 'Extremidad', 'required');
 
 			//Required fields
       $crud->columns('id_game', 'id_limb');
