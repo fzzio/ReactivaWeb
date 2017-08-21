@@ -233,10 +233,13 @@ class Admin extends CI_Controller {
 			$crud->set_relation('id_limb','game_limb','{name}');
 
 			//Set validations rules
+			$crud->display_as('id_game', 'Juego', 'required');
+			$crud->display_as('id_limb', 'Extremidad', 'required');
+
 			//Required fields
       $crud->columns('id_game', 'id_limb');
 			$crud->fields('id_game', 'id_limb');
-			$crud->required_fields('id_game', 'id_limb');
+			//$crud->required_fields('id_game', 'id_limb');
 
 			//Unset options
 			$crud->unset_export();
@@ -286,7 +289,6 @@ class Admin extends CI_Controller {
 			$crud->field_type('description', 'string');
 
 			//Set validations rules
-			//$crud->set_rules('name', 'Nombre', array('required', 'alpha'));
 			$crud->set_rules('icon', 'Icono', 'required');
 			$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([-a-z ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
@@ -386,11 +388,7 @@ class Admin extends CI_Controller {
 			$crud->set_rules('blood', 'Tipo de sangre', 'required');
 			$crud->set_rules('rh', 'Factor RH', 'required');
 			$crud->set_rules('gender', 'Sexo', 'required');
-
-			//$crud->set_rules('born', 'Fecha de Nacimiento', 'required|callback_date_valid', array(
-				//				'date_valid'		=> 'El campo %s no es una fecha válida.'
-				//));
-			
+		
 			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([-a-z ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
@@ -482,7 +480,6 @@ class Admin extends CI_Controller {
 			//Required fields
 			$crud->columns('id_consult', 'id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
 			$crud->fields('id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
-			//$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
 			//Unset options
       $crud->unset_export();
@@ -683,28 +680,38 @@ class Admin extends CI_Controller {
 
 			//Set field type
 			$crud->field_type('date', 'datetime');
+			$crud->field_type('msg', 'string');
 
 			//Set relation
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_therapy', 'patient_therapy', 'id_therapy');
+			
 			//Set validations rules
+			$crud->set_rules('id_therapy', 'ID Terapia', 'required');
+			$crud->set_rules('msg', 'Comentario', 'required');
+
+			//Set before and afete callbacks
+			$crud->change_field_type('date','hidden');
+			$crud->callback_before_insert(array($this,'callback_current_date'));
 
 			//Required fields
 			$crud->columns('id_therapy', 'date', 'msg');
 			$crud->fields('id_therapy', 'date', 'msg');
-			$crud->required_fields('id_therapy', 'date', 'msg');
-			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+
 			//Unset options
 			$crud->unset_export();
 			$crud->unset_print();
 			$crud->unset_read();
+
 			//Grocery CRUD render
 			$output = $crud->render();
+
 			//Data header
 			$dataHeader['PageTitle'] = $titulo;
 			$dataHeader['css_files'] = $output->css_files;
 			$dataFooter['js_files'] = $output->js_files;
 			$dataContent['debug'] = $debug;
+
 			//Loading from views
 			$data['header'] = $this->load->view('admin/header', $dataHeader);
 			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
