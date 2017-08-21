@@ -528,10 +528,12 @@ class Admin extends CI_Controller {
 
 			//Set field type
 			//Set validations rules
+			$crud->set_rules('id_consult', 'ID Consulta', 'required');
+			$crud->set_rules('id_limb', 'Extremidad', 'required');
+
 			//Required fields
 			$crud->columns('id_consult', 'id_limb');
 			$crud->fields('id_consult', 'id_limb');
-			//$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
 			//Unset options
       $crud->unset_export();
