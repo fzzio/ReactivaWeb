@@ -100,7 +100,24 @@ INSERT INTO `patient_consult` (`id_consult`, `id_patient`, `id_doctor_created`, 
 	(22, 13, 5, 5, '2017-08-20 13:28:05', '2017-08-22 13:28:05', NULL, 1, 'Esguince grado 1', 'Le duele cuando respira'),
 	(23, 18, 3, 5, '2017-08-22 13:28:05', '2017-08-22 13:28:05', NULL, 1, 'Calambre muscular', 'Generado por la falta de potasio'),
 	(24, 11, 3, 5, '2017-08-21 13:28:05', '2017-08-22 13:28:05', NULL, 1, NULL, 'Le duelen las rodillas'),
-	(25, 2, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'Irritaciòn en la piel', 'Tiene varios dias sin banarse por la irritación');
+	(25, 20, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'muneca fracturada', 'hueso resentido'),
+	(26, 22, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'rodilla fisurada', 'coloracion de la piel morada'),
+	(27, 21, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'estiramiento de tendon', 'no puede mover mucho la extremidad'),
+	(28, 2, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'inflamacion del musculo', 'esta hinchado'),
+	(29, 2, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, NULL, 'no se ha identificado la causa del dolor'),
+	(30, 26, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'Esguince grado 2', '3 dias sin terapia'),
+	(31, 24, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, NULL, 'coloracion de la piel en la mano ha empeorado'),
+	(32, 25, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'menton fracturado', 'pretuberancia en el area afectada'),
+	(33, 23, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, NULL, 'no se sabe origen del dolor'),
+	(34, 21, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'trauma cervical', 'Tiene varios dias sin banarse por el dolor'),
+	(35, 22, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'trauma en el codo', ''),
+	(36, 20, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'Irritaciòn en la piel', 'Tiene varios dias sin banarse por la irritación'),
+	(37, 5, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, NULL, 'varias extremidades con dolor'),
+	(38, 7, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'Irritaciòn en la piel', 'Tiene varios dias sin banarse por la irritación'),
+	(39, 19, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, NULL, 'el paciente tiene que estar en reposo despues de cada sesion'),
+	(40, 19, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, NULL, 'no puede realizar actividad fisica mientras este en terapia'),
+	(41, 21, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, NULL, 'debe estar en rehabilitacion durante 6 meses'),
+	(42, 26, 5, 3, '2017-08-21 12:28:05', '2017-08-21 13:28:05', NULL, 1, 'Irritaciòn en la piel', 'Tiene varios dias sin banarse por la irritación');
 	
 /*!40000 ALTER TABLE `patient_consult` ENABLE KEYS */;
 
@@ -120,12 +137,19 @@ DELETE FROM `patient_therapy`;
 INSERT INTO `patient_therapy` (`id_therapy`, `id_consulta`, `id_patient`, `date_created`, `id_doctor_created`, `id_doctor_attended`, `eta`, `etf`, `comment`, `sendmail`, `status`, `valoration`, `time_elapse`) VALUES
 	(4, 15, 1, '2017-08-19 00:33:38', 4, 3, NULL, NULL, 'qwe', 0, 3, NULL, NULL),
 	(5, 15, 1, '2017-08-19 00:36:26', 3, 4, NULL, NULL, '<p>\r\n	qwe</p>\r\n', 0, 3, NULL, NULL),
-	(6, 19, 1, '2017-08-21 11:20:52', 4, 3, NULL, NULL, NULL, 0, 1, NULL, NULL),
-	(7, 25, 18, '2017-08-21 11:20:52', 5, 3, NULL, NULL, 'qwe', 0, 2, NULL, NULL),
+	(6, 19, 11, '2017-08-21 11:20:52', 4, 3, NULL, NULL, NULL, 0, 1, NULL, NULL),
+	(7, 25, 2, '2017-08-21 11:20:52', 5, 3, NULL, NULL, 'qwe', 0, 2, NULL, NULL),
 	(8, 22, 13, '2017-08-21 11:20:52', 3, 3, NULL, NULL, 'qwe', 0, 2, NULL, '2017-06-23 00:00:00'),
-	(9, 20, 10, '2017-08-21 11:20:52', 5, 5, NULL, NULL, 'hola', 0, 2, NULL, NULL),
-	(10, 23, 11, '2017-08-21 11:20:52', 5, 3, NULL, NULL, 'adios', 0, 2, NULL, NULL),
-	(11, 22, 10, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'se molestó con la terapia', 0, 2, NULL, NULL);
+	(9, 20, 8, '2017-08-21 11:20:52', 5, 5, NULL, NULL, 'hola', 0, 2, NULL, NULL),
+	(10, 23, 18, '2017-08-21 11:20:52', 5, 3, NULL, NULL, 'adios', 0, 2, NULL, NULL),
+	(11, 23, 18, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'se molestó con la terapia', 0, 2, NULL, NULL),
+	(12, 20, 8, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'asdg', 0, 2, NULL, NULL),
+	(13, 23, 18, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'mejora en los brazos', 0, 2, NULL, NULL),
+	(14, 25, 2, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'empeoro la rodilla', 0, 2, NULL, NULL),
+	(15, 25, 2, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'color morado en la piel', 0, 2, NULL, NULL),
+	(16, 19, 11, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'la terapia no la pudo terminar por el dolor', 0, 2, NULL, NULL),
+	(17, 19, 11, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'no sintio dolor en esta sesion', 0, 2, NULL, NULL),
+	(18, 20, 8, '2017-08-21 11:20:52', 4, 4, NULL, NULL, 'esta es la ultima sesion del paciente', 0, 2, NULL, NULL);
 /*!40000 ALTER TABLE `patient_therapy` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy_comment: ~0 rows (approximately)
