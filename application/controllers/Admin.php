@@ -468,12 +468,20 @@ class Admin extends CI_Controller {
                 '1' => 'Cancelado',
                 '2' => 'Atendido'
             ));
-			$crud->field_type('date_created', 'datetime');
 
-			//Set validations rules
+			//Set validation
+			$crud->set_rules('id_patient', 'Paciente', 'required');
+			$crud->set_rules('id_doctor_created', 'Médico', 'required');
+			$crud->set_rules('date_planned', 'Fecha prevista', 'required');
+			$crud->set_rules('status', 'Estado', 'required');
+
+			//Set before and afete callbacks
+			$crud->change_field_type('date_created','hidden');
+			$crud->callback_before_insert(array($this,'callback_insert'));
+
 			//Required fields
 			$crud->columns('id_consult', 'id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
-			$crud->fields('id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
+			$crud->fields('id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
 			//$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
 			//Unset options
@@ -697,29 +705,40 @@ class Admin extends CI_Controller {
 			$crud->set_table("patient_therapy_exer");
 			$crud->set_subject($titulo);
 			//Set display as
-			$crud->display_as( 'id_therapy' , 'ID Terapia' );
-			$crud->display_as( 'id_exercise' , 'Ejercicio' );
-			$crud->display_as( 'difficulty' , 'Dificultad' );
-			$crud->display_as( 'param0' , 'Parámetro 1' );
-			$crud->display_as( 'param1' , 'Parámetro 2' );
-			$crud->display_as( 'duration' , 'Duración' );
+			$crud->display_as('id_therapy', 'ID Terapia');
+			$crud->display_as('id_exercise', 'Ejercicio');
+			$crud->display_as('difficulty', 'Dificultad');
+			$crud->display_as('param0', 'Parámetro 1');
+			$crud->display_as('param1', 'Parámetro 2');
+			$crud->display_as('duration', 'Duración');
 			//Set field type
-			$crud->field_type('duration', 'datetime');
 			$crud->field_type('difficulty', 'dropdown', array(
                 '0' => 'Fácil',
                 '1' => 'Medio',
                 '2' => 'Difícil'
             ));
+			$crud->field_type('duration', 'dropdown', array(
+                '00:05:00' => '00:05:00 (5 minutos)',
+                '00:10:00' => '00:10:00 (10 minutos)',
+                '00:15:00' => '00:15:00 (15 minutos)',
+                '00:30:00' => '00:30:00 (30 minutos)',
+                '00:40:00' => '00:40:00 (40 minutos)',
+                '00:50:00' => '00:50:00 (50 minutos)',
+                '01:00:00' => '01:00:00 (1 hora)'
+            ));
 			//Set relation
 			$crud->set_relation('id_therapy', 'patient_therapy', 'id_therapy');
 			$crud->set_relation('id_exercise', 'game_exercise', 'name');
+			
 			//Set validations rules
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
+			$crud->set_rules( 'id_therapy' , 'ID Terapia', 'required');
+			$crud->set_rules( 'id_exercise' , 'Ejercicio', 'required');
+			$crud->set_rules( 'difficulty' , 'Dificultad', 'required');
+			$crud->set_rules( 'duration' , 'Duración', 'required');
 			//Required fields
 			$crud->columns('id_therapy', 'id_exercise', 'difficulty', 'param1', 'param0', 'duration');
 			$crud->fields('id_therapy', 'id_exercise', 'difficulty', 'param1', 'param0', 'duration');
-			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+	
 			//Unset options
 			$crud->unset_export();
 			$crud->unset_print();
@@ -883,53 +902,14 @@ class Admin extends CI_Controller {
 		return "<input type='password' name='password' value='' />";
 	}
 
-	/*public function check_dates($fecha2, $fecha1){
-		if ($fecha2 > $fecha1){
-			return TRUE;
-		}else{
-			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
-			return FALSE;
-		}
-	}*/
-
-	public function alpha_dash_space___($str) {
-  	if ( ! preg_match("/^[\p{L}0-9\s-]+$/u", $str) || ! preg_match("/^([-a-z ])+$/i", $str)) {
-  		$this->form_validation->set_message('alpha_dash_space__', 'El campo Nombre sólo puede contener carácteres alfabéticos.');
-  		return FALSE;
-  	} else {
-  		return TRUE;
-  	}
-  }  
-
-	public function alpha_dash_space__($str) {
-  	if ( ! preg_match("/^([-a-z ])+$/i", $str)) {
-  		$this->form_validation->set_message('alpha_dash_space__', 'El campo Nombres sólo puede contener carácteres alfabéticos.');
-  		return FALSE;
-  	} else {
-  		return TRUE;
-  	}
-  }  
-
-  public function alpha_dash_space($str) {
-  	if ( ! preg_match("/^([-a-z ])+$/i", $str)) {
-  		$this->form_validation->set_message('alpha_dash_space', 'El campo Apellidos sólo puede contener carácteres alfabéticos.');
-  		return FALSE;
-  	} else {
-  		return TRUE;
-  	}
-  }  
-
-	public function _add_default_date_value() {
-		$timezone = date_default_timezone_get();
-		date_default_timezone_set($timezone);
-		$value = date('m/d/Y h:i:s', time());
-		$return = '<input id="field-date_created" name="date_created" type="text" value="'.$value.'" maxlength="19" class="datetime-input form-control hasDatepicker" >';
-		return $return;
-	}
-
 	public function extension($str) {
 		$ext = pathinfo($str, PATHINFO_EXTENSION);
 		return ($ext == "js");
+	}
+
+	public function callback_insert($post_array) {
+	  $post_array['date_created'] = date('Y-m-d H:i:s');
+	  return $post_array;
 	}
 
 	public function check_dates($fecha2, $fecha1) {
@@ -954,6 +934,15 @@ class Admin extends CI_Controller {
 		$temp = date("d-m-Y", $fecha);
 		$current = date("d-m-Y");
 		return ($fecha < $current);
+	}*/
+
+	/*public function check_dates($fecha2, $fecha1){
+		if ($fecha2 > $fecha1){
+			return TRUE;
+		}else{
+			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
+			return FALSE;
+		}
 	}*/
 
 }
