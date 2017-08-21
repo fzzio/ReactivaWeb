@@ -179,10 +179,11 @@ class Services extends CI_Controller {
     }
 
     public function getCalendar(){
-    	$query = $this->input->post();
+    	$query = $this->input->get();
 
     	$month = $query['month'];
     	$year = $query['year'];
+
 
     	$this->db->select("DAY(patient_therapy.eta) AS `day`,
     		COUNT(patient_therapy.eta) AS `count`");
@@ -193,6 +194,7 @@ class Services extends CI_Controller {
     	$this->db->order_by('day', "ASC");
 
     	$mes = $this->db->get()->result_array();
+
 
     	$resultado = array();
 
