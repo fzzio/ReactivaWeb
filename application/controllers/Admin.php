@@ -172,6 +172,8 @@ class Admin extends CI_Controller {
 				$crud->display_as('description' , 'Descripción');
 				$crud->display_as('script_name' , 'Script Name');
 
+				//Set field type
+				$crud->field_type('description' , 'string');
 				//Set Validation
 				$crud->set_rules('script_name', 'Script Name', 'callback_extension', array(
 								'extension' => 'El campo %s no tiene el formato correcto (script_name.js).'
@@ -229,14 +231,17 @@ class Admin extends CI_Controller {
 
 			//Set field type
 			//Set relation
-			$crud->set_relation('id_game','game_exercise','{name}');
-			$crud->set_relation('id_limb','game_limb','{name}');
+			$crud->set_relation('id_game','game_exercise','name');
+			$crud->set_relation('id_limb','game_limb','name');
 
 			//Set validations rules
+			$crud->set_rules('id_game', 'Juego', 'required');
+			$crud->set_rules('id_limb', 'Extremidad', 'required');
+
 			//Required fields
       $crud->columns('id_game', 'id_limb');
 			$crud->fields('id_game', 'id_limb');
-			$crud->required_fields('id_game', 'id_limb');
+			//$crud->required_fields('id_game', 'id_limb');
 
 			//Unset options
 			$crud->unset_export();
@@ -286,7 +291,6 @@ class Admin extends CI_Controller {
 			$crud->field_type('description', 'string');
 
 			//Set validations rules
-			//$crud->set_rules('name', 'Nombre', array('required', 'alpha'));
 			$crud->set_rules('icon', 'Icono', 'required');
 			$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([-a-z ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
@@ -386,11 +390,7 @@ class Admin extends CI_Controller {
 			$crud->set_rules('blood', 'Tipo de sangre', 'required');
 			$crud->set_rules('rh', 'Factor RH', 'required');
 			$crud->set_rules('gender', 'Sexo', 'required');
-
-			//$crud->set_rules('born', 'Fecha de Nacimiento', 'required|callback_date_valid', array(
-				//				'date_valid'		=> 'El campo %s no es una fecha válida.'
-				//));
-			
+		
 			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([-a-z ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
@@ -447,8 +447,8 @@ class Admin extends CI_Controller {
 			//Set display as
 			$crud->display_as('id_consult', 'ID Consulta');
 			$crud->display_as('id_patient', 'Paciente');
-			$crud->display_as('id_doctor_created', 'Médico');
-			$crud->display_as('id_doctor_attended', 'Atendido por');
+			$crud->display_as('id_doctor_created', 'Doctor responsable');
+			$crud->display_as('id_doctor_attended', 'Atendida por');
 			$crud->display_as('date_created', 'Fecha de creación');
 			$crud->display_as('date_planned', 'Fecha prevista');
 			$crud->display_as('date_attended', 'Fecha de atención');
@@ -468,13 +468,20 @@ class Admin extends CI_Controller {
                 '1' => 'Cancelado',
                 '2' => 'Atendido'
             ));
-			$crud->field_type('date_created', 'datetime');
 
-			//Set validations rules
+			//Set validation
+			$crud->set_rules('id_patient', 'Paciente', 'required');
+			$crud->set_rules('id_doctor_created', 'Doctor responsable', 'required');
+			$crud->set_rules('date_planned', 'Fecha prevista', 'required');
+			$crud->set_rules('status', 'Estado', 'required');
+
+			//Set before and afete callbacks
+			$crud->change_field_type('date_created','hidden');
+			$crud->callback_before_insert(array($this,'callback_insert'));
+
 			//Required fields
 			$crud->columns('id_consult', 'id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
-			$crud->fields('id_patient', 'id_doctor_created', 'id_doctor_attended',  'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
-			//$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
+			$crud->fields('id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
 
 			//Unset options
       $crud->unset_export();
@@ -523,10 +530,12 @@ class Admin extends CI_Controller {
 
 			//Set field type
 			//Set validations rules
+			$crud->set_rules('id_consult', 'ID Consulta', 'required');
+			$crud->set_rules('id_limb', 'Extremidad', 'required');
+
 			//Required fields
 			$crud->columns('id_consult', 'id_limb');
 			$crud->fields('id_consult', 'id_limb');
-			//$crud->required_fields( 'id_doctor_created', 'id_patient', 'date_attended', 'status');
 
 			//Unset options
       $crud->unset_export();
@@ -569,8 +578,8 @@ class Admin extends CI_Controller {
 			$crud->display_as('id_therapy', 'ID Terapia');
 			$crud->display_as('id_patient', 'Paciente');
 			$crud->display_as('date_created', 'Fecha de Creación');
-			$crud->display_as('id_doctor_created', 'Doctor que creó la cita');
-			$crud->display_as('id_doctor_attended', 'Doctor que la atendió');
+			$crud->display_as('id_doctor_created', 'Doctor responsable');
+			$crud->display_as('id_doctor_attended', 'Atendida por');
 			$crud->display_as('eta', 'Inicio Estimado');
 			$crud->display_as('etf', 'Fin Estimado');
 			$crud->display_as('comment', 'Comentarios');
@@ -591,20 +600,45 @@ class Admin extends CI_Controller {
                 '1' => 'Si'
             ));
 
+      $crud->field_type('valoration', 'dropdown', array(
+                '0' => 'No necesita acompañamiento',
+                '1' => 'Acompañamiento medio',
+                '2' => 'Necesita acompañamiento'
+            ));
+
+      $crud->field_type('time_elapse', 'dropdown', array(
+                '00:05:00' => '00:05:00 (5 minutos)',
+                '00:10:00' => '00:10:00 (10 minutos)',
+                '00:15:00' => '00:15:00 (15 minutos)',
+                '00:30:00' => '00:30:00 (30 minutos)',
+                '00:40:00' => '00:40:00 (40 minutos)',
+                '00:50:00' => '00:50:00 (50 minutos)',
+                '01:00:00' => '01:00:00 (1 hora)'
+            ));
+
 			//Set relation
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_patient', 'patient', '{name} {lastname}');
 			$crud->set_relation('id_doctor_created', 'account_med', 'full_name');
 			$crud->set_relation('id_doctor_attended', 'account_med', 'full_name');
+			$crud->set_relation('id_consulta', 'patient_consult', 'id_consult');
 
 			//Set validations rules
-			$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
+			$crud->set_rules('id_patient', 'Paciente', 'required');
+			$crud->set_rules('id_doctor_created', 'Doctor responsable', 'required');
+			$crud->set_rules('id_doctor_attended', 'Atendida por', 'required');
+			$crud->set_rules('eta', 'Inicio Estimado', 'required');
+			$crud->set_rules('etf', 'Fin Estimado', 'required');
+			$crud->set_rules('sendmail', 'Envío de Correo', 'required');
+			$crud->set_rules('status', 'Estado', 'required');
 			
+			//Set before and afete callbacks
+			$crud->change_field_type('date_created','hidden');
+			$crud->callback_before_insert(array($this,'callback_insert'));
+
 			//Required fields
-			$crud->columns('id_therapy', 'id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf',  'comment', 'sendmail','status', 'valoration', 'time_elapse');
-			$crud->fields('id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf',  'comment', 'sendmail','status', 'valoration', 'time_elapse');
-			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+			$crud->columns('id_therapy', 'id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf', 'sendmail','status', 'time_elapse', 'valoration', 'comment');
+			$crud->fields('id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf', 'sendmail','status', 'time_elapse', 'valoration', 'comment');
 			
 			//Unset options
 			$crud->unset_export();
@@ -650,30 +684,38 @@ class Admin extends CI_Controller {
 
 			//Set field type
 			$crud->field_type('date', 'datetime');
+			$crud->field_type('msg', 'string');
 
 			//Set relation
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_therapy', 'patient_therapy', 'id_therapy');
+			
 			//Set validations rules
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
+			$crud->set_rules('id_therapy', 'ID Terapia', 'required');
+			$crud->set_rules('msg', 'Comentario', 'required');
+
+			//Set before and afete callbacks
+			$crud->change_field_type('date','hidden');
+			$crud->callback_before_insert(array($this,'callback_current_date'));
 
 			//Required fields
 			$crud->columns('id_therapy', 'date', 'msg');
 			$crud->fields('id_therapy', 'date', 'msg');
-			$crud->required_fields('id_therapy', 'date', 'msg');
-			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+
 			//Unset options
 			$crud->unset_export();
 			$crud->unset_print();
 			$crud->unset_read();
+
 			//Grocery CRUD render
 			$output = $crud->render();
+
 			//Data header
 			$dataHeader['PageTitle'] = $titulo;
 			$dataHeader['css_files'] = $output->css_files;
 			$dataFooter['js_files'] = $output->js_files;
 			$dataContent['debug'] = $debug;
+
 			//Loading from views
 			$data['header'] = $this->load->view('admin/header', $dataHeader);
 			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
@@ -697,29 +739,40 @@ class Admin extends CI_Controller {
 			$crud->set_table("patient_therapy_exer");
 			$crud->set_subject($titulo);
 			//Set display as
-			$crud->display_as( 'id_therapy' , 'ID Terapia' );
-			$crud->display_as( 'id_exercise' , 'Ejercicio' );
-			$crud->display_as( 'difficulty' , 'Dificultad' );
-			$crud->display_as( 'param0' , 'Parámetro 1' );
-			$crud->display_as( 'param1' , 'Parámetro 2' );
-			$crud->display_as( 'duration' , 'Duración' );
+			$crud->display_as('id_therapy', 'ID Terapia');
+			$crud->display_as('id_exercise', 'Ejercicio');
+			$crud->display_as('difficulty', 'Dificultad');
+			$crud->display_as('param0', 'Parámetro 1');
+			$crud->display_as('param1', 'Parámetro 2');
+			$crud->display_as('duration', 'Duración');
 			//Set field type
-			$crud->field_type('duration', 'datetime');
 			$crud->field_type('difficulty', 'dropdown', array(
                 '0' => 'Fácil',
                 '1' => 'Medio',
                 '2' => 'Difícil'
             ));
+			$crud->field_type('duration', 'dropdown', array(
+                '00:05:00' => '00:05:00 (5 minutos)',
+                '00:10:00' => '00:10:00 (10 minutos)',
+                '00:15:00' => '00:15:00 (15 minutos)',
+                '00:30:00' => '00:30:00 (30 minutos)',
+                '00:40:00' => '00:40:00 (40 minutos)',
+                '00:50:00' => '00:50:00 (50 minutos)',
+                '01:00:00' => '01:00:00 (1 hora)'
+            ));
 			//Set relation
 			$crud->set_relation('id_therapy', 'patient_therapy', 'id_therapy');
 			$crud->set_relation('id_exercise', 'game_exercise', 'name');
+			
 			//Set validations rules
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
+			$crud->set_rules( 'id_therapy' , 'ID Terapia', 'required');
+			$crud->set_rules( 'id_exercise' , 'Ejercicio', 'required');
+			$crud->set_rules( 'difficulty' , 'Dificultad', 'required');
+			$crud->set_rules( 'duration' , 'Duración', 'required');
 			//Required fields
 			$crud->columns('id_therapy', 'id_exercise', 'difficulty', 'param1', 'param0', 'duration');
 			$crud->fields('id_therapy', 'id_exercise', 'difficulty', 'param1', 'param0', 'duration');
-			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+	
 			//Unset options
 			$crud->unset_export();
 			$crud->unset_print();
@@ -762,11 +815,18 @@ class Admin extends CI_Controller {
 			$crud->set_field_upload('img','assets/uploads/therapy_photo');
 			//Set relation
 			$crud->set_relation('id_therapy','patient_therapy','id_therapy');
+			
 			//Set validations rules
+			$crud->set_rules('id_therapy', 'ID Terapia', 'required');
+			$crud->set_rules('img', 'Imagen', 'required');
+			$crud->set_rules('comment', 'Comentario', 'required');
+			//Set before and afete callbacks
+			$crud->change_field_type('date','hidden');
+			$crud->callback_before_insert(array($this,'callback_current_date'));
+
 			//Required fields
       $crud->columns('id_therapy', 'date', 'img', 'comment');
 			$crud->fields('id_therapy', 'date', 'img', 'comment');
-			$crud->required_fields('id_therapy', 'date', 'img', 'comment');
 			//Unset options
 			$crud->unset_export();
 			$crud->unset_print();
@@ -871,9 +931,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function encrypt_pw($post_array) {
-		if(!empty($post_array['password'])) {
+		if (!empty($post_array['password'])) {
             $post_array['password'] = md5($_POST['password']);
-        }else{
+        } else {
         	unset($post_array['password']);
         }
         return $post_array;
@@ -883,53 +943,19 @@ class Admin extends CI_Controller {
 		return "<input type='password' name='password' value='' />";
 	}
 
-	/*public function check_dates($fecha2, $fecha1){
-		if ($fecha2 > $fecha1){
-			return TRUE;
-		}else{
-			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
-			return FALSE;
-		}
-	}*/
-
-	public function alpha_dash_space___($str) {
-  	if ( ! preg_match("/^[\p{L}0-9\s-]+$/u", $str) || ! preg_match("/^([-a-z ])+$/i", $str)) {
-  		$this->form_validation->set_message('alpha_dash_space__', 'El campo Nombre sólo puede contener carácteres alfabéticos.');
-  		return FALSE;
-  	} else {
-  		return TRUE;
-  	}
-  }  
-
-	public function alpha_dash_space__($str) {
-  	if ( ! preg_match("/^([-a-z ])+$/i", $str)) {
-  		$this->form_validation->set_message('alpha_dash_space__', 'El campo Nombres sólo puede contener carácteres alfabéticos.');
-  		return FALSE;
-  	} else {
-  		return TRUE;
-  	}
-  }  
-
-  public function alpha_dash_space($str) {
-  	if ( ! preg_match("/^([-a-z ])+$/i", $str)) {
-  		$this->form_validation->set_message('alpha_dash_space', 'El campo Apellidos sólo puede contener carácteres alfabéticos.');
-  		return FALSE;
-  	} else {
-  		return TRUE;
-  	}
-  }  
-
-	public function _add_default_date_value() {
-		$timezone = date_default_timezone_get();
-		date_default_timezone_set($timezone);
-		$value = date('m/d/Y h:i:s', time());
-		$return = '<input id="field-date_created" name="date_created" type="text" value="'.$value.'" maxlength="19" class="datetime-input form-control hasDatepicker" >';
-		return $return;
-	}
-
 	public function extension($str) {
 		$ext = pathinfo($str, PATHINFO_EXTENSION);
 		return ($ext == "js");
+	}
+
+	public function callback_insert($post_array) {
+	  $post_array['date_created'] = date('Y-m-d H:i:s');
+	  return $post_array;
+	}
+
+	public function callback_current_date($post_array) {
+	  $post_array['date'] = date('Y-m-d H:i:s');
+	  return $post_array;
 	}
 
 	public function check_dates($fecha2, $fecha1) {
@@ -954,6 +980,15 @@ class Admin extends CI_Controller {
 		$temp = date("d-m-Y", $fecha);
 		$current = date("d-m-Y");
 		return ($fecha < $current);
+	}*/
+
+	/*public function check_dates($fecha2, $fecha1){
+		if ($fecha2 > $fecha1){
+			return TRUE;
+		}else{
+			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
+			return FALSE;
+		}
 	}*/
 
 }
