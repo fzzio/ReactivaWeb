@@ -447,8 +447,8 @@ class Admin extends CI_Controller {
 			//Set display as
 			$crud->display_as('id_consult', 'ID Consulta');
 			$crud->display_as('id_patient', 'Paciente');
-			$crud->display_as('id_doctor_created', 'Médico');
-			$crud->display_as('id_doctor_attended', 'Atendido por');
+			$crud->display_as('id_doctor_created', 'Doctor responsable');
+			$crud->display_as('id_doctor_attended', 'Atendida por');
 			$crud->display_as('date_created', 'Fecha de creación');
 			$crud->display_as('date_planned', 'Fecha prevista');
 			$crud->display_as('date_attended', 'Fecha de atención');
@@ -471,7 +471,7 @@ class Admin extends CI_Controller {
 
 			//Set validation
 			$crud->set_rules('id_patient', 'Paciente', 'required');
-			$crud->set_rules('id_doctor_created', 'Médico', 'required');
+			$crud->set_rules('id_doctor_created', 'Doctor responsable', 'required');
 			$crud->set_rules('date_planned', 'Fecha prevista', 'required');
 			$crud->set_rules('status', 'Estado', 'required');
 
@@ -577,8 +577,8 @@ class Admin extends CI_Controller {
 			$crud->display_as('id_therapy', 'ID Terapia');
 			$crud->display_as('id_patient', 'Paciente');
 			$crud->display_as('date_created', 'Fecha de Creación');
-			$crud->display_as('id_doctor_created', 'Doctor que creó la cita');
-			$crud->display_as('id_doctor_attended', 'Doctor que la atendió');
+			$crud->display_as('id_doctor_created', 'Doctor responsable');
+			$crud->display_as('id_doctor_attended', 'Atendida por');
 			$crud->display_as('eta', 'Inicio Estimado');
 			$crud->display_as('etf', 'Fin Estimado');
 			$crud->display_as('comment', 'Comentarios');
@@ -599,20 +599,45 @@ class Admin extends CI_Controller {
                 '1' => 'Si'
             ));
 
+      $crud->field_type('valoration', 'dropdown', array(
+                '0' => 'No necesita acompañamiento',
+                '1' => 'Acompañamiento medio',
+                '2' => 'Necesita acompañamiento'
+            ));
+
+      $crud->field_type('time_elapse', 'dropdown', array(
+                '00:05:00' => '00:05:00 (5 minutos)',
+                '00:10:00' => '00:10:00 (10 minutos)',
+                '00:15:00' => '00:15:00 (15 minutos)',
+                '00:30:00' => '00:30:00 (30 minutos)',
+                '00:40:00' => '00:40:00 (40 minutos)',
+                '00:50:00' => '00:50:00 (50 minutos)',
+                '01:00:00' => '01:00:00 (1 hora)'
+            ));
+
 			//Set relation
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_patient', 'patient', '{name} {lastname}');
 			$crud->set_relation('id_doctor_created', 'account_med', 'full_name');
 			$crud->set_relation('id_doctor_attended', 'account_med', 'full_name');
+			$crud->set_relation('id_consulta', 'patient_consult', 'id_consult');
 
 			//Set validations rules
-			$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
+			$crud->set_rules('id_patient', 'Paciente', 'required');
+			$crud->set_rules('id_doctor_created', 'Doctor responsable', 'required');
+			$crud->set_rules('id_doctor_attended', 'Atendida por', 'required');
+			$crud->set_rules('eta', 'Inicio Estimado', 'required');
+			$crud->set_rules('etf', 'Fin Estimado', 'required');
+			$crud->set_rules('sendmail', 'Envío de Correo', 'required');
+			$crud->set_rules('status', 'Estado', 'required');
 			
+			//Set before and afete callbacks
+			$crud->change_field_type('date_created','hidden');
+			$crud->callback_before_insert(array($this,'callback_insert'));
+
 			//Required fields
-			$crud->columns('id_therapy', 'id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf',  'comment', 'sendmail','status', 'valoration', 'time_elapse');
-			$crud->fields('id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf',  'comment', 'sendmail','status', 'valoration', 'time_elapse');
-			//$crud->required_fields('etf', 'eta', 'id_patient','status', 'id_doctor_created');
+			$crud->columns('id_therapy', 'id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf', 'sendmail','status', 'time_elapse', 'valoration', 'comment');
+			$crud->fields('id_patient', 'date_created', 'id_doctor_created','id_doctor_attended','eta', 'etf', 'sendmail','status', 'time_elapse', 'valoration', 'comment');
 			
 			//Unset options
 			$crud->unset_export();
@@ -663,8 +688,6 @@ class Admin extends CI_Controller {
 			$crud->set_primary_key('id_account','account_med');
 			$crud->set_relation('id_therapy', 'patient_therapy', 'id_therapy');
 			//Set validations rules
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates[eta]');
-			//$crud->set_rules('etf','Fecha de Finalización','callback_check_dates');
 
 			//Required fields
 			$crud->columns('id_therapy', 'date', 'msg');
@@ -890,9 +913,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function encrypt_pw($post_array) {
-		if(!empty($post_array['password'])) {
+		if (!empty($post_array['password'])) {
             $post_array['password'] = md5($_POST['password']);
-        }else{
+        } else {
         	unset($post_array['password']);
         }
         return $post_array;
