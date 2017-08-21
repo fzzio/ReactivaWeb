@@ -804,11 +804,18 @@ class Admin extends CI_Controller {
 			$crud->set_field_upload('img','assets/uploads/therapy_photo');
 			//Set relation
 			$crud->set_relation('id_therapy','patient_therapy','id_therapy');
+			
 			//Set validations rules
+			$crud->set_rules('id_therapy', 'ID Terapia', 'required');
+			$crud->set_rules('img', 'Imagen', 'required');
+			$crud->set_rules('comment', 'Comentario', 'required');
+			//Set before and afete callbacks
+			$crud->change_field_type('date','hidden');
+			$crud->callback_before_insert(array($this,'callback_current_date'));
+
 			//Required fields
       $crud->columns('id_therapy', 'date', 'img', 'comment');
 			$crud->fields('id_therapy', 'date', 'img', 'comment');
-			$crud->required_fields('id_therapy', 'date', 'img', 'comment');
 			//Unset options
 			$crud->unset_export();
 			$crud->unset_print();
@@ -932,6 +939,11 @@ class Admin extends CI_Controller {
 
 	public function callback_insert($post_array) {
 	  $post_array['date_created'] = date('Y-m-d H:i:s');
+	  return $post_array;
+	}
+
+	public function callback_current_date($post_array) {
+	  $post_array['date'] = date('Y-m-d H:i:s');
 	  return $post_array;
 	}
 

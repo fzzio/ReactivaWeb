@@ -30,8 +30,8 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">TERAPIAS<span class="caret"></span></a>
         <ul class="nav nav-third-level">
           <li><a href="<?php echo site_url('admin/therapies'); ?>">TERAPIAS</a></li>
-          <li><a href="<?php echo site_url('admin/comments'); ?>">COMENTARIOS</a></li>
           <li><a href="<?php echo site_url('admin/th_exercises'); ?>">EJERCICIOS</a></li>
+          <li><a href="<?php echo site_url('admin/comments'); ?>">COMENTARIOS</a></li>
           <li><a href="<?php echo site_url('admin/photos'); ?>">FOTOS</a></li>
         </ul>
       </li><!--/Terapias-->
