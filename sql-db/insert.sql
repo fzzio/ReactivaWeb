@@ -128,7 +128,20 @@ INSERT INTO `patient_consult_limb` (`id_consult`, `id_limb`) VALUES
 	(15, 1),
 	(15, 2),
 	(19, 5),
-	(19, 6);
+	(19, 6),
+	(25, 6),
+	(25, 5),
+	(25, 9),
+	(22, 10),
+	(22, 4),
+	(22, 3),
+	(22, 2),
+	(23, 1),
+	(23, 2),
+	(23, 3),
+	(23, 4),
+	(23, 5),
+	(23, 6);
 /*!40000 ALTER TABLE `patient_consult_limb` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy: ~3 rows (approximately)
