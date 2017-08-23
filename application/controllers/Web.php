@@ -16,6 +16,7 @@ class Web extends CI_Controller{
 		$this->load->model('Therapy');
 		$this->load->model('Patient');
 		$this->load->model('Limb');
+		$this->load->model('Consult');
 
 		setlocale(LC_ALL,"es_ES");
 		date_default_timezone_set("America/Guayaquil");
@@ -169,19 +170,28 @@ class Web extends CI_Controller{
 	public function iniciarCita(){
 		if ($this->SecurityCheck()){
 			$menuContent['selection']="calendar";
+			$id_consult = $this->uri->segment(3);
 
-			$dataHeader['PageTitle'] = "Agenda";
+			$info = Consult::getConsultInfo($id_consult);
 
-			$limbs = Limb::getLimbs();
+			if(!is_null($info)){
+				$dataHeader['PageTitle'] = "Agenda";
 
+				$limbs = Limb::getLimbs();
 
-			$dataContent['limbs']=$limbs;
+				$dataContent['limbs']=$limbs;
 
-			$data['header'] = $this->load->view('web/header', $dataHeader);
-			$data['menu'] = $this->load->view('web/menu', $menuContent);
+				$dataContent['patient'] = $info['patient'];
+				$dataContent['consult'] = $info['consult'];
 
-			$data['contenido'] = $this->load->view('web/iniciarCita', $dataContent);
-			$data['page-footer'] = $this->load->view('web/page-footer', array());
+				$data['header'] = $this->load->view('web/header', $dataHeader);
+				$data['menu'] = $this->load->view('web/menu', $menuContent);
+
+				$data['contenido'] = $this->load->view('web/iniciarCita', $dataContent);
+				$data['page-footer'] = $this->load->view('web/page-footer', array());
+			}else{
+				redirect("web/index");
+			}
 		}else{
 			redirect("web/login");
 		}

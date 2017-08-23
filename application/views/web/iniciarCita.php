@@ -20,7 +20,7 @@
 						<p><span class = 'patient-label'>Paciente:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'></span></p>
+						<p><span class = 'patient-content'><?php echo $patient['fullname'] ?></span></p>
 					</div>
 				</div>
 				<div class = 'row'>
@@ -28,7 +28,7 @@
 						<p><span class = 'patient-label'>Hora de la cita:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'></span> </p>
+						<p><span class = 'patient-content'><?php echo $consult['hour'] ?></span> </p>
 					</div>
 				</div>
 				<div class = 'row'>
@@ -36,7 +36,7 @@
 						<p><span class = 'patient-label'>Sexo:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'></span></p>
+						<p><span class = 'patient-content'><?php echo $patient['gender'] ?></span></p>
 					</div>
 				</div>
 				<div class = 'row'>
@@ -44,7 +44,7 @@
 						<p><span class = 'patient-label'>Fecha de nacimiento:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'></span> </p>
+						<p><span class = 'patient-content'><?php echo $patient['born'] ?></span> </p>
 					</div>
 				</div>
 				
@@ -55,7 +55,7 @@
 						<p><span class = 'patient-label'>Cédula:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'></span> </p>
+						<p><span class = 'patient-content'><?php echo $patient['ci'] ?></span> </p>
 					</div>
 				</div>
 				<div class = 'row'>
@@ -63,7 +63,7 @@
 						<p><span class = 'patient-label'>Celular:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'> </span></p>
+						<p><span class = 'patient-content'><?php echo $patient['cellphone'] ?></span></p>
 					</div>
 				</div>
 				<div class = 'row'>
@@ -71,7 +71,7 @@
 						<p><span class = 'patient-label'>Email:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'></span> </p>
+						<p><span class = 'patient-content'></span><?php echo $patient['email'] ?></p>
 					</div>
 				</div>
 				<div class = 'row'>
@@ -79,7 +79,7 @@
 						<p><span class = 'patient-label'>Observaciones:</span></p>
 					</div>
 					<div class = 'col-xs-6'>
-						<p><span class = 'patient-content'></span> </p>
+						<p><span class = 'patient-content'></span><?php echo $consult['observations'] ?></p>
 					</div>
 				</div>
 
@@ -110,10 +110,6 @@
 				</ul>
 			</div>
 		</div>
-
-			<button type="submit" class="btn btn-default btn-primary btn-general">
-				<span class="glyphicon glyphicon-download-alt " aria-hidden="true"></span> Guardar
-			</button>
 
 		<?php echo form_close(); ?>
 	</div>
