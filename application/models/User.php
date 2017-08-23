@@ -2,10 +2,13 @@
 if( !defined('BASEPATH')) exit ("No direct script access allowed");
 
 class User extends CI_Model{
+	private $id_account;
 	private $username;
 	private $email;
 	private $name;
 	private $lastname;
+	private $password;
+	private $id_group;
 	private $status;
 
 	function __construct() {
