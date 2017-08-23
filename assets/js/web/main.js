@@ -1,3 +1,47 @@
+function updateConsultInfo(id){
+	$.ajax({
+		url: "/ReactivaWeb/index.php/services/consultInfo",
+		type: 'POST',
+		data: {
+			"id" : String(id)
+		},
+		dataType:'json',
+		success: function(data){
+			$("#modal-date").text(data['consult']['date']);
+			$("#modal-status").text(data['consult']['status']);
+			$("#modal-observation").text(data['consult']['observations']);
+			$("#modal-diagnosis").text(data['consult']['diagnosis']);
+			$("#modal-body").text(data['limb']);
+		},
+		error: function(error){
+			console.error(error);
+		}
+	});
+}
+
+
+function updateTherapyInfo(id){
+	$.ajax({
+		url: "/ReactivaWeb/index.php/services/therapyInfo",
+		type: 'POST',
+		data: {
+			"id" : String(id)
+		},
+		dataType:'json',
+		success: function(data){
+			$("#the-date").text(data['therapy']['date']);
+			$("#the-status").text(data['therapy']['status']);
+			$("#the-evaluation").text(data['therapy']['evaluation']);
+			$("#the-attended").text(data['therapy']['doctor']);
+			$("#the-comments").text(data['comments']);
+		},
+		error: function(error){
+			console.error(error);
+		}
+	});
+}
+
+
 
 $(document).ready(function () {
 	$("#frm-new").validate({

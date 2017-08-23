@@ -296,6 +296,68 @@ class Services extends CI_Controller {
         echo json_encode($resultado);
 
     }
+
+     public function consultInfo(){
+        $query = $this->input->post();
+
+        $this->db->select("patient_consult.id_consult, patient_consult.id_patient, DATE(patient_consult.`date_planned`) AS `date`,  CASE WHEN patient_consult.status = 0 THEN 'Pendiente' WHEN patient_consult.status = 1 THEN 'Cancelada' WHEN patient_consult.status = 2 THEN 'En proceso'  END as `status`, patient_consult.diagnosis, patient_consult.observations");
+        $this->db->from('patient_consult');
+        $this->db->where('patient_consult.id_consult', $query['id']);
+        $consulta = $this->db->get()->row_array();
+
+
+        $this->db->select("game_limb.name");
+        $this->db->from('patient_consult_limb');
+        $this->db->join('game_limb', 'game_limb.id_limb = patient_consult_limb.id_limb');
+        $this->db->where('patient_consult_limb.id_consult', $query['id']);
+        $limbs = $this->db->get()->result_array();
+
+        $resultado = array();
+
+        $resultado['consult'] = $consulta;
+		
+
+        if (is_null($limbs)){
+        	$resultado['limb'] = $limbs;
+        }else{
+        	$resultado['limb'] = "Ninguno";
+        }
+
+        header('Content-type: application/json');
+        echo json_encode($resultado);
+
+    }
+
+     public function therapyInfo(){
+        $query = $this->input->post();
+
+        $id_therapy = $query['id'];
+
+         $this->db->select("patient_therapy.id_therapy, DATE(patient_therapy.`eta`) AS `date`,  CASE WHEN patient_therapy.status = 0 THEN 'Pendiente' WHEN patient_therapy.status = 1 THEN 'Cancelada' WHEN patient_therapy.status = 2 THEN 'En proceso'  WHEN patient_therapy.status = 3 THEN 'Asistió' END as `status`, 
+         	CASE WHEN patient_therapy.valoration = 0 THEN 'No necesitó compañía' WHEN patient_therapy.valoration = 1 THEN 'Requirió algo de ayuda' WHEN patient_therapy.valoration = 2 THEN 'Se necesitaba apoyo' END as `evaluation`,
+         	CONCAT(account.name, ' ', account.lastname) as `doctor` ");
+        $this->db->from('patient_therapy');
+        $this->db->join('account', 'account.id_account = patient_therapy.id_doctor_attended');
+        $this->db->where('patient_therapy.id_therapy', $query['id']);
+        $terapia = $this->db->get()->row_array();
+        
+        $resultado = array();
+
+        $resultado['therapy'] = $terapia;
+
+        $this->db->select("patient_therapy_comment.msg, TIME(patient_therapy_comment.`date`) AS `hour`");
+        $this->db->from('patient_therapy_comment');
+        $this->db->where('patient_therapy_comment.id_therapy', $query['id']);
+        $this->db->order_by('TIME(patient_therapy_comment.`date`)', 'asc');
+        $comentarios = $this->db->get()->result_array();
+
+        $resultado['comments'] = $comentarios;
+
+
+        header('Content-type: application/json');
+        echo json_encode($resultado);
+
+    }
 }
     
 ?>

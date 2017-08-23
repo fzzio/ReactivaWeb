@@ -197,7 +197,7 @@
 						<p class = 'pax-label-modal-right'>Observaciones</p>
 					</div>
 					<div class = 'col-xs-offset-2 col-xs-8'>
-						<p class="" id="modal-observations" ></p>
+						<p class="" id="modal-observation" ></p>
 					</div>
 				</div>
 				<div class = 'row'>
@@ -257,8 +257,8 @@
 						<div class = 'col-xs-4'>
 							<p class = 'pax-label-modal'>Atentido por: </p>
 						</div>
-						<div class = 'col-xs-8'>
-							<p class="" id="the-attended" ></p>
+						<div class = 'col-xs-8  ml-0 pl-0'>
+							<p class="patient-content" id="the-attended" ></p>
 						</div>
 					</div>
 				</div>
