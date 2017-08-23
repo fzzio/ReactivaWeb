@@ -1,7 +1,7 @@
 <div id="page-wrapper" class = 'page-calendar mt-0 pt-0 mb-0 pb-120 pr-0 mr-0'>
 <!-- Nav tabs -->
 		<div class="calendar-nav ml-0 pl-0">
-			<ul class="nav nav-tabs" role="tablist">
+			<ul class="nav nav-tabs pl-50" role="tablist">
 			  <li role="presentation" class="active">
 			  	<a href="#calendar" aria-controls="calendar" role="tab" data-toggle="tab">CITAS DEL DIA</a>
 			  </li>

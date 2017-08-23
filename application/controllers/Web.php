@@ -533,7 +533,11 @@ class Web extends CI_Controller{
 		        	<a  onclick="getTherapyCalendar('calendar_therapy_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">
 		        		<span class = 'glyphicon glyphicon-chevron-left'></span>
 		        	</a>
-		            <span class = 'mr-15 ml-15'><?php echo date("F", mktime(0, 0, 0, $dateMonth, 10)); ?></span>
+		            <span class = 'mr-15 ml-15'>
+		            <?php setlocale(LC_ALL,"es_ES", 'Spanish_Spain', 'Spanish'); 
+		            	echo strftime("%B", date(mktime(0, 0, 0, $dateMonth, 10))); 
+		            ?>	
+		            </span>
 		            <a  onclick="getTherapyCalendar('calendar_therapy_div','<?php echo date("Y",strtotime($date.' + 1 Month')); ?>','<?php echo date("m",strtotime($date.' + 1 Month')); ?>');">
 		            	<span class = 'glyphicon glyphicon-chevron-right'></span>
 		            </a>
@@ -624,7 +628,9 @@ class Web extends CI_Controller{
 		        	<a  onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">
 		        		<span class = 'glyphicon glyphicon-chevron-left'></span>
 		        	</a>
-		            <span class = 'mr-15 ml-15'><?php echo date("F", mktime(0, 0, 0, $dateMonth, 10)); ?></span>
+		            <span class = 'mr-15 ml-15'><?php setlocale(LC_ALL,"es_ES", 'Spanish_Spain', 'Spanish'); 
+		            	echo strftime("%B", date(mktime(0, 0, 0, $dateMonth, 10))); 
+		            ?>	</span>
 		            <a  onclick="getCalendar('calendar_div','<?php echo date("Y",strtotime($date.' + 1 Month')); ?>','<?php echo date("m",strtotime($date.' + 1 Month')); ?>');">
 		            	<span class = 'glyphicon glyphicon-chevron-right'></span>
 		            </a>
