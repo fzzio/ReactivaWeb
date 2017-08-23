@@ -15,6 +15,7 @@ class Web extends CI_Controller{
 		$this->load->model('User');
 		$this->load->model('Therapy');
 		$this->load->model('Patient');
+		$this->load->model('Limb');
 
 		setlocale(LC_ALL,"es_ES");
 		date_default_timezone_set("America/Guayaquil");
@@ -171,11 +172,15 @@ class Web extends CI_Controller{
 
 			$dataHeader['PageTitle'] = "Agenda";
 
+			$limbs = Limb::getLimbs();
+
+
+			$dataContent['limbs']=$limbs;
 
 			$data['header'] = $this->load->view('web/header', $dataHeader);
 			$data['menu'] = $this->load->view('web/menu', $menuContent);
 
-			$data['contenido'] = $this->load->view('web/iniciarCita', array());
+			$data['contenido'] = $this->load->view('web/iniciarCita', $dataContent);
 			$data['page-footer'] = $this->load->view('web/page-footer', array());
 		}else{
 			redirect("web/login");

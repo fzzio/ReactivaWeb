@@ -23,7 +23,7 @@
 	-webkit-animation: PatientAnimation 30s ease infinite;
 	-moz-animation: PatientAnimation 30s ease infinite;
 	animation: PatientAnimation 30s ease infinite;
-	min-height: 100vh;
+	height: 100%;
 }
 
 .page-footer, .patient-footer {

@@ -1,4 +1,5 @@
 <div id="page-wrapper" class = 'page-calendar mt-0 pt-0 mb-0 pb-120 pr-0 mr-0'>
+<div class = 'row pr-0 mr-0 pl-0 ml-0'>
 <!-- Nav tabs -->
 		<div class="calendar-nav ml-0 pl-0">
 			<ul class="nav nav-tabs pl-50" role="tablist">
@@ -356,5 +357,6 @@
 			</div>
 		</div>
 
+	</div>
 	</div>
 </div>
