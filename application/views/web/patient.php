@@ -105,24 +105,27 @@
 				</tr>
 			</thead>
 			<tbody>
-			  <tr>
-			  	<td>
-			  		<button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>
-			  	</td>
-			    <td class = 'left-cell'>Consulta</td>
-			    <td>16-06-2017</td>
-			    <td>Daniel García</td>
-			   
-			  </tr>
-			  <tr>
-			  	<td>
-			  		<button type="button" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>
-			  	</td>
-			    <td class = 'left-cell'>Terapia</td>
-			    <td>01-08-2017</td>
-			    <td>Erick Cedeño</td>
+				<?php foreach($lista as $item){ ?>
+				<tr>
+					<td>
+						<button type="button" class="btn btn-xs btn-primary" data-toggle='modal' 
+						<?php  if($item['type'] == "Consulta"){
+							echo "data-target='#verCita' onclick = 'updateConsultInfo(".$item['id'].")'";
+						}else{
+							echo "data-target='#verTerapia' onclick = 'updateTherapyInfo(".$item['id'].")'";
+						}
+							?>
+						
+						>
+							<span class="glyphicon glyphicon-eye-open"></span>
+						</button>
+					</td>
+					<td class = 'left-cell'><?php echo $item['type'] ?></td>
+					<td><?php echo $item['date'] ?></td>
+					<td><?php echo $item['doctor'] ?></td>
 
-			  </tr>
+				</tr>
+			  <?php } ?>
 			</tbody>
 		</table>
 		<h4 class="sub-title pt-15">Información clínica</h3>
@@ -162,6 +165,117 @@
 				<p class = 'p-5 patient-input'><?php echo $paciente->getAllergies() ?></p>
 			</div>
 		</div>
+
+
+
+	<div class="modal fade" id="verCita" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content pb-20">
+				<div class="modal-header nueva-cite-header">
+					<h4 class="modal-title">Información de la cita</h4>
+				</div>
+				<div class="modal-body">
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Fecha de la cita:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-date' class = 'patient-content'></p>
+						</div>
+					</div>
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Estado:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'modal-status' class = 'patient-content'></p>
+						</div>
+					</div>
+				</div>
+				<div class = 'row'>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class = 'pax-label-modal-right'>Observaciones</p>
+					</div>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class="" id="modal-observations" ></p>
+					</div>
+				</div>
+				<div class = 'row'>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class = 'pax-label-modal-right'>Diagnóstico</p>
+					</div>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class="" id="modal-diagnosis" ></p>
+					</div>
+				</div>
+				<div class = 'row'>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class = 'pax-label-modal-right'>Partes del cuerpo afectadas: </p>
+					</div>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class="" id="modal-body" ></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="modal fade" id="verTerapia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content pb-20">
+				<div class="modal-header nueva-cite-header">
+					<h4 class="modal-title">Información de la terapia</h4>
+				</div>
+				<div class="modal-body">
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Fecha de la terapia:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'the-date' class = 'patient-content'></p>
+						</div>
+					</div>
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Estado:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'the-status' class = 'patient-content'></p>
+						</div>
+					</div>
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p><span class = 'pax-label-modal'>Evaluación:</span></p>
+						</div>
+						<div class = 'col-xs-8 ml-0 pl-0'>
+							<p id = 'the-evaluation' class = 'patient-content'></p>
+						</div>
+					</div>
+					<div class = 'row'>
+						<div class = 'col-xs-4'>
+							<p class = 'pax-label-modal'>Atentido por: </p>
+						</div>
+						<div class = 'col-xs-8'>
+							<p class="" id="the-attended" ></p>
+						</div>
+					</div>
+				</div>
+				
+				<div class = 'row'>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class = 'pax-label-modal-right'>Comentarios: </p>
+					</div>
+					<div class = 'col-xs-offset-2 col-xs-8'>
+						<p class="" id="the-comments" ></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
 	</div>
 	</div>
 </div>

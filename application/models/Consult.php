@@ -126,6 +126,33 @@ class Consult extends CI_Model{
 
     	return $resultado;
 	}
+
+	public static function getConsultsByPatient($id){
+		$instance_CI =& get_instance();
+
+		$instance_CI->db->select("patient_consult.id_consult, DATE(patient_consult.`date_planned`) AS `date`, CONCAT(account.name, ' ', account.lastname) as `doctor`");
+		$instance_CI->db->from('patient_consult');
+		$instance_CI->db->join('account', 'account.id_account = patient_consult.id_doctor_attended');
+    	$instance_CI->db->where('patient_consult.id_patient', $id);
+    	$instance_CI->db->order_by('DATE(patient_consult.`date_planned`)', 'desc');
+
+    	$consults = $instance_CI->db->get()->result_array();
+
+    	if(!is_null($consults)){
+			$consults_obj_array = array();
+			foreach ($consults as $con) {
+				$consults_obj_array[] = array(
+					'type'=> "Consulta",
+					'id'=>$con['id_consult'],
+					'date'=>$con['date'],
+					'doctor'=>$con['doctor']);
+			}
+			return $consults_obj_array;
+		}else{
+			return null;
+		}
+	}
+
 	/*DATABASE GETTING FUNCTIONS ENDS*/
 
 }

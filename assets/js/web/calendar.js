@@ -83,6 +83,9 @@ function updateCitaModal(id_cita){
 
 			url =  "cancelConsult/"+data['consult']['id_consult'] ;
 			$(".btn-red").attr('href',url);
+
+			init = "iniciarCita/"+data['consult']['id_consult'] ;
+			$(".btn-turquoise").attr('href', init);
 			
 		},
 		error: function(error){

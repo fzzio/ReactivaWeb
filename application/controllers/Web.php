@@ -83,6 +83,14 @@ class Web extends CI_Controller{
 			if(!is_null($paciente_obj)){
 				$dataContent['paciente'] = $paciente_obj;
 
+				$paciente_citas = Consult::getConsultsByPatient($id_paciente);
+				$paciente_terapias = Therapy::getTherapiesByPatient($id_paciente);
+
+				$lista = array_merge($paciente_citas, $paciente_terapias); 
+				$dataContent['lista'] = $lista;
+
+				$sorted = $this->array_orderby($lista, 'date', SORT_DESC);
+
 				$dataHeader['PageTitle'] = "Paciente";
 
 				$menuContent['selection']="patient";
@@ -460,6 +468,23 @@ class Web extends CI_Controller{
 		}
 	}	
 	
+
+	function array_orderby(){
+		$args = func_get_args();
+		$data = array_shift($args);
+		foreach ($args as $n => $field) {
+		    if (is_string($field)) {
+		        $tmp = array();
+		        foreach ($data as $key => $row)
+		            $tmp[$key] = $row[$field];
+		        $args[$n] = $tmp;
+		        }
+		}
+		$args[] = &$data;
+		call_user_func_array('array_multisort', $args);
+		return array_pop($args);
+	}
+
 	 /* Helpers ends*/
 
 	 /*CALENDAR FUNCTIONS START*/
