@@ -390,6 +390,7 @@ class Admin extends CI_Controller {
 			$crud->set_rules('blood', 'Tipo de sangre', 'required');
 			$crud->set_rules('rh', 'Factor RH', 'required');
 			$crud->set_rules('gender', 'Sexo', 'required');
+			$crud->set_rules('born', 'Fecha de  Nacimiento', 'required|callback_check_dates');
 		
 			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([-a-z ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
@@ -472,7 +473,8 @@ class Admin extends CI_Controller {
 			//Set validation
 			$crud->set_rules('id_patient', 'Paciente', 'required');
 			$crud->set_rules('id_doctor_created', 'Doctor responsable', 'required');
-			$crud->set_rules('date_planned', 'Fecha prevista', 'required');
+			$crud->set_rules('date_planned', 'Fecha prevista', 'callback_check_planned'); 
+			$crud->set_rules('date_attended', 'Fecha prevista', 'callback_check_attended[date_planned]'); 
 			$crud->set_rules('status', 'Estado', 'required');
 
 			//Set before and afete callbacks
@@ -627,8 +629,8 @@ class Admin extends CI_Controller {
 			$crud->set_rules('id_patient', 'Paciente', 'required');
 			$crud->set_rules('id_doctor_created', 'Doctor responsable', 'required');
 			$crud->set_rules('id_doctor_attended', 'Atendida por', 'required');
-			$crud->set_rules('eta', 'Inicio Estimado', 'required');
-			$crud->set_rules('etf', 'Fin Estimado', 'required');
+			$crud->set_rules('eta', 'Inicio Estimado', 'callback_check_planned');
+			$crud->set_rules('etf', 'Fin Estimado', 'callback_check_time[eta]');
 			$crud->set_rules('sendmail', 'Envío de Correo', 'required');
 			$crud->set_rules('status', 'Estado', 'required');
 			
@@ -958,38 +960,64 @@ class Admin extends CI_Controller {
 	  return $post_array;
 	}
 
-	public function check_dates($fecha2, $fecha1) {
-		$partes = explode('/', $this->input->post('fecha1'));
-		$fecha1 = join('-', $partes);
-
-		$partes2 = explode('/', $this->input->post('fecha2'));
-		$fecha2 = join('-', $partes2);
-
-	  if ($fecha2 >= $fecha1) {
-		  return TRUE;
-	 	} else {
-	 			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
-	 			return FALSE;
+	public function check_dates($fecha2) {
+		$fecha1 = date('d/m/Y');
+		
+  	if (strtotime($fecha2) <= strtotime($fecha1)) {
+	    return TRUE;
+	  } else {
+	    $this->form_validation->set_message('check_dates', "El campo %s no puede ser posterior a la fecha actual.");
+	    return FALSE;
 	  }
 	}
 
-	/*//Realizar corrección
-	public function date_valid ($born) {
-		$partes = explode('/', $this->input->post('born'));
-		$fecha = join('-', $partes);
-		$temp = date("d-m-Y", $fecha);
-		$current = date("d-m-Y");
-		return ($fecha < $current);
-	}*/
+	public function check_planned($fecha2) {
+		$fecha1 = date('d/m/Y H:i:s');
 
-	/*public function check_dates($fecha2, $fecha1){
-		if ($fecha2 > $fecha1){
-			return TRUE;
-		}else{
-			$this->form_validation->set_message('check_dates', "La fecha de inicio no puede ser posterior a la fecha de finalización.");
+		if (empty($fecha2)) {
+			$this->form_validation->set_message('check_planned', "El campo %s es obligatorio."); 
 			return FALSE;
 		}
-	}*/
+
+  	if ($fecha2 > $fecha1) {
+	    return TRUE;
+	  } else {
+	    $this->form_validation->set_message('check_planned', "El campo %s debe ser posterior a la fecha actual."); 
+	    return FALSE;
+	  }
+	}
+
+	public function check_attended($fecha2, $fecha1) {
+		$fecha1 = date('d/m/Y H:i:s');
+
+		if (empty($fecha2)) {
+			$this->form_validation->set_message('check_attended', "El campo Fecha de atención es obligatorio."); 
+			return FALSE;
+		}
+
+  	if ($fecha2 >= $fecha1) {
+	    return TRUE;
+	  } else {
+	    $this->form_validation->set_message('check_attended', "El campo Fecha de atención debe ser porterior o igual al campo %s"); 
+	    return FALSE;
+	  }
+	}
+
+	public function check_time($fecha2, $fecha1) {
+		$fecha1 = date('d/m/Y H:i:s');
+
+		if (empty($fecha2)) {
+			$this->form_validation->set_message('check_time', "El campo %s es obligatorio."); 
+			return FALSE;
+		}
+
+  	if ($fecha2 >= $fecha1) {
+	    return TRUE;
+	  } else {
+	    $this->form_validation->set_message('check_time', "El campo %s debe ser porterior o igual al campo Inicio Estimado"); 
+	    return FALSE;
+	  }
+	}
 
 }
 
