@@ -45,6 +45,10 @@
 		#page-wrapper {
 			background-color: white;
 		}
+		#index a.active {
+			color: #50bfa3 !important;
+			background-color: #1d3651 !important;
+		}
 	</style>
 
 	<?php if ( ($this->router->method != "login") && ($this->router->method != "logout") ): ?>
