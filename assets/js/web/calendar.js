@@ -100,7 +100,17 @@ function updateTerapiaModal(id_terapia){
 		},
 		dataType:'json',
 		success: function(data){
-			console.log(data);
+			$("#therapy-fullname").text(data['patient']['fullname']);
+			$("#therapy-date").text(data['terapia']['hour']);
+			$("#therapy-gender").text(data['patient']['gender']);
+			$("#therapy-born").text(data['patient']['born']);
+			$("#therapy-ci").text(data['patient']['ci']);
+			$("#therapy-cellphone").text(data['patient']['cellphone']);
+			$("#therapy-email").text(data['patient']['email']);
+			$("#therapy-status").text(data['terapia']['status']);
+
+			url =  "cancelTherapy/"+data['terapia']['id_therapy'] ;
+			$(".btn-red").attr('href',url);
 		},
 		error: function(error){
 			console.error(error);

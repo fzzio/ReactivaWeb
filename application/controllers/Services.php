@@ -91,7 +91,7 @@ class Services extends CI_Controller {
     }
 
     public function terapiaGet(){
-        $query = $this->input->get();
+        $query = $this->input->post();
 
         $this->db->select("patient_therapy.id_therapy, patient_therapy.id_patient, TIME(patient_therapy.`eta`) AS `hour`,  CASE WHEN patient_therapy.status = 0 THEN 'Pendiente' WHEN patient_therapy.status = 1 THEN 'Cancelada' WHEN patient_therapy.status = 2 THEN 'En proceso'  WHEN patient_therapy.status = 3 THEN 'Asistió' END as `status` ");
         $this->db->from('patient_therapy');

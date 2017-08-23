@@ -341,12 +341,12 @@
 				</div>
 				<div class = 'row'>
 					<div class = 'col-xs-offset-1 col-xs-10'>
-						<div class = 'col-offset-xs-3 col-xs-3'>
+						<div class = 'col-xs-offset-2 col-xs-4'>
 							<a class = 'align-center btn-green'>
 								<span class = 'glyphicon glyphicon-calendar' href = '#'></span> Reagendar
 							</a>
 						</div>
-						<div class = 'col-xs-3'>
+						<div class = 'col-xs-4'>
 							<a type = 'button' class = 'align-center btn-red' href = '#'>
 								<span class = 'glyphicon glyphicon-remove' onClick='javascript:return confirm("¿Estás seguro que deseas cancelar la terapia?;")'></span> Cancelar
 							</a>

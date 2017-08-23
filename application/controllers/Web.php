@@ -373,6 +373,22 @@ class Web extends CI_Controller{
   		}
   	}
 
+
+  	public function cancelTherapy(){
+  		if ($this->SecurityCheck()){
+  			$id_consult = $this->uri->segment(3);
+
+  			$this->db->set('patient_therapy.status', 0);
+  			$this->db->where('patient_therapy.id_therapy', $id_consult);
+			$this->db->update('patient_therapy');
+
+			redirect('web/calendar');
+
+  		}else{
+  			redirect('web/index');
+  		}
+  	}
+
 	/*FORM UPLOAD ENDS*/
 
 
@@ -713,7 +729,7 @@ class Web extends CI_Controller{
 			}
 			$eventListHTML .= "</ul>
 
-			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#myModal'>
+			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia'>
 				<div class = 'glyphicon-ring'>
 					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
 				</div>
@@ -723,7 +739,7 @@ class Web extends CI_Controller{
 		}else{
 			$eventListHTML .= '<h2>'.date("d M Y",strtotime($date)).'</h2>';
 			$eventListHTML .= '<p> No hay terapias</p>';
-			$eventListHTML .= "<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#verTerapia'>
+			$eventListHTML .= "<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia'>
 				<div class = 'glyphicon-ring'>
 					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
 				</div>
