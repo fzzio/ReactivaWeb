@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/custom-bootstrap-margin-padding.css'); ?>">
-
+	
 	<?php if ( ($this->router->method != "login") && ($this->router->method != "logout") ): ?>
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
   <?php endif ?>
@@ -23,7 +23,8 @@
 
 	<!-- Datatables -->
 	<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
-
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/jquery.datetimepicker.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/style.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/commons/style.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/web/login-style.css'); ?>">

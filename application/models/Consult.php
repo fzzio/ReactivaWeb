@@ -107,7 +107,7 @@ class Consult extends CI_Model{
 	public static function getConsultInfo($id){
 		$instance_CI =& get_instance();
 		
-		$instance_CI->db->select("patient_consult.id_consult, patient_consult.id_patient, TIME(patient_consult.`date_planned`) AS `hour`, patient_consult.observations, CASE WHEN patient_consult.status = 0 THEN 'Pendiente' WHEN patient_consult.status = 1 THEN 'Cancelada' WHEN patient_consult.status = 2 THEN 'Asistió' END as `status` ");
+		$instance_CI->db->select("patient_consult.id_consult, patient_consult.id_patient, TIME(patient_consult.`date_planned`) AS `hour`, patient_consult.observations, patient_consult.`date_planned`, CASE WHEN patient_consult.status = 0 THEN 'Pendiente' WHEN patient_consult.status = 1 THEN 'Cancelada' WHEN patient_consult.status = 2 THEN 'Asistió' END as `status` ");
     	$instance_CI->db->from('patient_consult');
     	$instance_CI->db->where('patient_consult.id_consult', $id);
     	$consulta = $instance_CI->db->get()->row_array();

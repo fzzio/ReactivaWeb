@@ -44,6 +44,9 @@ function updateTherapyInfo(id){
 
 
 $(document).ready(function () {
+	jQuery('#datetimepicker').datetimepicker();
+
+	
 	$("#frm-new").validate({
 		rules:{
 			'pax-name':{

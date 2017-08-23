@@ -204,6 +204,42 @@ class Web extends CI_Controller{
 			redirect("web/login");
 		}
 	}
+
+	public function reagendar(){
+		if ($this->SecurityCheck()){
+			$menuContent['selection']="calendar";
+			$type = $this->uri->segment(3);
+			$id = $this->uri->segment(4);
+
+			if($type == 1){
+				$info = Consult::getConsultInfo($id);
+				$dataContent['type'] = 1;
+			}else{
+				$info = Therapy::getTherapyInfo($id);
+				
+				$dataContent['type'] = 2;
+			}
+
+			if(!is_null($info)){
+				$dataHeader['PageTitle'] = "Agenda";
+
+
+				$dataContent['patient'] = $info['patient'];
+				$dataContent['consult'] = $info['consult'];
+
+				$data['header'] = $this->load->view('web/header', $dataHeader);
+				$data['menu'] = $this->load->view('web/menu', $menuContent);
+
+				$data['contenido'] = $this->load->view('web/reagendar', $dataContent);
+				$data['page-footer'] = $this->load->view('web/page-footer', array());
+			}else{
+				redirect("web/index");
+			}
+		}else{
+			redirect("web/login");
+		}
+	}
+
 	public function logout(){
 		if ($this->SecurityCheck()){
 			$userAdmin = new User();

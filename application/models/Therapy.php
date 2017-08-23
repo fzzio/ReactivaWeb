@@ -111,6 +111,30 @@ class Therapy extends CI_Model{
 		}
 	}
 
+
+	public static function getTherapyInfo($id){
+		$instance_CI =& get_instance();
+		
+		$instance_CI->db->select("patient_therapy.id_therapy, patient_therapy.id_patient, TIME(patient_therapy.`eta`) AS `hour`, patient_therapy.`eta` AS `date_planned` ");
+    	$instance_CI->db->from('patient_therapy');
+    	$instance_CI->db->where('patient_therapy.id_therapy', $id);
+    	$consulta = $instance_CI->db->get()->row_array();
+
+    	$id_patient = $consulta['id_patient'];
+
+    	$instance_CI->db->select("CONCAT(patient.name, ' ', patient.lastname) as `fullname`, patient.born, patient.ci, patient.email, CASE WHEN patient.gender = 0 THEN 'Femenino' ELSE 'Masculino' END as `gender`, patient.cellphone");
+    	$instance_CI->db->from('patient');
+    	$instance_CI->db->where('patient.id_patient', $id_patient);
+    	$paciente = $instance_CI->db->get()->row_array();
+
+    	$resultado = array();
+
+    	$resultado['patient'] = $paciente;
+    	$resultado['consult'] = $consulta;
+
+    	return $resultado;
+	}
+
 	/*DATABASE GETTING FUNCTIONS ENDS*/
 }	
 ?>

@@ -87,6 +87,9 @@ function updateCitaModal(id_cita){
 			init = "iniciarCita/"+data['consult']['id_consult'] ;
 			$(".btn-turquoise").attr('href', init);
 			
+			reagendar = "reagendar/1/"+data['consult']['id_consult'] ;
+			$(".btn-green").attr('href', reagendar);
+
 		},
 		error: function(error){
 			console.error(error);
@@ -114,6 +117,9 @@ function updateTerapiaModal(id_terapia){
 
 			url =  "cancelTherapy/"+data['terapia']['id_therapy'] ;
 			$(".btn-red").attr('href',url);
+
+			reagendar = "reagendar/2/"+data['terapia']['id_therapy'] ;
+			$(".btn-green").attr('href', reagendar);
 		},
 		error: function(error){
 			console.error(error);
@@ -121,9 +127,6 @@ function updateTerapiaModal(id_terapia){
 	});
 }
 
-function autocompletelist(){
-	
-}
 
 $(document).ready(function(){
 	$('.date_cell').mouseenter(function(){
