@@ -165,6 +165,22 @@ class Web extends CI_Controller{
 		}
 	}
 
+	public function iniciarCita(){
+		if ($this->SecurityCheck()){
+			$menuContent['selection']="calendar";
+
+			$dataHeader['PageTitle'] = "Agenda";
+
+
+			$data['header'] = $this->load->view('web/header', $dataHeader);
+			$data['menu'] = $this->load->view('web/menu', $menuContent);
+
+			$data['contenido'] = $this->load->view('web/iniciarCita', array());
+			$data['page-footer'] = $this->load->view('web/page-footer', array());
+		}else{
+			redirect("web/login");
+		}
+	}
 	public function logout(){
 		if ($this->SecurityCheck()){
 			$userAdmin = new User();
