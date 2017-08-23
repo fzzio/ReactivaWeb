@@ -90,6 +90,32 @@ class Services extends CI_Controller {
 
     }
 
+    public function terapiaGet(){
+        $query = $this->input->get();
+
+        $this->db->select("patient_therapy.id_therapy, patient_therapy.id_patient, TIME(patient_therapy.`eta`) AS `hour`,  CASE WHEN patient_therapy.status = 0 THEN 'Pendiente' WHEN patient_therapy.status = 1 THEN 'Cancelada' WHEN patient_therapy.status = 2 THEN 'En proceso'  WHEN patient_therapy.status = 3 THEN 'Asistió' END as `status` ");
+        $this->db->from('patient_therapy');
+        $this->db->where('patient_therapy.id_therapy', $query['id']);
+        $consulta = $this->db->get()->row_array();
+
+        $id_patient = $consulta['id_patient'];
+
+        $this->db->select("CONCAT(patient.name, ' ', patient.lastname) as `fullname`, patient.born, patient.ci, patient.email, CASE WHEN patient.gender = 0 THEN 'Femenino' ELSE 'Masculino' END as `gender`, patient.cellphone");
+        $this->db->from('patient');
+        $this->db->where('patient.id_patient', $id_patient);
+        $paciente = $this->db->get()->row_array();
+
+        $resultado = array();
+
+        $resultado['patient'] = $paciente;
+        $resultado['terapia'] = $consulta;
+
+        header('Content-type: application/json');
+        echo json_encode($resultado);
+
+    }
+
+
     public function therapyGet(){
 
     	$this->db->select('patient_therapy.id_therapy, patient_therapy.id_consulta, patient_therapy.id_patient');

@@ -40,6 +40,17 @@ class Calendar extends CI_Model{
 		$result =  $instance_CI->db->get()->row();
 		return $result->res;
 	}
+
+	public static function getTherapyCountDay($currentDate){
+		$instance_CI =& get_instance();
+		$instance_CI->db->select("COUNT(id_doctor_created) AS 'res'");
+		$instance_CI->db->from('patient_therapy');
+		$instance_CI->db->where('DATE(eta)', $currentDate);
+
+		$result =  $instance_CI->db->get()->row();
+		return $result->res;
+	}
+
 	
 	public static function getDayEvents($date){
 		$instance_CI =& get_instance();
@@ -63,8 +74,31 @@ class Calendar extends CI_Model{
 		}else{
 			return null;
 		}
+	}
 
 
+	public static function getTherapyDayEvents($date){
+		$instance_CI =& get_instance();
+		$instance_CI->db->select("patient_therapy.`id_therapy`, CONCAT(patient.`name`, ' ', patient.`lastname`) AS `fullname`, TIME(patient_therapy.`eta`) AS `hour`");
+		$instance_CI->db->from('patient_therapy');
+		$instance_CI->db->join('patient', "patient_therapy.`id_patient` = patient.`id_patient`");
+		$instance_CI->db->where('DATE(eta)', $date);
+		$instance_CI->db->order_by('hour', 'DESC');
+
+		$result =  $instance_CI->db->get()->result_array();
+
+		if(!is_null($result)){
+			$patients_obj_array = array();
+			foreach ($result as $pax) {
+                $patients_obj_array[] = array(
+					'id_therapy'=>$pax['id_therapy'],
+					'fullname'=>$pax['fullname'],
+					'hour'=>$pax['hour']);
+            }
+            return $patients_obj_array;
+		}else{
+			return null;
+		}
 	}
 
 	public static function getConsultById($id_consult){

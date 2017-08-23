@@ -432,6 +432,22 @@ class Web extends CI_Controller{
 		}
 	}
 
+
+	public function eventTherapyGet(){
+		$event_post = $this->input->post();
+		if(!empty($event_post)){
+			if($event_post['func'] == 'getCalender'){
+				$this->getTherapyCalender($event_post['year'],$event_post['month']);
+			}else{
+				if ($event_post['func'] == 'getEvents'){
+					$this->getTherapyEvents($event_post['date']);
+				}
+			}	
+			
+				
+		}
+	}
+
 	public function getEvents($date = ''){
 		$eventListHTML = '';
 
@@ -483,6 +499,97 @@ class Web extends CI_Controller{
 		echo $eventListHTML;
 	}
 
+
+	public function getTherapyCalender($year = '',$month = ''){
+		$CI =& get_instance();
+		$dateYear = ($year != '')?$year:date("Y");
+		$dateMonth = ($month != '')?$month:date("m");
+		$date = $dateYear.'-'.$dateMonth.'-01';
+		$currentMonthFirstDay = date("N",strtotime($date));
+		$totalDaysOfMonth = cal_days_in_month(CAL_GREGORIAN,$dateMonth,$dateYear);
+		$totalDaysOfMonthDisplay = ($currentMonthFirstDay == 7)?($totalDaysOfMonth):($totalDaysOfMonth + $currentMonthFirstDay);
+		$boxDisplay = ($totalDaysOfMonthDisplay <= 35)?35:42;
+	?>
+
+		<div class = 'row'>
+			<div class = 'col-md-6 col-xs-12'>
+				<div class = 'mon-header pt-50'>
+		        	<a  onclick="getTherapyCalendar('calendar_therapy_div','<?php echo date("Y",strtotime($date.' - 1 Month')); ?>','<?php echo date("m",strtotime($date.' - 1 Month')); ?>');">
+		        		<span class = 'glyphicon glyphicon-chevron-left'></span>
+		        	</a>
+		            <span class = 'mr-15 ml-15'><?php echo date("F", mktime(0, 0, 0, $dateMonth, 10)); ?></span>
+		            <a  onclick="getTherapyCalendar('calendar_therapy_div','<?php echo date("Y",strtotime($date.' + 1 Month')); ?>','<?php echo date("m",strtotime($date.' + 1 Month')); ?>');">
+		            	<span class = 'glyphicon glyphicon-chevron-right'></span>
+		            </a>
+		        </div>
+				<div id="calender_section_top">
+					<ul>
+						<li>Dom</li>
+						<li>Lun</li>
+						<li>Mar</li>
+						<li>Mie</li>
+						<li>Jue</li>
+						<li>Vie</li>
+						<li>Sab</li>
+					</ul>
+				</div>
+				<div id="calender_section_bot">
+					<ul>
+					<?php 
+						$dayCount = 1; 
+						for($cb=1;$cb<=$boxDisplay;$cb++){
+							if(($cb >= $currentMonthFirstDay+1 || $currentMonthFirstDay == 7) && $cb <= ($totalDaysOfMonthDisplay)){
+								//Current date
+								$currentDate = $dateYear.'-'.$dateMonth.'-'.$dayCount;
+								$eventNum = 0;
+								//Get number of events based on the current date
+								$eventNum =  Calendar::getTherapyCountDay($currentDate);
+								//Define date cell color
+								if(strtotime($currentDate) == strtotime(date("Y-m-d"))){
+									echo '<li date="'.$currentDate.'" class="grey date_cell">';
+									echo '<a onclick="getTherapyEvents(\''.$currentDate.'\');">';
+									echo '<span >';
+									echo $dayCount;
+									echo '</span>';	
+									echo '</a>';	
+								}elseif($eventNum > 0){
+									echo '<li date="'.$currentDate.'" class="date_cell">';
+									echo '<a onclick="getTherapyEvents(\''.$currentDate.'\');" class = "round-day">';
+									echo '<div class="event-mark">';
+									echo $dayCount;
+									echo '</div>';	
+									echo '<div class="event-counter">';
+									echo $eventNum;
+									echo '</div>';
+									echo '</a>';
+								}else{
+									echo '<li date="'.$currentDate.'" class="date_cell">';
+									echo '<a onclick="getTherapyEvents(\''.$currentDate.'\');">';
+									echo '<span >';
+									echo $dayCount;
+									echo '</span>';	
+									echo '</a>';	
+								}				
+								
+								
+								echo '</li>';
+								$dayCount++;
+					?>
+					<?php }else{ ?>
+						<li><span>&nbsp;</span></li>
+					<?php } } ?>
+					</ul>
+				</div>
+			</div>
+			<div class = 'col-md-6'>
+				<div id="event_list_therapy" class="pt-50">
+						
+				</div>
+				
+			</div>
+		</div>
+	<?php
+	}
 
 	public function getCalender($year = '',$month = ''){
 		$CI =& get_instance();
@@ -574,6 +681,59 @@ class Web extends CI_Controller{
 		</div>
 	<?php
 	}
+
+
+	public function getTherapyEvents($date = ''){
+		$eventListHTML = '';
+
+		//Get events based on the current date
+		$result =  Calendar::getTherapyDayEvents($date);
+		if(count($result) > 0){
+
+			$eventListHTML = '<h2>'.date("d M Y",strtotime($date)).'</h2>';
+			$eventListHTML .= '<ul  class="list-unstyled" >';
+			foreach($result as $row){
+				$eventListHTML .= 
+				"<li class='item-agenda mb-10 pl-10 pr-10' data-toggle='modal' data-target='#verTerapia' onclick = 'updateTerapiaModal(".$row['id_therapy'].")'> 
+					
+						<div class = 'row'>
+							<div class = 'col-xs-6'>
+								<span class = 'agenda-label'>Paciente:</span> ".$row['fullname']."
+							</div>
+							<div class = 'col-xs-6'>
+								<span class = 'agenda-label'>Horario:</span> ".$row['hour']."
+							</div>
+						</div>
+					
+				</li>
+
+				
+
+				";
+			}
+			$eventListHTML .= "</ul>
+
+			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#myModal'>
+				<div class = 'glyphicon-ring'>
+					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
+				</div>
+				AGENDAR NUEVA TERAPIA
+			</button >
+			";
+		}else{
+			$eventListHTML .= '<h2>'.date("d M Y",strtotime($date)).'</h2>';
+			$eventListHTML .= '<p> No hay terapias</p>';
+			$eventListHTML .= "<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#verTerapia'>
+				<div class = 'glyphicon-ring'>
+					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
+				</div>
+				AGENDAR NUEVA TERAPIA
+			</button >";
+		}
+		
+		echo $eventListHTML;
+	}
+
 
 	 /*CALENDAR FUNCTIONS ENDS*/
 }

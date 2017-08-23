@@ -9,6 +9,18 @@ function getCalendar(target_div,year,month){
 	});
 }
 
+
+function getTherapyCalendar(target_div,year,month){
+	$.ajax({
+		type:'POST',
+		url:"/ReactivaWeb/index.php/web/eventTherapyGet",
+		data:"func=getCalender&year="+year+"&month="+month,
+		success:function(html){
+			$('#'+target_div).html(html);
+		}
+	});
+}
+
 function getEvents(date){
 	$.ajax({
 		type:'POST',
@@ -20,6 +32,24 @@ function getEvents(date){
 		}
 	});
 }
+
+function getTherapyEvents(date){
+	$.ajax({
+		type:'POST',
+		url:"/ReactivaWeb/index.php/web/eventTherapyGet",
+		data:"func=getEvents&date="+date,
+		success:function(html){
+			$('#event_list_therapy').html(html);
+			$('#event_list_therapy').slideDown('slow');
+		},
+		error: function(error){
+			console.error(error);
+
+		}
+	});
+}
+
+
 
 function addEvent(date){
 	$.ajax({
@@ -54,6 +84,23 @@ function updateCitaModal(id_cita){
 			url =  "cancelConsult/"+data['consult']['id_consult'] ;
 			$(".btn-red").attr('href',url);
 			
+		},
+		error: function(error){
+			console.error(error);
+		}
+	});
+}
+
+function updateTerapiaModal(id_terapia){
+	$.ajax({
+		url: "/ReactivaWeb/index.php/services/terapiaGet",
+		type: 'POST',
+		data: {
+			"id" : String(id_terapia)
+		},
+		dataType:'json',
+		success: function(data){
+			console.log(data);
 		},
 		error: function(error){
 			console.error(error);
