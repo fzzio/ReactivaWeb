@@ -89,7 +89,6 @@
 		<div class = 'row'>
 			<div class = 'col-md-4'>
 				<input name = "datetimepicker" id="datetimepicker" type="text" >
-
 			</div>
 		</div>
 

@@ -23,7 +23,7 @@
 				<a href="<?php echo site_url('web/calendar'); ?>" class = "<?php if ($selection == 'calendar'){echo 'active';}?>">Agenda</a>
 			</li>
 			<li id="logout" class = ''>
-				<a href="<?php echo site_url('web/logout'); ?>">Cerrar sesión</a>
+				<a href="<?php echo site_url('web/logout'); ?>">CERRAR SESIÓN</a>
 			</li>
 		</ul>
 	</div>

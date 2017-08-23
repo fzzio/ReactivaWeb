@@ -29,8 +29,31 @@ function getEvents(date){
 		success:function(html){
 			$('#event_list').html(html);
 			$('#event_list').slideDown('slow');
+			$("#id-date").val(date);
+
+			
+		},
+		complete: function(){
+			var today = formatDateToday();
+
+			if (date < today){
+				$("#event_list .but-new-cita").remove();
+			}
 		}
 	});
+}
+
+
+function formatDateToday() {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
 }
 
 function getTherapyEvents(date){
@@ -89,6 +112,8 @@ function updateCitaModal(id_cita){
 			
 			reagendar = "reagendar/1/"+data['consult']['id_consult'] ;
 			$(".btn-green").attr('href', reagendar);
+
+
 
 		},
 		error: function(error){

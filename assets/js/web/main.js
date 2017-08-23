@@ -44,9 +44,17 @@ function updateTherapyInfo(id){
 
 
 $(document).ready(function () {
+	$.datetimepicker.setLocale('es');
+
 	jQuery('#datetimepicker').datetimepicker();
 
+	jQuery('#datetimepicker2').datetimepicker({
+		datepicker:false,
+		format:'H:i'
+	});
+
 	
+
 	$("#frm-new").validate({
 		rules:{
 			'pax-name':{

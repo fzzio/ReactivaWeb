@@ -40,36 +40,32 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title">Agendación de una nueva cita</h4>
 				</div>
-			<?php echo form_open_multipart('target' , array('id' => 'frm-nueva-cita')); ?>
+			<?php echo form_open_multipart('web/nuevaCita' , array('id' => 'frm-nueva-cita')); ?>
 				<div class="modal-body">
 					<div class = 'row'>
 						<div class = 'col-xs-12'>
 							<div class="form-group">
-							
+								<div class = 'col-xs-2 pr-0 mr-0'>
 									<label for="autocomplete-paciente" class = 'pax-label'>Paciente</label>
-							
-								<div class = 'col-xs-10'>
+								</div>
+								<div class = 'col-xs-8'>
 									<input class="form-control patient-input" type="text" placeholder="" id="autocomplete-paciente" name= 'autocomplete-pacient' required>
 									<input  type = "hidden" name = "id-patient" id = "id-patient" required>
+									<input  type = "hidden" name = "id-date" id = "id-date" required>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class = 'row'>
+					<div class = 'row pt-10'>
 						<div class = 'col-xs-12'>
 							<div class="form-group">
 								<div class = 'col-xs-2 pr-0 mr-0'>
 									<label for="pax-paciente" class = 'pax-label'>Hora</label>
 								</div>
-								<div class = 'col-xs-3 pr-0'>
-									<input class="form-control patient-input" type="numeric" placeholder="HH:MM" id="pax-init" name= 'pax-init' required>
+								<div class = 'col-xs-5 '>
+									<input name = "datetimepicker2" id="datetimepicker2" type="text" required >
 								</div>
-								<div class = 'col-xs-3 pr-0'>
-									<input class="form-control patient-input" type="numeric" placeholder="HH:MM" id="pax-end" name= 'pax-end' required>
-								</div>
-								<div class = 'col-xs-4'>
-									(Formato 24H)
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -85,7 +81,7 @@
 					
 		</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-default btn-primary btn-general">
+					<button type="submit" id = "nuevaTerapiaBut" class="btn btn-default btn-primary btn-general">
 						<span class="glyphicon glyphicon-download-alt " aria-hidden="true"></span> Guardar
 					</button>
 					<a type="button" class="btn btn-default btn-danger btn-general" aria-hidden="true" data-dismiss="modal" >

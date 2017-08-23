@@ -471,6 +471,32 @@ class Web extends CI_Controller{
 		
 	}
 
+	public function nuevaCita(){
+		$patient = $this->input->post('id-patient');
+		$date  = $this->input->post('id-date');
+		$id  = $this->input->post('pax-id');
+		$observations = $this->input->post('pax-observation');
+		$hour = $this->input->post('datetimepicker2');
+
+
+		$data = array(
+        	'id_patient'=>$patient,
+        	'id_doctor_created'=> $this->session->userdata('ID'),
+        	/*'date_created'=>$lastname,*/
+        	'date_planned'=>$date." ".$hour,
+        	'observations'=>$observations,
+        	'status'=>0,
+        );
+
+
+		$this->db->insert('patient_consult', $data);
+        $id_consult = $this->db->insert_id();
+
+
+		redirect("web/calendar");
+
+	}
+
   	public function deletePatient(){
   		if ($this->SecurityCheck()){
   			$id_patient = $this->uri->segment(3);
@@ -638,23 +664,27 @@ class Web extends CI_Controller{
 				";
 			}
 			$eventListHTML .= "</ul>
-
+			<div class = 'but-new-cita'>
 			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#myModal'>
 				<div class = 'glyphicon-ring'>
 					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
 				</div>
 				AGENDAR NUEVA CITA
 			</button >
+			</div>
 			";
 		}else{
 			$eventListHTML .= '<h2>'.date("d M Y",strtotime($date)).'</h2>';
 			$eventListHTML .= '<p> No hay citas</p>';
-			$eventListHTML .= "<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#myModal'>
+			$eventListHTML .= "
+			<div class = 'but-new-cita'>
+			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#myModal'>
 				<div class = 'glyphicon-ring'>
 					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
 				</div>
 				AGENDAR NUEVA CITA
-			</button >";
+			</button >
+			</div>";
 		}
 		
 		echo $eventListHTML;
@@ -886,7 +916,7 @@ class Web extends CI_Controller{
 			}
 			$eventListHTML .= "</ul>
 
-			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia'>
+			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia' id = 'agendarnuevaterapia'>
 				<div class = 'glyphicon-ring'>
 					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
 				</div>
@@ -896,7 +926,7 @@ class Web extends CI_Controller{
 		}else{
 			$eventListHTML .= '<h2>'.date("d M Y",strtotime($date)).'</h2>';
 			$eventListHTML .= '<p> No hay terapias</p>';
-			$eventListHTML .= "<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia'>
+			$eventListHTML .= "<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia' id = 'agendarnuevaterapia'>
 				<div class = 'glyphicon-ring'>
 					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
 				</div>
