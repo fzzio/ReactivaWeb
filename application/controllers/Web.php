@@ -240,6 +240,8 @@ class Web extends CI_Controller{
 		}
 	}
 
+
+
 	public function logout(){
 		if ($this->SecurityCheck()){
 			$userAdmin = new User();
@@ -417,6 +419,34 @@ class Web extends CI_Controller{
 
         redirect("web/paciente/".$id_patient);
   	}
+
+  	public function addDiagnostic(){
+		$id_consult  = $this->input->post('pax-id');
+		$diagnosis  = $this->input->post('pax-diagnosis');
+
+		$limbs = "";
+
+
+
+		if(!empty($_POST['check_list'])) {
+			foreach($_POST['check_list'] as $check) {
+				$limbs[] = array(
+					'id_consult'=> $id_consult,
+					'id_limb'=>$check);
+			}
+		}
+
+
+		$data = array('diagnosis'=>$diagnosis,
+			'status'=>"2");
+
+		$this->db->where('patient_consult.id_consult', $id_consult);
+		$this->db->update('patient_consult', $data);
+
+		$this->db->insert_batch('patient_consult_limb', $limbs);
+
+		 redirect("web/calendar");
+	}
 
   	public function deletePatient(){
   		if ($this->SecurityCheck()){
