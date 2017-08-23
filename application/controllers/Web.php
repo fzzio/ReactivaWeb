@@ -216,7 +216,6 @@ class Web extends CI_Controller{
 				$dataContent['type'] = 1;
 			}else{
 				$info = Therapy::getTherapyInfo($id);
-				
 				$dataContent['type'] = 2;
 			}
 
@@ -446,6 +445,30 @@ class Web extends CI_Controller{
 		$this->db->insert_batch('patient_consult_limb', $limbs);
 
 		 redirect("web/calendar");
+	}
+
+	public function reagendacion(){
+		$id  = $this->input->post('pax-id');
+		$type  = $this->input->post('pax-type');
+		$date  = $this->input->post('datetimepicker');
+
+		
+		if ($type == "1"){
+			$data = array(
+			'date_planned'=>$date);
+
+			$this->db->where('patient_consult.id_consult', $id);
+			$this->db->update('patient_consult', $data);
+		}else{
+			$data = array(
+			'eta'=>$date);
+
+			$this->db->where('patient_therapy.id_therapy', $id);
+			$this->db->update('patient_therapy', $data);
+		}
+
+		redirect("web/calendar");
+		
 	}
 
   	public function deletePatient(){
@@ -690,9 +713,12 @@ class Web extends CI_Controller{
 								if(strtotime($currentDate) == strtotime(date("Y-m-d"))){
 									echo '<li date="'.$currentDate.'" class="grey date_cell">';
 									echo '<a onclick="getTherapyEvents(\''.$currentDate.'\');">';
-									echo '<span >';
+									echo '<div class="event-mark">';
 									echo $dayCount;
-									echo '</span>';	
+									echo '</div>';	
+									echo '<div class="event-counter">';
+									echo $eventNum;
+									echo '</div>';
 									echo '</a>';	
 								}elseif($eventNum > 0){
 									echo '<li date="'.$currentDate.'" class="date_cell">';
@@ -783,9 +809,12 @@ class Web extends CI_Controller{
 								if(strtotime($currentDate) == strtotime(date("Y-m-d"))){
 									echo '<li date="'.$currentDate.'" class="grey date_cell">';
 									echo '<a onclick="getEvents(\''.$currentDate.'\');">';
-									echo '<span >';
+									echo '<div class="event-mark">';
 									echo $dayCount;
-									echo '</span>';	
+									echo '</div>';	
+									echo '<div class="event-counter">';
+									echo $eventNum;
+									echo '</div>';
 									echo '</a>';	
 								}elseif($eventNum > 0){
 									echo '<li date="'.$currentDate.'" class="date_cell">';

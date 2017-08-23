@@ -1,6 +1,7 @@
 <div id="page-wrapper" class="page-main mt-0 pt-0 mb-0 pb-120 pr-0 mr-0">
 	<div class = 'row pr-0 mr-0 pl-0 ml-0'>
 	<div class="col-md-offset-1 col-md-10">
+		<?php echo form_open_multipart('web/reagendacion' , array('id' => 'frm-new')); ?>
 		<div class="row">
 			<div class="col-md-10 pl-0 ml-0">
 				<h2 class="title">Reagendar <?php if ($type == 1){ echo "cita";}else{ echo "terapia";} ?></h2>
@@ -79,12 +80,15 @@
 			</div>
 		</div>
 
-		<?php echo form_open_multipart('web/reagendacion' , array('id' => 'frm-new')); ?>
+		
 		<h3 class="title">Nueva fecha </h3>
 		<hr class = 'mt-0'>
+		<input type="hidden" name="pax-type" value="<?php echo $type; ?>" />
+		<input type="hidden" name="pax-id" value="<?php echo $consult['id']; ?>" />
+		
 		<div class = 'row'>
 			<div class = 'col-md-4'>
-				<input id="datetimepicker" type="text" >
+				<input name = "datetimepicker" id="datetimepicker" type="text" >
 
 			</div>
 		</div>
