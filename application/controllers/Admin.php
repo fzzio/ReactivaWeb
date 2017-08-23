@@ -104,7 +104,7 @@ class Admin extends CI_Controller {
             ));
 
 			//Set validations rules
-			$crud->set_rules('email', 'Correo electrónico', 'required|valid_email');
+			$crud->set_rules('email', 'Correo electrónico', 'is_unique[account.email]|required|valid_email');
 			$crud->set_rules('username', 'Usuario', 'required|alpha_numeric|is_unique[account.username]|max_length[25]');
 			$crud->set_rules('password', 'Contraseña', 'alpha_numeric|min_length[4]');
 			$crud->set_rules('id_group', 'Grupo', 'required');
