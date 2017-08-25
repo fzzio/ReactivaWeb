@@ -12,6 +12,7 @@ class Admin extends CI_Controller {
 		$this->load->model('User');
 		$this->load->library('form_validation');
 		$this->load->library('grocery_CRUD');
+		$this->load->library('grocery_CRUD_Extended');
 		date_default_timezone_set("America/Guayaquil");
 	}
 
@@ -61,9 +62,9 @@ class Admin extends CI_Controller {
 	public function accounts(){
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
-      //Initialize grocery_CRUD
+      //Initialize grocery_CRUD_Extended
       $titulo = "Usuario";
-      $crud = new grocery_CRUD();
+      $crud = new grocery_CRUD_Extended();
 			$crud->set_table("account");
 			$crud->set_subject($titulo);
 
@@ -99,22 +100,22 @@ class Admin extends CI_Controller {
 			$crud->field_type('last_login', 'readonly');
 			$crud->field_type('last_ip', 'readonly');
 			$crud->field_type('status', 'dropdown', array(
-                '0' => 'Inactivo',
-                '1' => 'Activo'
+                0 => 'Inactivo',
+                1 => 'Activo'
             ));
 
 			//Set validations rules
-			$crud->set_rules('email', 'Correo electrónico', 'is_unique[account.email]|required|valid_email');
-			$crud->set_rules('username', 'Usuario', 'required|alpha_numeric|is_unique[account.username]|max_length[25]');
+			$crud->set_rules('email', 'Correo electrónico', 'required|valid_email');
+			$crud->set_rules('username', 'Usuario', 'required|alpha_numeric|max_length[25]');
 			$crud->set_rules('password', 'Contraseña', 'alpha_numeric|min_length[4]');
 			$crud->set_rules('id_group', 'Grupo', 'required');
-			$crud->set_rules('state', 'Estado', 'required');
+			$crud->set_rules('status', 'Estado', 'required'); 
 
-			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([-a-z ])+$/i]', array(
+			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
 
-			$crud->set_rules('lastname', 'Apellidos', 'required|regex_match[/^([-a-z ])+$/i]', array(
+			$crud->set_rules('lastname', 'Apellidos', 'required|regex_match[/^([abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
 
@@ -126,6 +127,7 @@ class Admin extends CI_Controller {
       $crud->callback_before_insert(array($this,'encrypt_pw'));
 
       //Required fields
+      $crud->unique_fields('username', 'email');
 			$crud->columns('name', 'lastname', 'username', 'email', 'last_ip', 'last_login', 'id_group', 'status');
 			$crud->fields('name', 'lastname', 'username', 'email', 'password', 'id_group', 'status');
 
@@ -179,7 +181,7 @@ class Admin extends CI_Controller {
 								'extension' => 'El campo %s no tiene el formato correcto (script_name.js).'
 						));
 
-				$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([-a-z ])+$/i]', array(
+				$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
 
@@ -292,7 +294,7 @@ class Admin extends CI_Controller {
 
 			//Set validations rules
 			$crud->set_rules('icon', 'Icono', 'required');
-			$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([-a-z ])+$/i]', array(
+			$crud->set_rules('name', 'Nombre', 'required|regex_match[/^([abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
 
@@ -333,7 +335,7 @@ class Admin extends CI_Controller {
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
       $titulo = "Pacientes";
-      $crud = new grocery_CRUD();
+      $crud = new grocery_CRUD_Extended();
 			$crud->set_table("patient");
 			$crud->set_subject( $titulo );
 
@@ -376,12 +378,12 @@ class Admin extends CI_Controller {
             ));
 
 			$crud->field_type('gender', 'dropdown', array(
-                '0' => 'Femenino',
-                '1' => 'Masculino'
+                '1' => 'Masculino',
+                '0' => 'Femenino'
             ));
 
 			//Set validations rules
-			$crud->set_rules('ci', 'Cedula', 'required|exact_length[10]|is_unique[patient.ci]');
+			$crud->set_rules('ci', 'Cedula', 'required|exact_length[10]');
 			$crud->set_rules('phone', 'Telefono', 'required|exact_length[9]|numeric');
 			$crud->set_rules('cellphone', 'Celular', 'required|exact_length[10]|numeric');
 			$crud->set_rules('emergency_phone', 'Teléfono emergencia', 'required|exact_length[9]|numeric');
@@ -392,19 +394,20 @@ class Admin extends CI_Controller {
 			$crud->set_rules('gender', 'Sexo', 'required');
 			$crud->set_rules('born', 'Fecha de  Nacimiento', 'required|callback_check_dates');
 		
-			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([-a-z ])+$/i]', array(
+			$crud->set_rules('name', 'Nombres', 'required|regex_match[/^([abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
 
-			$crud->set_rules('lastname', 'Apellidos', 'required|regex_match[/^([-a-z ])+$/i]', array(
+			$crud->set_rules('lastname', 'Apellidos', 'required|regex_match[/^([abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
 
-			$crud->set_rules('emergency_contact', 'Contacto emergencia', 'required|regex_match[/^([-a-z ])+$/i]', array(
+			$crud->set_rules('emergency_contact', 'Contacto emergencia', 'required|regex_match[/^([abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú ])+$/i]', array(
 								'regex_match' => 'El campo %s sólo puede contener carácteres alfabéticos.'
 						));
 
 			//Required fields
+			$crud->unique_fields('ci');
 			$crud->columns('id_patient', 'ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'img', 'address',  'emergency_contact', 'emergency_phone', 'blood', 'rh', 'allergies_med', 'allergies', 'illness', 'observations');
 			$crud->fields('ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'img', 'address', 'emergency_contact', 'emergency_phone', 'blood', 'rh', 'allergies_med', 'allergies', 'illness', 'observations');
 			

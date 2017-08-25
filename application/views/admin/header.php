@@ -49,6 +49,9 @@
 			color: #50bfa3 !important;
 			background-color: #1d3651 !important;
 		}
+		.nav .nav-third-level a {
+			padding-left: 35px;
+		}
 	</style>
 
 	<?php if ( ($this->router->method != "login") && ($this->router->method != "logout") ): ?>
