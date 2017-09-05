@@ -233,14 +233,14 @@ $(document).ready(function () {
 			'pax-phone':{
 				required: "Este campo es obligatorio.",
 				digits: "Sólo se permiten dígitos.",
-				minlength: "Este campo de contener exactamente ({0}) dígitos.",
-				maxlength: "Este campo de contener exactamente ({0}) dígitos."
+				minlength: "Este campo debe contener exactamente ({0}) dígitos.",
+				maxlength: "Este campo debe contener exactamente ({0}) dígitos."
 			},
 			'pax-cellphone':{
 				required: "Este campo es obligatorio.",
 				digits: "Sólo se permiten dígitos.",
-				minlength: "Este campo de contener exactamente ({0}) dígitos.",
-				maxlength: "Este campo de contener exactamente ({0}) dígitos."
+				minlength: "Este campo debe contener exactamente ({0}) dígitos.",
+				maxlength: "Este campo debe contener exactamente ({0}) dígitos."
 			},
 			'pax-mail':{
 				required: "Este campo es obligatorio.",
@@ -253,8 +253,8 @@ $(document).ready(function () {
 			'pax-emergencyphone':{
 				required: "Este campo es obligatorio.",
 				digits: "Sólo se permiten dígitos.",
-				minlength: "Este campo de contener exactamente ({0}) dígitos.",
-				maxlength: "Este campo de contener exactamente ({0}) dígitos."
+				minlength: "Este campo debe contener exactamente ({0}) dígitos.",
+				maxlength: "Este campo debe contener exactamente ({0}) dígitos."
 			}
 		}
 	});
