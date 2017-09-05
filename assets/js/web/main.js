@@ -19,7 +19,6 @@ function updateConsultInfo(id){
 	});
 }
 
-
 function updateTherapyInfo(id){
 	$.ajax({
 		url: "/ReactivaWeb/index.php/services/therapyInfo",
@@ -41,8 +40,6 @@ function updateTherapyInfo(id){
 	});
 }
 
-
-
 $(document).ready(function () {
 	$.datetimepicker.setLocale('es');
 
@@ -53,7 +50,6 @@ $(document).ready(function () {
 		format:'H:i'
 	});
 
-	
 	jQuery.validator.addMethod("lettersonly", function(value, element) {
   	return this.optional(element) || /^([abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú ])+$/i.test(value);
 	}, "Letters only please"); 
@@ -75,9 +71,15 @@ $(document).ready(function () {
   	}
 	}, 'Please use format DD MM YYYY.');
 
-	//Inputs disabling
-	$("#pax-med-allergies").prop('disabled', true);
-	$("#pax-allergies").prop('disabled', true);
+	//Disabling inputs
+	if ($("#pax-option-med").val() == "-") {
+		$("#pax-med-allergies").prop('disabled', true);
+	}
+
+	//Disabling inputs
+	if ($("#pax-option-other").val() == "-") {
+		$("#pax-allergies").prop('disabled', true);
+	}
 	
 	//Change option value 
 	$("#pax-option-med").change(function() {

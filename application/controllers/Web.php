@@ -265,6 +265,8 @@ class Web extends CI_Controller{
         $config['detect_mime']			= TRUE;
         //End config upload
 
+        $img = "";
+
         $name = $this->input->post("pax-name");
         $lastname = $this->input->post("pax-lastname");
         $ci = $this->input->post("pax-ci");

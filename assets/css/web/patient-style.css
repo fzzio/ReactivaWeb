@@ -34,11 +34,9 @@
 	top: 95vh;
 }
 
-.mayusc{
+.mayusc {
 	text-transform: uppercase;
 }
-
-
 
 .patient-label{
 	color: white;
@@ -126,8 +124,6 @@ table.dataTable thead th, table.dataTable thead td{
 	background: #90d6cb !important;
 }
 
-
-
 .consult th{
 	color: white;
 	font-size: 16px;
@@ -196,4 +192,3 @@ table.dataTable thead th, table.dataTable thead td{
 	color: white;
 	border-radius: 50%;
 }
-

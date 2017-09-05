@@ -17,6 +17,10 @@ body {
   padding: 0% 0% 0% 0%;
 }
 
+label.error {
+	color: #d9534f;
+}
+
 #sidebar-wrapper {
 	padding-left: 0px;
 	padding-right: 0px;

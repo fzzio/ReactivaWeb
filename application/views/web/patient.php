@@ -6,7 +6,7 @@
 		<div class="row pt-20">
 			<div class="col-md-2">
 				<a type="button" class="btn btn-success btn-general mb-10" href="<?php echo site_url('web/editarPaciente/').$paciente->getId(); ?>"><span class="glyphicon glyphicon-pencil"></span>Editar datos</a>
-				<a type="button" class="btn btn-danger btn-general mb-10" href="<?php echo site_url('web/eliminarPaciente/').$paciente->getId(); ?>"><span class="glyphicon glyphicon-remove"></span>Eliminar</a>
+				<a type="button" class="btn btn-danger btn-general mb-10" href="<?php echo site_url('web/deletePatient/').$paciente->getId(); ?>"><span class="glyphicon glyphicon-remove"></span>Eliminar</a>
 				<img src = "<?php echo $paciente->getImagen() ?>" class ="img-responsive ">
 			</div>
 			<div class = 'col-md-4'>
@@ -162,7 +162,7 @@
 				<h5 class="title-3">Observaciones</h5>
 				<p class = 'p-5 patient-input'><?php echo $paciente->getObservations() ?></p>
 				<h5 class="title-3">Enfermedades</h5>
-				<p class = 'p-5 patient-input'><?php echo $paciente->getAllergies() ?></p>
+				<p class = 'p-5 patient-input'><?php echo $paciente->getIllness() ?></p>
 			</div>
 		</div>
 

@@ -12,7 +12,7 @@
 				</button>
 			</div>
 			<div class="col-md-2 mt-20">
-				<a type="button" class="btn btn-default btn-danger btn-general" >
+				<a href="<?php echo site_url('web/pacientes'); ?>" type="button" class="btn btn-default btn-danger btn-general" >
 					<span class="glyphicon glyphicon-remove-sign " aria-hidden="true"></span> Cancelar
 				</a>
 			</div>
