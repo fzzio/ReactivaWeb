@@ -39,10 +39,16 @@ body,html{
     background-color: #50bfa3;
 }
 
-.box-header.well {
+/*.box-header.well {
     background-color: #50bfa3;
     border-radius: 0px;
     border-color: #1d3651;
+}*/
+
+.box-header.well {
+    background-color: #eceded;
+    border-radius: 0px;
+    border-color: #cfd3d9;
 }
 
 #index{
@@ -77,4 +83,8 @@ body,html{
 	position: fixed;
 	bottom: 0vh;
 	right: 3%;
+}
+
+.flexigrid {
+  margin-bottom: 20px;
 }

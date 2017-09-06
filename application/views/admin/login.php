@@ -24,7 +24,7 @@
 						'name' => 'ra_password',
 						'value' => '',
 						'required' => 'required',
-						'placeholder' => 'contraseña',
+						'placeholder' => 'Contraseña',
 						'class' => 'form-control input-sgl',
 						));?>
 					</div>

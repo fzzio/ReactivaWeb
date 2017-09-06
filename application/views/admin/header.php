@@ -50,7 +50,8 @@
 			background-color: #1d3651 !important;
 		}
 		.nav .nav-third-level a {
-			padding-left: 35px;
+			padding-left: 25px;
+			padding-right: 25px;
 		}
 	</style>
 
