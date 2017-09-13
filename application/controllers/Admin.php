@@ -21,7 +21,7 @@ class Admin extends CI_Controller {
 			$id_permission = 3;
 			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
 			if ($grant_permission) {
-				$dataHeader['PageTitle'] = "Reactiva";
+				$dataHeader['PageTitle'] = "REACTIVA";
         $data['header'] = $this->load->view('admin/header', $dataHeader);
         $data['menu'] = $this->load->view('admin/menu', array());
         $data['contenido'] = $this->load->view('admin/index', array());
@@ -63,7 +63,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
       //Initialize grocery_CRUD_Extended
-      $titulo = "Usuario";
+      $titulo = "USUARIOS";
       $crud = new grocery_CRUD_Extended();
 			$crud->set_table("account");
 			$crud->set_subject($titulo);
@@ -163,7 +163,7 @@ class Admin extends CI_Controller {
 			$debug = false;
 			if ($this->AdminSecurityCheck()) {
 				//Initialize grocery_CRUD
-				$titulo = "Ejercicios";
+				$titulo = "EJERCICIOS";
 	      $crud = new grocery_CRUD();
 				$crud->set_table("game_exercise");
 				$crud->set_subject( $titulo );
@@ -222,7 +222,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = 'Extremidades Asociadas a Ejercicios';
+			$titulo = 'JUEGOS';
 			$crud = new grocery_CRUD();
 			$crud->set_table('game_exercise_limb');
 			$crud->set_subject( $titulo );
@@ -277,7 +277,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
-			$titulo = "Extremidades";
+			$titulo = "EXTREMIDADES";
 			$crud = new grocery_CRUD();
 			$crud->set_table("game_limb");
 			$crud->set_subject($titulo);
@@ -334,7 +334,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
-      $titulo = "Pacientes";
+      $titulo = "PACIENTES";
       $crud = new grocery_CRUD_Extended();
 			$crud->set_table("patient");
 			$crud->set_subject( $titulo );
@@ -443,7 +443,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
-      $titulo = "Consultas";
+      $titulo = "CONSULTAS";
       $crud = new grocery_CRUD();
 			$crud->set_table("patient_consult");
 			$crud->set_subject( $titulo );  
@@ -520,7 +520,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
-      $titulo = "Extremidades Asociadas a Consultas";
+      $titulo = "EXTREMIDADES ASOCIADAS A CONSULTAS";
       $crud = new grocery_CRUD();
 			$crud->set_table("patient_consult_limb");
 			$crud->set_subject( $titulo );  
@@ -574,7 +574,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = "Terapias";
+			$titulo = "TERAPIAS";
       $crud = new grocery_CRUD();
 			$crud->set_table("patient_therapy");
 			$crud->set_subject( $titulo );
@@ -677,7 +677,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = "Comentarios Asociados a Terapias";
+			$titulo = "COMENTARIOS ASOCIADOS A TERAPIAS";
       $crud = new grocery_CRUD();
 			$crud->set_table("patient_therapy_comment");
 			$crud->set_subject($titulo);
@@ -739,7 +739,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = "Ejercicios Asociados a Terapias";
+			$titulo = "EJERCICIOS ASOCIADOS A TERAPIAS";
       $crud = new grocery_CRUD();
 			$crud->set_table("patient_therapy_exer");
 			$crud->set_subject($titulo);
@@ -807,7 +807,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = 'Fotos de Terapias';
+			$titulo = 'FOTOS ASOCIADAS A TERAPIAS';
 			$crud = new grocery_CRUD();
 			$crud->set_table('patient_therapy_photo');
 			$crud->set_subject( $titulo );
@@ -865,7 +865,7 @@ class Admin extends CI_Controller {
 			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
 			if($grant_permission){
 				//Initialize grocery_CRUD
-				$titulo = 'Contactos';
+				$titulo = 'CONTACTOS';
 				$crud = new grocery_CRUD();
 				$crud ->set_table('web_contact');
 				$crud -> set_subject($titulo);

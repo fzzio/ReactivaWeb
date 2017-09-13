@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `patient_therapy` (
   `id_patient` int(11) NOT NULL,
   `date_created` datetime NOT NULL,
   `id_doctor_created` int(11) NOT NULL COMMENT 'Doctor who assigned appointment',
-  `id_doctor_attended` int(11) NOT NULL COMMENT 'Staff who attended the therapy',
+  `id_doctor_attended` int(11) DEFAULT NULL COMMENT 'Staff who attended the therapy',
   `eta` datetime NOT NULL COMMENT 'Estimated time to start',
   `etf` datetime NOT NULL COMMENT 'Estimated time to finish',
   `comment` text DEFAULT NULL,
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
 -- Dumping structure for view reactiva.account_med
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `account_med`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `account_med` AS SELECT account.id_account, CONCAT(account.name, ' ', account.lastname) AS 'full_name' FROM account WHERE account.id_group = 4 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `account_med` AS SELECT account.id_account, CONCAT(account.name, ' ', account.lastname) AS 'full_name' FROM account WHERE account.id_group = 4 OR account.id_group = 5;
 
 -- Dumping structure for view reactiva.patient_therapy_list
 -- Removing temporary table and create final VIEW structure
