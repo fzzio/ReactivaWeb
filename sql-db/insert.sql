@@ -129,21 +129,39 @@ DELETE FROM `patient_consult_limb`;
 /*!40000 ALTER TABLE `patient_consult_limb` DISABLE KEYS */;
 INSERT INTO `patient_consult_limb` (`id_consult`, `id_limb`) VALUES
 	(1, 1),
+	(1, 2),
+	(1, 3),
+	(1, 4),
 	(2, 2),
+	(2, 3),
+	(2, 4),
 	(3, 3),
 	(4, 4),
+	(4, 5),
 	(5, 5),
 	(6, 6),
+	(6, 7),
+	(6, 8),
+	(6, 9),
 	(7, 7),
+	(7, 8),
 	(8, 8),
 	(9, 9),
 	(10, 10),
 	(11, 11),
 	(12, 12),
+	(12, 13),
+	(12, 14),
+	(12, 15),
+	(12, 16),
 	(13, 13),
 	(14, 14),
 	(15, 15),
-	(16, 16);
+	(16, 16),
+	(17, 11),
+	(18, 12),
+	(19, 13),
+	(20, 14);
 /*!40000 ALTER TABLE `patient_consult_limb` ENABLE KEYS */;
 
 -- Dumping data for table reactiva.patient_therapy: ~3 rows (approximately)
