@@ -452,7 +452,7 @@ class Admin extends CI_Controller {
 			$crud->display_as('id_consult', 'ID Consulta');
 			$crud->display_as('id_patient', 'Paciente');
 			$crud->display_as('id_doctor_created', 'Doctor responsable');
-			$crud->display_as('id_doctor_attended', 'Atendida por');
+			$crud->display_as('id_doctor_attended', 'Atendido por');
 			$crud->display_as('date_created', 'Fecha de creación');
 			$crud->display_as('date_planned', 'Fecha prevista');
 			$crud->display_as('date_attended', 'Fecha de atención');
@@ -584,7 +584,7 @@ class Admin extends CI_Controller {
 			$crud->display_as('id_patient', 'Paciente');
 			$crud->display_as('date_created', 'Fecha de Creación');
 			$crud->display_as('id_doctor_created', 'Doctor responsable');
-			$crud->display_as('id_doctor_attended', 'Atendida por');
+			$crud->display_as('id_doctor_attended', 'Atendido por');
 			$crud->display_as('eta', 'Inicio Estimado');
 			$crud->display_as('etf', 'Fin Estimado');
 			$crud->display_as('comment', 'Comentarios');
@@ -631,7 +631,6 @@ class Admin extends CI_Controller {
 			//Set validations rules
 			$crud->set_rules('id_patient', 'Paciente', 'required');
 			$crud->set_rules('id_doctor_created', 'Doctor responsable', 'required');
-			$crud->set_rules('id_doctor_attended', 'Atendida por', 'required');
 			$crud->set_rules('eta', 'Inicio Estimado', 'callback_check_planned');
 			$crud->set_rules('etf', 'Fin Estimado', 'callback_check_time[eta]');
 			$crud->set_rules('sendmail', 'Envío de Correo', 'required');
