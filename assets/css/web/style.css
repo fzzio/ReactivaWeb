@@ -4,7 +4,11 @@ body,html{
 }
 
 .navbar {
-	min-height: unset;
+	
+}
+
+.navbar-ex1-collapse{
+	height: 80px;
 }
 
 #side-menu{

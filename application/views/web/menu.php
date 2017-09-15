@@ -8,6 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+        <a class="navbar-brand" href="index.html">SB Admin</a>
     </div>
     <!-- Top Menu Items -->
 
@@ -20,7 +21,10 @@
 				<a href="<?php echo site_url('web/pacientes'); ?>" class = "<?php if ($selection == 'patient'){echo 'active';}?>">Pacientes</a>
 			</li>
 			<li>
-				<a href="<?php echo site_url('web/calendar'); ?>" class = "<?php if ($selection == 'calendar'){echo 'active';}?>">Agenda</a>
+				<a href="<?php echo site_url('web/citas'); ?>" class = "<?php if ($selection == 'citas'){echo 'active';}?>">Citas</a>
+			</li>
+			<li>
+				<a href="<?php echo site_url('web/terapias'); ?>" class = "<?php if ($selection == 'terapia'){echo 'active';}?>">Terapias</a>
 			</li>
 			<li id="logout" class = ''>
 				<a href="<?php echo site_url('web/logout'); ?>">CERRAR SESIÓN</a>

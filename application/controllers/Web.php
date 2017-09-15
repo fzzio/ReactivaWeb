@@ -157,9 +157,9 @@ class Web extends CI_Controller{
 		}
   	}
 
-	public function calendar(){
+	public function citas(){
 		if ($this->SecurityCheck()){
-			$menuContent['selection']="calendar";
+			$menuContent['selection']="citas";
 
 			$dataHeader['PageTitle'] = "Agenda";
 
@@ -175,9 +175,28 @@ class Web extends CI_Controller{
 		}
 	}
 
+
+	public function terapias(){
+		if ($this->SecurityCheck()){
+			$menuContent['selection']="terapia";
+
+			$dataHeader['PageTitle'] = "Agenda";
+
+			$dataContent['controller']=$this;
+
+			$data['header'] = $this->load->view('web/header', $dataHeader);
+			$data['menu'] = $this->load->view('web/menu', $menuContent);
+
+			$data['contenido'] = $this->load->view('web/terapia-calendar', $dataContent);
+			$data['page-footer'] = $this->load->view('web/page-footer', array());
+		}else{
+			redirect("web/login");
+		}
+	}
+
 	public function iniciarCita(){
 		if ($this->SecurityCheck()){
-			$menuContent['selection']="calendar";
+			$menuContent['selection']="citas";
 			$id_consult = $this->uri->segment(3);
 
 			$info = Consult::getConsultInfo($id_consult);
@@ -207,7 +226,7 @@ class Web extends CI_Controller{
 
 	public function reagendar(){
 		if ($this->SecurityCheck()){
-			$menuContent['selection']="calendar";
+			$menuContent['selection']="citas";
 			$type = $this->uri->segment(3);
 			$id = $this->uri->segment(4);
 
