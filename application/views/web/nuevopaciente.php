@@ -1,4 +1,4 @@
-<div id="page-wrapper" class="page-main mt-0 pt-0 mb-0 pb-120 pr-0 mr-0">
+<div id="page-wrapper" class="page-main mt-0 pt-80 mb-0 pb-120 pr-0 mr-0">
 	<div class = 'row pr-0 mr-0 pl-0 ml-0'>
 	<div class="col-md-offset-1 col-md-10">
 	<?php echo form_open_multipart('web/newPatient' , array('id' => 'frm-new')); ?>

@@ -463,7 +463,7 @@ class Web extends CI_Controller{
 
 		$this->db->insert_batch('patient_consult_limb', $limbs);
 
-		 redirect("web/calendar");
+		 redirect("web/citas");
 	}
 
 	public function reagendacion(){
@@ -486,7 +486,7 @@ class Web extends CI_Controller{
 			$this->db->update('patient_therapy', $data);
 		}
 
-		redirect("web/calendar");
+		redirect("web/citas");
 		
 	}
 
@@ -496,12 +496,13 @@ class Web extends CI_Controller{
 		$id  = $this->input->post('pax-id');
 		$observations = $this->input->post('pax-observation');
 		$hour = $this->input->post('datetimepicker2');
+		$date_created =(new DateTime())->format('Y-m-d H:i:s');
 
 
 		$data = array(
         	'id_patient'=>$patient,
         	'id_doctor_created'=> $this->session->userdata('ID'),
-        	/*'date_created'=>$lastname,*/
+        	'date_created'=> $date_created,
         	'date_planned'=>$date." ".$hour,
         	'observations'=>$observations,
         	'status'=>0,
@@ -512,7 +513,7 @@ class Web extends CI_Controller{
         $id_consult = $this->db->insert_id();
 
 
-		redirect("web/calendar");
+		redirect("web/citas");
 
 	}
 

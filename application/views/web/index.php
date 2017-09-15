@@ -1,5 +1,5 @@
 <!-- Page Content -->
-<div id="page-wrapper" class = 'page-patient mt-0 pt-0 mb-0 pb-0 pr-0 mr-0'>
+<div id="page-wrapper" class = 'page-patient mt-0 pt-100 mb-0 pb-0 pr-0 mr-0'>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">

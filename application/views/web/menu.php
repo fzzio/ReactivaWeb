@@ -8,8 +8,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">SB Admin</a>
     </div>
+
+
+        <ul class="nav navbar-nav navbar-right">
+        	<li><?php echo $this->session->name . " " . $this->session->apellido; ?>asfafasfasfs</li>
+      	</ul>
     <!-- Top Menu Items -->
 
     <div class="collapse navbar-collapse navbar-ex1-collapse admin-sidebar">

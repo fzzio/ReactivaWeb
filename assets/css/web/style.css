@@ -7,9 +7,6 @@ body,html{
 	
 }
 
-.navbar-ex1-collapse{
-	height: 80px;
-}
 
 #side-menu{
 	background: #2e4766;
@@ -19,6 +16,11 @@ body,html{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e4766', endColorstr='#0062a3',GradientType=1 );
 	min-height: 100% ;
 
+}
+
+.navbar-inverse{
+	background-color: #1d3651;
+	height: 80px;
 }
 
 .admin-sidebar{

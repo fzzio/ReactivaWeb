@@ -1,14 +1,12 @@
-<div id="page-wrapper" class = 'page-calendar mt-0 pt-0 mb-0 pb-120 pr-0 mr-0'>
+<div id="page-wrapper" class = 'page-calendar mt-0 pt-80 mb-0 pb-120 pr-0 mr-0'>
 <div class = 'row pr-0 mr-0 pl-0 ml-0'>
-<!-- Nav tabs -->
+	<div class="col-md-offset-1 col-md-10 ">
 		
 <!-- Page Content -->
 
 	<div id="calendar_therapy_div">
-			  		<?php echo $controller->getTherapyCalender(); ?>
-			  	</div><!-- /.container-fluid -->
-
-
+  		<?php echo $controller->getTherapyCalender(); ?>
+  	</div><!-- /.container-fluid -->
 
 	<div class="modal fade" id="asignarTerapia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -166,4 +164,5 @@
 
 	</div>
 	</div>
+</div>
 </div>

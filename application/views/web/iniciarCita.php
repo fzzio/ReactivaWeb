@@ -1,4 +1,4 @@
-<div id="page-wrapper" class="page-main mt-0 pt-0 mb-0 pb-120 pr-0 mr-0">
+<div id="page-wrapper" class="page-main mt-0 pt-80 mb-0 pb-120 pr-0 mr-0">
 	<div class = 'row pr-0 mr-0 pl-0 ml-0'>
 	<div class="col-md-offset-1 col-md-10">
 		<?php echo form_open_multipart('web/addDiagnostic' , array('id' => 'frm-new')); ?>
@@ -97,7 +97,7 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name="pax-id" value="<?php echo $consult['id_consult']; ?>" />
+		<input type="hidden" name="pax-id" value="<?php echo $consult['id']; ?>" />
 		<div class = 'row'>
 			<div class = 'col-md-12'>
 			<label for="pax-observation" class = 'pax-label pull-right-label'>Partes del cuerpo afectadas </label>
