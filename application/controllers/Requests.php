@@ -20,7 +20,30 @@ class Requests extends CI_Controller {
     }
 
     public function saveComments(){
-        
+        $query = $this->input->post();  
+
+        $id_therapy = $query['id_therapy'];
+        $comment = $query['comentario'];
+        $stamp = $query['tiempo'];
+
+
+        $resultado = array();
+
+        if ( !is_null($id_therapy) && !is_null($comment) && !is_null($stamp) ){
+            $data = array(
+	            'id_therapy'=>$id_therapy,
+	            'date'=>$stamp,
+	            'msg'=>$comment
+	        );
+
+        	$this->db->insert('patient_therapy_comment', $data);
+
+        	$resultado['event'] = 1;
+        }else{
+            $resultado['event'] = 0;
+        }
+        header('Content-type: application/json');
+        echo json_encode($resultado);     
     }
 }
 
