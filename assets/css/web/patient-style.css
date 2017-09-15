@@ -194,7 +194,14 @@ table.dataTable thead th, table.dataTable thead td{
 }
 
 #list-patient tfoot input {
-		width: 80% ;
-        box-sizing: border-box;
-        color: gray;
-    }
+	width: 80% ;
+    box-sizing: border-box;
+    color: gray;
+}
+
+.session-name{
+	height: 80px;
+	color: white;
+	font-weight: bold;
+	padding: 25px;
+}

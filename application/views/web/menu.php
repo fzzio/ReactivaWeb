@@ -12,7 +12,9 @@
 
 
         <ul class="nav navbar-nav navbar-right">
-        	<li><?php echo $this->session->name . " " . $this->session->apellido; ?>asfafasfasfs</li>
+        	<li class = 'session-name'>
+        		Hola, <?php echo $this->session->Name; ?>
+        	</li>
       	</ul>
     <!-- Top Menu Items -->
 
