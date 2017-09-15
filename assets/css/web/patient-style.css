@@ -192,3 +192,9 @@ table.dataTable thead th, table.dataTable thead td{
 	color: white;
 	border-radius: 50%;
 }
+
+#list-patient tfoot input {
+		width: 80% ;
+        box-sizing: border-box;
+        color: gray;
+    }

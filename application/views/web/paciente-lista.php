@@ -10,22 +10,35 @@
 					NUEVO REGISTRO
 
 				</a>
-				<table id = "list-patient" class="table patient mt-20">
+				<table id = "list-patient" class="patient mt-20">
 					<thead>
-						<tr class = 'search-row'>
-							<td></td>
-							<td class = 'text-center'>NOMBRES <div class = 'search-table'></div></td>
-							<td class = 'text-center'>APELLIDOS <div class = 'search-table'></div></td>
-							<td class = 'text-center'>EDAD <div class = 'search-table'></div></td>
-							<td class = 'text-center'>CÉDULA <div class = 'search-table'></div></td>
-							<td class = 'text-center'>EMAIL <div class = 'search-table'></div></td>
-						</tr>
-						
+							<th class = 'text-center'>Nombres</th>
+							<th class = 'text-center'>Apellidos</div></th>
+							<th class = 'text-center'>Edad</th>
+							<th class = 'text-center'>Cédula</th>
+							<th class = 'text-center'>Email</div></th>
+							<th></th>
 					</thead>
+					<tfoot>
+		            <tr>
+		                <th>Nombres</th>
+		                <th>Apellidos</th>
+		                <th>Edad</th>
+		                <th>Cédula</th>
+		                <th>Email</th>
+		                <th></th>
+		            </tr>
+		        </tfoot>
 					<tbody>
 
 						<?php foreach($results as $pax){ ?>
 						<tr>
+							
+							<td class = 'text-center left-cell'><?php echo $pax['name'];?></td>
+							<td class = 'text-center'><?php echo $pax['lastname'];?></td>
+							<td class = 'text-center'><?php echo $pax['born'];?></td>
+							<td class = 'text-center'><?php echo $pax['ci'];?></td>
+							<td class = 'text-center'><?php echo $pax['email'];?></td>
 							<td>	
 								<a type="button" href="<?php echo site_url('web/paciente/').$pax['id_patient']; ?>" class="btn btn-xs btn-primary">
 									<span class="glyphicon glyphicon-eye-open"></span>
@@ -37,11 +50,6 @@
 									<span class="glyphicon glyphicon-remove" onClick='javascript:return confirm("¿Estás seguro que deseas borrar?;")' ></span>
 								</a>
 							</td>
-							<td class = 'text-center left-cell'><?php echo $pax['name'];?></td>
-							<td class = 'text-center'><?php echo $pax['lastname'];?></td>
-							<td class = 'text-center'><?php echo $pax['born'];?></td>
-							<td class = 'text-center'><?php echo $pax['ci'];?></td>
-							<td class = 'text-center'><?php echo $pax['email'];?></td>
 						</tr>
 						<?php } ?>
 					</tbody>

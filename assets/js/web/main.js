@@ -261,7 +261,7 @@ $(document).ready(function () {
 
 
 	$("#list-patient").each(function(){
-		$('#list-patient thead td div').each( function () {
+		$('#list-patient tfoot th').each( function () {
         	var title = $(this).text();
         	$(this).html( '<input type="text" placeholder="'+title+'" />' );
     	});
@@ -277,7 +277,7 @@ $(document).ready(function () {
 
     	table.columns().every( function (){
     		var that = this;
-    		$('input', this.header()).on('keyup change', function(){
+    		$('input', this.footer()).on('keyup change', function(){
     			if(that.search() !== this.value){
     				that.search(this.value).draw();
     			}
