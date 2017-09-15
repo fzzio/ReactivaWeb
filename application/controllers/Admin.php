@@ -965,7 +965,7 @@ class Admin extends CI_Controller {
 	public function check_dates($fecha2) {
 		$fecha1 = date('d/m/Y');
 		
-	  	if (strtotime($fecha2) <= strtotime($fecha1)) {
+	  	if (strtotime($fecha2) > strtotime($fecha1)) {
 			return TRUE;
 		} else {
 			$this->form_validation->set_message('check_dates', "El campo %s no puede ser posterior a la fecha actual.");
