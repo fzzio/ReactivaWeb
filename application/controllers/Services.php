@@ -39,7 +39,7 @@ class Services extends CI_Controller {
     public function checklogin(){
     	$query = $this->input->post();   	
 
-		$this->db->select('id_group');
+		$this->db->select("id_group, CONCAT(name, ' ', lastname) AS 'user'");
 		$this->db->from('account');
 		$this->db->where('username', $query['user']);
 		$this->db->where('password', $query['pass']);
@@ -52,6 +52,7 @@ class Services extends CI_Controller {
 		if ($group){
 			if ($group == '5') {
             	$resultado['event'] = 1;
+                $resultado['user'] = $res['user'];
 	        }else{
 	        	$resultado['event'] = 0;
 			}
