@@ -1,5 +1,5 @@
 <!-- Page Content -->
-<div id="page-wrapper">
+<div id="page-wrapper" class = 'pt-80'>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">

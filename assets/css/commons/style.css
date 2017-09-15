@@ -114,3 +114,10 @@ label.error {
     margin-left: -50px;
     bottom: 50px;
 }
+
+.session-name{
+	height: 80px;
+	color: white;
+	font-weight: bold;
+	padding: 25px;
+}

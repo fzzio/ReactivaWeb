@@ -21,11 +21,11 @@ class Admin extends CI_Controller {
 			$id_permission = 3;
 			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
 			if ($grant_permission) {
-				$dataHeader['PageTitle'] = "REACTIVA";
-        $data['header'] = $this->load->view('admin/header', $dataHeader);
-        $data['menu'] = $this->load->view('admin/menu', array());
-        $data['contenido'] = $this->load->view('admin/index', array());
-        $data['footer'] = $this->load->view('admin/footer-gc', array());
+				$dataHeader['PageTitle'] = "Reactiva";
+		        $data['header'] = $this->load->view('admin/header', $dataHeader);
+		        $data['menu'] = $this->load->view('admin/menu', array());
+		        $data['contenido'] = $this->load->view('admin/index', array());
+		        $data['footer'] = $this->load->view('admin/footer-gc', array());
 			} else {
 				redirect("admin/login");
 			}    
@@ -62,9 +62,9 @@ class Admin extends CI_Controller {
 	public function accounts(){
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
-      //Initialize grocery_CRUD_Extended
-      $titulo = "USUARIOS";
-      $crud = new grocery_CRUD_Extended();
+			//Initialize grocery_CRUD_Extended
+			$titulo = "Usuarios";
+			$crud = new grocery_CRUD_Extended();
 			$crud->set_table("account");
 			$crud->set_subject($titulo);
 
@@ -121,18 +121,18 @@ class Admin extends CI_Controller {
 
 			//Encrypt password
 			$crud->callback_edit_field('password',array($this,'set_password_input_to_empty'));
-      $crud->callback_add_field('password',array($this,'set_password_input_to_empty'));
-      $crud->field_type('password','password');
-      $crud->callback_before_update(array($this,'encrypt_pw'));
-      $crud->callback_before_insert(array($this,'encrypt_pw'));
+			$crud->callback_add_field('password',array($this,'set_password_input_to_empty'));
+			$crud->field_type('password','password');
+			$crud->callback_before_update(array($this,'encrypt_pw'));
+			$crud->callback_before_insert(array($this,'encrypt_pw'));
 
-      //Required fields
-      $crud->unique_fields('username', 'email');
+			//Required fields
+			$crud->unique_fields('username', 'email');
 			$crud->columns('name', 'lastname', 'username', 'email', 'last_ip', 'last_login', 'id_group', 'status');
 			$crud->fields('name', 'lastname', 'username', 'email', 'password', 'id_group', 'status');
 
 			//Unset options
-      $crud->unset_export();
+			$crud->unset_export();
 			$crud->unset_print();
 			$crud->unset_read();
 
@@ -146,7 +146,7 @@ class Admin extends CI_Controller {
 			$dataContent['debug'] = $debug;
 
 			//Loading from views
-      $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['header'] = $this->load->view('admin/header', $dataHeader);
 			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
 			$data['content'] = $this->load->view('admin/blank', $output);
 			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
@@ -163,8 +163,8 @@ class Admin extends CI_Controller {
 			$debug = false;
 			if ($this->AdminSecurityCheck()) {
 				//Initialize grocery_CRUD
-				$titulo = "EJERCICIOS";
-	      $crud = new grocery_CRUD();
+				$titulo = "Ejercicios";
+				$crud = new grocery_CRUD();
 				$crud->set_table("game_exercise");
 				$crud->set_subject( $titulo );
 
@@ -186,7 +186,7 @@ class Admin extends CI_Controller {
 						));
 
 				//Required fields
-	      $crud->columns('id_exercise', 'name', 'description', 'script_name');
+				$crud->columns('id_exercise', 'name', 'description', 'script_name');
 				$crud->fields('name', 'description', 'script_name');
 				$crud->required_fields('name', 'description', 'script_name');
 
@@ -222,7 +222,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = 'JUEGOS';
+			$titulo = 'Juegos';
 			$crud = new grocery_CRUD();
 			$crud->set_table('game_exercise_limb');
 			$crud->set_subject( $titulo );
@@ -241,7 +241,7 @@ class Admin extends CI_Controller {
 			$crud->set_rules('id_limb', 'Extremidad', 'required');
 
 			//Required fields
-      $crud->columns('id_game', 'id_limb');
+			$crud->columns('id_game', 'id_limb');
 			$crud->fields('id_game', 'id_limb');
 			//$crud->required_fields('id_game', 'id_limb');
 
@@ -277,7 +277,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
-			$titulo = "EXTREMIDADES";
+			$titulo = "Extremidades del cuerpo";
 			$crud = new grocery_CRUD();
 			$crud->set_table("game_limb");
 			$crud->set_subject($titulo);
@@ -334,8 +334,8 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
-      $titulo = "PACIENTES";
-      $crud = new grocery_CRUD_Extended();
+			$titulo = "Pacientes";
+			$crud = new grocery_CRUD_Extended();
 			$crud->set_table("patient");
 			$crud->set_subject( $titulo );
 
@@ -412,7 +412,7 @@ class Admin extends CI_Controller {
 			$crud->fields('ci', 'name', 'lastname', 'born', 'gender', 'phone', 'cellphone', 'email', 'img', 'address', 'emergency_contact', 'emergency_phone', 'blood', 'rh', 'allergies_med', 'allergies', 'illness', 'observations');
 			
 			//Unset options
-      $crud->unset_export();
+			$crud->unset_export();
 			$crud->unset_print();
 			$crud->unset_read();
 			
@@ -426,7 +426,7 @@ class Admin extends CI_Controller {
 			$dataContent['debug'] = $debug;
 			
 			//Loading from views
-      $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['header'] = $this->load->view('admin/header', $dataHeader);
 			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
 			$data['content'] = $this->load->view('admin/blank', $output);
 			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
@@ -443,8 +443,8 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
-      $titulo = "CONSULTAS";
-      $crud = new grocery_CRUD();
+			$titulo = "Consultas";
+			$crud = new grocery_CRUD();
 			$crud->set_table("patient_consult");
 			$crud->set_subject( $titulo );  
 
@@ -489,7 +489,7 @@ class Admin extends CI_Controller {
 			$crud->fields('id_patient', 'id_doctor_created', 'id_doctor_attended', 'date_created', 'date_planned', 'date_attended', 'status', 'diagnosis', 'observations');
 
 			//Unset options
-      $crud->unset_export();
+			$crud->unset_export();
 			$crud->unset_print();
 			$crud->unset_read();
 
@@ -503,7 +503,7 @@ class Admin extends CI_Controller {
 			$dataContent['debug'] = $debug;
 
 			//Loading from views
-      $data['header'] = $this->load->view('admin/header', $dataHeader);
+			$data['header'] = $this->load->view('admin/header', $dataHeader);
 			$data['menu'] = $this->load->view('admin/menu', $dataHeader );
 			$data['content'] = $this->load->view('admin/blank', $output);
 			$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
@@ -520,8 +520,8 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()){
 			//Initialize grocery_CRUD
-      $titulo = "EXTREMIDADES ASOCIADAS A CONSULTAS";
-      $crud = new grocery_CRUD();
+			$titulo = "Extremidades asociadas a consultas";
+			$crud = new grocery_CRUD();
 			$crud->set_table("patient_consult_limb");
 			$crud->set_subject( $titulo );  
 
@@ -574,8 +574,8 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = "TERAPIAS";
-      $crud = new grocery_CRUD();
+			$titulo = "Terapias";
+			$crud = new grocery_CRUD();
 			$crud->set_table("patient_therapy");
 			$crud->set_subject( $titulo );
 
@@ -600,18 +600,18 @@ class Admin extends CI_Controller {
                 '1' => 'Cancelado',
                 '2' => 'Atendido'
             ));
-      $crud->field_type('sendmail', 'dropdown', array(
+  			$crud->field_type('sendmail', 'dropdown', array(
                 '0' => 'No',
                 '1' => 'Si'
             ));
 
-      $crud->field_type('valoration', 'dropdown', array(
+			$crud->field_type('valoration', 'dropdown', array(
                 '0' => 'No necesita acompañamiento',
                 '1' => 'Acompañamiento medio',
                 '2' => 'Necesita acompañamiento'
             ));
 
-      $crud->field_type('time_elapse', 'dropdown', array(
+			$crud->field_type('time_elapse', 'dropdown', array(
                 '00:05:00' => '00:05:00 (5 minutos)',
                 '00:10:00' => '00:10:00 (10 minutos)',
                 '00:15:00' => '00:15:00 (15 minutos)',
@@ -676,8 +676,8 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = "COMENTARIOS ASOCIADOS A TERAPIAS";
-      $crud = new grocery_CRUD();
+			$titulo = "Comentarios asociados a terapias";
+			$crud = new grocery_CRUD();
 			$crud->set_table("patient_therapy_comment");
 			$crud->set_subject($titulo);
 
@@ -738,8 +738,8 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = "EJERCICIOS ASOCIADOS A TERAPIAS";
-      $crud = new grocery_CRUD();
+			$titulo = "Ejercicios asociados a terapias";
+			$crud = new grocery_CRUD();
 			$crud->set_table("patient_therapy_exer");
 			$crud->set_subject($titulo);
 			//Set display as
@@ -806,7 +806,7 @@ class Admin extends CI_Controller {
 		$debug = false;
 		if ($this->AdminSecurityCheck()) {
 			//Initialize grocery_CRUD
-			$titulo = 'FOTOS ASOCIADAS A TERAPIAS';
+			$titulo = 'Fotos asociadas a terapias';
 			$crud = new grocery_CRUD();
 			$crud->set_table('patient_therapy_photo');
 			$crud->set_subject( $titulo );
@@ -829,7 +829,7 @@ class Admin extends CI_Controller {
 			$crud->callback_before_insert(array($this,'callback_current_date'));
 
 			//Required fields
-      $crud->columns('id_therapy', 'date', 'img', 'comment');
+			$crud->columns('id_therapy', 'date', 'img', 'comment');
 			$crud->fields('id_therapy', 'date', 'img', 'comment');
 			//Unset options
 			$crud->unset_export();
@@ -864,7 +864,7 @@ class Admin extends CI_Controller {
 			$grant_permission = User::getPermission($this->session->userData('ID'), $id_permission);
 			if($grant_permission){
 				//Initialize grocery_CRUD
-				$titulo = 'CONTACTOS';
+				$titulo = 'Contactos';
 				$crud = new grocery_CRUD();
 				$crud ->set_table('web_contact');
 				$crud -> set_subject($titulo);
@@ -894,7 +894,7 @@ class Admin extends CI_Controller {
 				$dataFooter['js_files'] = $output->js_files;
 				$dataContent['debug'] = $debug;
 				//Loading from views
-	      $data['header'] = $this->load->view('admin/header', $dataHeader);
+				$data['header'] = $this->load->view('admin/header', $dataHeader);
 				$data['menu'] = $this->load->view('admin/menu', $dataHeader );
 				$data['content'] = $this->load->view('admin/blank', $output);
 				$data['footer'] = $this->load->view('admin/footer-gc', $dataFooter);
@@ -953,24 +953,24 @@ class Admin extends CI_Controller {
 	}
 
 	public function callback_insert($post_array) {
-	  $post_array['date_created'] = date('Y-m-d H:i:s');
-	  return $post_array;
+		$post_array['date_created'] = date('Y-m-d H:i:s');
+		return $post_array;
 	}
 
 	public function callback_current_date($post_array) {
-	  $post_array['date'] = date('Y-m-d H:i:s');
-	  return $post_array;
+		$post_array['date'] = date('Y-m-d H:i:s');
+		return $post_array;
 	}
 
 	public function check_dates($fecha2) {
 		$fecha1 = date('d/m/Y');
 		
-  	if (strtotime($fecha2) <= strtotime($fecha1)) {
-	    return TRUE;
-	  } else {
-	    $this->form_validation->set_message('check_dates', "El campo %s no puede ser posterior a la fecha actual.");
-	    return FALSE;
-	  }
+	  	if (strtotime($fecha2) <= strtotime($fecha1)) {
+			return TRUE;
+		} else {
+			$this->form_validation->set_message('check_dates', "El campo %s no puede ser posterior a la fecha actual.");
+			return FALSE;
+		}
 	}
 
 	public function check_planned($fecha2) {
@@ -981,12 +981,12 @@ class Admin extends CI_Controller {
 			return FALSE;
 		}
 
-  	if ($fecha2 > $fecha1) {
-	    return TRUE;
-	  } else {
-	    $this->form_validation->set_message('check_planned', "El campo %s debe ser posterior a la fecha actual."); 
-	    return FALSE;
-	  }
+		if ($fecha2 > $fecha1) {
+			return TRUE;
+		} else {
+			$this->form_validation->set_message('check_planned', "El campo %s debe ser posterior a la fecha actual."); 
+			return FALSE;
+		}
 	}
 
 	public function check_attended($fecha2, $fecha1) {
@@ -997,12 +997,12 @@ class Admin extends CI_Controller {
 			return FALSE;
 		}
 
-  	if ($fecha2 >= $fecha1) {
-	    return TRUE;
-	  } else {
-	    $this->form_validation->set_message('check_attended', "El campo Fecha de atención debe ser porterior o igual al campo %s"); 
-	    return FALSE;
-	  }
+		if ($fecha2 >= $fecha1) {
+			return TRUE;
+		} else {
+			$this->form_validation->set_message('check_attended', "El campo Fecha de atención debe ser porterior o igual al campo %s"); 
+			return FALSE;
+		}
 	}
 
 	public function check_time($fecha2, $fecha1) {
@@ -1013,12 +1013,12 @@ class Admin extends CI_Controller {
 			return FALSE;
 		}
 
-  	if ($fecha2 >= $fecha1) {
-	    return TRUE;
-	  } else {
-	    $this->form_validation->set_message('check_time', "El campo %s debe ser porterior o igual al campo Inicio Estimado"); 
-	    return FALSE;
-	  }
+		if ($fecha2 >= $fecha1) {
+			return TRUE;
+		} else {
+			$this->form_validation->set_message('check_time', "El campo %s debe ser porterior o igual al campo Inicio Estimado"); 
+			return FALSE;
+		}
 	}
 
 }

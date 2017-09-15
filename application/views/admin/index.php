@@ -1,12 +1,6 @@
 <!-- Page Content -->
-<div id="page-wrapper" class = 'mt-0 pt-0 mb-0 pb-0 pr-0 mr-0'>
+<div id="page-wrapper" class = 'mt-0 pt-80 mb-0 pb-0 pr-0 mr-0'>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <?php echo $this->session->Name; ?>
-                &nbsp;
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inner">
