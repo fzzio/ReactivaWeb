@@ -45,6 +45,30 @@ class Requests extends CI_Controller {
         header('Content-type: application/json');
         echo json_encode($resultado);     
     }
+
+    public function endTherapy(){
+        $query = $this->input->post();  
+
+        $id_therapy = $query['id_therapy'];
+        $valoration = $query['estado_paciente'];
+        $timeelapsed = $query['tiempo_tr'];
+        $comment = $query['comentario'];
+        $stamp = $query['tiempo'];
+
+        $this->db->set('valoration', $valoration);
+        $this->db->set('time_elapse', $timeelapsed);
+        $this->db->where('id_therapy', $id_therapy);
+        $this->db->update('patient_therapy');
+
+        $data = array(
+            'id_therapy'=>$id_therapy,
+            'date'=>$stamp,
+            'msg'=>$comment
+        );
+
+        $this->db->insert('patient_therapy_comment', $data);
+
+    }
 }
 
 ?>
