@@ -321,7 +321,7 @@ class Web extends CI_Controller{
 
         if($this->upload->do_upload("pax-photo")) {
             $img_data = $this->upload->data();
-            $img = $img_data["file_name"];
+            $img_info = $img_data["file_name"];
         }
 
         $data = array(
@@ -338,7 +338,7 @@ class Web extends CI_Controller{
         	'allergies'=>$allergies,
         	'observations'=>$observations,
         	'illness'=>$illness,
-        	'img'=>$img,
+        	'img'=>$img_info,
         	'email'=>$mail,
         	'allergies_med'=>$allergies_med,
         	'emergency_contact'=>$emergencycontact,

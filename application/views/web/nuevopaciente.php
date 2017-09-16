@@ -26,7 +26,7 @@
 			<div class = 'col-md-2'>
 				<img src = "<?php echo base_url('assets/img/web/rea-profile.png'); ?>" class ="img-responsive ">
 				<label class="btn btn-primary btn-upload" for="pax-photo">
-				    <input id="pax-photo" type="file" style="display:none" 
+				    <input name = "pax-photo" id="pax-photo" type="file" style="display:none" 
 				    onchange="$('#upload-file-info').html(this.files[0].name)">
 				    Subir archivo
 				</label>
