@@ -470,7 +470,8 @@ class Admin extends CI_Controller {
 			$crud->field_type('status', 'dropdown', array(
                 '0' => 'Pendiente',
                 '1' => 'Cancelado',
-                '2' => 'Atendido'
+                '2' => 'En proceso',
+                '3' => 'Atendido'
             ));
 
 			//Set validation
@@ -598,7 +599,8 @@ class Admin extends CI_Controller {
 			$crud->field_type('status', 'dropdown', array(
                 '0' => 'Pendiente',
                 '1' => 'Cancelado',
-                '2' => 'Atendido'
+                '2' => 'En proceso',
+                '3' => 'Atendido'
             ));
   			$crud->field_type('sendmail', 'dropdown', array(
                 '0' => 'No',

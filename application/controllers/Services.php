@@ -247,6 +247,7 @@ class Services extends CI_Controller {
     		$this->db->select("patient_therapy.id_therapy,
     			patient_therapy.id_patient,
     			patient_therapy.id_consulta,
+                DATE_FORMAT(patient_therapy.eta, '%H:%i:%s') as time,
     			CONCAT(patient.name, ' ', patient.lastname) as `fullname`,
     			patient_therapy.status");
 			$this->db->from('patient_therapy');
