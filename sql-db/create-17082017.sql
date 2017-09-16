@@ -175,11 +175,11 @@ CREATE TABLE IF NOT EXISTS `patient_therapy` (
   `id_patient` int(11) NOT NULL,
   `date_created` datetime NOT NULL,
   `id_doctor_created` int(11) NOT NULL COMMENT 'Doctor who assigned appointment',
-  `id_doctor_attended` int(11) NOT NULL COMMENT 'Staff who attended the therapy',
+  `id_doctor_attended` int(11) DEFAULT NULL COMMENT 'Staff who attended the therapy',
   `eta` datetime NOT NULL COMMENT 'Estimated time to start',
-  `etf` datetime NOT NULL COMMENT 'Estimated time to finish',
+  `etf` datetime DEFAULT NULL COMMENT 'Estimated time to finish',
   `comment` text DEFAULT NULL,
-  `sendmail` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0: No, 1:Si',
+  `sendmail` tinyint(4) DEFAULT 0,
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0: Pendiente, 1:Cancelada, 2:Atendida',
   `valoration` tinyint(4) DEFAULT NULL COMMENT '0: No company, 1: Maybe, 2: Needed company',
   `time_elapse` time DEFAULT NULL,
@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `patient_therapy` (
   CONSTRAINT `FK_patient_therapy_account_2` FOREIGN KEY (`id_doctor_attended`) REFERENCES `account` (`id_account`),
   CONSTRAINT `FK_patient_therapy_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_patient_therapy_patient_consult` FOREIGN KEY (`id_consulta`) REFERENCES `patient_consult` (`id_consult`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 -- Dumping structure for table reactiva.patient_therapy_comment
