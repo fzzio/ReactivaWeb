@@ -363,7 +363,7 @@ class Admin extends CI_Controller {
 			//Set field type
 			$crud->field_type('born', 'date');
 			$crud->field_type('address', 'string');
-			$crud->set_field_upload('img','assets\img\patient-profile');
+			$crud->set_field_upload('img','assets/img/patient-profile');
 
 			$crud->field_type('blood', 'dropdown', array(
                 'O' => 'O',
