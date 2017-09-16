@@ -517,6 +517,34 @@ class Web extends CI_Controller{
 
 	}
 
+
+	public function nuevaTerapia(){
+		$patient = $this->input->post('id-patient');
+		$date  = $this->input->post('id-date');
+		$hour = $this->input->post('datetimepicker2');
+		$date_created =(new DateTime())->format('Y-m-d H:i:s');
+
+		$query = $this->db->query("SELECT id_consult from patient_consult where id_patient = 1 and status = 2 order by date_attended desc limit 1");
+		$row = $query->row();
+
+
+
+		$data = array(
+        	'id_patient'=>$patient,
+        	'id_consult'=>$row['id_consult'],
+        	'id_doctor_created'=> $this->session->userdata('ID'),
+        	'date_created'=> $date_created,
+        	'eta'=>$date." ".$hour,
+        	'status'=>0,
+        );
+
+
+		$this->db->insert('patient_therapy', $data);
+        $id_therapy = $this->db->insert_id();
+
+		redirect("web/terapias");
+	}
+
   	public function deletePatient(){
   		if ($this->SecurityCheck()){
   			$id_patient = $this->uri->segment(3);
@@ -935,23 +963,27 @@ class Web extends CI_Controller{
 				";
 			}
 			$eventListHTML .= "</ul>
-
+			<div class = 'but-new-cita'>
 			<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia' id = 'agendarnuevaterapia'>
 				<div class = 'glyphicon-ring'>
 					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
 				</div>
 				AGENDAR NUEVA TERAPIA
 			</button >
+			</div>
 			";
 		}else{
 			$eventListHTML .= '<h2>'.date("d M Y",strtotime($date)).'</h2>';
 			$eventListHTML .= '<p> No hay terapias</p>';
-			$eventListHTML .= "<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia' id = 'agendarnuevaterapia'>
-				<div class = 'glyphicon-ring'>
-					<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
-				</div>
-				AGENDAR NUEVA TERAPIA
-			</button >";
+			$eventListHTML .= "
+				<div class = 'but-new-cita'>
+					<button  type='button' class='btn btn-nuevo mt-10' data-toggle='modal' data-target='#asignarTerapia' id = 'agendarnuevaterapia'>
+					<div class = 'glyphicon-ring'>
+						<span class='glyphicon glyphicon-plus glyphicon-bordered' ></span>
+					</div>
+					AGENDAR NUEVA TERAPIA
+				</button >
+				</div>";
 		}
 		
 		echo $eventListHTML;

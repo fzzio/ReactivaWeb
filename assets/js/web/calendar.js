@@ -38,6 +38,7 @@ function getEvents(date){
 
 			if (date < today){
 				$("#event_list .but-new-cita").remove();
+
 			}
 		}
 	});
@@ -64,6 +65,16 @@ function getTherapyEvents(date){
 		success:function(html){
 			$('#event_list_therapy').html(html);
 			$('#event_list_therapy').slideDown('slow');
+			$("#id-date").val(date);
+
+		},
+		complete: function(){
+			var today = formatDateToday();
+
+			if (date < today){
+				$("#event_list_therapy .but-new-cita").remove();
+				
+			}
 		},
 		error: function(error){
 			console.error(error);
@@ -185,6 +196,24 @@ $(document).ready(function(){
 
 	$("#autocomplete-paciente").autocomplete(
 		"option", "appendTo", "#frm-nueva-cita"
+	);
+
+	$("#autocomplete-paciente-t").autocomplete({
+		source: "/ReactivaWeb/index.php/services/patientAutocomplete",
+		minLength: 2,
+		change: function(event, ui){
+			if(!ui.item){
+				$(this).val('');
+			}
+		},
+		select: function(event, ui){
+			$("#txtAllowSearch").val(ui.item.value); // display the selected text
+	    	$("#id-patient").val(ui.item.id); // save selected id to hidden input
+		}
+	});
+
+	$("#autocomplete-paciente-t").autocomplete(
+		"option", "appendTo", "#frm-nueva-terapia"
 	);
 });
 
