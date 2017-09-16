@@ -57,6 +57,7 @@ class Requests extends CI_Controller {
 
         $this->db->set('valoration', $valoration);
         $this->db->set('time_elapse', $timeelapsed);
+        $this->db->set('status', 3);
         $this->db->where('id_therapy', $id_therapy);
         $this->db->update('patient_therapy');
 
