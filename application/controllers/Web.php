@@ -524,14 +524,14 @@ class Web extends CI_Controller{
 		$hour = $this->input->post('datetimepicker2');
 		$date_created =(new DateTime())->format('Y-m-d H:i:s');
 
-		$query = $this->db->query("SELECT id_consult from patient_consult where id_patient = 1 and status = 2 order by date_attended desc limit 1");
+		$query = $this->db->query("SELECT id_consult from patient_consult where id_patient = ".$patient." and status = 2 order by date_attended desc limit 1");
 		$row = $query->row();
 
 
 
 		$data = array(
         	'id_patient'=>$patient,
-        	'id_consult'=>$row['id_consult'],
+        	'id_consulta'=>$row->id_consult,
         	'id_doctor_created'=> $this->session->userdata('ID'),
         	'date_created'=> $date_created,
         	'eta'=>$date." ".$hour,

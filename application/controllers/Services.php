@@ -36,6 +36,24 @@ class Services extends CI_Controller {
         echo json_encode($res);
     }
 
+
+    public function patientTherapyAutocomplete(){
+        $term = trim(strip_tags($_GET['term']));
+
+        $this->db->select("DISTINCT(patient.id_patient) AS `id`, CONCAT(patient.name, ' ', patient.lastname) AS `value`");
+        $this->db->from('patient');
+        $this->db->join('patient_consult', 'patient.id_patient = patient_consult.id_patient');
+        $this->db->where('patient_consult.status', 2);
+        $this->db->like("CONCAT(patient.name, ' ', patient.lastname)", $term);
+
+        $res = $this->db->get()->result_array();
+
+        $resultado = array();
+
+        header('Content-type: application/json');
+        echo json_encode($res);
+    }
+
     public function checklogin(){
     	$query = $this->input->post();   	
 

@@ -199,7 +199,7 @@ $(document).ready(function(){
 	);
 
 	$("#autocomplete-paciente-t").autocomplete({
-		source: "/ReactivaWeb/index.php/services/patientAutocomplete",
+		source: "/ReactivaWeb/index.php/services/patientTherapyAutocomplete",
 		minLength: 2,
 		change: function(event, ui){
 			if(!ui.item){
