@@ -140,6 +140,7 @@ class Services extends CI_Controller {
     	$this->db->select('patient_therapy.id_therapy, patient_therapy.id_consulta, patient_therapy.id_patient');
     	$this->db->from('patient_therapy');
     	$this->db->where('patient_therapy.status', 2);
+    	$this->db->where('DATE(patient_therapy.eta)', 'DATE(NOW())');
     	$consulta = $this->db->get()->result_array();
 
     	$resultado = array();
@@ -180,6 +181,50 @@ class Services extends CI_Controller {
 
     	header('Content-type: application/json');
         echo json_encode($resultado);
+    }
+
+    public function therapyStartInfo(){
+    	$query = $this->input->post();
+
+    	$id_patient = $query['id'];
+
+    	$this->db->select('patient_therapy.id_consulta,
+    		patient_therapy.id_patient');
+    	$this->db->from('patient_therapy');
+    	$this->db->where('patient_therapy.id_therapy', $id_patient);
+    	$info = $this->db->get()->row_array(); 
+
+    	$this->db->select("CONCAT(patient.name, ' ', patient.lastname) as `fullname`, 
+    			DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(patient.born, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(patient.born, '00-%m-%d')) as `age`, 
+    			patient.img");
+		$this->db->from('patient');
+		$this->db->where('patient.id_patient', $info['id_patient']);
+		$paciente = $this->db->get()->row_array();
+
+
+		$photo = $paciente['img'];
+		if(empty($photo)){
+			if($paciente['gender'] == 0){
+				$paciente['img'] = base_url('assets/img/patient-default/')."profile-f.png";
+			}else{
+				$paciente['img'] = base_url('assets/img/patient-default/')."profile-m.png";
+			}
+		}else{
+			$paciente['img'] = base_url('assets/img/patient-default/').$paciente['img'];
+		}
+
+
+		$this->db->select("patient_consult_limb.id_limb");
+		$this->db->from('patient_consult_limb');
+		$this->db->where('patient_consult_limb.id_consult', $info['id_consulta']);
+		$extremidades = $this->db->get()->result_array();
+
+		$resultado = array();
+		$resultado['patient'] = $paciente;
+		$resultado['limb'] = $extremidades;
+		header('Content-type: application/json');
+        echo json_encode($resultado);
+
     }
 
     public function patientHistory(){
