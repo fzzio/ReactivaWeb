@@ -184,14 +184,14 @@ class Services extends CI_Controller {
     }
 
     public function therapyStartInfo(){
-    	$query = $this->input->post();
+    	$query = $this->input->get();
 
-    	$id_patient = $query['id'];
+    	$id = $query['id'];
 
     	$this->db->select('patient_therapy.id_consulta,
     		patient_therapy.id_patient');
     	$this->db->from('patient_therapy');
-    	$this->db->where('patient_therapy.id_therapy', $id_patient);
+    	$this->db->where('patient_therapy.id_therapy', $id);
     	$info = $this->db->get()->row_array(); 
 
     	$this->db->select("CONCAT(patient.name, ' ', patient.lastname) as `fullname`, 
