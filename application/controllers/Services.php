@@ -196,7 +196,8 @@ class Services extends CI_Controller {
 
     	$this->db->select("CONCAT(patient.name, ' ', patient.lastname) as `fullname`, 
     			DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(patient.born, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(patient.born, '00-%m-%d')) as `age`, 
-    			patient.img");
+    			patient.img,
+                patient.gender");
 		$this->db->from('patient');
 		$this->db->where('patient.id_patient', $info['id_patient']);
 		$paciente = $this->db->get()->row_array();
