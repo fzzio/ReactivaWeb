@@ -31,7 +31,12 @@ function getEvents(date){
 			$('#event_list').slideDown('slow');
 			$("#id-date").val(date);
 
-			
+			var today = formatDateToday();
+			console.log(today);
+			if (date < today){
+				$("#event_list .but-new-cita").remove();
+				
+			}
 		},
 		complete: function(){
 			var today = formatDateToday();
@@ -126,6 +131,15 @@ function updateCitaModal(id_cita){
 
 
 
+		},
+		complete: function(){
+			var today = formatDateToday();
+			console.log(date);
+
+			if (date < today){
+				$("#verCita .botones-cita").remove();
+				
+			}
 		},
 		error: function(error){
 			console.error(error);

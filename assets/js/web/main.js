@@ -32,7 +32,15 @@ function updateTherapyInfo(id){
 			$("#the-status").text(data['therapy']['status']);
 			$("#the-evaluation").text(data['therapy']['evaluation']);
 			$("#the-attended").text(data['therapy']['doctor']);
-			$("#the-comments").text(data['comments']);
+			var lines = '';
+
+			for (var i = 0; i < data['comments'].length; i++){
+				var obj = data['comments'];
+				console.log(obj);
+				lines = lines + "\n" + obj[i]['hour'] + " " + obj[i]['msg'] 
+			}
+
+			$("#the-comments").text(lines);
 		},
 		error: function(error){
 			console.error(error);

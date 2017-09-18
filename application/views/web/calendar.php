@@ -148,7 +148,7 @@
 						<p class="" id="modal-observations" ></p>
 					</div>
 				</div>
-				<div class = 'row'>
+				<div class = 'row' id = "botones-cita">
 					<div class = 'col-xs-offset-1 col-xs-10'>
 						<div class = 'col-xs-4'>
 							<a class = 'align-center btn-turquoise'>
