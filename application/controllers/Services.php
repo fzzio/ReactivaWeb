@@ -247,7 +247,7 @@ class Services extends CI_Controller {
     }
 
     public function patientHistory(){
-    	$query = $this->input->post();
+    	$query = $this->input->get();
 
     	$id_patient = $query['id'];
 
@@ -263,6 +263,8 @@ class Services extends CI_Controller {
     	$this->db->from('patient_consult');
     	$this->db->join('account', 'account.id_account = patient_consult.id_doctor_attended');
     	$this->db->where('patient_consult.status', 2);
+        $this->db->order_by('date_attended', 'DESC');
+        $this->db->limit(1);
     	$consulta = $this->db->get()->row_array();
 
     	$id_consulta = $consulta['id_consult'];
@@ -273,9 +275,7 @@ class Services extends CI_Controller {
     	$this->db->from('patient_therapy');
     	$this->db->join('account', 'account.id_account = patient_therapy.id_doctor_attended');
     	$this->db->where('patient_therapy.id_consulta', $id_consulta);
-    	$this->db->where('patient_therapy.status', 3);
     	$terapias = $this->db->get()->result_array();
-
 
     	$resultado = array();
 
