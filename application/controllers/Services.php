@@ -140,7 +140,7 @@ class Services extends CI_Controller {
     	$this->db->select('patient_therapy.id_therapy, patient_therapy.id_consulta, patient_therapy.id_patient');
     	$this->db->from('patient_therapy');
     	$this->db->where('patient_therapy.status', 2);
-    	$this->db->where('DATE(patient_therapy.eta)', 'DATE(NOW())');
+    	$this->db->where('DATE(patient_therapy.eta) = DATE(NOW())');
     	$consulta = $this->db->get()->result_array();
 
     	$resultado = array();
