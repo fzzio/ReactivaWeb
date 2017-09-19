@@ -173,9 +173,14 @@ class Services extends CI_Controller {
 			$this->db->from('patient_consult_limb');
 			$this->db->where('patient_consult_limb.id_consult', $row['id_consulta']);
 			$extremidades = $this->db->get()->result_array();
-            $extremidades['icon'] = base_url('assets/img/icons-exercise/').$extremidades['icon'];
-            
-    		$row_array ['limbs'] = $extremidades;
+            $extr = array();
+
+        foreach ($extremidades as  $ext) {
+            $ext['icon'] = base_url('assets/img/icons-exercise/').$ext['icon'];
+            array_push($extr, $ext);
+        }
+
+    		$row_array ['limbs'] = $extr;
 
     		array_push($resultado, $row_array);
     	}
@@ -216,16 +221,25 @@ class Services extends CI_Controller {
 		}
 
 
-		$this->db->select("patient_consult_limb.icon");
+		$this->db->select("game_limb.icon");
 		$this->db->from('patient_consult_limb');
+        $this->db->join('game_limb', 'game_limb.id_limb = patient_consult_limb.id_limb');
 		$this->db->where('patient_consult_limb.id_consult', $info['id_consulta']);
 		$extremidades = $this->db->get()->result_array();
 
-        $extremidades['icon'] = base_url('assets/img/icons-exercise/').$extremidades['icon'];
+        $extr = array();
+
+        foreach ($extremidades as  $ext) {
+            $ext['icon'] = base_url('assets/img/icons-exercise/').$ext['icon'];
+            array_push($extr, $ext);
+        }
+
+
+  
 
 		$resultado = array();
 		$resultado['patient'] = $paciente;
-		$resultado['limb'] = $extremidades;
+		$resultado['limb'] = $extr;
 		header('Content-type: application/json');
         echo json_encode($resultado);
 
@@ -340,7 +354,12 @@ class Services extends CI_Controller {
 		$this->db->where('patient_consult_limb.id_consult', $id_consult);
 		$extremidades = $this->db->get()->result_array();
 
-        $extremidades['icon'] = base_url('assets/img/icons-exercise/').$extremidades['icon'];
+        $extr = array();
+
+        foreach ($extremidades as  $ext) {
+            $ext['icon'] = base_url('assets/img/icons-exercise/').$ext['icon'];
+            array_push($extr, $ext);
+        }
 
 		$this->db->select("TIME_FORMAT(TIME(patient_therapy_comment.date), '%H:%i')  AS `hour`,
 			patient_therapy_comment.msg");
@@ -361,7 +380,7 @@ class Services extends CI_Controller {
 		$resultado = array();
 
 		$resultado['therapy'] = $terapia;
-		$resultado['limb'] = $extremidades;
+		$resultado['limb'] = $extr;
 		$resultado['history'] = $historial;
 
 		header('Content-type: application/json');
