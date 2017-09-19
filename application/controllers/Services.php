@@ -169,11 +169,12 @@ class Services extends CI_Controller {
 			$row_array['therapy'] = $row;
     		$row_array ['info'] = $paciente;
 
-    		$this->db->select("patient_consult_limb.id_limb");
+    		$this->db->select("patient_consult_limb.icon");
 			$this->db->from('patient_consult_limb');
 			$this->db->where('patient_consult_limb.id_consult', $row['id_consulta']);
 			$extremidades = $this->db->get()->result_array();
-
+            $extremidades['icon'] = base_url('assets/img/icons-exercise/').$extremidades['icon'];
+            
     		$row_array ['limbs'] = $extremidades;
 
     		array_push($resultado, $row_array);
@@ -215,10 +216,12 @@ class Services extends CI_Controller {
 		}
 
 
-		$this->db->select("patient_consult_limb.id_limb");
+		$this->db->select("patient_consult_limb.icon");
 		$this->db->from('patient_consult_limb');
 		$this->db->where('patient_consult_limb.id_consult', $info['id_consulta']);
 		$extremidades = $this->db->get()->result_array();
+
+        $extremidades['icon'] = base_url('assets/img/icons-exercise/').$extremidades['icon'];
 
 		$resultado = array();
 		$resultado['patient'] = $paciente;
@@ -332,10 +335,12 @@ class Services extends CI_Controller {
 
     	$id_consult= $terapia['id_consulta'];
 
-    	$this->db->select("patient_consult_limb.id_limb");
+    	$this->db->select("patient_consult_limb.icon");
 		$this->db->from('patient_consult_limb');
 		$this->db->where('patient_consult_limb.id_consult', $id_consult);
 		$extremidades = $this->db->get()->result_array();
+
+        $extremidades['icon'] = base_url('assets/img/icons-exercise/').$extremidades['icon'];
 
 		$this->db->select("TIME_FORMAT(TIME(patient_therapy_comment.date), '%H:%i')  AS `hour`,
 			patient_therapy_comment.msg");
@@ -367,7 +372,12 @@ class Services extends CI_Controller {
      public function consultInfo(){
         $query = $this->input->post();
 
-        $this->db->select("patient_consult.id_consult, patient_consult.id_patient, DATE(patient_consult.`date_planned`) AS `date`,  CASE WHEN patient_consult.status = 0 THEN 'Pendiente' WHEN patient_consult.status = 1 THEN 'Cancelada' WHEN patient_consult.status = 2 THEN 'En proceso'  END as `status`, patient_consult.diagnosis, patient_consult.observations");
+        $this->db->select("patient_consult.id_consult, 
+            patient_consult.id_patient, 
+            DATE(patient_consult.`date_planned`) AS `date`,  
+            CASE WHEN patient_consult.status = 0 THEN 'Pendiente' WHEN patient_consult.status = 1 THEN 'Cancelada' WHEN patient_consult.status = 2 THEN 'En proceso'  END as `status`, 
+            patient_consult.diagnosis, 
+            patient_consult.observations");
         $this->db->from('patient_consult');
         $this->db->where('patient_consult.id_consult', $query['id']);
         $consulta = $this->db->get()->row_array();
