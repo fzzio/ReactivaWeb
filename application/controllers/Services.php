@@ -263,6 +263,7 @@ class Services extends CI_Controller {
     	$this->db->from('patient_consult');
     	$this->db->join('account', 'account.id_account = patient_consult.id_doctor_attended');
     	$this->db->where('patient_consult.status', 2);
+        $this->db->where('patient_consult.id_patient', $id_patient);
         $this->db->order_by('date_attended', 'DESC');
         $this->db->limit(1);
     	$consulta = $this->db->get()->row_array();
