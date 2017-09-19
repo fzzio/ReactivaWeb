@@ -350,7 +350,7 @@ class Services extends CI_Controller {
 
     	$id_consult= $terapia['id_consulta'];
 
-    	$this->db->select("game_limb.name");
+    	$this->db->select("game_limb.icon");
         $this->db->from('patient_consult_limb');
         $this->db->join('game_limb', 'game_limb.id_limb = patient_consult_limb.id_limb');
         $this->db->where('patient_consult_limb.id_consult', $query['id']);
