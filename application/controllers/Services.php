@@ -271,11 +271,13 @@ class Services extends CI_Controller {
     	$id_consulta = $consulta['id_consult'];
 
     	$this->db->select("patient_therapy.id_therapy,
+            patient_therapy.id_consulta,
     		DATE(patient_therapy.`eta`) AS `date`,
     		CONCAT(account.name, ' ', account.lastname) AS `therapist`");
     	$this->db->from('patient_therapy');
     	$this->db->join('account', 'account.id_account = patient_therapy.id_doctor_attended');
     	$this->db->where('patient_therapy.id_consulta', $id_consulta);
+        $this->db->where('patient_therapy.status', 3);
     	$terapias = $this->db->get()->result_array();
 
     	$resultado = array();
