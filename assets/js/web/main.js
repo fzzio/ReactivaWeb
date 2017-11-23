@@ -1,6 +1,6 @@
 function updateConsultInfo(id){
 	$.ajax({
-		url: "/ReactivaWeb/index.php/services/consultInfo",
+		url: js_site_url("services/consultInfo"),
 		type: 'POST',
 		data: {
 			"id" : String(id)
@@ -21,7 +21,7 @@ function updateConsultInfo(id){
 
 function updateTherapyInfo(id){
 	$.ajax({
-		url: "/ReactivaWeb/index.php/services/therapyInfo",
+		url: js_site_url("services/therapyInfo"),
 		type: 'POST',
 		data: {
 			"id" : String(id)

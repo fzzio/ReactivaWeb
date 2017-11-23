@@ -1,7 +1,7 @@
 function getCalendar(target_div,year,month){
 	$.ajax({
 		type:'POST',
-		url:"/ReactivaWeb/index.php/web/eventGet",
+		url: js_site_url('web/eventGet'),
 		data:"func=getCalender&year="+year+"&month="+month,
 		success:function(html){
 			$('#'+target_div).html(html);
@@ -13,7 +13,7 @@ function getCalendar(target_div,year,month){
 function getTherapyCalendar(target_div,year,month){
 	$.ajax({
 		type:'POST',
-		url:"/ReactivaWeb/index.php/web/eventTherapyGet",
+		url: js_site_url("web/eventTherapyGet"),
 		data:"func=getCalender&year="+year+"&month="+month,
 		success:function(html){
 			$('#'+target_div).html(html);
@@ -24,7 +24,7 @@ function getTherapyCalendar(target_div,year,month){
 function getEvents(date){
 	$.ajax({
 		type:'POST',
-		url:"/ReactivaWeb/index.php/web/eventGet",
+		url: js_site_url('web/eventGet'),
 		data:"func=getEvents&date="+date,
 		success:function(html){
 			$('#event_list').html(html);
@@ -65,7 +65,7 @@ function formatDateToday() {
 function getTherapyEvents(date){
 	$.ajax({
 		type:'POST',
-		url:"/ReactivaWeb/index.php/web/eventTherapyGet",
+		url: js_site_url("web/eventTherapyGet"),
 		data:"func=getEvents&date="+date,
 		success:function(html){
 			$('#event_list_therapy').html(html);
@@ -93,7 +93,7 @@ function getTherapyEvents(date){
 function addEvent(date){
 	$.ajax({
 		type:'POST',
-		url:"/ReactivaWeb/index.php/web/eventGet",
+		url: js_site_url('web/eventGet'),
 		data:"func=addEvent&date="+date,
 		success:function(html){
 			$('#event_list').html(html);
@@ -103,7 +103,7 @@ function addEvent(date){
 
 function updateCitaModal(id_cita){
 	$.ajax({
-		url: "/ReactivaWeb/index.php/services/citaGet",
+		url: js_site_url("services/citaGet"),
 		type: 'POST',
 		data: {
 			"id" : String(id_cita)
@@ -149,7 +149,7 @@ function updateCitaModal(id_cita){
 
 function updateTerapiaModal(id_terapia){
 	$.ajax({
-		url: "/ReactivaWeb/index.php/services/terapiaGet",
+		url: js_site_url("services/terapiaGet"),
 		type: 'POST',
 		data: {
 			"id" : String(id_terapia)
@@ -195,7 +195,7 @@ $(document).ready(function(){
 	});
 
 	$("#autocomplete-paciente").autocomplete({
-		source: "/ReactivaWeb/index.php/services/patientAutocomplete",
+		source: js_site_url("services/patientAutocomplete"),
 		minLength: 2,
 		change: function(event, ui){
 			if(!ui.item){
@@ -213,7 +213,7 @@ $(document).ready(function(){
 	);
 
 	$("#autocomplete-paciente-t").autocomplete({
-		source: "/ReactivaWeb/index.php/services/patientTherapyAutocomplete",
+		source: js_site_url("services/patientTherapyAutocomplete"),
 		minLength: 2,
 		change: function(event, ui){
 			if(!ui.item){

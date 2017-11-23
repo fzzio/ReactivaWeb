@@ -16,6 +16,20 @@
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin/sb-admin-2.css'); ?>">
   <?php endif ?>
 
+  	<script type="text/javascript">
+        var base_url = '<?php echo base_url(); ?>';
+
+        var js_site_url = function( urlText ){
+            var urlTmp = "<?php echo site_url('" + urlText + "'); ?>";
+            return urlTmp;
+        }
+
+        var js_base_url = function( urlText ){
+            var urlTmp = "<?php echo base_url('" + urlText + "'); ?>";
+            return urlTmp;
+        }
+    </script>
+
 	
 	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
