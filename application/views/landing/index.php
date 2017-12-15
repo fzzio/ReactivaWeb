@@ -97,6 +97,12 @@
 					position: relative;
 					display: block;
 				}
+				.mt-planes{
+					margin-top: 60px; 
+				}
+				.mb-p-planes{
+					margin-bottom: 0px;
+				}
 		</style>
 	</head>
 	<body class="with-preloader">
@@ -493,16 +499,16 @@
 			<div class="container">
 
 				<!-- SECTION HEADING -->
-				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">Nuestros Planes</h2>
+				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">Planes <?php /*Básicos*/ ?></h2>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center">
-						<p class="wow fadeIn" data-wow-duration="1s">
+						<p class="wow fadeIn mb-p-planes" data-wow-duration="1s">
 							Aprovecha todo lo que <strong>Reactiva</strong> tiene para tí. Optimiza el seguimiento a tus pacientes y sus sesiones de terapias.
 						</p>
 					</div>
 				</div>
 
-				<!-- PRICING TABLE -->
+				<!-- PRICING TABLE BÁSICO -->
 				<ul class="pricing-table row wow bounceIn" data-wow-duration="1s">
 
 					<!-- PRICING PACKAGE 1 -->
@@ -511,7 +517,7 @@
 							<div class="pricing-package-strip">
 							</div>
 							<div class="pricing-package-header">
-								<h4>Estudiantil</h4>
+								<h4><?php /*Básico<br />*/ ?>Estudiantil</h4>
 								<p>Estudiantes de carreras afines a terapia y rehabilitación</p>
 								<div class="price">
 									<span class="price-observ">&nbsp;</span>
@@ -563,7 +569,7 @@
 							<div class="pricing-package-strip">
 							</div>
 							<div class="pricing-package-header">
-								<h4>Especialistas <span class="label label-warning">Popular</span>
+								<h4><?php /*Básico<br />*/ ?>Especialistas <span class="label label-warning">Popular</span>
 								</h4>
 								<p>Profesionales que llevan el control de sus propios pacientes.</p>
 								<div class="price">
@@ -616,7 +622,7 @@
 							<div class="pricing-package-strip">
 							</div>
 							<div class="pricing-package-header">
-								<h4>Centros Médicos</h4>
+								<h4><?php /*Básico<br />*/ ?>Centros Médicos</h4>
 								<p>Entidades con varios especialistas que comparten pacientes.</p>
 								<div class="price">
 									<span class="price-observ">&nbsp;</span>
@@ -663,6 +669,176 @@
 					</li>
 				</ul>
 
+				<?php /*
+				<!-- PRICING TABLE PREMIUMS -->
+				<h2 class="section-heading text-center wow fadeIn mt-planes" data-wow-duration="1s">Planes Premium</h2>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center">
+						<p class="wow fadeIn mb-p-planes" data-wow-duration="1s">
+							Aprovecha todo lo que <strong>Reactiva</strong> tiene para tí. Optimiza el seguimiento a tus pacientes y sus sesiones de terapias.
+						</p>
+					</div>
+				</div>
+				<ul class="pricing-table row wow bounceIn" data-wow-duration="1s">
+
+					<!-- PRICING PACKAGE 1 -->
+					<li class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
+						<div class="pricing-package">
+							<div class="pricing-package-strip">
+							</div>
+							<div class="pricing-package-header">
+								<h4>Premium<br />Estudiantil</h4>
+								<p>Estudiantes de carreras afines a terapia y rehabilitación</p>
+								<div class="price">
+									<span class="price-observ">&nbsp;</span>
+									<span class="price-currency">$</span>
+									<span class="price-number">9.99</span>
+									<span class="price-period">Por mes</span>
+								</div>
+							</div>
+							<ul class="pricing-package-items">
+								<li>
+									<i class="fa fa-check"></i>
+									Agendamiento de citas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Bitácora de terapias
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Múltiples terapias activas
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Historial
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Evaluación y estadísticas
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Varios terapistas
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Usuarios administrativos
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Factor de Acompañamiento
+								</li>
+							</ul>
+						</div>
+					</li>
+
+					<!-- PRICING PACKAGE 2 -->
+					<li class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
+						<div class="pricing-package pricing-package-featured">
+							<div class="pricing-package-strip">
+							</div>
+							<div class="pricing-package-header">
+								<h4>Premium<br />Especialistas <span class="label label-warning">Popular</span>
+								</h4>
+								<p>Profesionales que llevan el control de sus propios pacientes.</p>
+								<div class="price">
+									<span class="price-observ">&nbsp;</span>
+									<span class="price-currency">$</span>
+									<span class="price-number">14.99</span>
+									<span class="price-period">por mes</span>
+								</div>
+							</div>
+							<ul class="pricing-package-items">
+								<li>
+									<i class="fa fa-check"></i>
+									Agendamiento de citas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Bitácora de terapias
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Múltiples terapias activas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Historial
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Evaluación y estadísticas
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Varios terapistas
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Usuarios administrativos
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Factor de Acompañamiento
+								</li>
+							</ul>
+						</div>
+					</li>
+
+					<!-- PRICING PACKAGE 3 -->
+					<li class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
+						<div class="pricing-package">
+							<div class="pricing-package-strip">
+							</div>
+							<div class="pricing-package-header">
+								<h4>Premium<br />Centros Médicos</h4>
+								<p>Entidades con varios especialistas que comparten pacientes.</p>
+								<div class="price">
+									<span class="price-observ">&nbsp;</span>
+									<span class="price-currency">$</span>
+									<span class="price-number">64.99</span>
+									<span class="price-period">por mes</span>
+								</div>
+							</div>
+							<ul class="pricing-package-items">
+								<li>
+									<i class="fa fa-check"></i>
+									Agendamiento de citas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Bitácora de terapias
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Múltiples terapias activas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Historial
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Evaluación y estadísticas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Varios terapistas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Usuarios administrativos
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Factor de Acompañamiento
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				*/ ?>
 			</div>
 		</section>
 
@@ -814,6 +990,7 @@
 			</div>
 		</section>
 
+		<?php /*
 		<!--
 		=================================
 		PRESS SECTION
@@ -843,6 +1020,7 @@
 
 			</div>
 		</section>
+		*/ ?>
 
 		<!--
 		=================================
