@@ -1,8 +1,10 @@
 .preloader-logo img{
 	display: block;
+	max-height: 180px;
 }
 .preloader-logo strong{
 	display: block;
+	margin-top: 80px;
 }
 .pricing-package{
 	padding: 19px 19px 19px;
