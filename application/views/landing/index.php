@@ -251,9 +251,9 @@
 								</p>
 							</li>
 							<li class="features-list-item">
-								<h5>Información</h5>
+								<h5>Estadística</h5>
 								<p>
-									<strong>Evalúa</strong> el estado del paciente al finalizar la sesión de terapia. Los registros que se almacenan en cada evaluación alimentan su <strong>estadística</strong>.
+									Se muestra el estado de las dolencias de cada paciente a través de <strong>gráficos</strong> para la respectiva evaluación del espacialista.
 								</p>
 							</li>
 						</ul>
@@ -269,10 +269,10 @@
 			</div>
 		</section>
 
-			<!--
-			=================================
-			FEATURES WITH ICONS SECTION
-			=================================
+		<!--
+		=================================
+		FEATURES WITH ICONS SECTION
+		=================================
 		-->
 		<section id="features-icons" class="features-icons-section section">
 			<div class="container">
@@ -281,47 +281,48 @@
 					<div class="col-md-8 col-md-push-4">
 
 						<!-- SECTION HEADING -->
-						<h2 class="section-heading wow fadeIn" data-wow-duration="1s">Features with Icons</h2>
-						<p class="wow fadeIn" data-wow-duration="1s">Need more feature details in maybe 6 or 8 items? You can use this section to put your features summary with short descriptions and retina icons for each item.</p>
+						<h2 class="section-heading wow fadeIn" data-wow-duration="1s">
+							La plataforma
+						</h2>
+						<p class="wow fadeIn" data-wow-duration="1s">
+							No solo es una aplicación móvil sino una plataforma que integra varios frentes. Desde el agendamiento de pacientes hasta la evaluac al finalizar la sesión de terapia.
+						</p>
 
 						<!-- FEATURES LIST WITH ICONS -->
 						<div class="features-icon-list row wow fadeIn" data-wow-duration="1s">
 							<div class="features-icon-list-item col-sm-6">
-								<i class="icon-eye"></i>
-								<h5>Responsive & Retina Ready</h5>
-								<p>Excepteur sint occaecat cupidatat non proident.</p>
+								<i class="icon-paper-clip"></i>
+								<h5>Entorno Administrativo</h5>
+								<p>Ingresa, modifica y elimina información de tus pacientes y tu grupo de especialistas.</p>
 							</div>
 							<div class="features-icon-list-item col-sm-6">
-								<i class="icon-cup"></i>
-								<h5>Built with Bootstrap 3</h5>
-								<p>Excepteur sint occaecat cupidatat non proident.</p>
+								<i class="icon-calendar"></i>
+								<h5>Historial</h5>
+								<p>Revisa las bitácoras de las sesiones de terapia previas, sus estadísticas y observaciones.</p>
 							</div>
-							<div class="clear">
+							<div class="clear"></div>
+							<div class="features-icon-list-item col-sm-6">
+								<i class="icon-globe"></i>
+								<h5>Online</h5>
+								<p>Toda tu información es almacenada en internet garantizando su disponibilidad 24/7.</p>
 							</div>
 							<div class="features-icon-list-item col-sm-6">
-								<i class="icon-equalizer"></i>
-								<h5>Easy to Customize</h5>
-								<p>Excepteur sint occaecat cupidatat non proident.</p>
+								<i class="icon-lock"></i>
+								<h5>Seguridad</h5>
+								<p>Para poder usar la plataforma todos los usuarios deben estar previamente registrados.</p>
+							</div>
+							<div class="clear"></div>
+							<div class="features-icon-list-item col-sm-6">
+								<i class="icon-heart"></i>
+								<h5>Acompañamiento</h5>
+								<p>Alerta a otros especialistas sobre el nivel de acompañamiento que necesita un paciente.</p>
 							</div>
 							<div class="features-icon-list-item col-sm-6">
-								<i class="icon-diamond"></i>
-								<h5>Clean & Elegant Design</h5>
-								<p>Excepteur sint occaecat cupidatat non proident.</p>
+								<i class="icon-settings"></i>
+								<h5>Parametrización</h5>
+								<p>En cada sesión de terapia puedes personalizar las partes del cuerpo a monitorear.</p>
 							</div>
-							<div class="clear">
-							</div>
-							<div class="features-icon-list-item col-sm-6">
-								<i class="icon-present"></i>
-								<h5>600++ Retina Icons</h5>
-								<p>Excepteur sint occaecat cupidatat non proident.</p>
-							</div>
-							<div class="features-icon-list-item col-sm-6">
-								<i class="icon-support"></i>
-								<h5>Documentation and Support</h5>
-								<p>Excepteur sint occaecat cupidatat non proident.</p>
-							</div>
-							<div class="clear">
-							</div>
+							<div class="clear"></div>
 						</div>
 					</div>
 
@@ -381,28 +382,33 @@
 					<div class="col-md-7">
 
 						<!-- SECTION HEADING -->
-						<h2 class="section-heading wow fadeIn" data-wow-duration="1s">A Long Description</h2>
-						<p class="wow fadeIn" data-wow-duration="1s">Describe your mobile app in even longer paragraphs. You might include a nice icon list on this section too. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus leo mattis metus condimentum sollicitudin. Quisque convallis nec justo sed consectetur. Duis convallis nunc quis arcu sollicitudin iaculis. <a href="#">Nunc id libero malesuada</a> arcu porta tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut vestibulum, nunc eget sollicitudin euismod, erat risus tempor augue, eu vulputate nibh lorem in leo.</p>
+						<h2 class="section-heading wow fadeIn" data-wow-duration="1s">
+							¿Qué es <strong>Reactiva</strong>?
+						</h2>
+						<p class="wow fadeIn text-justify" data-wow-duration="1s">
+							Es una plataforma que permite realizar un seguimiento personalizado a los pacientes que son atendidos en sesiones de terapia planificadas. La información de los pacientes, especialistas y la agenda de terapias son ingresados a través de un software web administrativo. Mientras que los especialistas monitorean y registran las observaciones a través de una aplicación móvil.<br />
+							<strong>Reactiva</strong> se enfoca en tres fases del seguimiento:
+						</p>
 
 						<!-- ICON LIST -->
-						<ul class="list-with-icons wow fadeIn" data-wow-duration="1s">
+						<ul class="list-with-icons wow fadeIn text-justify" data-wow-duration="1s">
 							<li>
 								<i class="icon-action-redo"></i>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								Al empezar.- Se revisa el historial del paciente, nivel de acompañamiento, estadísticas, agregar más dolencias a tratar.
 							</li>
 							<li>
 								<i class="icon-arrow-right"></i>
-								Pellentesque dapibus leo mattis metus condimentum sollicitudin.
+								Durante.- El especialista recoge información a través de comentarios y fotografías de las incidencias que generan una bitácora.
 							</li>
 							<li>
 								<i class="icon-layers"></i>
-								Quisque convallis nec justo sed consectetur.
-							</li>
-							<li>
-								<i class="icon-bell"></i>
-								Duis convallis nunc quis arcu sollicitudin iaculis. Nunc id libero malesuada arcu porta tempus.
+								Al finalizar.- Se puede evaluar la mejoría del paciente respecto a las lesiones indicadas al inicio de la sesión.
 							</li>
 						</ul>
+						<p class="wow fadeIn text-justify" data-wow-duration="1s">
+							<strong>Reactiva</strong> es un producto desarrollado por la empresa <a href="http://www.cajanegra.com.ec" target="_blank">CAJA NEGRA</a> y forma parte del programa de acompañamiento y mentorías <a href="http://onenest.partners/" target="_blank">OneNest</a>.
+						</p>
+
 
 					</div>
 
@@ -926,7 +932,7 @@
 				</ul>
 
 				<!-- COPYRIGHT -->
-				<div class="copyright">Copyright &copy; CAJANEGRA S.A., Todos los derechos reservados</div>
+				<div class="copyright">CAJANEGRA S.A. <?php echo date("Y"); ?> &copy; Todos los derechos reservados</div>
 			</div>
 		</footer>
 
