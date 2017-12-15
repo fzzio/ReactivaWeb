@@ -45,65 +45,33 @@
 
 		<!-- COLORS -->
 		<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/purple.css'); ?>" />
-			<?php /*
-			<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/green.css'); ?>" />
-			<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/turquoise.css'); ?>" />
-			<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/blue.css'); ?>" />
-			<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/pink.css'); ?>" />
-			<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/red.css'); ?>" />
-			<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/orange.css'); ?>" />
-			<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/yellow.css'); ?>" />
-			*/ ?>
+		<?php /*
+		<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/green.css'); ?>" />
+		<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/turquoise.css'); ?>" />
+		<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/blue.css'); ?>" />
+		<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/pink.css'); ?>" />
+		<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/red.css'); ?>" />
+		<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/orange.css'); ?>" />
+		<link id="color-css" rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/colors/yellow.css'); ?>" />
+		*/ ?>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/landing/css/reactiva.css'); ?>" />
 
-			<!-- JQUERY -->
-			<script type="text/javascript" src="<?php echo base_url('assets/landing/js/jquery-1.11.1.min.js'); ?>"></script>
+		<!-- JQUERY -->
+		<script type="text/javascript" src="<?php echo base_url('assets/landing/js/jquery-1.11.1.min.js'); ?>"></script>
 
-			<script type="text/javascript">
-				var base_url = '<?php echo base_url(); ?>';
+		<script type="text/javascript">
+			var base_url = '<?php echo base_url(); ?>';
 
-				var js_site_url = function( urlText ){
-					var urlTmp = "<?php echo site_url('" + urlText + "'); ?>";
-					return urlTmp;
-				}
+			var js_site_url = function( urlText ){
+				var urlTmp = "<?php echo site_url('" + urlText + "'); ?>";
+				return urlTmp;
+			}
 
-				var js_base_url = function( urlText ){
-					var urlTmp = "<?php echo base_url('" + urlText + "'); ?>";
-					return urlTmp;
-				}
-			</script>
-			<style type="text/css">
-				.preloader-logo img{
-					display: block;
-				}
-				.pricing-package{
-					padding: 19px 19px 19px;
-				}
-				.pricing-package-strip{
-					margin: -20px -20px 20px -20px;
-				}
-				.pricing-package-header{
-					padding-right: 100px;
-				}
-				.pricing-package-header .price{
-					max-width: 100px;
-				}
-				.pricing-package-header .price-number{
-					font-size: 33px;
-					font-weight: 600;
-				}
-				.price-observ{
-					height: 10px;
-					line-height: 1;
-					position: relative;
-					display: block;
-				}
-				.mt-planes{
-					margin-top: 60px; 
-				}
-				.mb-p-planes{
-					margin-bottom: 0px;
-				}
-		</style>
+			var js_base_url = function( urlText ){
+				var urlTmp = "<?php echo base_url('" + urlText + "'); ?>";
+				return urlTmp;
+			}
+		</script>
 	</head>
 	<body class="with-preloader">
 

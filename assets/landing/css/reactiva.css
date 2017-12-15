@@ -1,0 +1,31 @@
+.preloader-logo img{
+	display: block;
+}
+.pricing-package{
+	padding: 19px 19px 19px;
+}
+.pricing-package-strip{
+	margin: -20px -20px 20px -20px;
+}
+.pricing-package-header{
+	padding-right: 100px;
+}
+.pricing-package-header .price{
+	max-width: 100px;
+}
+.pricing-package-header .price-number{
+	font-size: 33px;
+	font-weight: 600;
+}
+.price-observ{
+	height: 10px;
+	line-height: 1;
+	position: relative;
+	display: block;
+}
+.mt-planes{
+	margin-top: 60px; 
+}
+.mb-p-planes{
+	margin-bottom: 0px;
+}
