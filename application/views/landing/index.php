@@ -72,9 +72,31 @@
 				}
 			</script>
 			<style type="text/css">
-			.preloader-logo img{
-				display: block;
-			}
+				.preloader-logo img{
+					display: block;
+				}
+				.pricing-package{
+					padding: 19px 19px 19px;
+				}
+				.pricing-package-strip{
+					margin: -20px -20px 20px -20px;
+				}
+				.pricing-package-header{
+					padding-right: 100px;
+				}
+				.pricing-package-header .price{
+					max-width: 100px;
+				}
+				.pricing-package-header .price-number{
+					font-size: 33px;
+					font-weight: 600;
+				}
+				.price-observ{
+					height: 10px;
+					line-height: 1;
+					position: relative;
+					display: block;
+				}
 		</style>
 	</head>
 	<body class="with-preloader">
@@ -166,7 +188,7 @@
 
 						<!-- HERO DESCRIPTION -->
 						<p class="hero-description">
-							Una forma rápida, eficiente y tecnológica de monitorear las sesiones de terapia que estás atendiendo y también las que tienes en agenda.
+							Una herramienta eficiente para dar seguimiento a las terapias agendadas y sesiones en curso, para no perder ningún detalle de tu paciente.
 						</p>
 
 						<!-- DOWNLOAD BUTTONS -->
@@ -216,7 +238,7 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center">
 						<p class="wow fadeIn" data-wow-duration="1s">
-							Más que una aplicación es una herramienta para tus actividades profesionales. Con la tranquilidad de que siempre tendrás el control.
+							Es una herramienta de apoyo para tus actividades profesionales ya que tienes el control de tus pacientes en cada sesión de terapia.
 						</p>
 					</div>
 				</div>
@@ -229,13 +251,13 @@
 							<li class="features-list-item">
 								<h5>Multipacientes</h5>
 								<p>
-									Puedes monitorear varios pacientes al mismo tiempo. Revisa el estado individual en cualquier momento de la <strong>Terapia Activa</strong>.
+									Puedes monitorear varios pacientes al mismo tiempo. Revisa el estado individual de una <strong>Terapia Activa</strong> en cualquier momento.
 								</p>
 							</li>
 							<li class="features-list-item">
 								<h5>Sesiones</h5>
 								<p>
-									Organiza tus actividades conociendo de antemano el listado de pacientes que tienen en <strong>Agenda</strong> sus sesiones de terapia.
+									Organiza tus actividades conociendo de antemano el listado de pacientes y sesiones de terapia que se encuentran en tu <strong>Agenda</strong>.
 								</p>
 							</li>
 						</ul>
@@ -285,7 +307,7 @@
 							La plataforma
 						</h2>
 						<p class="wow fadeIn" data-wow-duration="1s">
-							No solo es una aplicación móvil sino una plataforma que integra varios frentes. Desde el agendamiento de pacientes hasta la evaluac al finalizar la sesión de terapia.
+							No solo es una aplicación móvil sino una plataforma que integra varios frentes. Desde el agendamiento de pacientes hasta la evaluación al finalizar la sesión de terapia.
 						</p>
 
 						<!-- FEATURES LIST WITH ICONS -->
@@ -315,7 +337,7 @@
 							<div class="features-icon-list-item col-sm-6">
 								<i class="icon-heart"></i>
 								<h5>Acompañamiento</h5>
-								<p>Alerta a otros especialistas sobre el nivel de acompañamiento que necesita un paciente.</p>
+								<p>Califica el nivel de seguimiento que necesita tu paciente en la próxima terapia.</p>
 							</div>
 							<div class="features-icon-list-item col-sm-6">
 								<i class="icon-settings"></i>
@@ -393,16 +415,16 @@
 						<!-- ICON LIST -->
 						<ul class="list-with-icons wow fadeIn text-justify" data-wow-duration="1s">
 							<li>
-								<i class="icon-action-redo"></i>
-								Al empezar.- Se revisa el historial del paciente, nivel de acompañamiento, estadísticas, agregar más dolencias a tratar.
+								<i class="icon-arrow-right"></i>
+								<strong>Al empezar</strong>.- Se revisa el historial del paciente, nivel de acompañamiento, estadísticas. También se puede agregar más dolencias a monitorear.
 							</li>
 							<li>
 								<i class="icon-arrow-right"></i>
-								Durante.- El especialista recoge información a través de comentarios y fotografías de las incidencias que generan una bitácora.
+								<strong>Durante</strong>.- El especialista recoge información a través de comentarios y fotografías de las incidencias que generan una bitácora.
 							</li>
 							<li>
-								<i class="icon-layers"></i>
-								Al finalizar.- Se puede evaluar la mejoría del paciente respecto a las lesiones indicadas al inicio de la sesión.
+								<i class="icon-arrow-right"></i>
+								<strong>Al finalizar</strong>.- Se puede evaluar la mejoría del paciente respecto a las lesiones indicadas al inicio de la sesión.
 							</li>
 						</ul>
 						<p class="wow fadeIn text-justify" data-wow-duration="1s">
@@ -462,19 +484,21 @@
 			</div>
 		</section>
 
-			<!--
-			=================================
-			PRICING SECTION
-			=================================
+		<!--
+		=================================
+		PRICING SECTION
+		=================================
 		-->
 		<section id="pricing" class="pricing-section section">
 			<div class="container">
 
 				<!-- SECTION HEADING -->
-				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">Affordable Packages</h2>
+				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">Nuestros Planes</h2>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center">
-						<p class="wow fadeIn" data-wow-duration="1s">If your app is premium, use this section to list all of your pricing packages complete with the description items.</p>
+						<p class="wow fadeIn" data-wow-duration="1s">
+							Aprovecha todo lo que <strong>Reactiva</strong> tiene para tí. Optimiza el seguimiento a tus pacientes y sus sesiones de terapias.
+						</p>
 					</div>
 				</div>
 
@@ -487,34 +511,47 @@
 							<div class="pricing-package-strip">
 							</div>
 							<div class="pricing-package-header">
-								<h4>Free</h4>
-								<p>For personal use</p>
+								<h4>Estudiantil</h4>
+								<p>Estudiantes de carreras afines a terapia y rehabilitación</p>
 								<div class="price">
+									<span class="price-observ">&nbsp;</span>
 									<span class="price-currency">$</span>
-									<span class="price-number">0</span>
-									<span class="price-period">forever</span>
+									<span class="price-number">9.99</span>
+									<span class="price-period">Por mes</span>
 								</div>
 							</div>
 							<ul class="pricing-package-items">
 								<li>
 									<i class="fa fa-check"></i>
-									Unlimited Photos
+									Agendamiento de citas
 								</li>
 								<li>
 									<i class="fa fa-check"></i>
-									Basic Photo Filters
+									Bitácora de terapias
 								</li>
 								<li>
 									<i class="fa fa-times"></i>
-									Edit From Gallery
+									Múltiples terapias activas
 								</li>
 								<li>
 									<i class="fa fa-times"></i>
-									Advanced Photo Filters
+									Historial
 								</li>
 								<li>
 									<i class="fa fa-times"></i>
-									Custom Watermark
+									Evaluación y estadísticas
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Varios terapistas
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Usuarios administrativos
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Factor de Acompañamiento
 								</li>
 							</ul>
 						</div>
@@ -526,34 +563,48 @@
 							<div class="pricing-package-strip">
 							</div>
 							<div class="pricing-package-header">
-								<h4>Addict <span class="label label-warning">Popular</span>
+								<h4>Especialistas <span class="label label-warning">Popular</span>
 								</h4>
-								<p>More awesome photo filters</p>
+								<p>Profesionales que llevan el control de sus propios pacientes.</p>
 								<div class="price">
+									<span class="price-observ">&nbsp;</span>
 									<span class="price-currency">$</span>
-									<span class="price-number">49</span>
-									<span class="price-period">per month</span>
+									<span class="price-number">14.99</span>
+									<span class="price-period">por mes</span>
 								</div>
 							</div>
 							<ul class="pricing-package-items">
 								<li>
 									<i class="fa fa-check"></i>
-								Unlimited Photos</li>
-								<li>
-									<i class="fa fa-check"></i>
-									Basic Photo Filters
+									Agendamiento de citas
 								</li>
 								<li>
 									<i class="fa fa-check"></i>
-									Edit From Gallery
+									Bitácora de terapias
 								</li>
 								<li>
 									<i class="fa fa-check"></i>
-									Advanced Photo Filters
+									Múltiples terapias activas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Historial
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Evaluación y estadísticas
 								</li>
 								<li>
 									<i class="fa fa-times"></i>
-									Custom Watermark
+									Varios terapistas
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Usuarios administrativos
+								</li>
+								<li>
+									<i class="fa fa-times"></i>
+									Factor de Acompañamiento
 								</li>
 							</ul>
 						</div>
@@ -565,34 +616,47 @@
 							<div class="pricing-package-strip">
 							</div>
 							<div class="pricing-package-header">
-								<h4>Professional</h4>
-								<p>Include your business watermark</p>
+								<h4>Centros Médicos</h4>
+								<p>Entidades con varios especialistas que comparten pacientes.</p>
 								<div class="price">
+									<span class="price-observ">&nbsp;</span>
 									<span class="price-currency">$</span>
-									<span class="price-number">79</span>
-									<span class="price-period">per month</span>
+									<span class="price-number">64.99</span>
+									<span class="price-period">por mes</span>
 								</div>
 							</div>
 							<ul class="pricing-package-items">
 								<li>
 									<i class="fa fa-check"></i>
-									Unlimited Photos
+									Agendamiento de citas
 								</li>
 								<li>
 									<i class="fa fa-check"></i>
-									Basic Photo Filters
+									Bitácora de terapias
 								</li>
 								<li>
 									<i class="fa fa-check"></i>
-									Edit From Gallery
+									Múltiples terapias activas
 								</li>
 								<li>
 									<i class="fa fa-check"></i>
-									Advanced Photo Filters
+									Historial
 								</li>
 								<li>
 									<i class="fa fa-check"></i>
-									Custom Watermark
+									Evaluación y estadísticas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Varios terapistas
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Usuarios administrativos
+								</li>
+								<li>
+									<i class="fa fa-check"></i>
+									Factor de Acompañamiento
 								</li>
 							</ul>
 						</div>
@@ -611,10 +675,14 @@
 			<div class="container">
 
 				<!-- SECTION HEADING -->
-				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">Screenshots</h2>
+				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">
+					Screenshots
+				</h2>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center">
-						<p class="wow fadeIn" data-wow-duration="1s">Showcase your app screenshots into a nice carousel below. You can add as many screenshots as you want.</p>
+						<p class="wow fadeIn" data-wow-duration="1s">
+							Capturas de pantalla de lo que es <strong>Reactiva</strong> y su funcionamiento.
+						</p>
 					</div>
 				</div>
 
@@ -753,6 +821,9 @@
 		-->
 		<section id="press" class="press-section section">
 			<div class="container">
+				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">
+					Clientes
+				</h2>
 
 				<!-- LOGOS -->
 				<div class="press-logos wow fadeIn" data-wow-duration="1s">
@@ -787,10 +858,14 @@
 			<div class="container">
 
 				<!-- SECTION HEADING -->
-				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">Subscribe to Our Updates</h2>
+				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">
+					Suscríbete a nuestro Newsletter
+				</h2>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center">
-						<p class="wow fadeIn" data-wow-duration="1s">Give us your email address and we will notice you everytime we got new updates on the app. Don’t worry we hate spam as much as you do.</p>
+						<p class="wow fadeIn" data-wow-duration="1s">
+							Danos tu dirección de correo electrónico y te avisaremos cuando tengamos novedades en <strong>Reactiva</strong>. No te preocupes, odiamos el spam tanto como tú.
+						</p>
 					</div>
 				</div>
 
@@ -802,8 +877,10 @@
 								<!-- Validation Message here -->
 							</div>
 							<div class="form-group subscribe-form-input">
-								<input type="email" name="email" id="subscribe-form-email" class="subscribe-form-email form-control form-control-lg" placeholder="Enter your email address" autocomplete="off" />
-								<button class="subscribe-form-submit btn btn-black btn-lg" data-loading-text="Loading...">Subscribe</button>
+								<input type="email" name="email" id="subscribe-form-email" class="subscribe-form-email form-control form-control-lg" placeholder="Ingresa tu email" autocomplete="off" />
+								<button class="subscribe-form-submit btn btn-black btn-lg" data-loading-text="Loading...">
+									Suscribir
+								</button>
 							</div>
 						</form>
 					</div>
@@ -821,11 +898,14 @@
 			<div class="container">
 
 				<!-- SECTION HEADING -->
-				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">Get in Touch</h2>
+				<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">
+					Contacta a <strong>Reactiva</strong>
+				</h2>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center">
-						<p class="animated wow fadeIn" data-wow-duration="1s">Have feedback, suggestion, or any thought about our app? Feel free to contact us anytime, we will get back to you in 24 hours.</p>
-
+						<p class="animated wow fadeIn" data-wow-duration="1s">
+							¿Tienes comentarios o preguntas sobre nuestra plataforma? No dudes en contactarnos en cualquier momento, te contactaremos en 24 horas.
+						</p>
 					</div>
 				</div>
 
@@ -837,20 +917,21 @@
 								<!-- Validation Message here -->
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" name="name" placeholder="Your Name" autocomplete="off">
+								<input type="text" class="form-control" name="name" placeholder="Nombre completo" autocomplete="off">
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" name="email" placeholder="Your Email Address" autocomplete="off">
+								<input type="email" class="form-control" name="email" placeholder="Correo" autocomplete="off">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" name="subject" placeholder="Subject" autocomplete="off">
+								<input type="text" class="form-control" name="subject" placeholder="Asunto" autocomplete="off">
 							</div>
 							<div class="form-group">
-								<textarea rows="4" class="form-control" name="message" placeholder="Message">
-								</textarea>
+								<textarea rows="4" class="form-control" name="message" placeholder="Escríbenos tu mensaje"></textarea>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block" data-loading-text="Loading...">Send Message</button>
+								<button type="submit" class="btn btn-primary btn-block" data-loading-text="Cargando...">
+									Enviar Mensaje
+								</button>
 							</div>
 						</form>
 					</div>
@@ -898,32 +979,32 @@
 				<!-- SOCIAL MEDIA LINKS -->
 				<ul class="social-media-links wow fadeIn" data-wow-duration="1s">
 					<li>
-						<a href="http://facebook.com">
+						<a href="http://facebook.com" target="_blank">
 							<i class="fa fa-facebook"></i>
 							<span class="sr-only">Facebook</span>
 						</a>
 					</li>
 					<li>
-						<a href="http://instagram.com">
+						<a href="http://instagram.com" target="_blank">
 							<i class="fa fa-instagram"></i>
 							<span class="sr-only">Instagram</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="#" target="_blank">
 							<i class="fa fa-envelope"></i>
 							<span class="sr-only">Email</span>
 						</a>
 					</li>
 					<?php /*
 					<li>
-						<a href="http://twitter.com">
+						<a href="http://twitter.com" target="_blank">
 							<i class="fa fa-twitter"></i>
 							<span class="sr-only">Twitter</span>
 						</a>
 					</li>
 					<li>
-						<a href="http://pinterest.com">
+						<a href="http://pinterest.com" target="_blank">
 							<i class="fa fa-pinterest"></i>
 							<span class="sr-only">Pinterest</span>
 						</a>
@@ -932,7 +1013,9 @@
 				</ul>
 
 				<!-- COPYRIGHT -->
-				<div class="copyright">CAJANEGRA S.A. <?php echo date("Y"); ?> &copy; Todos los derechos reservados</div>
+				<div class="copyright">
+					REACTIVA es un producto propiedad de <a href="http://www.cajanegra.com.ec" target="_blank">CAJANEGRA S.A.</a> <?php echo date("Y"); ?> &copy; Todos los derechos esán reservados.
+				</div>
 			</div>
 		</footer>
 
