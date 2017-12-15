@@ -1,6 +1,9 @@
 .preloader-logo img{
 	display: block;
 }
+.preloader-logo strong{
+	display: block;
+}
 .pricing-package{
 	padding: 19px 19px 19px;
 }
