@@ -34,3 +34,33 @@
 .mb-p-planes{
 	margin-bottom: 0px;
 }
+
+.logos-im{
+	max-height: 89px;
+}
+
+/**
+ * ========================================
+ * ABOUT SECTION
+ * ========================================
+ */
+.about-section {
+	padding: 40px 0;
+}
+.about-logos {
+	text-align: center;
+}
+.about-logos span {
+	display: inline-block;
+	margin: 0 20px;
+}
+@media ( min-width: 768px ) {
+	.about-section {
+		padding: 50px 0;
+	}
+}
+@media ( min-width: 992px ) {
+	.about-section {
+		padding: 60px 0;
+	}
+}

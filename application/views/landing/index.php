@@ -403,18 +403,13 @@
 								</li>
 								<li>
 									<i class="icon-arrow-right"></i>
-									<strong>Durante</strong>.- El especialista recoge información a través de comentarios y fotografías de las incidencias que generan una bitácora.
+									<strong>Durante</strong>.- El especialista recoge información a través de comentarios y fotografías de las incidencias. Esto se almacena en la bitácora.
 								</li>
 								<li>
 									<i class="icon-arrow-right"></i>
 									<strong>Al finalizar</strong>.- Se puede evaluar la mejoría del paciente respecto a las lesiones indicadas al inicio de la sesión.
 								</li>
 							</ul>
-							<p class="wow fadeIn text-justify" data-wow-duration="1s">
-								<strong>Reactiva</strong> es un producto desarrollado por la empresa <a href="http://www.cajanegra.com.ec" target="_blank">CAJA NEGRA</a> y forma parte del programa de acompañamiento y mentorías <a href="http://onenest.partners/" target="_blank">OneNest</a>.
-							</p>
-
-
 						</div>
 
 						<!-- PHONE IMAGE -->
@@ -428,6 +423,7 @@
 
 				</div>
 			</section>
+
 
 			<?php /*
 			<!--
@@ -455,6 +451,188 @@
 								<div class="testimonial-name">Jane Doe, Wedding Photographer</div>
 							</li>
 						</ul>
+					</div>
+
+				</div>
+			</section>
+			*/ ?>
+
+
+
+			<!--
+			=================================
+			SCREENSHOTS SECTION
+			=================================
+			-->
+			<section id="screenshots" class="screenshots-section section">
+				<div class="container">
+
+					<!-- SECTION HEADING -->
+					<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">
+						Screenshots
+					</h2>
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center">
+							<p class="wow fadeIn" data-wow-duration="1s">
+								Te mostramos lo que es <strong>Reactiva</strong> y su funcionamiento.
+							</p>
+						</div>
+					</div>
+
+					<!-- SCREENSHOT IMAGES -->
+					<div class="sreenshots-carousel">
+						<ul class="screenshot-images owl-carousel wow bounceIn" data-wow-duration="1s">
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/login.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/login.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/terapias-activas-preview3.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/terapias-activas-preview3.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/terapia-pausa.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/terapia-pausa.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/terapias-activas-preview2.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/terapias-activas-preview2.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/agenda-hoy.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/agenda-hoy.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/agenda-semana-menu.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/agenda-semana-menu.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/agenda2.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/agenda2.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/iniciar-terapia.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/iniciar-terapia.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/historial-general.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/historial-general.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/historial-general-mes.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/historial-general-mes.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/historial-citas-dia.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/historial-citas-dia.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/loading.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
+									<div class="screenshot-image-inner">
+										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/loading.jpg'); ?>" alt="screenshot" />
+										<div class="hover">
+											<i class="icon-magnifier-add"></i>
+										</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<?php /*
+			<!--
+			=================================
+			PRESS SECTION
+			=================================
+			-->
+			<section id="press" class="press-section section">
+				<div class="container">
+					<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">
+						Clientes
+					</h2>
+
+					<!-- LOGOS -->
+					<div class="press-logos wow fadeIn" data-wow-duration="1s">
+						<span>
+							<img src="<?php echo base_url('assets/landing/images/contents/press-themeforest.png'); ?>" alt="themeforest" />
+						</span>
+						<span>
+							<img src="<?php echo base_url('assets/landing/images/contents/press-graphicriver.png'); ?>" alt="graphicriver" />
+						</span>
+						<span>
+							<img src="<?php echo base_url('assets/landing/images/contents/press-codecanyon.png'); ?>" alt="codecanyon" />
+						</span>
+						<span>
+							<img src="<?php echo base_url('assets/landing/images/contents/press-audiojungle.png'); ?>" alt="audiojungle" />
+						</span>
 					</div>
 
 				</div>
@@ -646,183 +824,39 @@
 
 			<!--
 			=================================
-			SCREENSHOTS SECTION
+			ACERCA DE
 			=================================
 			-->
-			<section id="screenshots" class="screenshots-section section">
+			<section id="about" class="about-section section">
 				<div class="container">
-
 					<!-- SECTION HEADING -->
-					<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">
-						Screenshots
-					</h2>
+					<?php /*
+					*/ ?>
+					<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">Nosotros</h2>
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
 							<p class="wow fadeIn" data-wow-duration="1s">
-								Te mostramos lo que es <strong>Reactiva</strong> y su funcionamiento.
+								<strong>REACTIVA</strong> es un producto desarrollado por la empresa <a href="http://www.cajanegra.com.ec" target="_blank">CAJA NEGRA</a> y forma parte del programa de acompañamiento y mentorías <a href="http://onenest.partners/" target="_blank">OneNest</a>.
 							</p>
 						</div>
 					</div>
 
-					<!-- SCREENSHOT IMAGES -->
-					<div class="sreenshots-carousel">
-						<ul class="screenshot-images owl-carousel wow bounceIn" data-wow-duration="1s">
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/login.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/login.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/terapias-activas-preview3.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/terapias-activas-preview3.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/terapia-pausa.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/terapia-pausa.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/terapias-activas-preview2.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/terapias-activas-preview2.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/agenda-hoy.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/agenda-hoy.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/agenda-semana-menu.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/agenda-semana-menu.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/agenda2.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/agenda2.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/iniciar-terapia.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/iniciar-terapia.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/historial-general.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/historial-general.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/historial-general-mes.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/historial-general-mes.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/historial-citas-dia.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/historial-citas-dia.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('assets/landing/images/contents/screenshots/loading.jpg'); ?>" class="screenshot-image" data-lightbox-gallery="screenshots-gallery">
-									<div class="screenshot-image-inner">
-										<img src="<?php echo base_url('assets/landing/images/contents/screenshots/loading.jpg'); ?>" alt="screenshot" />
-										<div class="hover">
-											<i class="icon-magnifier-add"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-			<?php /*
-			<!--
-			=================================
-			PRESS SECTION
-			=================================
-			-->
-			<section id="press" class="press-section section">
-				<div class="container">
-					<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1s">
-						Clientes
-					</h2>
-
 					<!-- LOGOS -->
-					<div class="press-logos wow fadeIn" data-wow-duration="1s">
+					<div class="about-logos wow fadeIn" data-wow-duration="1s">
 						<span>
-							<img src="<?php echo base_url('assets/landing/images/contents/press-themeforest.png'); ?>" alt="themeforest" />
+							<a href="http://www.cajanegra.com.ec" target="_blank">
+								<img src="<?php echo base_url('assets/landing/images/logos/logo-cn.png'); ?>" class="logos-im" alt="Caja Negra" />
+							</a>
 						</span>
 						<span>
-							<img src="<?php echo base_url('assets/landing/images/contents/press-graphicriver.png'); ?>" alt="graphicriver" />
-						</span>
-						<span>
-							<img src="<?php echo base_url('assets/landing/images/contents/press-codecanyon.png'); ?>" alt="codecanyon" />
-						</span>
-						<span>
-							<img src="<?php echo base_url('assets/landing/images/contents/press-audiojungle.png'); ?>" alt="audiojungle" />
+							<a href="http://onenest.partners/" target="_blank">
+								<img src="<?php echo base_url('assets/landing/images/logos/logo-onenest.png'); ?>" class="logos-im" alt="One Nest" />
+							</a>
 						</span>
 					</div>
 
 				</div>
 			</section>
-			*/ ?>
 
 			<!--
 			=================================
@@ -975,6 +1009,12 @@
 							</a>
 						</li>
 						<li>
+							<a href="https://api.whatsapp.com/send?phone=593978997377&text=Hola%20amigos%20de%20CAJA%20NEGRA,%20estoy%20interesado/a%20en%20REACTIVA." target="_blank">
+								<i class="fa fa-whatsapp"></i>
+								<span class="sr-only">WhatsApp</span>
+							</a>
+						</li>
+						<li>
 							<a href="mailto:info@cajanegra.com.ec?Subject=Contacto%20por%20REACTIVA" target="_blank">
 								<i class="fa fa-envelope"></i>
 								<span class="sr-only">Email</span>
@@ -985,12 +1025,6 @@
 							<a href="http://twitter.com" target="_blank">
 								<i class="fa fa-twitter"></i>
 								<span class="sr-only">Twitter</span>
-							</a>
-						</li>
-						<li>
-							<a href="http://pinterest.com" target="_blank">
-								<i class="fa fa-pinterest"></i>
-								<span class="sr-only">Pinterest</span>
 							</a>
 						</li>
 						*/ ?>
