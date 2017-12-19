@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 
 		<!-- METADATA -->
-		<meta name="description" content="Reactiva es una plataforma tecnológica que brinda al especialista una manera de llevar el control de sus pacientes en el mismo momento en que se realiza la sesión de terapia." />
+		<meta name="description" content="Reactiva es una plataforma tecnológica que ayuda al especialista a llevar el control de sus pacientes mientras realiza la sesión de terapia." />
 		<meta name="keywords" content="APP, Rehabilitación, Rehab, App, Fisioterapia, Fisioterapista, Terapista, Mobile, Android, iOS" />
 		<meta name="author" content="CAJANEGRA S.A." />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -817,7 +817,7 @@
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
 							<p class="wow fadeIn" data-wow-duration="1s">
-								Capturas de pantalla de lo que es <strong>Reactiva</strong> y su funcionamiento.
+								Te mostramos lo que es <strong>Reactiva</strong> y su funcionamiento.
 							</p>
 						</div>
 					</div>
@@ -1050,7 +1050,7 @@
 					<!-- CONTACT FORM -->
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3">
-							<form action="modules/send-email.php" method="post" id="contact-form" class="contact-form wow fadeInUp" data-wow-duration="1s" role="form">
+							<form action="<?php echo site_url('landing/contacto'); ?>" method="post" id="contact-form" class="contact-form wow fadeInUp" data-wow-duration="1s" role="form">
 								<div class="form-validation alert">
 									<!-- Validation Message here -->
 								</div>
@@ -1117,7 +1117,7 @@
 					<!-- SOCIAL MEDIA LINKS -->
 					<ul class="social-media-links wow fadeIn" data-wow-duration="1s">
 						<li>
-							<a href="http://facebook.com" target="_blank">
+							<a href="http://www.facebook.com/ReactivaCN" target="_blank">
 								<i class="fa fa-facebook"></i>
 								<span class="sr-only">Facebook</span>
 							</a>
@@ -1129,7 +1129,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="#" target="_blank">
+							<a href="mailto:info@cajanegra.com.ec?Subject=Contacto%20por%20REACTIVA" target="_blank">
 								<i class="fa fa-envelope"></i>
 								<span class="sr-only">Email</span>
 							</a>
