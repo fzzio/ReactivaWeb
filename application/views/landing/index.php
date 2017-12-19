@@ -14,7 +14,7 @@
 		<meta property="og:title" content="Reactiva - Rehabilitación Interactiva">
 		<meta property="og:site_name" content="Reactiva"/>
 		<meta property="og:url" content="http://www.cajanegra.com.ec/reactiva/">
-		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/features-phone.png'); ?>">	
+		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/reactiva-share.jpg'); ?>">	
 		<meta property="article:author" content="CAJANEGRA S.A.">
 
 		<!-- PAGE TITLE -->
@@ -126,7 +126,7 @@
 						<!-- NAVIGATION LINKS -->
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<a href="#home">Descargar</a>
+								<a href="#home">Inicio</a>
 							</li>
 							<li>
 								<a href="#features">Características</a>
@@ -900,7 +900,7 @@
 								</div>
 								<div class="form-group subscribe-form-input">
 									<input type="email" name="email" id="subscribe-form-email" class="subscribe-form-email form-control form-control-lg" placeholder="Ingresa tu email" autocomplete="off" />
-									<button class="subscribe-form-submit btn btn-black btn-lg" data-loading-text="Loading...">
+									<button class="subscribe-form-submit btn btn-black btn-lg" data-loading-text="Cargando...">
 										Suscribir
 									</button>
 								</div>
@@ -1005,13 +1005,13 @@
 					<!-- SOCIAL MEDIA LINKS -->
 					<ul class="social-media-links wow fadeIn" data-wow-duration="1s">
 						<li>
-							<a href="http://www.facebook.com/ReactivaCN" target="_blank">
+							<a href="https://www.facebook.com/ReactivaCN" target="_blank">
 								<i class="fa fa-facebook"></i>
 								<span class="sr-only">Facebook</span>
 							</a>
 						</li>
 						<li>
-							<a href="http://instagram.com" target="_blank">
+							<a href="https://www.instagram.com/ReactivaCN" target="_blank">
 								<i class="fa fa-instagram"></i>
 								<span class="sr-only">Instagram</span>
 							</a>
