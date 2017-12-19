@@ -73,11 +73,14 @@
 			}
 		</script>
 
-		<meta property="og:type" content="product">
+		<meta property="og:type" content="article">
 		<meta property="og:title" content="Reactiva - Rehabilitación Interactiva">
+		<?php /*
 		<meta property="og:url" content="<?php echo site_url('landing/index'); ?>">
-		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/features-phone.png'); ?>">
-		<meta property="product:price:currency" content="USD">
+		*/ ?>
+		<meta property="og:url" content="http://www.cajanegra.com.ec/reactiva/">
+		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/features-phone.png'); ?>">	
+		<meta property="article:author" content="CAJANEGRA S.A.">
 
 	</head>
 	<body class="with-preloader">
