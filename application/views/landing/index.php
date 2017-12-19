@@ -18,10 +18,10 @@
 		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url('assets/landing/images/favicons/apple-touch-icon-72x72.png'); ?>" />
 		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url('assets/landing/images/favicons/apple-touch-icon-114x114.png'); ?>" />
 
-			<!--
-			=================================
-			STYLESHEETS
-			=================================
+		<!--
+		=================================
+		STYLESHEETS
+		=================================
 		-->
 
 		<!-- BOOTSTRAP -->
@@ -72,6 +72,13 @@
 				return urlTmp;
 			}
 		</script>
+
+		<meta property="og:type" content="product">
+		<meta property="og:title" content="Reactiva - Rehabilitación Interactiva">
+		<meta property="og:url" content="<?php echo site_url('landing/index'); ?>">
+		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/features-phone.png'); ?>">
+		<meta property="product:price:currency" content="USD">
+
 	</head>
 	<body class="with-preloader">
 
