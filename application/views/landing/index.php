@@ -1010,7 +1010,7 @@
 					<!-- SUBSCRIBE FORM -->
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3">
-							<form action="modules/subscribe-mailchimp.php" method="post" id="subscribe-form" class="subscribe-form wow fadeIn" data-wow-duration="1s" role="form">
+							<form action="<?php echo site_url('landing/addToNewsletter'); ?>" method="post" id="subscribe-form" class="subscribe-form wow fadeIn" data-wow-duration="1s" role="form">
 								<div class="form-validation alert">
 									<!-- Validation Message here -->
 								</div>
