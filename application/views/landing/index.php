@@ -9,6 +9,14 @@
 		<meta name="author" content="CAJANEGRA S.A." />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
+
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Reactiva - Rehabilitación Interactiva">
+		<meta property="og:site_name" content="Reactiva"/>
+		<meta property="og:url" content="http://www.cajanegra.com.ec/reactiva/">
+		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/features-phone.png'); ?>">	
+		<meta property="article:author" content="CAJANEGRA S.A.">
+
 		<!-- PAGE TITLE -->
 		<title>Reactiva - Rehabilitación Interactiva</title>
 
@@ -72,16 +80,6 @@
 				return urlTmp;
 			}
 		</script>
-
-		<meta property="og:type" content="article">
-		<meta property="og:title" content="Reactiva - Rehabilitación Interactiva">
-		<?php /*
-		<meta property="og:url" content="<?php echo site_url('landing/index'); ?>">
-		*/ ?>
-		<meta property="og:url" content="http://www.cajanegra.com.ec/reactiva/">
-		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/features-phone.png'); ?>">	
-		<meta property="article:author" content="CAJANEGRA S.A.">
-
 	</head>
 	<body class="with-preloader">
 
@@ -846,7 +844,7 @@
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
 							<p class="wow fadeIn" data-wow-duration="1s">
-								<strong>REACTIVA</strong> es un producto desarrollado por la empresa <a href="http://www.cajanegra.com.ec" target="_blank">CAJA NEGRA</a> y forma parte del programa de acompañamiento y mentorías <a href="http://onenest.partners/" target="_blank">OneNest</a>.
+								<strong>REACTIVA</strong> es un producto desarrollado por la empresa <a href="http://www.cajanegra.com.ec" target="_blank">CAJA NEGRA</a>. Forma parte del grupo de emprendimientos involucradas dentro del programa de acompañamiento y mentorías <a href="http://onenest.partners/" target="_blank">OneNest</a>.
 							</p>
 						</div>
 					</div>

@@ -128,16 +128,16 @@ class Landing extends CI_Controller{
 		// =============================================
 
 		// Authentication
-		$api_key         = 'aae448ce635713cefae021fccea1aaaa-us13'; // Find on your Account Settings > Extras > API Keys
-		$list_id         = '23b058b09c'; // Find on your List > Settings
+		$api_key         = 'aa8471c997137dab16b5976f41314d70-us14'; // Find on your Account Settings > Extras > API Keys
+		$list_id         = '35bc4ce12e'; // Find on your List > Settings
 
 		// Validation messages
 		$error_messages   = array(
-			'List_AlreadySubscribed' => 'The email you entered is already subscribed.',
-			'Email_NotExists'        => 'The email you entered is invalid.',
-			'else'                   => 'An error occurred.',
+			'List_AlreadySubscribed' => 'El correo electrónico que ingresaste ya está suscrito.',
+			'Email_NotExists'        => 'El correo electrónico que ingresaste no es válido.',
+			'else'                   => 'Ocurrió un error.',
 		);
-		$success_message = 'Success!';
+		$success_message = 'Te has sucrito con éxito!';
 
 		// =============================================
 		// BEGIN SUBSCRIBE PROCESS
@@ -183,7 +183,7 @@ class Landing extends CI_Controller{
 			if ( array_key_exists( 'status', $result ) && $result['status'] == 'error' ) {
 				echo 'Error: ' . $result['error'];
 			} else {
-				echo 'Gracias por suscribirte a nuestro boletín!';
+				echo '¡Gracias por suscribirte a nuestro boletín!';
 			}
 		}
 
