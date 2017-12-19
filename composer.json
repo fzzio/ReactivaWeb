@@ -6,7 +6,8 @@
 	"license": "MIT",
 
 	"require": {
-		"php": ">=5.2.4"
+		"php": ">=5.2.4",
+		"phpmailer/phpmailer": "^6.0"
 	},
 	"require-dev": {
 		"twbs/bootstrap" : "3.*",

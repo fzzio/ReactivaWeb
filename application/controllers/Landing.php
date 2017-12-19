@@ -1,6 +1,12 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+//Load composer's autoloader
+require 'vendor/autoload.php';
 
 if( !defined('BASEPATH')) exit ("No direct script access allowed");
+
 
 class Landing extends CI_Controller{
 
@@ -33,7 +39,7 @@ class Landing extends CI_Controller{
 		$reply_to_email_addresses = array( 'info@cajanegra.com.ec' => 'Información REACTIVA' );
 
 		// Body
-		$subject_prefix = 'REACTIVA vía Web :: ';
+		$subject_prefix = 'REACTIVA Contacto Web :: ';
 
 		// SMTP
 		// SMTP is not supported. Please contact me to get specific helps.
@@ -83,15 +89,17 @@ class Landing extends CI_Controller{
 			return;
 		}
 
-		echo "<pre>";
-		print_r( $result );
-		echo "</pre>";
-
-		die();
-
 		// Initiate PHPMailer
-		$this->load->library("PHPMailer_Library");
-        $mail = $this->phpmailer_library->load();
+		$mail = new PHPMailer(true);  
+
+        //$mail->SMTPDebug = 2; 
+		$mail->isSMTP();  // Set mailer to use SMTP
+		$mail->Host = 'smtp.mailgun.org';  // Specify mailgun SMTP servers
+		$mail->Port = 587;
+		$mail->SMTPAuth = true; // Enable SMTP authentication
+		$mail->Username = 'postmaster@cajanegra.com.ec'; // SMTP username from https://mailgun.com/cp/domains
+		$mail->Password = 'f92cc20af9aab6607b1538d946d15569'; // SMTP password from https://mailgun.com/cp/domains
+		$mail->SMTPSecure = 'tls';   // Enable encryption, 'ssl'
 
 		// headers
 		$mail->From = $email;
@@ -100,7 +108,6 @@ class Landing extends CI_Controller{
 		foreach ( $cc_email_addresses as $e => $n ) $mail->addCC( $e, $n );
 		foreach ( $bcc_email_addresses as $e => $n ) $mail->addBCC( $e, $n );
 		foreach ( $reply_to_email_addresses as $e => $n ) $mail->addReplyTo( $e, $n );
-
 		// body
 		$mail->Subject = $subject_prefix . $subject;
 		$mail->Body    = $message;
@@ -126,6 +133,8 @@ class Landing extends CI_Controller{
 				echo 'Success';
 			}
 		}
+
+		//$mail->ClearAllRecipients(); //Clear All Recipients
 	}
 
 	public function addToNewsletter(){
