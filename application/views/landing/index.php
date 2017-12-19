@@ -951,7 +951,7 @@
 									<textarea rows="4" class="form-control" name="message" placeholder="Escríbenos tu mensaje"></textarea>
 								</div>
 								<div class="form-group">
-									<button type="submit" class="btn btn-primary btn-block" data-loading-text="Cargando...">
+									<button type="submit" class="btn btn-primary btn-block" data-loading-text="Enviando...">
 										Enviar Mensaje
 									</button>
 								</div>
