@@ -14,7 +14,7 @@
 		<meta property="og:title" content="Reactiva - Rehabilitación Interactiva">
 		<meta property="og:site_name" content="Reactiva"/>
 		<meta property="og:url" content="http://www.cajanegra.com.ec/reactiva/">
-		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/reactiva-share.jpg'); ?>">	
+		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/reactiva-1.jpg'); ?>">	
 		<meta property="article:author" content="CAJANEGRA S.A.">
 
 		<!-- PAGE TITLE -->

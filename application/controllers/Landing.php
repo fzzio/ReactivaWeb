@@ -54,10 +54,10 @@ class Landing extends CI_Controller{
 		// =============================================
 
 		// Form's values
-		$name = isset( $_REQUEST['name'] ) ? $_REQUEST['name'] : '';
-		$email = isset( $_REQUEST['email'] ) ? $_REQUEST['email'] : '';
-		$subject = isset( $_REQUEST['subject'] ) ? $_REQUEST['subject'] : '';
-		$message = isset( $_REQUEST['message'] ) ? $_REQUEST['message'] : '';
+		$name = $this->input->post("name");
+		$email = $this->input->post("email");
+		$subject = $this->input->post("subject");
+		$message = $this->input->post("message");
 
 		// Validation
 		$errors = array();
@@ -65,6 +65,7 @@ class Landing extends CI_Controller{
 		if ( empty( $name ) ) $errors[] = $error_messages['name'];
 		if ( empty( $subject ) ) $errors[] = $error_messages['subject'];
 		if ( empty( $message ) ) $errors[] = $error_messages['message'];
+
 
 		if ( count( $errors ) ) {
 			$result['status'] = 'error';
@@ -82,6 +83,11 @@ class Landing extends CI_Controller{
 			return;
 		}
 
+		echo "<pre>";
+		print_r( $result );
+		echo "</pre>";
+
+		die();
 
 		// Initiate PHPMailer
 		$this->load->library("PHPMailer_Library");
@@ -137,7 +143,7 @@ class Landing extends CI_Controller{
 			'Email_NotExists'        => 'El correo electrónico que ingresaste no es válido.',
 			'else'                   => 'Ocurrió un error.',
 		);
-		$success_message = 'Te has sucrito con éxito!';
+		$success_message = '¡Gracias por suscribirte a nuestro boletín!';
 
 		// =============================================
 		// BEGIN SUBSCRIBE PROCESS
