@@ -1,24 +1,31 @@
+<?php
+	$metaTitulo = "Reactiva - Rehabilitación Interactiva";
+	$metaDescripcion = "Reactiva es una plataforma tecnológica que ayuda al especialista a llevar el control de sus pacientes mientras realiza la sesión de terapia.";
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 
 		<!-- METADATA -->
-		<meta name="description" content="Reactiva es una plataforma tecnológica que ayuda al especialista a llevar el control de sus pacientes mientras realiza la sesión de terapia." />
+		<meta name="description" content="<?php echo $metaDescripcion; ?>" />
 		<meta name="keywords" content="APP, Rehabilitación, Rehab, App, Fisioterapia, Fisioterapista, Terapista, Mobile, Android, iOS" />
 		<meta name="author" content="CAJANEGRA S.A." />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 		<meta property="og:type" content="website">
-		<meta property="og:title" content="Reactiva - Rehabilitación Interactiva">
+		<meta property="og:title" content="<?php echo $metaTitulo; ?>">
 		<meta property="og:site_name" content="Reactiva"/>
+		<meta property="og:description" content="<?php echo $metaDescripcion; ?>"/>
 		<meta property="og:url" content="http://www.cajanegra.com.ec/reactiva/">
-		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/reactiva-1.jpg'); ?>">	
-		<meta property="article:author" content="CAJANEGRA S.A.">
+		<meta property="og:image" content="<?php echo base_url('assets/landing/images/contents/reactiva-400x400.jpg'); ?>">	
+		<meta property="og:image:alt" content="Reactiva">
 
 		<!-- PAGE TITLE -->
-		<title>Reactiva - Rehabilitación Interactiva</title>
+		<title>
+			<?php echo $metaTitulo; ?>
+		</title>
 
 		<!-- FAVICON -->
 		<link rel="icon" href="<?php echo base_url('assets/landing/images/favicons/favicon.ico'); ?>" />
@@ -1042,7 +1049,7 @@
 					<div class="copyright">
 						REACTIVA es un producto de <a href="http://www.cajanegra.com.ec" target="_blank">CAJANEGRA S.A.</a>
 						<br />
-						<?php echo date("Y"); ?> &copy; Todos los derechos esán reservados.
+						<?php echo date("Y"); ?> &copy; Todos los derechos están reservados.
 					</div>
 				</div>
 			</footer>
