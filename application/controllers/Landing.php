@@ -1,10 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-//Load composer's autoloader
-require 'vendor/autoload.php';
-
 if( !defined('BASEPATH')) exit ("No direct script access allowed");
 
 
@@ -33,10 +27,11 @@ class Landing extends CI_Controller{
 
 		// Headers
 		// you can add more than one email address
-		$to_email_addresses       = array( 'info@cajanegra.com.ec' => 'Información REACTIVA' );
-		$cc_email_addresses       = array( 'info@cajanegra.com.ec' => 'Información REACTIVA' );
-		$bcc_email_addresses      = array( 'info@cajanegra.com.ec' => 'Información REACTIVA' );
-		$reply_to_email_addresses = array( 'info@cajanegra.com.ec' => 'Información REACTIVA' );
+		$to_email_addresses       = 'Información REACTIVA<info@cajanegra.com.ec>';
+		$cc_email_addresses       = '';
+		$bcc_email_addresses      = '';
+		//$cc_email_addresses       = 'Información REACTIVA<info@cajanegra.com.ec>';
+		//$bcc_email_addresses      = 'Información REACTIVA<info@cajanegra.com.ec>';
 
 		// Body
 		$subject_prefix = 'REACTIVA Contacto Web :: ';
@@ -89,31 +84,18 @@ class Landing extends CI_Controller{
 			return;
 		}
 
-		// Initiate PHPMailer
-		$mail = new PHPMailer(true);  
-
-        //$mail->SMTPDebug = 2; 
-		$mail->isSMTP();  // Set mailer to use SMTP
-		$mail->Host = 'smtp.mailgun.org';  // Specify mailgun SMTP servers
-		$mail->Port = 587;
-		$mail->SMTPAuth = true; // Enable SMTP authentication
-		$mail->Username = 'postmaster@cajanegra.com.ec'; // SMTP username from https://mailgun.com/cp/domains
-		$mail->Password = 'f92cc20af9aab6607b1538d946d15569'; // SMTP password from https://mailgun.com/cp/domains
-		$mail->SMTPSecure = 'tls';   // Enable encryption, 'ssl'
-
-		// headers
-		$mail->From = $email;
-		$mail->FromName = $name;
-		foreach ( $to_email_addresses as $e => $n ) $mail->addAddress( $e, $n );
-		foreach ( $cc_email_addresses as $e => $n ) $mail->addCC( $e, $n );
-		foreach ( $bcc_email_addresses as $e => $n ) $mail->addBCC( $e, $n );
-		foreach ( $reply_to_email_addresses as $e => $n ) $mail->addReplyTo( $e, $n );
-		// body
-		$mail->Subject = $subject_prefix . $subject;
-		$mail->Body    = $message;
+		/////////////////////////////////////////////////////////
+		$this->load->library('mailgun');
+	    $this->mailgun
+	        ->from( $name . "<" . $email .  ">" )
+	        ->to( $to_email_addresses )
+	        ->cc( $cc_email_addresses )
+	        ->bcc( $bcc_email_addresses )
+	        ->subject( $subject_prefix . $subject )
+	        ->message( $message );
 
 		// send
-		if ( ! $mail->send() ) {
+		if ( ! $this->mailgun->send() ) {
 			$result['status'] = 'error';
 			$result['message'] = $error_messages['else'];
 		} else {
@@ -128,7 +110,8 @@ class Landing extends CI_Controller{
 		} else {
 			// no AJAX
 			if ( $result['status'] == 'error' ) {
-				echo 'Error: ' . $mail->ErrorInfo;
+				//echo 'Error: ' . $mail->ErrorInfo;
+				echo 'Error: ' . 'Algo pasó :-(';
 			} else {
 				echo 'Success';
 			}
