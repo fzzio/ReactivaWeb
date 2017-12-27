@@ -152,14 +152,14 @@
 							<li>
 								<a href="#description">Descripción</a>
 							</li>
-							
+							<?php /*
 							<li>
 								<a href="#testimonials">Testimonios</a>
 							</li>
 							<li>
-								<a href="#pricing">Inversión</a>
+								<a href="#pricing">Precio</a>
 							</li>
-							
+							*/ ?>
 						</ul>
 					</div>
 				</div>
@@ -665,7 +665,7 @@
 			</section>
 			*/ ?>
 
-			
+			<?php /*
 			<!--
 			=================================
 			PRICING SECTION
@@ -846,7 +846,7 @@
 					</ul>
 				</div>
 			</section>
-			
+			*/ ?>
 
 			<!--
 			=================================
