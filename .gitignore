@@ -198,4 +198,4 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/osx,linux,windows,netbeans,composer,phpstorm,sublimetext,codeigniter
 
 /otros
-config/database.php
+/config/database.php
